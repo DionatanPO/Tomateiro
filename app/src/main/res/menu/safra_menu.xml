@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/perfil"
+        android:title="Alterar seus dados" />
+
+    <item
+        android:id="@+id/ajuda"
+        android:title="Ajuda" />
+
+    <item
+        android:id="@+id/sobre"
+        android:title="Sobre o app" />
+
+    <item
+        android:id="@+id/sair"
+        android:title="Sair" />
+</menu>
