@@ -84,9 +84,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Seu Nome:"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/verdeEscuro"
                         android:textStyle="bold"
-                        android:textSize="19dp" />
+                        android:textSize="19sp" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -96,9 +96,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nome da Propriedade:"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/verdeEscuro"
                         android:textStyle="bold"
-                        android:textSize="19dp" />
+                        android:textSize="19sp" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -108,9 +108,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Código de Identificação:"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/verdeEscuro"
                         android:textStyle="bold"
-                        android:textSize="19dp" />
+                        android:textSize="19sp" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -120,9 +120,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Senha:"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/verdeEscuro"
                         android:textStyle="bold"
-                        android:textSize="19dp" />
+                        android:textSize="19sp" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -132,9 +132,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Repetir Senha:"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/verdeEscuro"
                         android:textStyle="bold"
-                        android:textSize="19dp" />
+                        android:textSize="19sp" />
 
                     <EditText
                         android:layout_width="match_parent"

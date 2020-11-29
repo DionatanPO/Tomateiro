@@ -68,8 +68,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Código de identificação"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="20dp"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -83,8 +83,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Senha"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="20dp"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText

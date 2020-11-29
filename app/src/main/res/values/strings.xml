@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tomateiro$</string>
     <string name="registro"><p style=" text-align: justify; text-justify: inter-word;">Informe seus dados <b>pessoais</b> e  referentes a sua <b>propriedade</b> </p></string>
-    <string name="safra"><p style=" text-align: justify; text-justify: inter-word;">Safras cadastradas <b>aparecen</b> aqui </p></string>
+    <string name="safra"><p style=" text-align: justify; text-justify: inter-word;">Safras cadastradas <b>aparecem</b> aqui </p></string>
     <string name="novaSafra"><p style=" text-align: justify; text-justify: inter-word;">Informe os dados referente a <b>produção</b> estimada </p></string>
     <string name="sobre"><p style=" text-align: justify; text-justify: inter-word;">Este
         aplicativo tem com o propósito de auxiliar na gestão dos custos de produção do tomate
