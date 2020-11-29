@@ -3,4 +3,11 @@
     <string name="registro"><p style=" text-align: justify; text-justify: inter-word;">Informe seus dados <b>pessoais</b> e  referentes a sua <b>propriedade</b> </p></string>
     <string name="safra"><p style=" text-align: justify; text-justify: inter-word;">Safras cadastradas <b>aparecen</b> aqui </p></string>
     <string name="novaSafra"><p style=" text-align: justify; text-justify: inter-word;">Informe os dados referente a <b>produção</b> estimada </p></string>
+    <string name="sobre"><p style=" text-align: justify; text-justify: inter-word;">Este
+        aplicativo tem com o propósito de auxiliar na gestão dos custos de produção do tomate
+        para consumo fresco. Desta forma, pretende-se, contribuir com o armazenamento e análise
+        de dados cadastrados pelo usuário descritos em operações manuais, operações mecanizadas,
+        insumos e administração, visando contribuir para o melhor acompanhamento dos custos por
+        ciclo de produção, o que auxilia na assertiva tomada de decisão em pequenas propriedades
+        nos negócios agrícolas</p></string>
 </resources>

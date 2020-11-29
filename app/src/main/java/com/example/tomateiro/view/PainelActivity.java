@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 
 import com.example.tomateiro.R;
+
+import static androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY;
 
 
 public class PainelActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
@@ -90,24 +93,8 @@ public class PainelActivity extends AppCompatActivity implements PopupMenu.OnMen
 
             case R.id.sobre:
 
-                androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder3 = new androidx.appcompat.app.AlertDialog.Builder(this);
-                alertDialogBuilder3.setTitle("Sobre");
-
-                alertDialogBuilder3
-                        .setCancelable(false)
-                        .setMessage("")
-
-                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-
-                                dialog.cancel();
-                            }
-                        });
-
-
-                androidx.appcompat.app.AlertDialog alertDialog3 = alertDialogBuilder3.create();
-                alertDialog3.show();
+                CustonView cv = new CustonView();
+                cv.showDialog(this,  getResources().getString(R.string.sobre), "Sobre");
 
 
                 return true;
