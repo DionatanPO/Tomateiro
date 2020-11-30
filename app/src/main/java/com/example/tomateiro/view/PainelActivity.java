@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 
 import com.example.tomateiro.R;
-
-import static androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY;
+import com.example.tomateiro.view.custo.CustoA_Activity;
 
 
 public class PainelActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
@@ -46,15 +43,20 @@ public class PainelActivity extends AppCompatActivity implements PopupMenu.OnMen
         btn_nova_safra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog alerta;
 
-                LayoutInflater inflater = LayoutInflater.from(context);
-                View layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
+                Intent intent = new Intent(context, CustoA_Activity.class);
+                startActivity(intent);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setView(layout);
-                alerta = builder.create();
-                alerta.show();
+//                AlertDialog alerta;
+//
+//                LayoutInflater inflater = LayoutInflater.from(context);
+//                View layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
+//                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                builder.setView(layout);
+//                alerta = builder.create();
+//                alerta.show();
+
+
             }
         });
 
