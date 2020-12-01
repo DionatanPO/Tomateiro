@@ -17,6 +17,9 @@
         tools:targetApi="m">
         <activity android:name=".view.custo.CustoA_Activity" />
         <activity android:name=".view.custo.CustoB_Activity" />
+        <activity android:name=".view.custo.CustoC_Activity" />
+        <activity android:name=".view.custo.CustoD_Activity" />
+        <activity android:name=".view.custo.CustoE_Activity" />
         <activity android:name=".view.RegistroActivity" />
         <activity
             android:name=".view.PainelActivity"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+
+        android:id="@+id/indicador"
+        android:enabled="false"
+        android:title="Calcular Custos" />
+
+    <item
+        android:id="@+id/custoA"
+        android:title="ESTUFA / MONTAGEM da ESTRUTURA" />
+
+    <item
+        android:id="@+id/custoB"
+        android:title="IRRIGAÇÃO" />
+
+    <item
+        android:id="@+id/custoC"
+        android:title="PREPARO DO SOLO / PLANTIO / TRATOS CULTURAIS / COLHEITA" />
+
+    <item
+        android:id="@+id/custoD"
+        android:title="INSUMOS E MATERIAIS" />
+    <item
+        android:id="@+id/custoE"
+        android:title="ADMINISTRAÇÃO" />
+</menu>
