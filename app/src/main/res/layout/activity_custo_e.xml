@@ -126,7 +126,8 @@
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <me.abhinay.input.CurrencyEditText
+                    android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"
@@ -134,7 +135,8 @@
                     android:inputType="numberDecimal"
                     android:text="87.35" />
 
-                <EditText
+                <me.abhinay.input.CurrencyEditText
+                    android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"
@@ -151,7 +153,8 @@
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <me.abhinay.input.CurrencyEditText
+                    android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"
@@ -159,7 +162,8 @@
                     android:inputType="numberDecimal"
                     android:text="87.35" />
 
-                <EditText
+                <me.abhinay.input.CurrencyEditText
+                    android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"
@@ -176,7 +180,8 @@
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <me.abhinay.input.CurrencyEditText
+                    android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"
@@ -184,7 +189,8 @@
                     android:inputType="numberDecimal"
                     android:text="87.35" />
 
-                <EditText
+                <me.abhinay.input.CurrencyEditText
+                    android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"
@@ -201,7 +207,8 @@
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <me.abhinay.input.CurrencyEditText
+                    android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"
@@ -209,7 +216,8 @@
                     android:inputType="numberDecimal"
                     android:text="87.35" />
 
-                <EditText
+                <me.abhinay.input.CurrencyEditText
+                    android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"

@@ -8,11 +8,13 @@
     android:padding="10dp">
 
     <androidx.cardview.widget.CardView
+
         android:id="@+id/card_view_safra"
         android:layout_width="match_parent"
         android:layout_height="200dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -21,7 +23,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="140dp"
                 android:layout_marginLeft="140dp"
-                android:background="@color/colorCinzaEscuro"
+                android:background="@color/verdeEscuro"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent" />

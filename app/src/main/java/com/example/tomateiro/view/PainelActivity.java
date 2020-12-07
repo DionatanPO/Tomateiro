@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -12,21 +13,48 @@ import android.widget.Button;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.model.Safra;
+import com.example.tomateiro.view.adapter.SafraAdapter;
 
-import com.example.tomateiro.view.custo.CustoE_Activity;
-
+import java.util.ArrayList;
 
 public class PainelActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
-    Button btn_safra_menu, btn_nova_safra;
-    Context context;
+    private Button btn_safra_menu, btn_nova_safra;
+    private Context context;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager layoutManager;
+    private SafraAdapter mAdapter;
+    private ArrayList<Safra> safraArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_painel);
         context = this;
+
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        //Lista de teste
+        safraArrayList = new ArrayList<>();
+        Safra s1 = new Safra();
+        safraArrayList.add(s1);
+        Safra s2 = new Safra();
+        safraArrayList.add(s2);
+        Safra s3 = new Safra();
+        safraArrayList.add(s3);
+        Safra s4 = new Safra();
+        safraArrayList.add(s4);
+        //--------------------------
+
+        mAdapter = new SafraAdapter(this, safraArrayList);
+        recyclerView.setAdapter(mAdapter);
 
         btn_safra_menu = findViewById(R.id.btn_safra_menu);
 
@@ -45,22 +73,17 @@ public class PainelActivity extends AppCompatActivity implements PopupMenu.OnMen
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, CustoE_Activity.class);
-                startActivity(intent);
+                AlertDialog alerta;
 
-//                AlertDialog alerta;
-//
-//                LayoutInflater inflater = LayoutInflater.from(context);
-//                View layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
-//                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//                builder.setView(layout);
-//                alerta = builder.create();
-//                alerta.show();
-
+                LayoutInflater inflater = LayoutInflater.from(context);
+                View layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setView(layout);
+                alerta = builder.create();
+                alerta.show();
 
             }
         });
-
 
     }
 
@@ -69,10 +92,8 @@ public class PainelActivity extends AppCompatActivity implements PopupMenu.OnMen
         switch (menuItem.getItemId()) {
             case R.id.perfil:
 
-
                 return true;
             case R.id.ajuda:
-
                 androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle("Ajuda");
 
@@ -87,18 +108,14 @@ public class PainelActivity extends AppCompatActivity implements PopupMenu.OnMen
                             }
                         });
 
-
                 androidx.appcompat.app.AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
-
 
                 return true;
 
             case R.id.sobre:
-
                 CustonView cv = new CustonView();
-                cv.showDialog(this,  getResources().getString(R.string.sobre), "Sobre");
-
+                cv.showDialog(this, getResources().getString(R.string.sobre), "Sobre");
 
                 return true;
             case R.id.sair:

@@ -33,5 +33,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.codesgood:justifiedtextview:1.1.0'
+    implementation 'me.abhinay.input:currency-edittext:1.1'
 
 }
