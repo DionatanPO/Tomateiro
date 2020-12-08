@@ -1,8 +1,4 @@
 package com.example.tomateiro.model;
-
-import android.annotation.SuppressLint;
-
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 
@@ -51,6 +47,42 @@ public class CustoA {
     public CustoA() {
     }
 
+    public CustoA calcularSubTotal(CustoA c) {
+        Double resultadoCalculo =
+                parseToDouble(c.getAracaoV()) +
+                        parseToDouble(c.getAdubacaoBasicaV()) +
+                        parseToDouble(c.getAdubacaoCoberturaV()) +
+                        parseToDouble(c.getAplicacaoEstercoV()) +
+                        parseToDouble(c.getCalagemV()) +
+                        parseToDouble(c.getColheitaClassificacaoV()) +
+                        parseToDouble(c.getGradeacaoV()) +
+                        parseToDouble(c.getSubsolagemV()) +
+                        parseToDouble(c.getPulverizacaoV()) +
+                        parseToDouble(c.getIrrigacoesV()) +
+                        parseToDouble(c.getOutrosAV()) +
+                        parseToDouble(c.getSulcamentoV());
+
+        String value = String.format("%,.2f", resultadoCalculo);
+
+        c.setSubTotalA(value);
+        return c;
+    }
+
+    public double parseToDouble(String s) {
+        double value = 0;
+
+        s = s.substring(1, s.length());
+
+        NumberFormat format = NumberFormat.getInstance();
+
+        try {
+            value = format.parse(s).doubleValue();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return value;
+    }
     public String getAracaoQ() {
         return aracaoQ;
     }
@@ -249,51 +281,5 @@ public class CustoA {
 
     public void setSubTotalA(String subTotalA) {
         this.subTotalA = subTotalA;
-    }
-
-    public CustoA calcularSubTotalA(CustoA ca) {
-        Double resultadoCalculo =
-                parseToDouble(ca.getAracaoV()) +
-                        parseToDouble(ca.getAdubacaoBasicaV()) +
-                        parseToDouble(ca.getAdubacaoCoberturaV()) +
-                        parseToDouble(ca.getAplicacaoEstercoV()) +
-                        parseToDouble(ca.getCalagemV()) +
-                        parseToDouble(ca.getColheitaClassificacaoV()) +
-                        parseToDouble(ca.getGradeacaoV()) +
-                        parseToDouble(ca.getSubsolagemV()) +
-                        parseToDouble(ca.getPulverizacaoV()) +
-                        parseToDouble(ca.getIrrigacoesV()) +
-                        parseToDouble(ca.getOutrosAV()) +
-                        parseToDouble(ca.getSulcamentoV());
-
-        String value = String.format("%,.2f", resultadoCalculo);
-
-        ca.setSubTotalA(value);
-        return ca;
-    }
-
-
-    public double parseToDouble(String s) {
-        double value = 0;
-
-
-
-
-        s = s.substring(1, s.length());
-
-        NumberFormat format = NumberFormat.getInstance();
-
-        try {
-            value = format.parse(s).doubleValue();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return value;
-    }
-
-    public String parseToString(double value) {
-        String result = String.valueOf(value);
-        return result;
     }
 }

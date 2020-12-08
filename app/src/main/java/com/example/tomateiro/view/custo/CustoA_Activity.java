@@ -26,7 +26,7 @@ public class CustoA_Activity extends AppCompatActivity {
 
     Button btn_concluir;
 
-    TextView custo_a_subtotal;
+    TextView custo_subtotal;
 
     CustoA custoA;
 
@@ -37,7 +37,7 @@ public class CustoA_Activity extends AppCompatActivity {
 
 
         btn_concluir = findViewById(R.id.button);
-        custo_a_subtotal = findViewById(R.id.custo_a_subtotal);
+        custo_subtotal = findViewById(R.id.custo_subtotal);
 
         editA_q1 = findViewById(R.id.editA_q1);
         editA_q2 = findViewById(R.id.editA_q2);
@@ -100,7 +100,7 @@ public class CustoA_Activity extends AppCompatActivity {
                 custoA.setIrrigacoesV(editA_v11.getText().toString());
                 custoA.setOutrosAV(editA_v12.getText().toString());
 
-                custo_a_subtotal.setText(custo_a_subtotal.getText().toString()+custoA.calcularSubTotalA(custoA).getSubTotalA());
+                custo_subtotal.setText(custo_subtotal.getText().toString()+custoA.calcularSubTotal(custoA).getSubTotalA());
 
             }
         });

@@ -47,7 +47,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/custo_a_subtotal"
+            android:id="@+id/custo_subtotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -504,7 +504,7 @@
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
-                    android:id="@+id/editA_q124"
+                    android:id="@+id/editA_q14"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
