@@ -9,20 +9,18 @@
 
     <item
         android:id="@+id/custoA"
-        android:title="ESTUFA / MONTAGEM da ESTRUTURA" />
+        android:title="OPERAÇÕES MECANIZADAS" />
 
     <item
         android:id="@+id/custoB"
-        android:title="IRRIGAÇÃO" />
+        android:title="OPERAÇÕES MANUAIS" />
 
     <item
         android:id="@+id/custoC"
-        android:title="PREPARO DO SOLO / PLANTIO / TRATOS CULTURAIS / COLHEITA" />
+        android:title="INSUMOS" />
 
     <item
         android:id="@+id/custoD"
-        android:title="INSUMOS E MATERIAIS" />
-    <item
-        android:id="@+id/custoE"
-        android:title="ADMINISTRAÇÃO" />
+        android:title=" ADMINISTRAÇÃO" />
+
 </menu>

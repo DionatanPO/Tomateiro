@@ -19,15 +19,15 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text=" IRRIGAÇÃO"
+            android:text="INSUMOS"
             android:textColor="@color/colorBranca"
             android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.03"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -83,13 +83,13 @@
 
             <GridLayout
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:columnCount="3">
 
 
                 <TextView
+
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -108,6 +108,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
@@ -120,12 +121,13 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Tubo Gotejador (30 cm/gotejo) "
+                    android:text="Calcário Dolomítico"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q1"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -135,6 +137,7 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v1"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -147,12 +150,13 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Mourão de 12 a 14 cm de diametro"
+                    android:text="Sulfato de Amônio"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q2"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -162,6 +166,7 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v2"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -174,12 +179,13 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Mourão de 25 a 30 cm de diametro "
+                    android:text="Superfosfato Simples"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q3"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -189,6 +195,7 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v3"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -201,12 +208,13 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Conexões"
+                    android:text="Cloreto de Potássio"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q4"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -216,6 +224,7 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v4"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -228,12 +237,13 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Filtro 1” de disco 120"
+                    android:text="Esterco Bovino"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q5"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -243,6 +253,7 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v5"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -255,12 +266,13 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Válvula Reg. Pressão 3/4"
+                    android:text="Yorin BZ"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q6"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -270,6 +282,7 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v6"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -282,12 +295,13 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Conector Inicial"
+                    android:text="Sementes "
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q7"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -297,6 +311,7 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v7"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -309,12 +324,13 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Injetor de Fertilizantes "
+                    android:text="Confecção de mudas"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q8"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -324,6 +340,7 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v8"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -336,12 +353,13 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Motor bomba 1,5 cv"
+                    android:text="Estacas Bambu (1 ciclos) *"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q9"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -351,6 +369,7 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v9"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -363,12 +382,13 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Investimento Inicial"
+                    android:text="Mourões Eucal. (10 ciclos) *"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q10"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -378,6 +398,179 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v10"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Arame nº 16 (3 ciclos) *"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q11"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v11"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Arame nº 20 (3 ciclos) *"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q12"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v12"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Fungicidas"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q13"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v13"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Herbicidas"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q14"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v14"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Inseticidas"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q15"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v15"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Outros produtos químicos"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q16"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="87.35" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v16"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -396,6 +589,7 @@
                     android:textStyle="bold" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q17"
                     android:maxLength="10"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
@@ -405,6 +599,7 @@
                     android:text="87.35" />
 
                 <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v17"
                     android:maxLength="11"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
@@ -413,17 +608,19 @@
                     android:inputType="numberDecimal"
                     android:text="87.35" />
 
-
             </GridLayout>
 
             <LinearLayout
+                android:layout_weight="1"
+                android:layout_gravity="bottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginTop="30dp"
-                android:gravity="center_vertical">
+                >
 
                 <Button
-                    android:id="@+id/button2"
+                   android:layout_gravity="bottom"
+                    android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/verdeEscuro"

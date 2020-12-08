@@ -1,18 +1,24 @@
 package com.example.tomateiro.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +27,8 @@ import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.view.adapter.SafraAdapter;
 
 import java.util.ArrayList;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class PainelActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private Button btn_safra_menu, btn_nova_safra;
@@ -85,12 +93,91 @@ public class PainelActivity extends AppCompatActivity implements PopupMenu.OnMen
             }
         });
 
+        ItemTouchHelper helper = new ItemTouchHelper(
+                new PainelActivity.ItemTouchHandler(0,
+                        ItemTouchHelper.LEFT)
+        );
+        helper.attachToRecyclerView(recyclerView);
+
+    }
+
+    public class ItemTouchHandler extends ItemTouchHelper.SimpleCallback {
+
+        public ItemTouchHandler(int dragDirs, int swipeDirs) {
+            super(dragDirs, swipeDirs);
+        }
+
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @SuppressLint("WrongConstant")
+        @Override
+        public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
+            final int position = viewHolder.getAdapterPosition();
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+            alertDialogBuilder
+                    .setMessage("Deseja mesmo apagar essa safra?\nEsta ação não pode ser desfeita.")
+                    .setCancelable(false)
+                    .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int id) {
+
+//                            mAdapter.getAmostragemslis().get(position).setEstado("Desabilitado");
+//                            String json = amostragemController.converter_amostragem_json(mAdapter.getAmostragemslis().get(position));
+//                            amostragemRequest.alterar_amostragem(json, token);
+//
+//                            mAdapter.getAmostragemslis().remove(position);
+//                            mAdapter.notifyItemRemoved(position);
+
+                            dialog.cancel();
+                        }
+                    })
+                    .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            mAdapter.notifyItemRemoved(position);
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+
+        }
+
+        @Override
+        public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder
+                viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+
+            new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    .addBackgroundColor(ContextCompat.getColor(PainelActivity.this, R.color.colorPrimary))
+                    .addActionIcon(R.drawable.ic_baseline_delete_24)
+                    .create()
+                    .decorate();
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.perfil:
+                AlertDialog alerta;
+                LayoutInflater inflater = LayoutInflater.from(this.getApplicationContext());
+                View layout = inflater.inflate(R.layout.activity_registro, null);
+
+                TextView titulo = layout.findViewById(R.id.textView);
+                titulo.setText("Alterar seus dados");
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setView(layout);
+                alerta = builder.create();
+                alerta.show();
 
                 return true;
             case R.id.ajuda:

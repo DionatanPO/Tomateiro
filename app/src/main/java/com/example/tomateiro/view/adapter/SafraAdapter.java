@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import android.widget.PopupMenu;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +23,6 @@ import com.example.tomateiro.view.custo.CustoA_Activity;
 import com.example.tomateiro.view.custo.CustoB_Activity;
 import com.example.tomateiro.view.custo.CustoC_Activity;
 import com.example.tomateiro.view.custo.CustoD_Activity;
-import com.example.tomateiro.view.custo.CustoE_Activity;
 
 import java.util.List;
 
@@ -69,7 +70,17 @@ public class SafraAdapter extends RecyclerView.Adapter<SafraAdapter.SafraViewHol
 
                     if (position != RecyclerView.NO_POSITION) {
 
-//                        }
+                        AlertDialog alerta;
+                        LayoutInflater inflater = LayoutInflater.from(context);
+                        View layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
+
+                        TextView titulo = layout.findViewById(R.id.textView);
+                        titulo.setText("Alterar dados da safra");
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        builder.setView(layout);
+                        alerta = builder.create();
+                        alerta.show();
 
                     }
 
@@ -109,11 +120,7 @@ public class SafraAdapter extends RecyclerView.Adapter<SafraAdapter.SafraViewHol
                                         context.startActivity(intent);
 
                                         return true;
-                                    case R.id.custoE:
-                                        intent = new Intent(context, CustoE_Activity.class);
-                                        context.startActivity(intent);
 
-                                        return true;
                                     default:
                                         return false;
                                 }
