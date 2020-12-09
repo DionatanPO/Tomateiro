@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".RelatorioActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="RELATÓRIO"
+        android:textColor="@color/colorBranca"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_relatorio_fundo"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <GridLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="24dp"
+                    android:columnCount="6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Data"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Ciclo"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Qtde. caixa"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Peso por caixa (kg)"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Qtde. pés"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Região de referêrencia"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="10/09/2020"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_ciclo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="2"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_qtde_caixa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="3500"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_peso_caixa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="22"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_qtde_pes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="1000"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_regiao_referencia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Mato Grosso"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                </GridLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="275dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView1"
+        app:layout_constraintVertical_bias="0.50">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_relatorio_fundo"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <GridLayout
+                    android:id="@+id/relatorio_p_r_p"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:columnCount="2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OPERAÇÕES MECANIZADAS"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="SubTotal"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_subtotalA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="OPERAÇÕES MANUAIS"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="SubTotal"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_subtotalB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="INSUMOS"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="SubTotal"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_subtotalC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="ADMINISTRAÇÃO"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="SubTotal"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_subtotalD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="VISÃO GERAL"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text=""
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Custo Total (R$/ha)"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_custo_total_ha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Custo Total (R$/ cx kg)"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_custo_total_cx"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Receita (R$/ha)"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_receita"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Resultado (R$/ha)"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_resultadoHa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Resultado (R$/cx 22 kg)"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_resultadoCx"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Margem sobre a venda"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_margem_venda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="190dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Preço Médio Recebido pelo Produtor (R$/cx kg)"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="R$: 45.00,00"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+                </GridLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

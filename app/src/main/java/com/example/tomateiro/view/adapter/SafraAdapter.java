@@ -18,6 +18,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.RelatorioActivity;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.view.custo.CustoA_Activity;
 import com.example.tomateiro.view.custo.CustoB_Activity;
@@ -120,7 +121,11 @@ public class SafraAdapter extends RecyclerView.Adapter<SafraAdapter.SafraViewHol
                                         context.startActivity(intent);
 
                                         return true;
+                                    case R.id.relatorio:
+                                        intent = new Intent(context, RelatorioActivity.class);
+                                        context.startActivity(intent);
 
+                                        return true;
                                     default:
                                         return false;
                                 }

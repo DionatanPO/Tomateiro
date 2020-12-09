@@ -63,7 +63,6 @@ public class CustoA {
                         parseToDouble(c.getSulcamentoV());
 
         String value = String.format("%,.2f", resultadoCalculo);
-
         c.setSubTotalA(value);
         return c;
     }
