@@ -89,27 +89,25 @@ public class CustoB_Activity extends AppCompatActivity {
                 custoB.setCapinasManuaisQ(editA_q11.getText().toString());
                 custoB.setColheitaClassificaçãoQ(editA_q12.getText().toString());
                 custoB.setIrrigacaoQ(editA_q13.getText().toString());
-
                 custoB.setOutrosBQ(editA_q14.getText().toString());
 
-                custoB.setColagemV(editA_q1.getText().toString());
-                custoB.setTransplantioV(editA_q2.getText().toString());
-                custoB.setEstaqueamentoV(editA_q3.getText().toString());
-                custoB.setAmontoaV(editA_q4.getText().toString());
-                custoB.setAmarracaoV(editA_q5.getText().toString());
-                custoB.setAdubacaoBasicaV(editA_q6.getText().toString());
-                custoB.setAplicacaoEstercoV(editA_q7.getText().toString());
-                custoB.setDesbrotaV(editA_q8.getText().toString());
-                custoB.setAdubacaoCoberturaV(editA_q9.getText().toString());
-                custoB.setPulverizacaoCostalV(editA_q10.getText().toString());
-                custoB.setCapinasManuaisV(editA_q11.getText().toString());
-                custoB.setColheitaClassificaçãoV(editA_q12.getText().toString());
-                custoB.setIrrigacaoV(editA_q13.getText().toString());
+                custoB.setColagemV(editA_v1.getText().toString());
+                custoB.setTransplantioV(editA_v2.getText().toString());
+                custoB.setEstaqueamentoV(editA_v3.getText().toString());
+                custoB.setAmontoaV(editA_v4.getText().toString());
+                custoB.setAmarracaoV(editA_v5.getText().toString());
+                custoB.setAdubacaoBasicaV(editA_v6.getText().toString());
+                custoB.setAplicacaoEstercoV(editA_v7.getText().toString());
+                custoB.setDesbrotaV(editA_v8.getText().toString());
+                custoB.setAdubacaoCoberturaV(editA_v9.getText().toString());
+                custoB.setPulverizacaoCostalV(editA_v10.getText().toString());
+                custoB.setCapinasManuaisV(editA_v11.getText().toString());
+                custoB.setColheitaClassificaçãoV(editA_v12.getText().toString());
+                custoB.setIrrigacaoV(editA_v13.getText().toString());
+                custoB.setOutrosBV(editA_v14.getText().toString());
 
-                custoB.setOutrosBV(editA_q14.getText().toString());
 
-
-                custo_subtotal.setText(custo_subtotal.getText().toString() + custoB.calcularSubTotal(custoB).getSubTotalB());
+                custo_subtotal.setText("SubTotal = R$ " + custoB.calcularSubTotal(custoB).getSubTotalB());
 
             }
         });

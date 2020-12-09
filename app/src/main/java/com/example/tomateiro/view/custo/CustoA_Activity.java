@@ -86,7 +86,6 @@ public class CustoA_Activity extends AppCompatActivity {
                 custoA.setOutrosAQ(editA_q12.getText().toString());
 
 
-
                 custoA.setAracaoV(editA_v1.getText().toString());
                 custoA.setGradeacaoV(editA_v2.getText().toString());
                 custoA.setSubsolagemV(editA_v3.getText().toString());
@@ -100,7 +99,7 @@ public class CustoA_Activity extends AppCompatActivity {
                 custoA.setIrrigacoesV(editA_v11.getText().toString());
                 custoA.setOutrosAV(editA_v12.getText().toString());
 
-                custo_subtotal.setText(custo_subtotal.getText().toString()+custoA.calcularSubTotal(custoA).getSubTotalA());
+                custo_subtotal.setText("SubTotal = R$ " + custoA.calcularSubTotal(custoA).getSubTotalA());
 
             }
         });

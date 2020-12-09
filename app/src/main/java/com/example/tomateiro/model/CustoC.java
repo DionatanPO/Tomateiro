@@ -42,7 +42,7 @@ public class CustoC {
     private String outrosV;
 
     //Subtotais
-    private String subTotalB;
+    private String subTotalC;
 
     public CustoC() {
     }
@@ -71,7 +71,7 @@ public class CustoC {
 
         String value = String.format("%,.2f", resultadoCalculo);
 
-        c.setSubTotalB(value);
+        c.setSubTotalC(value);
         return c;
     }
 
@@ -363,11 +363,11 @@ public class CustoC {
         this.outrosV = outrosV;
     }
 
-    public String getSubTotalB() {
-        return subTotalB;
+    public String getSubTotalC() {
+        return subTotalC;
     }
 
-    public void setSubTotalB(String subTotalB) {
-        this.subTotalB = subTotalB;
+    public void setSubTotalC(String subTotalC) {
+        this.subTotalC = subTotalC;
     }
 }
