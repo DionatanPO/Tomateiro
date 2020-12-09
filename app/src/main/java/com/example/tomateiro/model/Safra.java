@@ -24,6 +24,7 @@ public class Safra {
     private int qtdeCaixas;
     private int pesoCaixas;
     private String clicloAno;
+    private String estado;
 
     public Safra() {
     }

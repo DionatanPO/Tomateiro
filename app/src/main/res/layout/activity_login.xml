@@ -104,10 +104,10 @@
 
         <Button
             android:id="@+id/btn_registrar"
-            android:layout_width="110dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@color/colorCinza"
-            android:text="RRegistrar"
+            android:text="Primeiro acesso"
             android:textColor="@color/colorPrimaryDark" />
 
         <TextView

@@ -22,12 +22,6 @@
     <item
         android:id="@+id/custoD"
         android:title=" ADMINISTRAÇÃO" />
-    <item
-        android:id="@+id/gestao"
-        android:enabled="false"
-        android:title="Gestão" />
-    <item
-        android:id="@+id/relatorio"
-        android:title="RELATÓRIO" />
+
 
 </menu>

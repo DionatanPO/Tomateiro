@@ -100,35 +100,9 @@ public class SafraAdapter extends RecyclerView.Adapter<SafraAdapter.SafraViewHol
                         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem menuItem) {
-                                switch (menuItem.getItemId()) {
-                                    case R.id.custoA:
-                                        intent = new Intent(context, CustoA_Activity.class);
-                                        context.startActivity(intent);
 
-                                        return true;
-                                    case R.id.custoB:
-                                        intent = new Intent(context, CustoB_Activity.class);
-                                        context.startActivity(intent);
-
-                                        return true;
-                                    case R.id.custoC:
-                                        intent = new Intent(context, CustoC_Activity.class);
-                                        context.startActivity(intent);
-
-                                        return true;
-                                    case R.id.custoD:
-                                        intent = new Intent(context, CustoD_Activity.class);
-                                        context.startActivity(intent);
-
-                                        return true;
-                                    case R.id.relatorio:
-                                        intent = new Intent(context, RelatorioActivity.class);
-                                        context.startActivity(intent);
-
-                                        return true;
-                                    default:
                                         return false;
-                                }
+
                             }
                         });
                         popup.show();
