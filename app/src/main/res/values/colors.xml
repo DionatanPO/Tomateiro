@@ -7,4 +7,21 @@
     <color name="colorBranca">#ffffff</color>
     <color name="colorCinza">#dedede</color>
     <color name="colorCinzaEscuro">#787272</color>
+    <color name="color1">#00695c</color>
+    <color name="color2">#ef6c00</color>
+    <color name="color3">#4e342e</color>
+    <color name="color4">#01579b</color>
+    <color name="color5">#1a237e</color>
+    <color name="color6">#880e4f </color>
+    <color name="color7">#b71c1c</color>
+    <color name="color8">#00838f</color>
+    <color name="color9">#2e7d32</color>
+    <color name="color10">#827717</color>
+    <color name="color11">#7cb342 </color>
+    <color name="color12">#fbc02d </color>
+    <color name="color13">#424242 </color>
+    <color name="color14">#8d6e63 </color>
+    <color name="color15">#dd2c00 </color>
+    <color name="color16">#69f0ae </color>
+    <color name="color17">#aeea00 </color>
 </resources>

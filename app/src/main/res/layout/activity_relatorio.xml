@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".RelatorioActivity">
+    tools:context=".view.RelatorioActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -234,13 +234,11 @@
                 android:layout_weight="1">
 
                 <GridLayout
-                    android:id="@+id/relatorio_p_r_p"
+                    android:id="@+id/gridLayout1"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
                     android:columnCount="2"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -288,6 +286,28 @@
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
+                </GridLayout>
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/grafico1"
+                    android:layout_width="match_parent"
+                    android:layout_height="274dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/ic_relatorio_fundo"
+                    app:layout_constraintEnd_toEndOf="@+id/gridLayout1"
+                    app:layout_constraintStart_toStartOf="@+id/gridLayout1"
+                    app:layout_constraintTop_toTopOf="@+id/gridLayout1" />
+
+
+                <GridLayout
+                    android:id="@+id/gridLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/grafico1">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -333,6 +353,26 @@
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
+                </GridLayout>
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/grafico2"
+                    android:layout_width="match_parent"
+                    android:layout_height="274dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_relatorio_fundo"
+                    app:layout_constraintEnd_toEndOf="@+id/gridLayout2"
+                    app:layout_constraintStart_toStartOf="@+id/gridLayout2"
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout2" />
+
+                <GridLayout
+                    android:id="@+id/gridLayout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/grafico2">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -360,7 +400,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="SubTotal"
+                        android:text="SubTotal          "
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -378,6 +418,26 @@
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
+                </GridLayout>
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/grafico3"
+                    android:layout_width="match_parent"
+                    android:layout_height="274dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_relatorio_fundo"
+                    app:layout_constraintEnd_toEndOf="@+id/gridLayout2"
+                    app:layout_constraintStart_toStartOf="@+id/gridLayout2"
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout3" />
+
+                <GridLayout
+                    android:id="@+id/gridLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/grafico3">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -425,6 +485,27 @@
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
+
+                </GridLayout>
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/grafico4"
+                    android:layout_width="match_parent"
+                    android:layout_height="274dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_relatorio_fundo"
+                    app:layout_constraintEnd_toEndOf="@+id/gridLayout3"
+                    app:layout_constraintStart_toStartOf="@+id/gridLayout3"
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout4" />
+
+                <GridLayout
+                    android:id="@+id/gridLayout5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/grafico4">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -625,6 +706,14 @@
                 </GridLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barchart"
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center" />
+
 
         </LinearLayout>
 

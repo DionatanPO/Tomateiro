@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="HardcodedDebugMode"
         tools:targetApi="m">
-        <activity android:name=".RelatorioActivity"></activity>
+        <activity android:name=".view.RelatorioActivity"></activity>
         <activity android:name=".view.custo.CustoA_Activity" />
         <activity android:name=".view.custo.CustoB_Activity" />
         <activity android:name=".view.custo.CustoC_Activity" />

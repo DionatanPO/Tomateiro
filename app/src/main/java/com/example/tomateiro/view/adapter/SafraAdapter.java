@@ -18,12 +18,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tomateiro.R;
-import com.example.tomateiro.RelatorioActivity;
 import com.example.tomateiro.model.Safra;
-import com.example.tomateiro.view.custo.CustoA_Activity;
-import com.example.tomateiro.view.custo.CustoB_Activity;
-import com.example.tomateiro.view.custo.CustoC_Activity;
-import com.example.tomateiro.view.custo.CustoD_Activity;
 
 import java.util.List;
 

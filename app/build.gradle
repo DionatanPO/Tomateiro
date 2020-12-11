@@ -36,4 +36,6 @@ dependencies {
     implementation 'me.abhinay.input:currency-edittext:1.1'
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.2'
 
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }

@@ -2,6 +2,8 @@ package com.example.tomateiro.model;
 
 import android.annotation.SuppressLint;
 
+import java.util.ArrayList;
+
 public class Safra {
 
     private CustoA custoA;
@@ -26,6 +28,8 @@ public class Safra {
     private String clicloAno;
     private String estado;
 
+    private ArrayList<Venda> vendas = new ArrayList<>();
+
     public Safra() {
     }
 
@@ -44,6 +48,14 @@ public class Safra {
         double resultado = Double.parseDouble(s.getCustoTotalHa()) / s.getQtdeCaixas();
         s.setCustoTotalCa(String.format("%,.2f", resultado));
         return s;
+    }
+
+    public Safra calcularPrecoMedioRecebido(Safra s) {
+        double resultado = 0;
+        for (int i = 0; i < s.getVendas().size(); i++) {
+            resultado = Double.parseDouble(s.getVendas().get(i).getPreco());
+        }
+        return s.setPreçoMedioRecebidoProdutor(String.format("%,.2f", resultado);
     }
 
     public CustoA getCustoA() {
@@ -182,4 +194,19 @@ public class Safra {
         this.clicloAno = clicloAno;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public ArrayList<Venda> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(ArrayList<Venda> vendas) {
+        this.vendas = vendas;
+    }
 }

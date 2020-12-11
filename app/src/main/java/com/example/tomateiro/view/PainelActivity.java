@@ -17,7 +17,6 @@ import androidx.appcompat.widget.PopupMenu;
 
 
 import com.example.tomateiro.R;
-import com.example.tomateiro.RelatorioActivity;
 import com.example.tomateiro.view.custo.CustoA_Activity;
 import com.example.tomateiro.view.custo.CustoB_Activity;
 import com.example.tomateiro.view.custo.CustoC_Activity;
