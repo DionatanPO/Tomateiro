@@ -2,9 +2,10 @@ package com.example.tomateiro.model;
 
 import android.annotation.SuppressLint;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Safra {
+public class Safra implements Serializable {
 
     private CustoA custoA;
     private CustoB custoB;
@@ -24,7 +25,8 @@ public class Safra {
     private String regiaoReferencia;
     private int qtdePes;
     private int qtdeCaixas;
-    private int pesoCaixas;
+    private String qtdeMediaCaixas;
+    private String pesoMedioCaixas;
     private String clicloAno;
     private String estado;
 
@@ -53,9 +55,41 @@ public class Safra {
     public Safra calcularPrecoMedioRecebido(Safra s) {
         double resultado = 0;
         for (int i = 0; i < s.getVendas().size(); i++) {
-            resultado = Double.parseDouble(s.getVendas().get(i).getPreco());
+            resultado += Double.parseDouble(s.getVendas().get(i).getPreco());
         }
-        return s.setPreçoMedioRecebidoProdutor(String.format("%,.2f", resultado);
+        s.setPreçoMedioRecebidoProdutor(String.format("%,.2f", resultado));
+        return s;
+    }
+
+    public Safra calcularQtdeCaixasVendidas(Safra s) {
+        int resultado = 0;
+        for (int i = 0; i < s.getVendas().size(); i++) {
+            resultado += s.getVendas().get(i).getQuantidade();
+        }
+        s.setQtdeCaixas(resultado);
+        return s;
+    }
+
+    public Safra calcularQtdeMediaCaixasVendidas(Safra s) {
+        int resultado = 0;
+        for (int i = 0; i < s.getVendas().size(); i++) {
+            resultado += s.getVendas().get(i).getQuantidade();
+        }
+        s.setQtdeMediaCaixas(String.format("%,.2f", resultado / s.getVendas().size()));
+        return s;
+    }
+
+    public Safra calcularPesoMedioCaixa(Safra s) {
+        double resultado = 0;
+        for (int i = 0; i < s.getVendas().size(); i++) {
+            resultado += Double.parseDouble(s.parse(s.getVendas().get(i).getPesoCaixa()));
+        }
+        s.setPesoMedioCaixas(String.format("%,.2f", resultado / s.getVendas().size()));
+        return s;
+    }
+
+    public String parse(String s) {
+        return s = s.replace(",", ".");
     }
 
     public CustoA getCustoA() {
@@ -80,6 +114,14 @@ public class Safra {
 
     public void setCustoC(CustoC custoC) {
         this.custoC = custoC;
+    }
+
+    public String getQtdeMediaCaixas() {
+        return qtdeMediaCaixas;
+    }
+
+    public void setQtdeMediaCaixas(String qtdeMediaCaixas) {
+        this.qtdeMediaCaixas = qtdeMediaCaixas;
     }
 
     public CustoD getCustoD() {
@@ -178,12 +220,12 @@ public class Safra {
         this.qtdeCaixas = qtdeCaixas;
     }
 
-    public int getPesoCaixas() {
-        return pesoCaixas;
+    public String getPesoMedioCaixas() {
+        return pesoMedioCaixas;
     }
 
-    public void setPesoCaixas(int pesoCaixas) {
-        this.pesoCaixas = pesoCaixas;
+    public void setPesoMedioCaixas(String pesoMedioCaixas) {
+        this.pesoMedioCaixas = pesoMedioCaixas;
     }
 
     public String getClicloAno() {

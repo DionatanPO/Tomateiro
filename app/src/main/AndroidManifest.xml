@@ -15,19 +15,42 @@
         android:usesCleartextTraffic="true"
         tools:ignore="HardcodedDebugMode"
         tools:targetApi="m">
-        <activity android:name=".view.RelatorioActivity"></activity>
-        <activity android:name=".view.custo.CustoA_Activity" />
-        <activity android:name=".view.custo.CustoB_Activity" />
-        <activity android:name=".view.custo.CustoC_Activity" />
-        <activity android:name=".view.custo.CustoD_Activity" />
-        <activity android:name=".view.RegistroActivity" />
+        <activity
+            android:name=".view.RelatorioActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.custo.CustoA_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.custo.CustoB_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.custo.CustoC_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.custo.CustoD_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.RegistroActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.PainelActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.MainActivity">
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

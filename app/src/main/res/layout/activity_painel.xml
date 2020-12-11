@@ -33,13 +33,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/mensagem"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="232dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/safra"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center_horizontal"
+        android:text="Clique no botão de menu, localizado na parte superior direito da tela, para cadastrar uma nova safra"
         android:textColor="@color/colorBranca"
         android:textSize="18dp"
         android:textStyle="normal"
@@ -49,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.cardview.widget.CardView
+        android:visibility="gone"
         android:id="@+id/card_safra"
         android:layout_width="match_parent"
         android:layout_height="200dp"

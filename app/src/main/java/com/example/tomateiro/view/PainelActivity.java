@@ -17,15 +17,27 @@ import androidx.appcompat.widget.PopupMenu;
 
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.model.Safra;
+import com.example.tomateiro.model.Venda;
 import com.example.tomateiro.view.custo.CustoA_Activity;
 import com.example.tomateiro.view.custo.CustoB_Activity;
 import com.example.tomateiro.view.custo.CustoC_Activity;
 import com.example.tomateiro.view.custo.CustoD_Activity;
 
+import java.util.ArrayList;
+
+import static com.example.tomateiro.model.CustonToast.viewToast;
+import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
+import static com.example.tomateiro.model.CustonToast.viewToastErro;
+
 public class PainelActivity extends AppCompatActivity {
     private Button btn_safra_menu, btn_s_t_g, btn_relatorio;
     private Context context;
     private Intent intent;
+    private Safra safra;
+    private View card_safra;
+
+    private TextView msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,23 +46,39 @@ public class PainelActivity extends AppCompatActivity {
 
         context = this;
 
-        View card_safra = findViewById(R.id.card_safra);
+        card_safra = findViewById(R.id.card_safra);
+        msg = findViewById(R.id.mensagem);
 
         btn_safra_menu = findViewById(R.id.btn_safra_menu);
         btn_s_t_g = findViewById(R.id.painel_btn_g_t_e);
         btn_relatorio = findViewById(R.id.painel_btn_relatorio);
 
+        if (safra != null) {
+            card_safra.setVisibility(View.VISIBLE);
+            msg.setVisibility(View.GONE);
+        } else {
+
+        }
+
         btn_relatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(context, RelatorioActivity.class);
-                context.startActivity(intent);
+                if (safra != null) {
+                    intent = new Intent(context, RelatorioActivity.class);
+                    intent.putExtra("safra", safra);
+                    context.startActivity(intent);
+                } else {
+                    viewToastAlerta(context, "Nenhuma safra cadastrada! " +
+                            "Cadastre uma nova safra para poder vesualizar o relatório.");
+                }
+
             }
         });
 
         btn_safra_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 PopupMenu popup = new PopupMenu(context, btn_safra_menu);
 
                 popup.getMenuInflater()
@@ -65,8 +93,21 @@ public class PainelActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.novaSafra:
-
                                 layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
+
+                                Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+
+                                btn_concluir.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        safra = teste();
+                                        card_safra.setVisibility(View.VISIBLE);
+                                        msg.setVisibility(View.GONE);
+                                        viewToast(context, "Safra cadastrada!");
+                                    }
+                                });
+
+
                                 builder.setView(layout);
                                 alerta = builder.create();
                                 alerta.show();
@@ -127,43 +168,50 @@ public class PainelActivity extends AppCompatActivity {
         btn_s_t_g.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(context, btn_s_t_g);
+                if (safra != null) {
+                    PopupMenu popup = new PopupMenu(context, btn_s_t_g);
 
-                popup.getMenuInflater()
-                        .inflate(R.menu.custo_menu, popup.getMenu());
+                    popup.getMenuInflater()
+                            .inflate(R.menu.custo_menu, popup.getMenu());
 
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.custoA:
-                                intent = new Intent(context, CustoA_Activity.class);
-                                context.startActivity(intent);
+                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        public boolean onMenuItemClick(MenuItem item) {
+                            switch (item.getItemId()) {
+                                case R.id.custoA:
+                                    intent = new Intent(context, CustoA_Activity.class);
+                                    context.startActivity(intent);
 
-                                return true;
-                            case R.id.custoB:
-                                intent = new Intent(context, CustoB_Activity.class);
-                                context.startActivity(intent);
+                                    return true;
+                                case R.id.custoB:
+                                    intent = new Intent(context, CustoB_Activity.class);
+                                    context.startActivity(intent);
 
-                                return true;
-                            case R.id.custoC:
-                                intent = new Intent(context, CustoC_Activity.class);
-                                context.startActivity(intent);
+                                    return true;
+                                case R.id.custoC:
+                                    intent = new Intent(context, CustoC_Activity.class);
+                                    context.startActivity(intent);
 
-                                return true;
-                            case R.id.custoD:
-                                intent = new Intent(context, CustoD_Activity.class);
-                                context.startActivity(intent);
+                                    return true;
+                                case R.id.custoD:
+                                    intent = new Intent(context, CustoD_Activity.class);
+                                    context.startActivity(intent);
 
-                                return true;
+                                    return true;
 
-                            default:
-                                return false;
+                                default:
+                                    return false;
+                            }
+
                         }
+                    });
 
-                    }
-                });
+                    popup.show();
+                } else {
+                    viewToastAlerta(context, "Nenhuma safra cadastrada! " +
+                            "Cadastre uma nova safra para caclcular os gastos.");
+                }
 
-                popup.show();
+
             }
         });
 
@@ -196,5 +244,38 @@ public class PainelActivity extends AppCompatActivity {
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+    }
+
+    public Safra teste() {
+        Safra safra = new Safra();
+        safra.setClicloAno("1");
+        safra.setQtdePes(1000);
+        safra.setRegiaoReferencia("São Paulo");
+
+        Venda venda = new Venda();
+        venda.setPesoCaixa("22,00");
+        ;
+        venda.setPreco("10,00");
+        venda.setQuantidade(10);
+
+        Venda venda2 = new Venda();
+        venda2.setPesoCaixa("22,00");
+        ;
+        venda2.setPreco("10,00");
+        venda2.setQuantidade(10);
+
+        Venda venda3 = new Venda();
+        venda3.setPesoCaixa("22,00");
+        ;
+        venda3.setPreco("10,00");
+        venda3.setQuantidade(10);
+
+        ArrayList<Venda> vendas = new ArrayList<>();
+        vendas.add(venda);
+        vendas.add(venda2);
+        vendas.add(venda3);
+
+        safra.setVendas(vendas);
+        return safra;
     }
 }

@@ -24,4 +24,7 @@
     <color name="color15">#dd2c00 </color>
     <color name="color16">#69f0ae </color>
     <color name="color17">#aeea00 </color>
+    <color name="alerta_verde">#144a0e</color>
+    <color name="alerta_amarelo">#e0990b</color>
+    <color name="alerta_vermelho">#700303</color>
 </resources>
