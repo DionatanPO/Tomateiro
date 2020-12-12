@@ -89,6 +89,7 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/nova_safra_pes"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -107,6 +108,7 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/nova_safra_ciclo"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -125,6 +127,7 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/nova_safra_regiao"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"

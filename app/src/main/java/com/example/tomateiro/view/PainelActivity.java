@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -17,6 +18,7 @@ import androidx.appcompat.widget.PopupMenu;
 
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Venda;
 import com.example.tomateiro.view.custo.CustoA_Activity;
@@ -36,18 +38,25 @@ public class PainelActivity extends AppCompatActivity {
     private Intent intent;
     private Safra safra;
     private View card_safra;
-
-    private TextView msg;
+    private TextView msg, painel_produtor;
+    private Produtor produtor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_painel);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            produtor = (Produtor) getIntent().getSerializableExtra("produtor");
+        }
+
         context = this;
 
         card_safra = findViewById(R.id.card_safra);
         msg = findViewById(R.id.mensagem);
+        painel_produtor = findViewById(R.id.painel_proprietario);
+        painel_produtor.setText(painel_produtor.getText().toString()+produtor.getNome());
 
         btn_safra_menu = findViewById(R.id.btn_safra_menu);
         btn_s_t_g = findViewById(R.id.painel_btn_g_t_e);
@@ -96,11 +105,19 @@ public class PainelActivity extends AppCompatActivity {
                                 layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
 
                                 Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+                                final EditText et_nova_safra_pes = layout.findViewById(R.id.nova_safra_pes);
+                                final EditText et_nova_safra_ciclo = layout.findViewById(R.id.nova_safra_ciclo);
+                                final EditText et_nova_safra_regiao = layout.findViewById(R.id.nova_safra_regiao);
+
 
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         safra = teste();
+                                        safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
+                                        safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                                        safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
+
                                         card_safra.setVisibility(View.VISIBLE);
                                         msg.setVisibility(View.GONE);
                                         viewToast(context, "Safra cadastrada!");
@@ -179,21 +196,25 @@ public class PainelActivity extends AppCompatActivity {
                             switch (item.getItemId()) {
                                 case R.id.custoA:
                                     intent = new Intent(context, CustoA_Activity.class);
+                                    intent.putExtra("safra", safra);
                                     context.startActivity(intent);
 
                                     return true;
                                 case R.id.custoB:
                                     intent = new Intent(context, CustoB_Activity.class);
+                                    intent.putExtra("safra", safra);
                                     context.startActivity(intent);
 
                                     return true;
                                 case R.id.custoC:
                                     intent = new Intent(context, CustoC_Activity.class);
+                                    intent.putExtra("safra", safra);
                                     context.startActivity(intent);
 
                                     return true;
                                 case R.id.custoD:
                                     intent = new Intent(context, CustoD_Activity.class);
+                                    intent.putExtra("safra", safra);
                                     context.startActivity(intent);
 
                                     return true;

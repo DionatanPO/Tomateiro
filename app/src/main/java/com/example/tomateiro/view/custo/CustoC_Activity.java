@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tomateiro.R;
 import com.example.tomateiro.model.CustoC;
+import com.example.tomateiro.model.Safra;
 
 import me.abhinay.input.CurrencyEditText;
 
@@ -25,11 +26,19 @@ public class CustoC_Activity extends AppCompatActivity {
     TextView custo_subtotal;
 
     CustoC custoC;
+    Safra safra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custo_c);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            safra = (Safra) getIntent().getSerializableExtra("safra");
+
+        } else {
+            safra = new Safra();
+        }
 
         btn_concluir = findViewById(R.id.button);
         custo_subtotal = findViewById(R.id.custo_subtotal);
@@ -114,7 +123,7 @@ public class CustoC_Activity extends AppCompatActivity {
                 custoC.setOutrosV(editA_v17.getText().toString());
 
                 custo_subtotal.setText("SubTotal = R$ "+ custoC.calcularSubTotal(custoC).getSubTotalC());
-
+                safra.setCustoC(custoC);
             }
         });
 

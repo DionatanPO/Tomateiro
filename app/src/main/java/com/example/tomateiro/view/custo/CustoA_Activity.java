@@ -12,29 +12,40 @@ import android.widget.Toast;
 
 import com.example.tomateiro.R;
 import com.example.tomateiro.model.CustoA;
+import com.example.tomateiro.model.Safra;
 
 import java.util.Currency;
 
 import me.abhinay.input.CurrencyEditText;
 
 public class CustoA_Activity extends AppCompatActivity {
-    CurrencyEditText editA_q1, editA_q2, editA_q3, editA_q4, editA_q5, editA_q6, editA_q7, editA_q8,
+   private CurrencyEditText editA_q1, editA_q2, editA_q3, editA_q4, editA_q5, editA_q6, editA_q7, editA_q8,
             editA_q9, editA_q10, editA_q11, editA_q12;
 
-    CurrencyEditText editA_v1, editA_v2, editA_v3, editA_v4, editA_v5, editA_v6, editA_v7, editA_v8,
+  private  CurrencyEditText editA_v1, editA_v2, editA_v3, editA_v4, editA_v5, editA_v6, editA_v7, editA_v8,
             editA_v9, editA_v10, editA_v11, editA_v12;
 
-    Button btn_concluir;
+  private  Button btn_concluir;
 
-    TextView custo_subtotal;
+   private TextView custo_subtotal;
 
-    CustoA custoA;
+   private CustoA custoA;
+
+   private Safra safra;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custo_a);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            safra = (Safra) getIntent().getSerializableExtra("safra");
+
+        } else {
+            safra = new Safra();
+        }
 
         btn_concluir = findViewById(R.id.button);
         custo_subtotal = findViewById(R.id.custo_subtotal);
@@ -72,6 +83,7 @@ public class CustoA_Activity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
+
                 custoA.setAracaoQ(editA_q1.getText().toString());
                 custoA.setGradeacaoQ(editA_q2.getText().toString());
                 custoA.setSubsolagemQ(editA_q3.getText().toString());
@@ -100,6 +112,8 @@ public class CustoA_Activity extends AppCompatActivity {
                 custoA.setOutrosAV(editA_v12.getText().toString());
 
                 custo_subtotal.setText("SubTotal = R$ " + custoA.calcularSubTotal(custoA).getSubTotalA());
+
+                safra.setCustoA(custoA);
 
             }
         });

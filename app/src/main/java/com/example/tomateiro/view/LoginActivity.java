@@ -11,11 +11,13 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.model.Produtor;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button btn_registrar, getBtn_entrar;
-    Context context;
+   private Button btn_registrar, getBtn_entrar;
+   private Context context;
+   private Produtor produtor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,12 @@ public class LoginActivity extends AppCompatActivity {
         getBtn_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                produtor = new Produtor();
+                produtor.setNome("Dionatan");
+
                 Intent intent = new Intent(context, PainelActivity.class);
+                intent.putExtra("produtor", produtor);
                 startActivity(intent);
             }
         });
