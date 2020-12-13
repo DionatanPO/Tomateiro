@@ -57,7 +57,7 @@ public class CustoA_Activity extends AppCompatActivity {
             editA_q7.setText(custoA.getAplicacaoEstercoQ());
             editA_q8.setText(custoA.getAdubacaoCoberturaQ());
             editA_q9.setText(custoA.getPulverizacaoQ());
-            editA_q10.setText(custoA.getColheitaClassificacaoQ()));
+            editA_q10.setText(custoA.getColheitaClassificacaoQ());
             editA_q11.setText(custoA.getIrrigacoesQ());
             editA_q12.setText(custoA.getOutrosAQ());
 
@@ -70,7 +70,7 @@ public class CustoA_Activity extends AppCompatActivity {
             editA_v7.setText(custoA.getAplicacaoEstercoV());
             editA_v8.setText(custoA.getAdubacaoCoberturaV());
             editA_v9.setText(custoA.getPulverizacaoV());
-            editA_v10.setText(custoA.getColheitaClassificacaoV()));
+            editA_v10.setText(custoA.getColheitaClassificacaoV());
             editA_v11.setText(custoA.getIrrigacoesV());
             editA_v12.setText(custoA.getOutrosAV());
 

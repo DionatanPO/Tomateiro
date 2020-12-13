@@ -76,8 +76,7 @@ public class PainelActivity extends AppCompatActivity {
                     intent.putExtra("safra", safra);
                     context.startActivity(intent);
                 } else {
-                    viewToastAlerta(context, "Nenhuma safra cadastrada! " +
-                            "Cadastre uma nova safra para poder vesualizar o relatório.");
+                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar o relatório.");
                 }
 
             }
@@ -253,8 +252,7 @@ public class PainelActivity extends AppCompatActivity {
 
                     popup.show();
                 } else {
-                    viewToastAlerta(context, "Nenhuma safra cadastrada! " +
-                            "Cadastre uma nova safra para caclcular os gastos.");
+                    viewToastAlerta(context, "Cadastre uma nova safra para caclcular os gastos.");
                 }
 
 
