@@ -30,7 +30,6 @@ import java.util.ArrayList;
 
 import static com.example.tomateiro.model.CustonToast.viewToast;
 import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
-import static com.example.tomateiro.model.CustonToast.viewToastErro;
 
 public class PainelActivity extends AppCompatActivity {
     private Button btn_safra_menu, btn_s_t_g, btn_relatorio;
@@ -91,7 +90,7 @@ public class PainelActivity extends AppCompatActivity {
                 PopupMenu popup = new PopupMenu(context, btn_safra_menu);
 
                 popup.getMenuInflater()
-                        .inflate(R.menu.safra_menu, popup.getMenu());
+                        .inflate(R.menu.painek_menu, popup.getMenu());
 
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     AlertDialog alerta;
@@ -135,6 +134,31 @@ public class PainelActivity extends AppCompatActivity {
                                 layout = inflater.inflate(R.layout.activity_registro, null);
                                 TextView titulo = layout.findViewById(R.id.textView);
                                 titulo.setText("Alterar seus dados");
+                                final EditText nome, propriedade, identificacao;
+                                Button button_concluir;
+
+                                button_concluir = layout.findViewById(R.id.btn_concluir);
+
+                                nome = layout.findViewById(R.id.registro_nome);
+                                propriedade = layout.findViewById(R.id.registro_propriedade);
+                                identificacao = layout.findViewById(R.id.registro_identificacao);
+
+                                nome.setText(produtor.getNome());
+                                propriedade.setText(produtor.getPropriedade());
+                                identificacao.setText(produtor.getCodIdentificacao());
+
+                                button_concluir.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        produtor.setNome(nome.getText().toString());
+                                        produtor.setPropriedade(propriedade.getText().toString());
+                                        produtor.setCodIdentificacao(identificacao.getText().toString());
+
+                                        viewToast(context, "Iformações alteradas!");
+
+                                    }
+                                });
+
                                 builder.setView(layout);
                                 alerta = builder.create();
                                 alerta.show();
