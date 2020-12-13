@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Tomateiro$</string>
-    <string name="registro"><p style=" text-align: justify; text-justify: inter-word;">Informe seus dados <b>pessoais</b> e  referentes a sua <b>propriedade</b> </p></string>
+    <string name="registro"><p style=" text-align: justify; text-justify: inter-word;">Informe seus dados <b>abaixo</b> </p></string>
     <string name="safra"><p style=" text-align: justify; text-justify: inter-word;">Safra <b>vigente </b>aparece aqui </p></string>
     <string name="novaSafra"><p style=" text-align: justify; text-justify: inter-word;">Informe os <b>dados</b> abaixo </p></string>
     <string name="sobre"><p style=" text-align: justify; text-justify: inter-word;">Este

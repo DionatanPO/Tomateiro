@@ -7,15 +7,16 @@
 
     <item
         android:id="@+id/perfilAltera"
-        android:title="Alterar dados da conta" />
-    <menu>
-        <item
-            android:id="@+id/perfil"
-            android:title="Perfil" />
-        <item
-            android:id="@+id/senha"
-            android:title="Senha" />
-    </menu>
+        android:title="Alterar dados da conta">
+        <menu>
+            <item
+                android:id="@+id/perfil"
+                android:title="Perfil" />
+            <item
+                android:id="@+id/senha"
+                android:title="Senha" />
+        </menu>
+    </item>
     <item
         android:id="@+id/ajuda"
         android:title="Ajuda" />

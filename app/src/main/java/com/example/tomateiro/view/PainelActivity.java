@@ -134,6 +134,7 @@ public class PainelActivity extends AppCompatActivity {
                                 layout = inflater.inflate(R.layout.activity_registro, null);
                                 TextView titulo = layout.findViewById(R.id.textView);
                                 titulo.setText("Alterar seus dados");
+
                                 final EditText nome, propriedade, identificacao;
                                 Button button_concluir;
 
