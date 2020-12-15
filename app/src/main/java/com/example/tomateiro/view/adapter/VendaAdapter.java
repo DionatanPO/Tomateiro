@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -18,16 +19,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tomateiro.R;
 import com.example.tomateiro.model.Venda;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.tomateiro.model.CustonToast.viewToast;
 
 
 public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHolder> {
     private Context context;
-    private List<Venda> vendaList;
+    private ArrayList<Venda> vendaList;
     private Intent intent;
     private int position;
 
-    public VendaAdapter(Context context, List<Venda> vendagemslis) {
+    public VendaAdapter(Context context, ArrayList<Venda> vendagemslis) {
         this.context = context;
         this.vendaList = vendagemslis;
 
@@ -42,7 +46,10 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
 
     @Override
     public void onBindViewHolder(@NonNull VendaAdapter.VendaViewHolder holder, int position) {
-
+        holder.card_venda_id.setText(String.valueOf(vendaList.get(position).getId()));
+        holder.card_venda_data.setText(vendaList.get(position).getVendaData());
+        holder.card_venda_quantidade.setText(String.valueOf(vendaList.get(position).getQuantidade()));
+        holder.card_venda_preco.setText(vendaList.get(position).getPreco());
     }
 
     public class VendaViewHolder extends RecyclerView.ViewHolder {
@@ -54,14 +61,13 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
         TextView card_venda_preco;
 
 
-
         public VendaViewHolder(View itemView) {
             super(itemView);
 
-             card_venda_id = itemView.findViewById(R.id.card_venda_id);
-             card_venda_data = itemView.findViewById(R.id.card_venda_data);
-             card_venda_quantidade = itemView.findViewById(R.id.card_venda_quantidade);
-             card_venda_preco = itemView.findViewById(R.id.card_venda_preco);
+            card_venda_id = itemView.findViewById(R.id.card_venda_id);
+            card_venda_data = itemView.findViewById(R.id.card_venda_data);
+            card_venda_quantidade = itemView.findViewById(R.id.card_venda_quantidade);
+            card_venda_preco = itemView.findViewById(R.id.card_venda_preco);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +84,21 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
                         TextView titulo = layout.findViewById(R.id.textView);
                         titulo.setText("Alterar dados da venda");
 
+                        Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+                        final EditText et_nova_venda_data = layout.findViewById(R.id.nova_venda_data);
+                        final EditText et_nova_venda_quantidade = layout.findViewById(R.id.nova_venda_quantidade);
+                        final EditText et_nova_venda_preco = layout.findViewById(R.id.nova_venda_preco);
+
+
+                        btn_concluir.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                viewToast(context, "Dados da vebda alterados!");
+                            }
+                        });
+
+
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setView(layout);
                         alerta = builder.create();
@@ -93,11 +114,11 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
 
     }
 
-    public List<Venda> getVendaList() {
+    public ArrayList<Venda> getVendaList() {
         return vendaList;
     }
 
-    public void setVendaList(List<Venda> vendaList) {
+    public void setVendaList(ArrayList<Venda> vendaList) {
         this.vendaList = vendaList;
     }
 

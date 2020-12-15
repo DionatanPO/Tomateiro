@@ -3,6 +3,6 @@
 
     <item
         android:id="@+id/nova_venda"
-        android:title="Nova venda" />
+        android:title="cadastrar nova venda" />
 
 </menu>

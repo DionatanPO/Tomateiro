@@ -4,12 +4,31 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class Venda implements Serializable {
-    private Date vendaData;
+
+    private Long id;
+    private String vendaData;
     private int quantidade;
     private String preco;
     private String pesoCaixa;
+    private String estado;
 
     public Venda() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public int getQuantidade() {
@@ -20,11 +39,11 @@ public class Venda implements Serializable {
         return pesoCaixa;
     }
 
-    public Date getVendaData() {
+    public String getVendaData() {
         return vendaData;
     }
 
-    public void setVendaData(Date vendaData) {
+    public void setVendaData(String vendaData) {
         this.vendaData = vendaData;
     }
 
