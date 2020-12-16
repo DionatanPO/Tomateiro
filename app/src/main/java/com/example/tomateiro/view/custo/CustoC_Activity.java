@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.controller.CustoBController;
+import com.example.tomateiro.controller.CustoCController;
 import com.example.tomateiro.model.CustoC;
 import com.example.tomateiro.model.Safra;
 
@@ -32,6 +34,8 @@ public class CustoC_Activity extends AppCompatActivity {
     private Safra safra;
     private Context context;
 
+    private CustoCController custoCController;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,52 +43,6 @@ public class CustoC_Activity extends AppCompatActivity {
 
         context = this;
         setContentView(R.layout.activity_custo_c);
-
-        Bundle extras = getIntent().getExtras();
-
-        if (extras != null) {
-            safra = (Safra) getIntent().getSerializableExtra("safra");
-
-            editA_q1.setText(custoC.getCalcarioDolomiticoQ());
-            editA_q2.setText(custoC.getSulfatoAmonioQ());
-            editA_q3.setText(custoC.getSuperfosfatoSimplesQ());
-            editA_q4.setText(custoC.getCloretoPotassioQ());
-            editA_q5.setText(custoC.getEstercoBovinoQ());
-            editA_q6.setText(custoC.getYorinQ());
-            editA_q7.setText(custoC.getSementesQ());
-            editA_q8.setText(custoC.getConfeccaoMudasQ());
-            editA_q9.setText(custoC.getEstacasBambuQ());
-            editA_q10.setText(custoC.getArame16Q());
-            editA_q11.setText(custoC.getMouroesEucaQ());
-            editA_q12.setText(custoC.getArame20Q());
-            editA_q13.setText(custoC.getFungicidasQ());
-            editA_q14.setText(custoC.getHerbicidasQ());
-            editA_q15.setText(custoC.getInseticidasQ());
-            editA_q16.setText(custoC.getOutrosProdutosQuimicosQ());
-            editA_q17.setText(custoC.getOutrosQ());
-
-            editA_v1.setText(custoC.getCalcarioDolomiticoV());
-            editA_v2.setText(custoC.getSulfatoAmonioV());
-            editA_v3.setText(custoC.getSuperfosfatoSimplesV());
-            editA_v4.setText(custoC.getCloretoPotassioV());
-            editA_v5.setText(custoC.getEstercoBovinoV());
-            editA_v6.setText(custoC.getYorinV());
-            editA_v7.setText(custoC.getSementesV());
-            editA_v8.setText(custoC.getConfeccaoMudasV());
-            editA_v9.setText(custoC.getEstacasBambuV());
-            editA_v10.setText(custoC.getArame16V());
-            editA_v11.setText(custoC.getMouroesEucaV());
-            editA_v12.setText(custoC.getArame20V());
-            editA_v13.setText(custoC.getFungicidasV());
-            editA_v14.setText(custoC.getHerbicidasV());
-            editA_v15.setText(custoC.getInseticidasV());
-            editA_v16.setText(custoC.getOutrosProdutosQuimicosV());
-            editA_v17.setText(custoC.getOutrosV());
-
-
-        } else {
-            safra = new Safra();
-        }
 
         btn_concluir = findViewById(R.id.button);
         custo_subtotal = findViewById(R.id.custo_subtotal);
@@ -124,6 +82,58 @@ public class CustoC_Activity extends AppCompatActivity {
         editA_v15 = findViewById(R.id.editA_v15);
         editA_v16 = findViewById(R.id.editA_v16);
         editA_v17 = findViewById(R.id.editA_v17);
+
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            safra = (Safra) getIntent().getSerializableExtra("safra");
+            try {
+
+                editA_q1.setText(custoC.getCalcarioDolomiticoQ());
+                editA_q2.setText(custoC.getSulfatoAmonioQ());
+                editA_q3.setText(custoC.getSuperfosfatoSimplesQ());
+                editA_q4.setText(custoC.getCloretoPotassioQ());
+                editA_q5.setText(custoC.getEstercoBovinoQ());
+                editA_q6.setText(custoC.getYorinQ());
+                editA_q7.setText(custoC.getSementesQ());
+                editA_q8.setText(custoC.getConfeccaoMudasQ());
+                editA_q9.setText(custoC.getEstacasBambuQ());
+                editA_q10.setText(custoC.getArame16Q());
+                editA_q11.setText(custoC.getMouroesEucaQ());
+                editA_q12.setText(custoC.getArame20Q());
+                editA_q13.setText(custoC.getFungicidasQ());
+                editA_q14.setText(custoC.getHerbicidasQ());
+                editA_q15.setText(custoC.getInseticidasQ());
+                editA_q16.setText(custoC.getOutrosProdutosQuimicosQ());
+                editA_q17.setText(custoC.getOutrosQ());
+
+                editA_v1.setText(custoC.getCalcarioDolomiticoV());
+                editA_v2.setText(custoC.getSulfatoAmonioV());
+                editA_v3.setText(custoC.getSuperfosfatoSimplesV());
+                editA_v4.setText(custoC.getCloretoPotassioV());
+                editA_v5.setText(custoC.getEstercoBovinoV());
+                editA_v6.setText(custoC.getYorinV());
+                editA_v7.setText(custoC.getSementesV());
+                editA_v8.setText(custoC.getConfeccaoMudasV());
+                editA_v9.setText(custoC.getEstacasBambuV());
+                editA_v10.setText(custoC.getArame16V());
+                editA_v11.setText(custoC.getMouroesEucaV());
+                editA_v12.setText(custoC.getArame20V());
+                editA_v13.setText(custoC.getFungicidasV());
+                editA_v14.setText(custoC.getHerbicidasV());
+                editA_v15.setText(custoC.getInseticidasV());
+                editA_v16.setText(custoC.getOutrosProdutosQuimicosV());
+                editA_v17.setText(custoC.getOutrosV());
+
+                custo_subtotal.setText("SubTotal = R$ " + custoC.getSubTotalC());
+
+            } catch (Exception e) {
+
+            }
+
+        } else {
+            safra = new Safra();
+        }
 
 
         custoC = new CustoC();
@@ -168,10 +178,17 @@ public class CustoC_Activity extends AppCompatActivity {
                 custoC.setOutrosProdutosQuimicosV(editA_v16.getText().toString());
                 custoC.setOutrosV(editA_v17.getText().toString());
 
-                custo_subtotal.setText("SubTotal = R$ " + custoC.calcularSubTotal(custoC).getSubTotalC());
-                safra.setCustoC(custoC);
 
-                viewToast(context, "Custo caclculado");
+                custoCController = new CustoCController(context);
+                try {
+                    if (custoCController.validar_custo(custoC)) {
+                        custo_subtotal.setText("SubTotal = R$ " + custoC.calcularSubTotal(custoC).getSubTotalC());
+                        safra.setCustoC(custoC);
+                        viewToast(context, "Custo calculado");
+                    }
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

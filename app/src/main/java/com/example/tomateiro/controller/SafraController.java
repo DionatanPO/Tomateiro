@@ -15,7 +15,7 @@ public class SafraController {
 
     public boolean validar_cadastro(Safra safra){
         if(safra.getClicloAno().isEmpty()||safra.getRegiaoReferencia().isEmpty()){
-            viewToastAlerta(context, "Preencha tododos os campos");
+            viewToastAlerta(context, "Preencha todos os campos");
             return false;
         }else {
             return  true;
@@ -23,7 +23,7 @@ public class SafraController {
     }
     public boolean validar_alterar(Safra safra){
         if(safra.getClicloAno().isEmpty()||safra.getRegiaoReferencia().isEmpty()){
-            viewToastAlerta(context, "Preencha tododos os campos");
+            viewToastAlerta(context, "Preencha todos os campos");
             return false;
         }else {
             return  true;

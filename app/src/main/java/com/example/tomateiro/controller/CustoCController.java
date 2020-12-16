@@ -2,29 +2,29 @@ package com.example.tomateiro.controller;
 
 import android.content.Context;
 
-import com.example.tomateiro.model.CustoA;
+import com.example.tomateiro.model.CustoC;
 
 import java.lang.reflect.Field;
 
 import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
 
-public class CustoAController {
+public class CustoCController {
     private Context context;
 
-    public CustoAController(Context context) {
+    public CustoCController(Context context) {
         this.context = context;
     }
 
-    public boolean validar_custo(CustoA custoA) throws IllegalAccessException {
+    public boolean validar_custo(CustoC custoC) throws IllegalAccessException {
         Boolean resultado = false;
 
-        Class<CustoA> custoAClass = CustoA.class;
+        Class<CustoC> custoCClass = CustoC.class;
 
-        Field[] fields = custoAClass.getDeclaredFields();
+        Field[] fields = custoCClass.getDeclaredFields();
 
         for (Field field : fields) {
             field.setAccessible(true);
-            Object objeto = field.get(custoA);
+            Object objeto = field.get(custoC);
 
             if (objeto == null) {
                 System.out.println(field.getName());

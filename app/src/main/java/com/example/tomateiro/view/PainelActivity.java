@@ -41,7 +41,7 @@ public class PainelActivity extends AppCompatActivity {
     private SafraController safraController;
     private ProdutorController produtorController;
     private View card_safra;
-    private TextView msg, painel_produtor;
+    private TextView msg, painel_produtor, txt_painel_card_safra, txt_painel_card_ciclo, txt_painel_card_qtde_pes, txt_painel_card_regiao;
     private Produtor produtor;
 
     private AlertDialog alerta;
@@ -70,6 +70,11 @@ public class PainelActivity extends AppCompatActivity {
         btn_relatorio = findViewById(R.id.painel_btn_relatorio);
         btn_venda = findViewById(R.id.painel_btn_venda);
 
+        txt_painel_card_safra = findViewById(R.id.painel_card_safra);
+        txt_painel_card_ciclo = findViewById(R.id.painel_card_cocloAno);
+        txt_painel_card_qtde_pes = findViewById(R.id.painel_card_qtde_pes);
+        txt_painel_card_regiao = findViewById(R.id.painel_card_regiao);
+
         if (safra != null) {
             card_safra.setVisibility(View.VISIBLE);
             msg.setVisibility(View.GONE);
@@ -94,29 +99,29 @@ public class PainelActivity extends AppCompatActivity {
                 final EditText et_nova_safra_ciclo = layout.findViewById(R.id.nova_safra_ciclo);
                 final EditText et_nova_safra_regiao = layout.findViewById(R.id.nova_safra_regiao);
 
-                final TextView txt_painel_card_safra = layout.findViewById(R.id.painel_card_safra);
-                final TextView txt_painel_card_ciclo = layout.findViewById(R.id.painel_card_cocloAno);
-                final TextView txt_painel_card_qtde_pes = layout.findViewById(R.id.painel_card_qtde_pes);
-                final TextView txt_painel_card_regiao = layout.findViewById(R.id.painel_card_regiao);
-
 
                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         safra = teste();
 
+                        safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
+                        safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                        try {
+                            safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
+                        } catch (Exception e) {
+                            safra.setQtdePes(0);
+                        }
 
                         //fazer request para salvar safra
                         if (safraController.validar_alterar(safra)) {
-                            safra.setEstado("Disponivel");
-                            safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
-                            safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
-                            safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
 
-                            txt_painel_card_ciclo.setText(et_nova_safra_ciclo.getText().toString());
-                            txt_painel_card_qtde_pes.setText(et_nova_safra_regiao.getText().toString());
-                            txt_painel_card_regiao.setText(et_nova_safra_pes.getText().toString());
+                            txt_painel_card_ciclo.setText(safra.getClicloAno());
+                            txt_painel_card_qtde_pes.setText(String.valueOf(safra.getQtdePes()));
+                            txt_painel_card_regiao.setText(safra.getRegiaoReferencia());
 
+                            card_safra.setVisibility(View.VISIBLE);
+                            msg.setVisibility(View.GONE);
                             request_cadastrar_novaSafra(safra);
 
                             alerta.cancel();
@@ -188,28 +193,28 @@ public class PainelActivity extends AppCompatActivity {
                                 final EditText et_nova_safra_ciclo = layout.findViewById(R.id.nova_safra_ciclo);
                                 final EditText et_nova_safra_regiao = layout.findViewById(R.id.nova_safra_regiao);
 
-                                final TextView txt_painel_card_safra = layout.findViewById(R.id.painel_card_safra);
-                                final TextView txt_painel_card_ciclo = layout.findViewById(R.id.painel_card_cocloAno);
-                                final TextView txt_painel_card_qtde_pes = layout.findViewById(R.id.painel_card_qtde_pes);
-                                final TextView txt_painel_card_regiao = layout.findViewById(R.id.painel_card_regiao);
 
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
+
                                         safra = teste();
+                                        safra.setEstado("Disponivel");
+                                        safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
+                                        safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                                        try {
+                                            safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
+                                        } catch (Exception e) {
+                                            safra.setQtdePes(0);
+                                        }
 
 
                                         //fazer request para salvar safra
                                         if (safraController.validar_cadastro(safra)) {
 
-                                            safra.setEstado("Disponivel");
-                                            safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
-                                            safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
-                                            safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
-
-                                            txt_painel_card_ciclo.setText(et_nova_safra_ciclo.getText().toString());
-                                            txt_painel_card_qtde_pes.setText(et_nova_safra_regiao.getText().toString());
-                                            txt_painel_card_regiao.setText(et_nova_safra_pes.getText().toString());
+                                            txt_painel_card_ciclo.setText(safra.getClicloAno());
+                                            txt_painel_card_qtde_pes.setText(String.valueOf(safra.getQtdePes()));
+                                            txt_painel_card_regiao.setText(safra.getRegiaoReferencia());
 
                                             card_safra.setVisibility(View.VISIBLE);
                                             msg.setVisibility(View.GONE);

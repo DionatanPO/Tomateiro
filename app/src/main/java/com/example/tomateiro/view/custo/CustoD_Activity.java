@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.controller.CustoBController;
+import com.example.tomateiro.controller.CustoCController;
+import com.example.tomateiro.controller.CustoDController;
 import com.example.tomateiro.model.CustoC;
 import com.example.tomateiro.model.CustoD;
 import com.example.tomateiro.model.Safra;
@@ -30,6 +33,7 @@ public class CustoD_Activity extends AppCompatActivity {
     private Safra safra;
 
     private Context context;
+    private CustoDController custoDController;
 
 
     @Override
@@ -38,33 +42,6 @@ public class CustoD_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_custo_d);
 
         context = this;
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            safra = (Safra) getIntent().getSerializableExtra("safra");
-           editA_q1.setText( custoD.getArrendamentoQ());
-           editA_q2.setText( custoD.getMoAdministrativaQ());
-            editA_q3.setText(custoD.getContabilidadeEscritorioQ());
-            editA_q4.setText(custoD.getLuzTelefoneQ());
-            editA_q5.setText(custoD.getViagensQ());
-            editA_q6.setText(custoD.getImpostosTaxasQ());
-           editA_q7.setText(custoD.getOutrosQ());
-
-            editA_v1.setText( custoD.getArrendamentoV());
-            editA_v2.setText( custoD.getMoAdministrativaV());
-            editA_v3.setText(custoD.getContabilidadeEscritorioV());
-            editA_v4.setText(custoD.getLuzTelefoneV());
-            editA_v5.setText(custoD.getViagensV());
-            editA_v6.setText(custoD.getImpostosTaxasV());
-            editA_v7.setText(custoD.getOutrosV());
-
-            custo_subtotal.setText("SubTotal = R$ " + custoD.getSubTotalD());
-
-
-        } else {
-            safra = new Safra();
-        }
-
         btn_concluir = findViewById(R.id.button);
         custo_subtotal = findViewById(R.id.custo_subtotal);
 
@@ -83,6 +60,39 @@ public class CustoD_Activity extends AppCompatActivity {
         editA_v5 = findViewById(R.id.editA_v5);
         editA_v6 = findViewById(R.id.editA_v6);
         editA_v7 = findViewById(R.id.editA_v7);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            try {
+
+
+                safra = (Safra) getIntent().getSerializableExtra("safra");
+                editA_q1.setText(custoD.getArrendamentoQ());
+                editA_q2.setText(custoD.getMoAdministrativaQ());
+                editA_q3.setText(custoD.getContabilidadeEscritorioQ());
+                editA_q4.setText(custoD.getLuzTelefoneQ());
+                editA_q5.setText(custoD.getViagensQ());
+                editA_q6.setText(custoD.getImpostosTaxasQ());
+                editA_q7.setText(custoD.getOutrosQ());
+
+                editA_v1.setText(custoD.getArrendamentoV());
+                editA_v2.setText(custoD.getMoAdministrativaV());
+                editA_v3.setText(custoD.getContabilidadeEscritorioV());
+                editA_v4.setText(custoD.getLuzTelefoneV());
+                editA_v5.setText(custoD.getViagensV());
+                editA_v6.setText(custoD.getImpostosTaxasV());
+                editA_v7.setText(custoD.getOutrosV());
+
+                custo_subtotal.setText("SubTotal = R$ " + custoD.getSubTotalD());
+            }catch (Exception e){
+
+            }
+
+        } else {
+            safra = new Safra();
+        }
+
+
 
         custoD = new CustoD();
 
@@ -106,10 +116,21 @@ public class CustoD_Activity extends AppCompatActivity {
                 custoD.setImpostosTaxasV(editA_v6.getText().toString());
                 custoD.setOutrosV(editA_v7.getText().toString());
 
-                custo_subtotal.setText("SubTotal = R$ " + custoD.calcularSubTotal(custoD).getSubTotalD());
-                safra.setCustoD(custoD);
 
-                viewToast(context, "Custo caclculado");
+
+
+
+                custoDController = new CustoDController(context);
+                try {
+                    if (custoDController.validar_custo(custoD)) {
+
+                        custo_subtotal.setText("SubTotal = R$ " + custoD.calcularSubTotal(custoD).getSubTotalD());
+                        safra.setCustoD(custoD);
+                        viewToast(context, "Custo calculado");
+                    }
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

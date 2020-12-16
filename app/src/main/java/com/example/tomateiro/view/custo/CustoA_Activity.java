@@ -35,9 +35,10 @@ public class CustoA_Activity extends AppCompatActivity {
 
     private CustoA custoA;
     private CustoAController custoAController;
+    private Context context;
 
     private Safra safra;
-    private Context context;
+
 
 
     @Override
@@ -45,41 +46,6 @@ public class CustoA_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custo_a);
         context = this;
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            safra = (Safra) getIntent().getSerializableExtra("safra");
-
-            editA_q1.setText(custoA.getAracaoQ());
-            editA_q2.setText(custoA.getGradeacaoQ());
-            editA_q3.setText(custoA.getSubsolagemQ());
-            editA_q4.setText(custoA.getCalagemQ());
-            editA_q5.setText(custoA.getSulcamentoQ());
-            editA_q6.setText(custoA.getAdubacaoBasicaQ());
-            editA_q7.setText(custoA.getAplicacaoEstercoQ());
-            editA_q8.setText(custoA.getAdubacaoCoberturaQ());
-            editA_q9.setText(custoA.getPulverizacaoQ());
-            editA_q10.setText(custoA.getColheitaClassificacaoQ());
-            editA_q11.setText(custoA.getIrrigacoesQ());
-            editA_q12.setText(custoA.getOutrosAQ());
-
-            editA_v1.setText(custoA.getAracaoV());
-            editA_v2.setText(custoA.getGradeacaoV());
-            editA_v3.setText(custoA.getSubsolagemV());
-            editA_v4.setText(custoA.getCalagemV());
-            editA_v5.setText(custoA.getSulcamentoV());
-            editA_v6.setText(custoA.getAdubacaoBasicaV());
-            editA_v7.setText(custoA.getAplicacaoEstercoV());
-            editA_v8.setText(custoA.getAdubacaoCoberturaV());
-            editA_v9.setText(custoA.getPulverizacaoV());
-            editA_v10.setText(custoA.getColheitaClassificacaoV());
-            editA_v11.setText(custoA.getIrrigacoesV());
-            editA_v12.setText(custoA.getOutrosAV());
-
-        } else {
-            safra = new Safra();
-        }
-
         btn_concluir = findViewById(R.id.button);
         custo_subtotal = findViewById(R.id.custo_subtotal);
 
@@ -109,6 +75,45 @@ public class CustoA_Activity extends AppCompatActivity {
         editA_v11 = findViewById(R.id.editA_v11);
         editA_v12 = findViewById(R.id.editA_v12);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            safra = (Safra) getIntent().getSerializableExtra("safra");
+
+            try {
+                editA_q1.setText(custoA.getAracaoQ());
+                editA_q2.setText(custoA.getGradeacaoQ());
+                editA_q3.setText(custoA.getSubsolagemQ());
+                editA_q4.setText(custoA.getCalagemQ());
+                editA_q5.setText(custoA.getSulcamentoQ());
+                editA_q6.setText(custoA.getAdubacaoBasicaQ());
+                editA_q7.setText(custoA.getAplicacaoEstercoQ());
+                editA_q8.setText(custoA.getAdubacaoCoberturaQ());
+                editA_q9.setText(custoA.getPulverizacaoQ());
+                editA_q10.setText(custoA.getColheitaClassificacaoQ());
+                editA_q11.setText(custoA.getIrrigacoesQ());
+                editA_q12.setText(custoA.getOutrosAQ());
+
+                editA_v1.setText(custoA.getAracaoV());
+                editA_v2.setText(custoA.getGradeacaoV());
+                editA_v3.setText(custoA.getSubsolagemV());
+                editA_v4.setText(custoA.getCalagemV());
+                editA_v5.setText(custoA.getSulcamentoV());
+                editA_v6.setText(custoA.getAdubacaoBasicaV());
+                editA_v7.setText(custoA.getAplicacaoEstercoV());
+                editA_v8.setText(custoA.getAdubacaoCoberturaV());
+                editA_v9.setText(custoA.getPulverizacaoV());
+                editA_v10.setText(custoA.getColheitaClassificacaoV());
+                editA_v11.setText(custoA.getIrrigacoesV());
+                editA_v12.setText(custoA.getOutrosAV());
+
+                custo_subtotal.setText("SubTotal = R$ " + custoA.getSubTotalA());
+            } catch (Exception e) {
+
+            }
+
+        } else {
+            safra = new Safra();
+        }
 
         custoA = new CustoA();
 
@@ -146,12 +151,12 @@ public class CustoA_Activity extends AppCompatActivity {
 
                 custoAController = new CustoAController(context);
                 try {
-                    if(custoAController.validar_custo(custoA)){
+                    if (custoAController.validar_custo(custoA)) {
 
                         custo_subtotal.setText("SubTotal = R$ " + custoA.calcularSubTotal(custoA).getSubTotalA());
 
                         safra.setCustoA(custoA);
-                        viewToast(context, "Custo caclculado");
+                        viewToast(context, "Custo calculado");
                     }
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();

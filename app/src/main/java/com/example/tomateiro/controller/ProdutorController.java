@@ -33,7 +33,7 @@ public class ProdutorController {
     public boolean validar_login(Produtor produtor) {
         if (produtor.getSenha().isEmpty() || produtor.getCodIdentificacao().isEmpty()) {
 
-            viewToastAlerta(context, "Preencha tododos os campos");
+            viewToastAlerta(context, "Preencha todos os campos");
             return false;
 
         } else {
@@ -43,7 +43,7 @@ public class ProdutorController {
 
     public boolean validar_alterar_senha(Produtor produtor, String senha) {
         if (senha.isEmpty() || produtor.getSenha().isEmpty()) {
-            viewToastAlerta(context, "Preencha tododos os campos");
+            viewToastAlerta(context, "Preencha todos os campos");
             if (produtor.getSenha().equals(senha)) {
                 return true;
             } else {
