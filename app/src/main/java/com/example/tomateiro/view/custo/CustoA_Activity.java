@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.controller.CustoAController;
 import com.example.tomateiro.model.CustoA;
 import com.example.tomateiro.model.Safra;
 
@@ -33,6 +34,7 @@ public class CustoA_Activity extends AppCompatActivity {
     private TextView custo_subtotal;
 
     private CustoA custoA;
+    private CustoAController custoAController;
 
     private Safra safra;
     private Context context;
@@ -142,11 +144,19 @@ public class CustoA_Activity extends AppCompatActivity {
                 custoA.setIrrigacoesV(editA_v11.getText().toString());
                 custoA.setOutrosAV(editA_v12.getText().toString());
 
-                custo_subtotal.setText("SubTotal = R$ " + custoA.calcularSubTotal(custoA).getSubTotalA());
+                custoAController = new CustoAController(context);
+                try {
+                    if(custoAController.validar_custo(custoA)){
 
-                safra.setCustoA(custoA);
+                        custo_subtotal.setText("SubTotal = R$ " + custoA.calcularSubTotal(custoA).getSubTotalA());
 
-                viewToast(context, "Custo caclculado");
+                        safra.setCustoA(custoA);
+                        viewToast(context, "Custo caclculado");
+                    }
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+
 
             }
         });

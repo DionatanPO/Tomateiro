@@ -16,17 +16,17 @@ public class VendaController {
     public boolean validar_cadastro(Venda venda) {
         if (venda.getPesoCaixa().isEmpty() || venda.getPreco().isEmpty() || venda.getVendaData().isEmpty()) {
             viewToastAlerta(context, "Preencha todos os campos");
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
     public boolean validar_alterar(Venda venda) {
         if (venda.getPesoCaixa().isEmpty() || venda.getPreco().isEmpty() || venda.getVendaData().isEmpty()) {
             viewToastAlerta(context, "Preencha todos os campos");
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 }

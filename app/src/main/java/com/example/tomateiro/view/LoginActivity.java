@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 produtor.setCodIdentificacao(editText_codigo.getText().toString());
                 produtor.setSenha(editText_senha.getText().toString());
-                if(produtorController.validar_login(produtor, produtor.getSenha())){
+                if(produtorController.validar_login(produtor)){
                     produtor.setNome("Dionatan");
                     Intent intent = new Intent(context, PainelActivity.class);
                     intent.putExtra("produtor", produtor);

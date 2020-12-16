@@ -18,6 +18,8 @@ public class ProdutorController {
                 || produtor.getPropriedade().isEmpty() || produtor.getSenha().isEmpty() || senha2.isEmpty()) {
 
             viewToastAlerta(context, "Preencha todos os campos");
+          return  false;
+        } else {
             if (produtor.getSenha().equals(senha2)) {
 
                 return true;
@@ -25,23 +27,17 @@ public class ProdutorController {
                 viewToastAlerta(context, "As senhas não são iguais");
                 return false;
             }
-        } else {
-            return false;
         }
     }
 
-    public boolean validar_login(Produtor produtor, String senha) {
-        if (senha.isEmpty() || produtor.getSenha().isEmpty() || produtor.getCodIdentificacao().isEmpty()) {
-            viewToastAlerta(context, "Preencha tododos os campos");
-            if (produtor.getSenha().equals(senha)) {
+    public boolean validar_login(Produtor produtor) {
+        if (produtor.getSenha().isEmpty() || produtor.getCodIdentificacao().isEmpty()) {
 
-                return true;
-            } else {
-                viewToastAlerta(context, "As senhas não são iguais");
-                return false;
-            }
-        } else {
+            viewToastAlerta(context, "Preencha tododos os campos");
             return false;
+
+        } else {
+            return true;
         }
     }
 
