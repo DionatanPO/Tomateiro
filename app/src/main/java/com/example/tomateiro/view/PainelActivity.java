@@ -113,6 +113,8 @@ public class PainelActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.novaSafra:
+                                safra = new Safra();
+
                                 layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
 
                                 Button btn_concluir = layout.findViewById(R.id.btn_concluir);
@@ -125,13 +127,17 @@ public class PainelActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(View view) {
                                         safra = teste();
+                                        safra.setEstado("Disponivel");
                                         safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
                                         safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
                                         safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
 
                                         card_safra.setVisibility(View.VISIBLE);
                                         msg.setVisibility(View.GONE);
-                                        viewToast(context, "Safra cadastrada!");
+                                        //fazer request para salvar safra
+                                        request_cadastrar_novaSafra(safra);
+
+                                        alerta.cancel();
                                     }
                                 });
 
@@ -167,7 +173,9 @@ public class PainelActivity extends AppCompatActivity {
                                         produtor.setPropriedade(propriedade.getText().toString());
                                         produtor.setCodIdentificacao(identificacao.getText().toString());
 
-                                        viewToast(context, "Iformações alteradas!");
+                                        //fazer rquest para alterar dados do produtor
+                                        request_alterar_dados_perfil(produtor);
+                                        alerta.cancel();
 
                                     }
                                 });
@@ -274,6 +282,17 @@ public class PainelActivity extends AppCompatActivity {
 
     }
 
+    public void request_cadastrar_novaSafra(Safra safra) {
+        viewToast(context, "Safra cadastrada!");
+    }
+
+    public void request_alterar_dados_perfil(Produtor produtor) {
+        viewToast(context, "Iformações alteradas!");
+    }
+
+    public void request_alterar_dados_senha(Produtor produtor) {
+        viewToast(context, "Iformações alteradas!");
+    }
 
     @Override
     public void onBackPressed() {

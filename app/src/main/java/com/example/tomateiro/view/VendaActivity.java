@@ -43,7 +43,7 @@ public class VendaActivity extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private VendaAdapter mAdapter;
     private ArrayList<Venda> vendaList;
-    private  Produtor  produtor;
+    private Produtor produtor;
     private Safra safra;
 
     @Override
@@ -66,7 +66,7 @@ public class VendaActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         vendaList = new ArrayList<>();
-        mAdapter = new VendaAdapter(context, vendaList);
+        mAdapter = new VendaAdapter(context, vendaList, safra);
 
         recyclerView.setVisibility(View.GONE);
 
@@ -101,12 +101,14 @@ public class VendaActivity extends AppCompatActivity {
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
+                                        venda.setEstado("Disponivel");
                                         venda.setVendaData(et_nova_venda_data.getText().toString());
                                         venda.setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
                                         venda.setPreco(et_nova_venda_preco.getText().toString());
 
-                                        vendaList.add(venda);
-                                        safra.setVendas(vendaList);
+                                        //fazer requisiçao para alterar dados da safra
+//                                        vendaList.add(venda);
+//                                        safra.setVendas(vendaList);
 
                                         request_cadastrarVenda(venda);
                                     }
@@ -170,6 +172,7 @@ public class VendaActivity extends AppCompatActivity {
 
                             mAdapter.getVendaList().remove(position);
                             mAdapter.notifyItemRemoved(position);
+                            //fazer requisiçao para alterar dados da safra
                             safra.setVendas(mAdapter.getVendaList());
                             dialog.cancel();
                         }

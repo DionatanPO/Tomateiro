@@ -17,6 +17,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Venda;
 
 import java.util.ArrayList;
@@ -30,10 +31,12 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
     private ArrayList<Venda> vendaList;
     private Intent intent;
     private int position;
+    private Safra safra;
 
-    public VendaAdapter(Context context, ArrayList<Venda> vendagemslis) {
+    public VendaAdapter(Context context, ArrayList<Venda> vendagemslis, Safra safra) {
         this.context = context;
         this.vendaList = vendagemslis;
+        this.safra = safra;
 
     }
 
@@ -89,12 +92,21 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
                         final EditText et_nova_venda_quantidade = layout.findViewById(R.id.nova_venda_quantidade);
                         final EditText et_nova_venda_preco = layout.findViewById(R.id.nova_venda_preco);
 
+                        et_nova_venda_data.setText(getVendaList().get(position).getVendaData());
+                        et_nova_venda_quantidade.setText(String.valueOf(getVendaList().get(position).getQuantidade()));
+                        et_nova_venda_preco.setText(getVendaList().get(position).getPreco());
 
                         btn_concluir.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
 
-                                viewToast(context, "Dados da vebda alterados!");
+                                getVendaList().get(position).setVendaData(et_nova_venda_data.getText().toString());
+                                getVendaList().get(position).setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
+                                getVendaList().get(position).setPreco(et_nova_venda_preco.getText().toString());
+
+                                //Fazer request para atualizar dados
+                                safra.setVendas(getVendaList());
+
                             }
                         });
 
@@ -125,6 +137,12 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
     @Override
     public int getItemCount() {
         return vendaList.size();
+    }
+
+    public void request_alterarDados(Safra safra) {
+
+        this.notifyDataSetChanged();
+        viewToast(context, "Dados da vebda alterados!");
     }
 
 }
