@@ -13,26 +13,34 @@ public class ProdutorController {
         this.context = context;
     }
 
-    public boolean validar_registro(Produtor produtor) {
+    public boolean validar_registro(Produtor produtor, String senha2) {
         if (produtor.getNome().isEmpty() || produtor.getCodIdentificacao().isEmpty()
-                || produtor.getPropriedade().isEmpty() || produtor.getSenha().isEmpty()) {
+                || produtor.getPropriedade().isEmpty() || produtor.getSenha().isEmpty() || senha2.isEmpty()) {
 
             viewToastAlerta(context, "Preencha todos os campos");
-            return false;
+            if (produtor.getSenha().equals(senha2)) {
+
+                return true;
+            } else {
+                viewToastAlerta(context, "As senhas não são iguais");
+                return false;
+            }
         } else {
-            return true;
+            return false;
         }
     }
 
     public boolean validar_login(Produtor produtor, String senha) {
-        if (senha.isEmpty() || produtor.getSenha().isEmpty()) {
+        if (senha.isEmpty() || produtor.getSenha().isEmpty() || produtor.getCodIdentificacao().isEmpty()) {
             viewToastAlerta(context, "Preencha tododos os campos");
-            return false;
-        } else if (produtor.getSenha().equals(senha)) {
+            if (produtor.getSenha().equals(senha)) {
 
-            return true;
+                return true;
+            } else {
+                viewToastAlerta(context, "As senhas não são iguais");
+                return false;
+            }
         } else {
-            viewToastAlerta(context, "As senhas não são iguais");
             return false;
         }
     }
@@ -40,15 +48,17 @@ public class ProdutorController {
     public boolean validar_alterar_senha(Produtor produtor, String senha) {
         if (senha.isEmpty() || produtor.getSenha().isEmpty()) {
             viewToastAlerta(context, "Preencha tododos os campos");
-            return false;
-        } else if (produtor.getSenha().equals(senha)) {
-
-            return true;
+            if (produtor.getSenha().equals(senha)) {
+                return true;
+            } else {
+                viewToastAlerta(context, "As senhas não são iguais");
+                return false;
+            }
         } else {
-            viewToastAlerta(context, "As senhas não são iguais");
             return false;
         }
     }
+
     public boolean validar_alterar_perfil(Produtor produtor) {
         if (produtor.getNome().isEmpty() || produtor.getCodIdentificacao().isEmpty()
                 || produtor.getPropriedade().isEmpty()) {

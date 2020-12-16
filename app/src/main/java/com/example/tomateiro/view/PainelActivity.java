@@ -18,6 +18,8 @@ import androidx.appcompat.widget.PopupMenu;
 
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.controller.ProdutorController;
+import com.example.tomateiro.controller.SafraController;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Venda;
@@ -36,9 +38,13 @@ public class PainelActivity extends AppCompatActivity {
     private Context context;
     private Intent intent;
     private Safra safra;
+    private SafraController safraController;
+    private ProdutorController produtorController;
     private View card_safra;
     private TextView msg, painel_produtor;
     private Produtor produtor;
+
+    private AlertDialog alerta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,8 @@ public class PainelActivity extends AppCompatActivity {
         }
 
         context = this;
+        safraController = new SafraController(context);
+        produtorController = new ProdutorController(context);
 
         card_safra = findViewById(R.id.card_safra);
         msg = findViewById(R.id.mensagem);
@@ -68,6 +76,64 @@ public class PainelActivity extends AppCompatActivity {
         } else {
 
         }
+        card_safra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                LayoutInflater inflater = LayoutInflater.from(context);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                View layout;
+
+                layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
+
+                Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+                TextView textView = layout.findViewById(R.id.textView);
+                textView.setText(" Alterar dados da safra");
+
+                final EditText et_nova_safra_pes = layout.findViewById(R.id.nova_safra_pes);
+                final EditText et_nova_safra_ciclo = layout.findViewById(R.id.nova_safra_ciclo);
+                final EditText et_nova_safra_regiao = layout.findViewById(R.id.nova_safra_regiao);
+
+                final TextView txt_painel_card_safra = layout.findViewById(R.id.painel_card_safra);
+                final TextView txt_painel_card_ciclo = layout.findViewById(R.id.painel_card_cocloAno);
+                final TextView txt_painel_card_qtde_pes = layout.findViewById(R.id.painel_card_qtde_pes);
+                final TextView txt_painel_card_regiao = layout.findViewById(R.id.painel_card_regiao);
+
+
+                btn_concluir.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        safra = teste();
+
+
+                        //fazer request para salvar safra
+                        if (safraController.validar_alterar(safra)) {
+                            safra.setEstado("Disponivel");
+                            safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
+                            safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                            safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
+
+                            txt_painel_card_ciclo.setText(et_nova_safra_ciclo.getText().toString());
+                            txt_painel_card_qtde_pes.setText(et_nova_safra_regiao.getText().toString());
+                            txt_painel_card_regiao.setText(et_nova_safra_pes.getText().toString());
+
+                            request_cadastrar_novaSafra(safra);
+
+                            alerta.cancel();
+                        } else {
+
+                        }
+
+
+                    }
+                });
+
+                builder.setView(layout);
+                alerta = builder.create();
+                alerta.show();
+            }
+        });
+
         btn_venda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,25 +188,41 @@ public class PainelActivity extends AppCompatActivity {
                                 final EditText et_nova_safra_ciclo = layout.findViewById(R.id.nova_safra_ciclo);
                                 final EditText et_nova_safra_regiao = layout.findViewById(R.id.nova_safra_regiao);
 
+                                final TextView txt_painel_card_safra = layout.findViewById(R.id.painel_card_safra);
+                                final TextView txt_painel_card_ciclo = layout.findViewById(R.id.painel_card_cocloAno);
+                                final TextView txt_painel_card_qtde_pes = layout.findViewById(R.id.painel_card_qtde_pes);
+                                final TextView txt_painel_card_regiao = layout.findViewById(R.id.painel_card_regiao);
 
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         safra = teste();
-                                        safra.setEstado("Disponivel");
-                                        safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
-                                        safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
-                                        safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
 
-                                        card_safra.setVisibility(View.VISIBLE);
-                                        msg.setVisibility(View.GONE);
+
                                         //fazer request para salvar safra
-                                        request_cadastrar_novaSafra(safra);
+                                        if (safraController.validar_cadastro(safra)) {
 
-                                        alerta.cancel();
+                                            safra.setEstado("Disponivel");
+                                            safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
+                                            safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                                            safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
+
+                                            txt_painel_card_ciclo.setText(et_nova_safra_ciclo.getText().toString());
+                                            txt_painel_card_qtde_pes.setText(et_nova_safra_regiao.getText().toString());
+                                            txt_painel_card_regiao.setText(et_nova_safra_pes.getText().toString());
+
+                                            card_safra.setVisibility(View.VISIBLE);
+                                            msg.setVisibility(View.GONE);
+                                            request_cadastrar_novaSafra(safra);
+
+                                            alerta.cancel();
+                                        } else {
+
+                                        }
+
+
                                     }
                                 });
-
 
                                 builder.setView(layout);
                                 alerta = builder.create();
@@ -174,8 +256,13 @@ public class PainelActivity extends AppCompatActivity {
                                         produtor.setCodIdentificacao(identificacao.getText().toString());
 
                                         //fazer rquest para alterar dados do produtor
-                                        request_alterar_dados_perfil(produtor);
-                                        alerta.cancel();
+                                        if (produtorController.validar_alterar_perfil(produtor)) {
+                                            request_alterar_dados_perfil(produtor);
+                                            alerta.cancel();
+                                        } else {
+
+                                        }
+
 
                                     }
                                 });

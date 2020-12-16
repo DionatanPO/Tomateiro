@@ -10,12 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.controller.ProdutorController;
 import com.example.tomateiro.model.Produtor;
 
 import static com.example.tomateiro.model.CustonToast.viewToast;
 
 public class RegistroActivity extends AppCompatActivity {
     private Produtor produtor;
+    private ProdutorController produtorController;
     private EditText nome, propriedade, identificacao, senha1, senha2;
     private Button button_concluir;
     private Context context;
@@ -26,6 +28,7 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         context = this;
+        produtorController = new ProdutorController(context);
         button_concluir = findViewById(R.id.btn_concluir);
 
         nome = findViewById(R.id.registro_nome);
@@ -37,17 +40,23 @@ public class RegistroActivity extends AppCompatActivity {
         button_concluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 produtor = new Produtor();
                 produtor.setNome(nome.getText().toString());
                 produtor.setPropriedade(propriedade.getText().toString());
                 produtor.setCodIdentificacao(identificacao.getText().toString());
                 produtor.setSenha(senha1.getText().toString());
 
-                intent = new Intent(context, PainelActivity.class);
-                intent.putExtra("produtor", produtor);
-                context.startActivity(intent);
+                if (produtorController.validar_registro(produtor, senha2.getText().toString())) {
+                    intent = new Intent(context, PainelActivity.class);
+                    intent.putExtra("produtor", produtor);
+                    context.startActivity(intent);
+                } else {
 
-                viewToast(context, "Registro concluido com sucesso!");
+                }
+
+
+//                viewToast(context, "Registro concluido com sucesso!");
 
             }
         });

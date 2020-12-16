@@ -17,6 +17,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.controller.VendaController;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Venda;
 
@@ -32,6 +33,7 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
     private Intent intent;
     private int position;
     private Safra safra;
+    private VendaController vendaController;
 
     public VendaAdapter(Context context, ArrayList<Venda> vendagemslis, Safra safra) {
         this.context = context;
@@ -99,17 +101,21 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
                         btn_concluir.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                vendaController = new VendaController(context);
 
-                                getVendaList().get(position).setVendaData(et_nova_venda_data.getText().toString());
-                                getVendaList().get(position).setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
-                                getVendaList().get(position).setPreco(et_nova_venda_preco.getText().toString());
+                                if (vendaController.validar_alterar(getVendaList().get(position))) {
+                                    getVendaList().get(position).setVendaData(et_nova_venda_data.getText().toString());
+                                    getVendaList().get(position).setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
+                                    getVendaList().get(position).setPreco(et_nova_venda_preco.getText().toString());
 
-                                //Fazer request para atualizar dados
-                                safra.setVendas(getVendaList());
+                                    //Fazer request para atualizar dados
+                                    safra.setVendas(getVendaList());
+                                } else {
+
+                                }
 
                             }
                         });
-
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setView(layout);

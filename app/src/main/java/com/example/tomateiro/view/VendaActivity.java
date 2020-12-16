@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.controller.VendaController;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Venda;
@@ -45,12 +46,14 @@ public class VendaActivity extends AppCompatActivity {
     private ArrayList<Venda> vendaList;
     private Produtor produtor;
     private Safra safra;
+    private VendaController vendaController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venda);
         context = this;
+        vendaController = new VendaController(context);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -106,10 +109,13 @@ public class VendaActivity extends AppCompatActivity {
                                         venda.setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
                                         venda.setPreco(et_nova_venda_preco.getText().toString());
 
-                                        //fazer requisiçao para alterar dados da safra
+                                        if (vendaController.validar_cadastro(venda)) {
+                                            //fazer requisiçao para alterar dados da safra
 //                                        vendaList.add(venda);
 //                                        safra.setVendas(vendaList);
+                                        }else {
 
+                                        }
                                         request_cadastrarVenda(venda);
                                     }
                                 });

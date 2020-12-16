@@ -14,6 +14,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.controller.ProdutorController;
 import com.example.tomateiro.model.Produtor;
 
 public class LoginActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_registrar, getBtn_entrar;
     private Context context;
     private Produtor produtor;
+    private ProdutorController produtorController;
     private CheckBox checkBox;
 
     private SharedPreferences loginPreferences;
@@ -36,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
         context = this;
         produtor = new Produtor();
+        produtorController = new ProdutorController(context);
 
         btn_registrar = findViewById(R.id.btn_registrar);
         getBtn_entrar = findViewById(R.id.btn_entrar);
@@ -53,14 +56,22 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         getBtn_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                produtor.setCodIdentificacao(editText_codigo.getText().toString());
+                produtor.setSenha(editText_senha.getText().toString());
+                if(produtorController.validar_login(produtor, produtor.getSenha())){
+                    produtor.setNome("Dionatan");
+                    Intent intent = new Intent(context, PainelActivity.class);
+                    intent.putExtra("produtor", produtor);
+                    startActivity(intent);
+                }else{
 
-                produtor.setNome("Dionatan");
-                Intent intent = new Intent(context, PainelActivity.class);
-                intent.putExtra("produtor", produtor);
-                startActivity(intent);
+                }
+
+
             }
         });
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
