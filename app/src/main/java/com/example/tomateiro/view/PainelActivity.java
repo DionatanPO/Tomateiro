@@ -99,6 +99,10 @@ public class PainelActivity extends AppCompatActivity {
                 final EditText et_nova_safra_ciclo = layout.findViewById(R.id.nova_safra_ciclo);
                 final EditText et_nova_safra_regiao = layout.findViewById(R.id.nova_safra_regiao);
 
+                et_nova_safra_pes.setText(String.valueOf(safra.getQtdePes()));
+                et_nova_safra_ciclo.setText(safra.getClicloAno());
+                et_nova_safra_regiao.setText(safra.getRegiaoReferencia());
+
 
                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -240,14 +244,27 @@ public class PainelActivity extends AppCompatActivity {
                                 TextView titulo = layout.findViewById(R.id.textView);
                                 titulo.setText("Alterar seus dados");
 
-                                final EditText nome, propriedade, identificacao;
+                                final EditText nome, propriedade, identificacao, senha1, senha2;
                                 Button button_concluir;
+                                TextView txt_senha1, txt_senha2;
 
                                 button_concluir = layout.findViewById(R.id.btn_concluir);
 
                                 nome = layout.findViewById(R.id.registro_nome);
                                 propriedade = layout.findViewById(R.id.registro_propriedade);
                                 identificacao = layout.findViewById(R.id.registro_identificacao);
+
+                                txt_senha1 = layout.findViewById(R.id.txt_senha1);
+                                txt_senha2 = layout.findViewById(R.id.txt_senha2);
+
+                                txt_senha1.setVisibility(View.GONE);
+                                txt_senha2.setVisibility(View.GONE);
+
+                                senha1 = layout.findViewById(R.id.senha1);
+                                senha2 = layout.findViewById(R.id.senha2);
+
+                                senha1.setVisibility(View.GONE);
+                                senha2.setVisibility(View.GONE);
 
                                 nome.setText(produtor.getNome());
                                 propriedade.setText(produtor.getPropriedade());
@@ -262,6 +279,60 @@ public class PainelActivity extends AppCompatActivity {
 
                                         //fazer rquest para alterar dados do produtor
                                         if (produtorController.validar_alterar_perfil(produtor)) {
+                                            request_alterar_dados_perfil(produtor);
+                                            alerta.cancel();
+                                        } else {
+
+                                        }
+
+
+                                    }
+                                });
+
+                                builder.setView(layout);
+                                alerta = builder.create();
+                                alerta.show();
+
+                                return true;
+                            case R.id.senha:
+
+                                layout = inflater.inflate(R.layout.activity_registro, null);
+                                titulo = layout.findViewById(R.id.textView);
+
+                                TextView txt_nome, txt_propriedade, txt_codigo;
+
+                                txt_nome = layout.findViewById(R.id.txt_nome);
+                                txt_propriedade = layout.findViewById(R.id.txt_propriedade);
+                                txt_codigo = layout.findViewById(R.id.txt_codigo);
+
+                                txt_nome.setVisibility(View.GONE);
+                                txt_propriedade.setVisibility(View.GONE);
+                                txt_codigo.setVisibility(View.GONE);
+
+                                titulo.setText("Alterar seus dados");
+
+
+                                button_concluir = layout.findViewById(R.id.btn_concluir);
+
+                                nome = layout.findViewById(R.id.registro_nome);
+                                propriedade = layout.findViewById(R.id.registro_propriedade);
+                                identificacao = layout.findViewById(R.id.registro_identificacao);
+
+                                senha1 = layout.findViewById(R.id.senha1);
+                                senha2 = layout.findViewById(R.id.senha2);
+
+                                nome.setVisibility(View.GONE);
+                                propriedade.setVisibility(View.GONE);
+                                identificacao.setVisibility(View.GONE);
+
+
+                                button_concluir.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        produtor.setSenha(senha1.getText().toString());
+
+                                        //fazer rquest para alterar dados do produtor
+                                        if (produtorController.validar_alterar_senha(produtor, senha2.getText().toString())) {
                                             request_alterar_dados_perfil(produtor);
                                             alerta.cancel();
                                         } else {
