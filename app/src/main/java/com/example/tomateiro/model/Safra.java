@@ -3,7 +3,10 @@ package com.example.tomateiro.model;
 import android.annotation.SuppressLint;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Safra implements Serializable {
 
@@ -37,27 +40,39 @@ public class Safra implements Serializable {
 
     @SuppressLint("DefaultLocale")
     public Safra calcularCustoTotalHa(Safra s) {
-        double resultado = Double.parseDouble(s.getCustoA().getSubTotalA()) +
-                Double.parseDouble(s.getCustoB().getSubTotalB()) +
-                Double.parseDouble(s.getCustoC().getSubTotalC()) +
-                Double.parseDouble(s.getCustoD().getSubTotalD());
-        s.setCustoTotalHa(String.format("%,.2f", resultado));
+        s.setCustoTotalHa("0");
+        if (s.getCustoA() == null && s.getCustoA().getSubTotalA() == null &&
+                s.getCustoB() == null && s.getCustoB().getSubTotalB() == null &&
+                s.getCustoC() == null && s.getCustoC().getSubTotalC() == null &&
+                s.getCustoD() == null && s.getCustoD().getSubTotalD() == null) {
+
+        } else {
+            long resultado = parse2(s.getCustoA().getSubTotalA()) +
+                    parse2(s.getCustoB().getSubTotalB()) +
+                    parse2(s.getCustoC().getSubTotalC()) +
+                    parse2(s.getCustoD().getSubTotalD());
+            double x = (double) resultado / 100;
+            s.setCustoTotalHa(String.format("%,.2f", x));
+        }
+
         return s;
     }
 
     @SuppressLint("DefaultLocale")
     public Safra calcularCustoTotalCx(Safra s) {
-        double resultado = Double.parseDouble(s.getCustoTotalHa()) / s.getQtdeCaixas();
-        s.setCustoTotalCa(String.format("%,.2f", resultado));
+        long resultado = parse2(s.getCustoTotalHa()) / s.getQtdeCaixas();
+        double x = (double) resultado / 100;
+        s.setCustoTotalCa(String.format("%,.2f", x));
         return s;
     }
 
     public Safra calcularPrecoMedioRecebido(Safra s) {
-        double resultado = 0;
+        long resultado = 0;
         for (int i = 0; i < s.getVendas().size(); i++) {
-            resultado += Double.parseDouble(s.getVendas().get(i).getPreco());
+            resultado += parse2(s.getVendas().get(i).getPreco());
         }
-        s.setPreçoMedioRecebidoProdutor(String.format("%,.2f", resultado));
+        double x = ((double) resultado / 100) / s.getVendas().size();
+        s.setPreçoMedioRecebidoProdutor(String.format("%,.2f", x));
         return s;
     }
 
@@ -88,9 +103,55 @@ public class Safra implements Serializable {
         return s;
     }
 
+    public Safra calcularReceita(Safra s) {
+        long resultado = parse2(s.getPreçoMedioRecebidoProdutor()) * s.getQtdeCaixas();
+        double x = (double) resultado / 100;
+        s.setReceitaHa(String.format("%,.2f", x));
+        return s;
+    }
+
+    public Safra calcularResultadoHa(Safra s) {
+        long resultado = parse2(s.getCustoTotalHa()) - parse2(s.getReceitaHa());
+        double x = (double) resultado / 100;
+        s.setResultadoHa(String.format("%,.2f", x));
+        return s;
+    }
+
+    public Safra calcularResultadoCx(Safra s) {
+        long resultado = parse2(s.getPreçoMedioRecebidoProdutor()) - parse2(s.getCustoTotalCa());
+        double x = (double) resultado / 100;
+        s.setResultadoCx(String.format("%,.2f", x));
+        return s;
+    }
+
+    public Safra calcularMargemVenda(Safra s) {
+        long resultado = parse2(s.getResultadoCx()) / parse2(s.getCustoTotalCa());
+        double x = (double) resultado / 100;
+        s.setResultadoCx(String.format("%,.2f", x));
+        return s;
+    }
+
     public String parse(String s) {
         return s = s.replace(",", ".");
     }
+
+    public long parse2(String s) {
+        double value = 0;
+        long r = 0;
+
+        s = s.replace(",", ".");
+
+        NumberFormat format = NumberFormat.getInstance();
+        try {
+            value = format.parse(s).doubleValue();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        s = String.format(Locale.US, "%.0f", value);
+        r = Long.parseLong(s);
+        return r;
+    }
+
 
     public CustoA getCustoA() {
         return custoA;

@@ -1,8 +1,10 @@
 package com.example.tomateiro.model;
+
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.text.ParseException;
 
-public class CustoA {
+public class CustoA implements Serializable {
 
     //A - OPERAÇÕES MECANIZADAS
     private String aracaoQ;
@@ -82,6 +84,7 @@ public class CustoA {
 
         return value;
     }
+
     public String getAracaoQ() {
         return aracaoQ;
     }

@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.model.CustoA;
+import com.example.tomateiro.model.CustoB;
+import com.example.tomateiro.model.CustoC;
+import com.example.tomateiro.model.CustoD;
 import com.example.tomateiro.model.Safra;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -19,9 +23,11 @@ import com.github.mikephil.charting.data.PieEntry;
 
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import static android.graphics.Color.WHITE;
+import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
 
 public class RelatorioActivity extends AppCompatActivity {
     private PieChart pieChart, pieChart2, pieChart3, pieChart4;
@@ -29,13 +35,11 @@ public class RelatorioActivity extends AppCompatActivity {
     private PieData pieData;
     private ArrayList<PieEntry> pieEntries;
     private Safra safra;
+    private Field[] fields;
 
-    private TextView
-            r_qtd_total_caixa,
-            r_ciclo,
-            r_peso_medio_caixa,
-            r_qtd_pes,
-            r_regiao_referencia;
+    private TextView r_qtd_total_caixa, r_ciclo, r_peso_medio_caixa, r_qtd_pes, r_regiao_referencia
+           , r_subTotalA, r_subTotalD,r_subTotalC, r_subTotalB, r_custoTotal_ha, r_custoTotal_cx,
+            r_preco_medio_recebido, r_receitaHa, r_resultadoHa, r_resultadoCx, r_margem_venda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +53,37 @@ public class RelatorioActivity extends AppCompatActivity {
         r_qtd_pes = findViewById(R.id.relatorio_qtde_pes);
         r_regiao_referencia = findViewById(R.id.relatorio_regiao_referencia);
 
+        r_subTotalA = findViewById(R.id.relatorio_subtotalA);
+        r_subTotalC = findViewById(R.id.relatorio_subtotalC);
+        r_subTotalB = findViewById(R.id.relatorio_subtotalB);
+        r_subTotalD = findViewById(R.id.relatorio_subtotalD);
+        r_custoTotal_ha = findViewById(R.id.relatorio_custo_total_ha);
+        r_custoTotal_cx = findViewById(R.id.relatorio_custo_total_cx);
+        r_preco_medio_recebido = findViewById(R.id.relatorio_preco_medio_recebido);
+        r_receitaHa = findViewById(R.id.relatorio_receita);
+        r_resultadoHa = findViewById(R.id.relatorio_resultadoHa);
+        r_resultadoCx = findViewById(R.id.relatorio_resultadoCx);
+        r_margem_venda = findViewById(R.id.relatorio_margem_venda);
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             safra = (Safra) getIntent().getSerializableExtra("safra");
-            safra = safra.calcularQtdeCaixasVendidas(safra);
-            safra = safra.calcularPesoMedioCaixa(safra);
+            try {
+                safra = safra.calcularQtdeCaixasVendidas(safra);
+                safra = safra.calcularPesoMedioCaixa(safra);
+                safra = safra.calcularCustoTotalHa(safra);
+                safra = safra.calcularCustoTotalCx(safra);
+                safra = safra.calcularPrecoMedioRecebido(safra);
+                safra = safra.calcularReceita(safra);
+                safra = safra.calcularResultadoHa(safra);
+                safra = safra.calcularResultadoCx(safra);
+                safra = safra.calcularMargemVenda(safra);
+
+            }catch (Exception e){
+                System.out.println("");
+            }
+
 
         } else {
             safra = new Safra();
@@ -67,6 +96,14 @@ public class RelatorioActivity extends AppCompatActivity {
             r_regiao_referencia.setText(safra.getRegiaoReferencia());
             r_peso_medio_caixa.setText(safra.getPesoMedioCaixas());
             r_qtd_total_caixa.setText(String.valueOf(safra.getQtdeCaixas()));
+            r_custoTotal_ha.setText(safra.getCustoTotalHa());
+            r_custoTotal_cx.setText(safra.getCustoTotalCa());
+            r_preco_medio_recebido.setText(safra.getPreçoMedioRecebidoProdutor());
+            r_receitaHa.setText(safra.getReceitaHa());
+            r_resultadoHa.setText(safra.getResultadoHa());
+            r_resultadoCx.setText(safra.getResultadoCx());
+            r_margem_venda.setText(safra.getMargemVenda() +"%");
+
         } catch (Exception e) {
 
         }
@@ -75,18 +112,32 @@ public class RelatorioActivity extends AppCompatActivity {
 
         pieChart = findViewById(R.id.grafico1);
         pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(20, "Final"));
-        pieEntries.add(new PieEntry(20, "Inicio"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
+
+        Class<CustoA> custoAClass = CustoA.class;
+
+        fields = custoAClass.getDeclaredFields();
+
+        for (Field field : fields) {
+            field.setAccessible(true);
+            Object objeto = null;
+
+            try {
+                objeto = field.get(safra.getCustoA());
+            } catch (Exception e) {
+
+            }
+
+            if (objeto != null) {
+                r_subTotalA.setText(safra.getCustoA().getSubTotalA());
+
+                if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
+
+                } else {
+                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
+                }
+
+            }
+        }
 
         pieDataSet = new PieDataSet(pieEntries, "");
 //        pieDataSet.setColors(new int[]{R.color.color1, R.color.color2, R.color.color3}, RelatorioActivity.this);
@@ -107,9 +158,29 @@ public class RelatorioActivity extends AppCompatActivity {
         pieChart2 = findViewById(R.id.grafico2);
 
         pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(20, "Final"));
-        pieEntries.add(new PieEntry(20, "Inicio"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
+        Class<CustoB> custoBClass = CustoB.class;
+
+        fields = custoBClass.getDeclaredFields();
+
+        for (Field field : fields) {
+            field.setAccessible(true);
+            Object objeto = null;
+            try {
+                objeto = field.get(safra.getCustoB());
+            } catch (Exception e) {
+
+            }
+
+            if (objeto != null) {
+                r_subTotalB.setText(safra.getCustoB().getSubTotalB());
+                if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
+
+                } else {
+                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
+                }
+
+            }
+        }
 
         pieDataSet = new PieDataSet(pieEntries, "");
         pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
@@ -129,12 +200,30 @@ public class RelatorioActivity extends AppCompatActivity {
         pieChart3 = findViewById(R.id.grafico3);
 
         pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(20, "Final"));
-        pieEntries.add(new PieEntry(20, "Inicio"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
+
+        Class<CustoC> custoCClass = CustoC.class;
+
+        fields = custoCClass.getDeclaredFields();
+
+        for (Field field : fields) {
+            field.setAccessible(true);
+            Object objeto = null;
+            try {
+                objeto = field.get(safra.getCustoC());
+            } catch (Exception e) {
+
+            }
+
+            if (objeto != null) {
+                r_subTotalC.setText(safra.getCustoC().getSubTotalC());
+                if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
+
+                } else {
+                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
+                }
+
+            }
+        }
 
         pieDataSet = new PieDataSet(pieEntries, "");
         pieDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
@@ -154,10 +243,31 @@ public class RelatorioActivity extends AppCompatActivity {
         pieChart4 = findViewById(R.id.grafico4);
 
         pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(20, "Final"));
-        pieEntries.add(new PieEntry(20, "Inicio"));
-        pieEntries.add(new PieEntry(20, "Inicio"));
-        pieEntries.add(new PieEntry(20, "kkkkk"));
+
+        Class<CustoD> custoDClass = CustoD.class;
+
+        fields = custoDClass.getDeclaredFields();
+
+        for (Field field : fields) {
+            field.setAccessible(true);
+            Object objeto = null;
+            try {
+                objeto = field.get(safra.getCustoD());
+            } catch (Exception e) {
+
+            }
+
+            if (objeto != null) {
+                r_subTotalD.setText(safra.getCustoD().getSubTotalD());
+                if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
+
+                } else {
+                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
+                }
+
+            }
+        }
+
 
         pieDataSet = new PieDataSet(pieEntries, "");
         pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);

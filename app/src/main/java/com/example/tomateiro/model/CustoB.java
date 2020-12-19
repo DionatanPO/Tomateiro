@@ -1,9 +1,10 @@
 package com.example.tomateiro.model;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.text.ParseException;
 
-public class CustoB {
+public class CustoB implements Serializable {
 
     //B - OPERAÇÕES MECANIZADAS
     private String colagemQ;

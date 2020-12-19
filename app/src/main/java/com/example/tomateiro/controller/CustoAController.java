@@ -27,7 +27,7 @@ public class CustoAController {
             Object objeto = field.get(custoA);
 
             if (objeto == null) {
-                System.out.println(field.getName());
+
                 if(field.getName().equals("subTotalA")){
                     resultado = true;
                 }else{

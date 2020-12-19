@@ -1,5 +1,6 @@
 package com.example.tomateiro.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,6 +21,10 @@ import androidx.appcompat.widget.PopupMenu;
 import com.example.tomateiro.R;
 import com.example.tomateiro.controller.ProdutorController;
 import com.example.tomateiro.controller.SafraController;
+import com.example.tomateiro.model.CustoA;
+import com.example.tomateiro.model.CustoB;
+import com.example.tomateiro.model.CustoC;
+import com.example.tomateiro.model.CustoD;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Venda;
@@ -185,6 +190,7 @@ public class PainelActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     View layout;
 
+                    @SuppressLint("SetTextI18n")
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.novaSafra:
@@ -515,6 +521,22 @@ public class PainelActivity extends AppCompatActivity {
         vendas.add(venda3);
 
         safra.setVendas(vendas);
+
+        CustoA custoA = new CustoA();
+        CustoB custoB = new CustoB();
+        CustoC custoC = new CustoC();
+        CustoD custoD = new CustoD();
+
+        custoD.setImpostosTaxasV("55");
+        custoD.setArrendamentoV("55");
+        custoA.setSubTotalA("2.000,00");
+        custoB.setSubTotalB("2.000,00");
+        custoC.setSubTotalC("2.000,00");
+        custoD.setSubTotalD("2.000,00");
+        safra.setCustoA(custoA);
+        safra.setCustoB(custoB);
+        safra.setCustoC(custoC);
+        safra.setCustoD(custoD);
         return safra;
     }
 }
