@@ -3,11 +3,14 @@ package com.example.tomateiro.controller;
 import android.content.Context;
 
 import com.example.tomateiro.model.Produtor;
+import com.google.gson.Gson;
 
 import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
 
 public class ProdutorController {
     private Context context;
+    private Gson gson = new Gson();
+    private Produtor produtor = new Produtor();
 
     public ProdutorController(Context context) {
         this.context = context;
@@ -18,7 +21,7 @@ public class ProdutorController {
                 || produtor.getPropriedade().isEmpty() || produtor.getSenha().isEmpty() || senha2.isEmpty()) {
 
             viewToastAlerta(context, "Preencha todos os campos");
-          return  false;
+            return false;
         } else {
             if (produtor.getSenha().equals(senha2)) {
 
@@ -64,5 +67,15 @@ public class ProdutorController {
         } else {
             return true;
         }
+    }
+
+    public String converter_produtor_json(Produtor produtor) {
+        String json = gson.toJson(produtor);
+        return json;
+    }
+
+    public Produtor converter_json_produtor(String json) {
+        produtor = new Gson().fromJson(json, Produtor.class);
+        return produtor;
     }
 }

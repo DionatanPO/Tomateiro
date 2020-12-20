@@ -7,6 +7,7 @@ import java.text.ParseException;
 public class CustoA implements Serializable {
 
     //A - OPERAÇÕES MECANIZADAS
+    private Long id;
     private String aracaoQ;
     private String aracaoV;
 
@@ -83,6 +84,14 @@ public class CustoA implements Serializable {
         }
 
         return value;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getAracaoQ() {

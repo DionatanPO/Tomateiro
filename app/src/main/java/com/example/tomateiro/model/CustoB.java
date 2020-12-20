@@ -7,6 +7,7 @@ import java.text.ParseException;
 public class CustoB implements Serializable {
 
     //B - OPERAÇÕES MECANIZADAS
+    private Long id;
     private String colagemQ;
     private String transplantioQ;
     private String estaqueamentoQ;
@@ -80,6 +81,14 @@ public class CustoB implements Serializable {
         }
 
         return value;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getColagemQ() {

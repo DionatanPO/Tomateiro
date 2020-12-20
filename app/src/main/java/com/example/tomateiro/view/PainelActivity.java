@@ -28,6 +28,7 @@ import com.example.tomateiro.model.CustoD;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Venda;
+import com.example.tomateiro.request.SafraRequest;
 import com.example.tomateiro.view.custo.CustoA_Activity;
 import com.example.tomateiro.view.custo.CustoB_Activity;
 import com.example.tomateiro.view.custo.CustoC_Activity;
@@ -48,6 +49,7 @@ public class PainelActivity extends AppCompatActivity {
     private View card_safra;
     private TextView msg, painel_produtor, txt_painel_card_safra, txt_painel_card_ciclo, txt_painel_card_qtde_pes, txt_painel_card_regiao;
     private Produtor produtor;
+    private SafraRequest safraRequest;
 
     private AlertDialog alerta;
 
@@ -62,8 +64,10 @@ public class PainelActivity extends AppCompatActivity {
         }
 
         context = this;
+
+        produtorController = new  ProdutorController(context);
         safraController = new SafraController(context);
-        produtorController = new ProdutorController(context);
+        safraRequest = new SafraRequest(context);
 
         card_safra = findViewById(R.id.card_safra);
         msg = findViewById(R.id.mensagem);
@@ -80,12 +84,10 @@ public class PainelActivity extends AppCompatActivity {
         txt_painel_card_qtde_pes = findViewById(R.id.painel_card_qtde_pes);
         txt_painel_card_regiao = findViewById(R.id.painel_card_regiao);
 
-        if (safra != null) {
-            card_safra.setVisibility(View.VISIBLE);
-            msg.setVisibility(View.GONE);
-        } else {
 
-        }
+        //------------buscando safra ativa-------------------------------------
+        safraRequest.buscar_safra_produtor(produtorController.converter_produtor_json(produtor),PainelActivity.this);
+
         card_safra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,7 +114,6 @@ public class PainelActivity extends AppCompatActivity {
                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        safra = teste();
 
                         safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
                         safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
@@ -122,16 +123,9 @@ public class PainelActivity extends AppCompatActivity {
                             safra.setQtdePes(0);
                         }
 
-                        //fazer request para salvar safra
+                        //fazer request para alterar safra
                         if (safraController.validar_alterar(safra)) {
-
-                            txt_painel_card_ciclo.setText(safra.getClicloAno());
-                            txt_painel_card_qtde_pes.setText(String.valueOf(safra.getQtdePes()));
-                            txt_painel_card_regiao.setText(safra.getRegiaoReferencia());
-
-                            card_safra.setVisibility(View.VISIBLE);
-                            msg.setVisibility(View.GONE);
-                            request_cadastrar_novaSafra(safra);
+                            safraRequest.alterrar_safra(safraController.converter_safra_json(safra),safra.getId(), PainelActivity.this);
 
                             alerta.cancel();
                         } else {
@@ -207,9 +201,6 @@ public class PainelActivity extends AppCompatActivity {
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-
-                                        safra = teste();
-                                        safra.setEstado("Disponivel");
                                         safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
                                         safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
                                         try {
@@ -221,14 +212,8 @@ public class PainelActivity extends AppCompatActivity {
 
                                         //fazer request para salvar safra
                                         if (safraController.validar_cadastro(safra)) {
-
-                                            txt_painel_card_ciclo.setText(safra.getClicloAno());
-                                            txt_painel_card_qtde_pes.setText(String.valueOf(safra.getQtdePes()));
-                                            txt_painel_card_regiao.setText(safra.getRegiaoReferencia());
-
-                                            card_safra.setVisibility(View.VISIBLE);
-                                            msg.setVisibility(View.GONE);
-                                            request_cadastrar_novaSafra(safra);
+                                            safra.setProdutor(produtor);
+                                            safraRequest.cadastrar_safra(safraController.converter_safra_json(safra), PainelActivity.this);
 
                                             alerta.cancel();
                                         } else {
@@ -339,7 +324,7 @@ public class PainelActivity extends AppCompatActivity {
 
                                         //fazer rquest para alterar dados do produtor
                                         if (produtorController.validar_alterar_senha(produtor, senha2.getText().toString())) {
-                                            request_alterar_dados_perfil(produtor);
+                                            request_alterar_dados_senha(produtor);
                                             alerta.cancel();
                                         } else {
 
@@ -451,14 +436,40 @@ public class PainelActivity extends AppCompatActivity {
 
     }
 
-    public void request_cadastrar_novaSafra(Safra safra) {
-        viewToast(context, "Safra cadastrada!");
-    }
+    public void request_cadastrar_novaSafra(Safra s) {
+        safra = s;
+        txt_painel_card_ciclo.setText(safra.getClicloAno());
+        txt_painel_card_qtde_pes.setText(String.valueOf(safra.getQtdePes()));
+        txt_painel_card_regiao.setText(safra.getRegiaoReferencia());
 
+        card_safra.setVisibility(View.VISIBLE);
+        msg.setVisibility(View.GONE);
+
+    }
+    public void request_buscar_safra(Safra s) {
+        safra = s;
+        txt_painel_card_ciclo.setText(safra.getClicloAno());
+        txt_painel_card_qtde_pes.setText(String.valueOf(safra.getQtdePes()));
+        txt_painel_card_regiao.setText(safra.getRegiaoReferencia());
+
+        card_safra.setVisibility(View.VISIBLE);
+        msg.setVisibility(View.GONE);
+
+    }
+    public void request_alterar_safra(Safra s) {
+        safra = s;
+        txt_painel_card_ciclo.setText(safra.getClicloAno());
+        txt_painel_card_qtde_pes.setText(String.valueOf(safra.getQtdePes()));
+        txt_painel_card_regiao.setText(safra.getRegiaoReferencia());
+
+        card_safra.setVisibility(View.VISIBLE);
+        msg.setVisibility(View.GONE);
+
+    }
     public void request_alterar_dados_perfil(Produtor produtor) {
-        viewToast(context, "Iformações alteradas!");
-    }
 
+
+    }
     public void request_alterar_dados_senha(Produtor produtor) {
         viewToast(context, "Iformações alteradas!");
     }
@@ -491,52 +502,4 @@ public class PainelActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    public Safra teste() {
-        Safra safra = new Safra();
-        safra.setClicloAno("1");
-        safra.setQtdePes(1000);
-        safra.setRegiaoReferencia("São Paulo");
-
-        Venda venda = new Venda();
-        venda.setPesoCaixa("22,00");
-        ;
-        venda.setPreco("10,00");
-        venda.setQuantidade(10);
-
-        Venda venda2 = new Venda();
-        venda2.setPesoCaixa("22,00");
-        ;
-        venda2.setPreco("10,00");
-        venda2.setQuantidade(10);
-
-        Venda venda3 = new Venda();
-        venda3.setPesoCaixa("22,00");
-        ;
-        venda3.setPreco("10,00");
-        venda3.setQuantidade(10);
-
-        ArrayList<Venda> vendas = new ArrayList<>();
-        vendas.add(venda);
-        vendas.add(venda2);
-        vendas.add(venda3);
-
-        safra.setVendas(vendas);
-
-        CustoA custoA = new CustoA();
-        CustoB custoB = new CustoB();
-        CustoC custoC = new CustoC();
-        CustoD custoD = new CustoD();
-
-        custoD.setImpostosTaxasV("55");
-        custoD.setArrendamentoV("55");
-        custoA.setSubTotalA("2.000,00");
-        custoB.setSubTotalB("2.000,00");
-        custoC.setSubTotalC("2.000,00");
-        custoD.setSubTotalD("2.000,00");
-        safra.setCustoA(custoA);
-        safra.setCustoB(custoB);
-        safra.setCustoC(custoC);
-        safra.setCustoD(custoD);
-        return safra;
-    }
-}
+ }

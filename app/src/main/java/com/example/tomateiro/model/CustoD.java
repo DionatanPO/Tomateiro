@@ -7,6 +7,7 @@ import java.text.ParseException;
 public class CustoD implements Serializable {
 
     //D - ADMINISTRAÇÃO
+    private Long id;
     private String arrendamentoQ;
     private String moAdministrativaQ;
     private String contabilidadeEscritorioQ;
@@ -60,6 +61,14 @@ public class CustoD implements Serializable {
         }
 
         return value;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getArrendamentoQ() {

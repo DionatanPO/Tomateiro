@@ -16,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.tomateiro.R;
 import com.example.tomateiro.controller.ProdutorController;
 import com.example.tomateiro.model.Produtor;
+import com.example.tomateiro.request.ProdutorRequest;
+
+import static com.example.tomateiro.model.CustonToast.viewToast;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText editText_codigo, editText_senha;
@@ -25,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private Produtor produtor;
     private ProdutorController produtorController;
     private CheckBox checkBox;
+    private ProdutorRequest produtorRequest;
 
     private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
@@ -39,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         context = this;
         produtor = new Produtor();
         produtorController = new ProdutorController(context);
+        produtorRequest = new ProdutorRequest(context);
 
         btn_registrar = findViewById(R.id.btn_registrar);
         getBtn_entrar = findViewById(R.id.btn_entrar);
@@ -60,14 +65,15 @@ public class LoginActivity extends AppCompatActivity {
         getBtn_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 produtor.setCodIdentificacao(editText_codigo.getText().toString());
                 produtor.setSenha(editText_senha.getText().toString());
-                if(produtorController.validar_login(produtor)){
-                    produtor.setNome("Dionatan");
-                    Intent intent = new Intent(context, PainelActivity.class);
-                    intent.putExtra("produtor", produtor);
-                    startActivity(intent);
-                }else{
+
+                if (produtorController.validar_login(produtor)) {
+                    viewToast(context, "Autenticando...");
+                    produtorRequest.login(produtorController.converter_produtor_json(produtor), LoginActivity.this);
+
+                } else {
 
                 }
 
@@ -113,5 +119,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void login_request(Produtor produtor) {
+        Intent intent = new Intent(context, PainelActivity.class);
+        intent.putExtra("produtor", produtor);
+        startActivity(intent);
     }
 }

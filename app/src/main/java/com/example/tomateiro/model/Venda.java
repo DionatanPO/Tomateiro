@@ -1,7 +1,6 @@
 package com.example.tomateiro.model;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class Venda implements Serializable {
 

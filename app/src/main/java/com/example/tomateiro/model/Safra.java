@@ -10,6 +10,7 @@ import java.util.Locale;
 
 public class Safra implements Serializable {
 
+    private Long id;
     private CustoA custoA;
     private CustoB custoB;
     private CustoC custoC;
@@ -152,6 +153,13 @@ public class Safra implements Serializable {
         return r;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public CustoA getCustoA() {
         return custoA;

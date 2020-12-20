@@ -6,6 +6,7 @@ import java.text.ParseException;
 
 public class CustoC implements Serializable {
     //C - INSUMOS
+    private Long id;
     private String calcarioDolomiticoQ;
     private String sulfatoAmonioQ;
     private String superfosfatoSimplesQ;
@@ -90,6 +91,14 @@ public class CustoC implements Serializable {
         }
 
         return value;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCalcarioDolomiticoQ() {

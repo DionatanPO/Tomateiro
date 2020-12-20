@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.example.tomateiro.R;
 import com.example.tomateiro.controller.ProdutorController;
 import com.example.tomateiro.model.Produtor;
+import com.example.tomateiro.request.ProdutorRequest;
 
 import static com.example.tomateiro.model.CustonToast.viewToast;
 
@@ -22,12 +23,15 @@ public class RegistroActivity extends AppCompatActivity {
     private Button button_concluir;
     private Context context;
     private Intent intent;
+    private ProdutorRequest produtorRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         context = this;
+        produtorRequest = new ProdutorRequest(context);
+
         produtorController = new ProdutorController(context);
         button_concluir = findViewById(R.id.btn_concluir);
 
@@ -48,18 +52,20 @@ public class RegistroActivity extends AppCompatActivity {
                 produtor.setSenha(senha1.getText().toString());
 
                 if (produtorController.validar_registro(produtor, senha2.getText().toString())) {
-                    intent = new Intent(context, PainelActivity.class);
-                    intent.putExtra("produtor", produtor);
-                    context.startActivity(intent);
+                    produtorRequest.cadastrar_produtor(produtorController.converter_produtor_json(produtor), RegistroActivity.this);
                 } else {
 
                 }
 
 
-//                viewToast(context, "Registro concluido com sucesso!");
-
             }
         });
 
+    }
+
+    public void cadastro_request(Produtor produtor) {
+        intent = new Intent(context, PainelActivity.class);
+        intent.putExtra("produtor", produtor);
+        context.startActivity(intent);
     }
 }

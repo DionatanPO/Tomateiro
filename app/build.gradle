@@ -35,6 +35,8 @@ dependencies {
     implementation 'com.codesgood:justifiedtextview:1.1.0'
     implementation 'me.abhinay.input:currency-edittext:1.1'
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.2'
+    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
