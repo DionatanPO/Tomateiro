@@ -5,21 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimaryDark"
-    android:padding="5dp"
->
+    android:padding="5dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_venda"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="20dp">
 
 
             <GridLayout
-
+                android:padding="10dp"
                 android:id="@+id/gridLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -36,50 +38,77 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/alerta_verde"
+                    android:gravity="center"
                     android:text="Venda "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textColor="@color/colorBranca"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/card_venda_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/alerta_amarelo"
+                    android:gravity="center"
                     android:text=""
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textColor="@color/colorBranca"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:textColor="@color/alerta_verde"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="17dp" />
 
                 <TextView
+                    android:gravity="center"
+                    android:textColor="@color/alerta_verde"
+                    android:textStyle="bold"
                     android:id="@+id/card_venda_data"
-                    android:text=""
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
 
                 <TextView
+                    android:textColor="@color/alerta_verde"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Qtde "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="17dp" />
 
                 <TextView
+                    android:gravity="center"
+                    android:textColor="@color/alerta_verde"
+                    android:textStyle="bold"
                     android:id="@+id/card_venda_quantidade"
-                    android:text=""
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
 
                 <TextView
+                    android:textColor="@color/alerta_verde"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Preço "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="17dp" />
 
                 <TextView
+                    android:gravity="center"
+                    android:textColor="@color/alerta_verde"
+                    android:textStyle="bold"
                     android:id="@+id/card_venda_preco"
-                    android:text=""
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
             </GridLayout>
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,9 +17,11 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.controller.SafraController;
 import com.example.tomateiro.controller.VendaController;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Venda;
+import com.example.tomateiro.request.SafraRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,8 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
     private int position;
     private Safra safra;
     private VendaController vendaController;
+    private SafraController safraController;
+    private SafraRequest safraRequest;
 
     public VendaAdapter(Context context, ArrayList<Venda> vendagemslis, Safra safra) {
         this.context = context;
@@ -59,6 +63,7 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
 
     public class VendaViewHolder extends RecyclerView.ViewHolder {
 
+        AlertDialog alerta;
 
         TextView card_venda_id;
         TextView card_venda_data;
@@ -82,7 +87,7 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
 
                     if (position != RecyclerView.NO_POSITION) {
 
-                        AlertDialog alerta;
+
                         LayoutInflater inflater = LayoutInflater.from(context);
                         View layout = inflater.inflate(R.layout.nova_venda_fragmento, null);
 
@@ -102,14 +107,18 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
                             @Override
                             public void onClick(View view) {
                                 vendaController = new VendaController(context);
+                                getVendaList().get(position).setVendaData(et_nova_venda_data.getText().toString());
+                                getVendaList().get(position).setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
+                                getVendaList().get(position).setPreco(et_nova_venda_preco.getText().toString());
 
                                 if (vendaController.validar_alterar(getVendaList().get(position))) {
-                                    getVendaList().get(position).setVendaData(et_nova_venda_data.getText().toString());
-                                    getVendaList().get(position).setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
-                                    getVendaList().get(position).setPreco(et_nova_venda_preco.getText().toString());
+                                    safraController = new SafraController(context);
+                                    safraRequest = new SafraRequest(context);
 
-                                    //Fazer request para atualizar dados
                                     safra.setVendas(getVendaList());
+
+                                    safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), VendaAdapter.this);
+                                    alerta.cancel();
                                 } else {
 
                                 }
@@ -147,8 +156,8 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
 
     public void request_alterarDados(Safra safra) {
 
-        this.notifyDataSetChanged();
-        viewToast(context, "Dados da vebda alterados!");
+        notifyDataSetChanged();
+
     }
 
 }

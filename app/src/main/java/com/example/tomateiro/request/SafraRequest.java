@@ -14,6 +14,8 @@ import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Url;
 import com.example.tomateiro.view.PainelActivity;
 import com.example.tomateiro.view.RegistroActivity;
+import com.example.tomateiro.view.VendaActivity;
+import com.example.tomateiro.view.adapter.VendaAdapter;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -134,6 +136,104 @@ public class SafraRequest {
                     safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
                     activity.request_alterar_safra(safra);
                     viewToast(context, "Safra alterada com sucesso!");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    viewToastErro(context, "Ops! Algo deu errado");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                viewToastErro(context, "Ops! Algo deu errado");
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return json == null ? null : json.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    viewToastErro(context, "Ops! Algo deu errado");
+                    return null;
+                }
+            }
+        };
+
+        mRequestQueue.add(stringRequest);
+    }
+
+    public void alterrar_safra(final String json, Long id, final VendaActivity activity, final String acao) {
+
+        String url = ip + "/safra/" + id;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
+                    activity.request_cadastrarVenda(safra);
+
+                    if (acao.equals("Desativar")) {
+                        viewToast(context, "Venda apagada!");
+                    }
+                    if (acao.equals("Cadastrar")) {
+                        viewToast(context, "Venda cadastrada!");
+                    }
+                    if (acao.equals("Alterar")) {
+                        viewToast(context, "Venda alterada!");
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    viewToastErro(context, "Ops! Algo deu errado");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                viewToastErro(context, "Ops! Algo deu errado");
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return json == null ? null : json.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    viewToastErro(context, "Ops! Algo deu errado");
+                    return null;
+                }
+            }
+        };
+
+        mRequestQueue.add(stringRequest);
+    }
+
+    public void alterrar_safra(final String json, Long id, final VendaAdapter activity) {
+
+        String url = ip + "/safra/" + id;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
+                    activity.request_alterarDados(safra);
+
+
+                    viewToast(context, "Venda alterada!");
+
 
                 } catch (Exception e) {
                     e.printStackTrace();

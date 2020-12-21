@@ -23,11 +23,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.tomateiro.R;
+import com.example.tomateiro.controller.SafraController;
 import com.example.tomateiro.controller.VendaController;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Venda;
+import com.example.tomateiro.request.SafraRequest;
 import com.example.tomateiro.view.adapter.VendaAdapter;
+import com.example.tomateiro.view.custo.CustoC_Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +50,8 @@ public class VendaActivity extends AppCompatActivity {
     private Produtor produtor;
     private Safra safra;
     private VendaController vendaController;
+    private SafraRequest safraRequest;
+    private SafraController safraController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,8 @@ public class VendaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_venda);
         context = this;
         vendaController = new VendaController(context);
+        safraRequest = new SafraRequest(context);
+        safraController = new SafraController(context);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -67,11 +74,23 @@ public class VendaActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-        vendaList = new ArrayList<>();
         mAdapter = new VendaAdapter(context, vendaList, safra);
 
         recyclerView.setVisibility(View.GONE);
+
+        if (safra.getVendas() != null) {
+            vendaList = safra.getVendas();
+            if (vendaList.size() > 0) {
+                msg.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
+            }
+            mAdapter.setVendaList(vendaList);
+            mAdapter.notifyDataSetChanged();
+            recyclerView.setAdapter(mAdapter);
+
+        } else {
+            vendaList = new ArrayList<>();
+        }
 
         btn_venda_menu = findViewById(R.id.btn_venda_menu);
         btn_venda_menu.setOnClickListener(new View.OnClickListener() {
@@ -104,22 +123,22 @@ public class VendaActivity extends AppCompatActivity {
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        venda.setEstado("Disponivel");
+                                        venda.setEstado("Ativo");
                                         venda.setVendaData(et_nova_venda_data.getText().toString());
                                         venda.setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
                                         venda.setPreco(et_nova_venda_preco.getText().toString());
 
                                         if (vendaController.validar_cadastro(venda)) {
-                                            //fazer requisiçao para alterar dados da safra
-//                                        vendaList.add(venda);
-//                                        safra.setVendas(vendaList);
-                                        }else {
+                                            vendaList.add(venda);
+                                            safra.setVendas(vendaList);
+                                            safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), VendaActivity.this, "Cadastrar");
+                                            alerta.cancel();
+                                        } else {
 
                                         }
-                                        request_cadastrarVenda(venda);
+
                                     }
                                 });
-
 
                                 builder.setView(layout);
                                 alerta = builder.create();
@@ -172,14 +191,17 @@ public class VendaActivity extends AppCompatActivity {
 
                         public void onClick(DialogInterface dialog, int id) {
 
-                            mAdapter.getVendaList().get(position).setEstado("Desabilitado");
-//                            String json = amostragemController.converter_amostragem_json(mAdapter.getAmostragemslis().get(position));
-//                            amostragemRequest.alterar_amostragem(json, token);
+                            mAdapter.getVendaList().get(position).setEstado("Desativado");
+                            safra.setVendas(mAdapter.getVendaList());
 
                             mAdapter.getVendaList().remove(position);
                             mAdapter.notifyItemRemoved(position);
-                            //fazer requisiçao para alterar dados da safra
-                            safra.setVendas(mAdapter.getVendaList());
+                            safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), VendaActivity.this, "Desativar");
+
+                            if (mAdapter.getVendaList().size() == 0) {
+                                recyclerView.setVisibility(View.GONE);
+                                msg.setVisibility(View.VISIBLE);
+                            }
                             dialog.cancel();
                         }
                     })
@@ -201,7 +223,7 @@ public class VendaActivity extends AppCompatActivity {
                 viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 
             new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                    .addBackgroundColor(ContextCompat.getColor(VendaActivity.this, R.color.alerta_vermelho))
+                    .addBackgroundColor(ContextCompat.getColor(VendaActivity.this, R.color.color15))
                     .addActionIcon(R.drawable.ic_baseline_delete_24)
                     .create()
                     .decorate();
@@ -211,21 +233,13 @@ public class VendaActivity extends AppCompatActivity {
 
     }
 
-    public void request_buscarVendas(ArrayList<Venda> list) {
+    public void request_cadastrarVenda(Safra s) {
         msg.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
-        vendaList = list;
-        mAdapter.setVendaList(vendaList);
+        mAdapter.setVendaList(s.getVendas());
         mAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mAdapter);
+        safra = s;
     }
 
-    public void request_cadastrarVenda(Venda v) {
-        msg.setVisibility(View.GONE);
-        recyclerView.setVisibility(View.VISIBLE);
-        mAdapter.getVendaList().add(v);
-        mAdapter.notifyDataSetChanged();
-        recyclerView.setAdapter(mAdapter);
-        viewToast(context, "Venda cadastrada!");
-    }
 }

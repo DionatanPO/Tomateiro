@@ -14,7 +14,7 @@ public class VendaController {
     }
 
     public boolean validar_cadastro(Venda venda) {
-        if (venda.getPesoCaixa().isEmpty() || venda.getPreco().isEmpty() || venda.getVendaData().isEmpty()) {
+        if ( venda.getPreco().isEmpty() || venda.getVendaData().isEmpty()) {
             viewToastAlerta(context, "Preencha todos os campos");
             return false;
         } else {
@@ -22,7 +22,7 @@ public class VendaController {
         }
     }
     public boolean validar_alterar(Venda venda) {
-        if (venda.getPesoCaixa().isEmpty() || venda.getPreco().isEmpty() || venda.getVendaData().isEmpty()) {
+        if ( venda.getPreco().isEmpty() || venda.getVendaData().isEmpty()) {
             viewToastAlerta(context, "Preencha todos os campos");
             return false;
         } else {

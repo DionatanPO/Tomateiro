@@ -28,6 +28,7 @@ import com.example.tomateiro.model.CustoD;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Venda;
+import com.example.tomateiro.request.ProdutorRequest;
 import com.example.tomateiro.request.SafraRequest;
 import com.example.tomateiro.view.custo.CustoA_Activity;
 import com.example.tomateiro.view.custo.CustoB_Activity;
@@ -50,6 +51,7 @@ public class PainelActivity extends AppCompatActivity {
     private TextView msg, painel_produtor, txt_painel_card_safra, txt_painel_card_ciclo, txt_painel_card_qtde_pes, txt_painel_card_regiao;
     private Produtor produtor;
     private SafraRequest safraRequest;
+    private ProdutorRequest produtorRequest;
 
     private AlertDialog alerta;
 
@@ -61,13 +63,15 @@ public class PainelActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             produtor = (Produtor) getIntent().getSerializableExtra("produtor");
+
         }
 
         context = this;
 
-        produtorController = new  ProdutorController(context);
+        produtorController = new ProdutorController(context);
         safraController = new SafraController(context);
         safraRequest = new SafraRequest(context);
+        produtorRequest = new ProdutorRequest(context);
 
         card_safra = findViewById(R.id.card_safra);
         msg = findViewById(R.id.mensagem);
@@ -86,7 +90,7 @@ public class PainelActivity extends AppCompatActivity {
 
 
         //------------buscando safra ativa-------------------------------------
-        safraRequest.buscar_safra_produtor(produtorController.converter_produtor_json(produtor),PainelActivity.this);
+        safraRequest.buscar_safra_produtor(produtorController.converter_produtor_json(produtor), PainelActivity.this);
 
         card_safra.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +129,7 @@ public class PainelActivity extends AppCompatActivity {
 
                         //fazer request para alterar safra
                         if (safraController.validar_alterar(safra)) {
-                            safraRequest.alterrar_safra(safraController.converter_safra_json(safra),safra.getId(), PainelActivity.this);
+                            safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), PainelActivity.this);
 
                             alerta.cancel();
                         } else {
@@ -264,13 +268,15 @@ public class PainelActivity extends AppCompatActivity {
                                 button_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
+
                                         produtor.setNome(nome.getText().toString());
                                         produtor.setPropriedade(propriedade.getText().toString());
                                         produtor.setCodIdentificacao(identificacao.getText().toString());
 
                                         //fazer rquest para alterar dados do produtor
                                         if (produtorController.validar_alterar_perfil(produtor)) {
-                                            request_alterar_dados_perfil(produtor);
+                                            produtorRequest.alterrar_produtor(produtorController.converter_produtor_json(produtor), produtor.getId(),PainelActivity.this);
+
                                             alerta.cancel();
                                         } else {
 
@@ -324,7 +330,7 @@ public class PainelActivity extends AppCompatActivity {
 
                                         //fazer rquest para alterar dados do produtor
                                         if (produtorController.validar_alterar_senha(produtor, senha2.getText().toString())) {
-                                            request_alterar_dados_senha(produtor);
+                                            produtorRequest.alterrar_produtor(produtorController.converter_produtor_json(produtor), produtor.getId(),PainelActivity.this);
                                             alerta.cancel();
                                         } else {
 
@@ -446,6 +452,7 @@ public class PainelActivity extends AppCompatActivity {
         msg.setVisibility(View.GONE);
 
     }
+
     public void request_buscar_safra(Safra s) {
         safra = s;
         txt_painel_card_ciclo.setText(safra.getClicloAno());
@@ -456,6 +463,7 @@ public class PainelActivity extends AppCompatActivity {
         msg.setVisibility(View.GONE);
 
     }
+
     public void request_alterar_safra(Safra s) {
         safra = s;
         txt_painel_card_ciclo.setText(safra.getClicloAno());
@@ -466,13 +474,12 @@ public class PainelActivity extends AppCompatActivity {
         msg.setVisibility(View.GONE);
 
     }
-    public void request_alterar_dados_perfil(Produtor produtor) {
 
+    public void request_alterar_dados_produtor(Produtor p) {
+        produtor = p;
+        painel_produtor.setText(painel_produtor.getText().toString() + produtor.getNome());
+    }
 
-    }
-    public void request_alterar_dados_senha(Produtor produtor) {
-        viewToast(context, "Iformações alteradas!");
-    }
 
     @Override
     public void onBackPressed() {
@@ -502,4 +509,9 @@ public class PainelActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
- }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        safraRequest.buscar_safra_produtor(safraController.converter_safra_json(safra),PainelActivity.this);
+    }
+}

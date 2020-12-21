@@ -13,6 +13,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Url;
 import com.example.tomateiro.view.LoginActivity;
+import com.example.tomateiro.view.PainelActivity;
 import com.example.tomateiro.view.RegistroActivity;
 import com.google.gson.Gson;
 
@@ -123,7 +124,7 @@ public class ProdutorRequest {
     }
 
 
-    public void alterrar_produtor(final String json, Long id) {
+    public void alterrar_produtor(final String json, Long id, final PainelActivity activity) {
 
         String url = ip + "/produtor/" + id;
 
@@ -133,17 +134,17 @@ public class ProdutorRequest {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     produtor = new Gson().fromJson(jsonObject.toString(), Produtor.class);
-
-
+                    activity.request_alterar_dados_produtor(produtor);
+                    viewToast(context, "Dados alterados!");
                 } catch (Exception e) {
                     e.printStackTrace();
-
+                    viewToastErro(context, "Ops! Algo deu errado");
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                viewToastErro(context, "Ops! Algo deu errado");
             }
         }) {
             @Override
@@ -156,6 +157,7 @@ public class ProdutorRequest {
                 try {
                     return json == null ? null : json.getBytes("utf-8");
                 } catch (UnsupportedEncodingException uee) {
+                    viewToastErro(context, "Ops! Algo deu errado");
                     return null;
                 }
             }
