@@ -28,13 +28,14 @@ public class CustoAController {
 
             if (objeto == null) {
 
-                if(field.getName().equals("subTotalA")){
+                if(field.getName().equals("subTotalA")||field.getName().equals("id")){
                     resultado = true;
                 }else{
                     resultado = false;
                     viewToastAlerta(context,"Preencha todos os campos");
                     break;
                 }
+
 
             } else {
                 resultado = true;

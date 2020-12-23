@@ -73,7 +73,7 @@ public class CustoA implements Serializable {
     public double parseToDouble(String s) {
         double value = 0;
 
-        s = s.substring(1, s.length());
+
 
         NumberFormat format = NumberFormat.getInstance();
 

@@ -90,7 +90,7 @@ public class PainelActivity extends AppCompatActivity {
 
 
         //------------buscando safra ativa-------------------------------------
-        safraRequest.buscar_safra_produtor(produtorController.converter_produtor_json(produtor), PainelActivity.this);
+//        safraRequest.buscar_safra_produtor(produtorController.converter_produtor_json(produtor), PainelActivity.this);
 
         card_safra.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +127,6 @@ public class PainelActivity extends AppCompatActivity {
                             safra.setQtdePes(0);
                         }
 
-                        //fazer request para alterar safra
                         if (safraController.validar_alterar(safra)) {
                             safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), PainelActivity.this);
 
@@ -192,7 +191,11 @@ public class PainelActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.novaSafra:
-                                safra = new Safra();
+                                if(safra!=null){
+                                }else {
+                                    safra = new Safra();
+                                }
+
 
                                 layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
 
@@ -512,6 +515,6 @@ public class PainelActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        safraRequest.buscar_safra_produtor(safraController.converter_safra_json(safra),PainelActivity.this);
+        safraRequest.buscar_safra_produtor(produtor.getId(), PainelActivity.this);
     }
 }

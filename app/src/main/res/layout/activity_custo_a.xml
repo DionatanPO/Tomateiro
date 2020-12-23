@@ -134,7 +134,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v1"
@@ -144,7 +144,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -163,7 +163,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v2"
@@ -173,7 +173,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -192,7 +192,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v3"
@@ -202,7 +202,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -221,7 +221,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v4"
@@ -231,7 +231,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -250,7 +250,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v5"
@@ -260,7 +260,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -279,7 +279,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v6"
@@ -289,7 +289,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -308,7 +308,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v7"
@@ -318,7 +318,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -337,7 +337,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v8"
@@ -347,7 +347,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -366,7 +366,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v9"
@@ -376,7 +376,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -395,7 +395,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v10"
@@ -405,7 +405,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -424,7 +424,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v11"
@@ -434,7 +434,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <TextView
                     android:layout_width="180dp"
@@ -453,7 +453,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v12"
@@ -463,7 +463,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    />
 
             </GridLayout>
 

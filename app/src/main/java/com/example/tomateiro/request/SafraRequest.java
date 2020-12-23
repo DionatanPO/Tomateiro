@@ -10,12 +10,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.tomateiro.model.CustoA;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Url;
 import com.example.tomateiro.view.PainelActivity;
 import com.example.tomateiro.view.RegistroActivity;
 import com.example.tomateiro.view.VendaActivity;
 import com.example.tomateiro.view.adapter.VendaAdapter;
+import com.example.tomateiro.view.custo.CustoA_Activity;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -265,17 +267,20 @@ public class SafraRequest {
         mRequestQueue.add(stringRequest);
     }
 
-    public void buscar_safra_produtor(final String json, final PainelActivity activity) {
+    public void alterrar_safra(final String json, Long id, final CustoA_Activity activity) {
 
-        String url = ip + "/safra/buscarSafraAtiva/";
+        String url = ip + "/safra/" + id;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
-                    activity.request_buscar_safra(safra);
+                    activity.request_cadastrar_custo(safra);
+
+
+                    viewToast(context, "Custo calculado!!");
 
 
                 } catch (Exception e) {
@@ -286,8 +291,7 @@ public class SafraRequest {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println(error);
-
+                viewToastErro(context, "Ops! Algo deu errado");
             }
         }) {
             @Override
@@ -302,12 +306,37 @@ public class SafraRequest {
                 } catch (UnsupportedEncodingException uee) {
                     viewToastErro(context, "Ops! Algo deu errado");
                     return null;
-
                 }
+            }
+        };
+
+        mRequestQueue.add(stringRequest);
+    }
+
+    public void buscar_safra_produtor(Long id, final PainelActivity activity) {
+
+        String url = ip + "/safra/buscarSafraAtiva/"+id;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
+                    activity.request_buscar_safra(safra);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    viewToastErro(context, "Ops! Algo deu errado");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println(error);
 
             }
-
-        };
+        });
 
         mRequestQueue.add(stringRequest);
 

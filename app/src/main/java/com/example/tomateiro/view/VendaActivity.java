@@ -234,12 +234,12 @@ public class VendaActivity extends AppCompatActivity {
     }
 
     public void request_cadastrarVenda(Safra s) {
+        safra = s;
         msg.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
         mAdapter.setVendaList(s.getVendas());
         mAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mAdapter);
-        safra = s;
     }
 
 }
