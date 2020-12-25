@@ -22,7 +22,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="ADMINISTRAÇÃO"
+            android:text="OPERAÇÕES MANUAIS"
             android:textColor="@color/colorBranca"
             android:textSize="25dp"
             android:textStyle="bold"
@@ -121,7 +121,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Arrendamento"
+                    android:text="Calagem"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -134,7 +134,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v1"
@@ -144,13 +144,13 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="M. O. Administrativa"
+                    android:text="Transplantio"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -163,7 +163,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v2"
@@ -173,13 +173,13 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Contabilidade/Escritório"
+                    android:text="Estaqueamento"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -192,7 +192,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v3"
@@ -202,13 +202,13 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Luz/ Telefone"
+                    android:text="Amontoa"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -221,7 +221,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v4"
@@ -231,13 +231,13 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Viagens"
+                    android:text="Amarração"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -250,7 +250,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v5"
@@ -260,13 +260,13 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Impostos / Taxas"
+                    android:text="Adubação básica"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -279,7 +279,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v6"
@@ -289,13 +289,13 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Outros"
+                    android:text="Aplicação de esterco"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -308,7 +308,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/editA_v7"
@@ -318,8 +318,210 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:inputType="numberDecimal"
-                    android:text="87.35" />
+                    android:text="0,00" />
 
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Desbrota"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q8"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v8"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Adubação em cobertura"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q9"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v9"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Pulverização com costal"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q10"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v10"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Capinas Manuais"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q11"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v11"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Colheita e Classificação"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q12"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v12"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Irrigação"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q13"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v13"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Outros"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_q14"
+                    android:maxLength="10"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/editA_v14"
+                    android:maxLength="11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:text="0,00" />
 
             </GridLayout>
 

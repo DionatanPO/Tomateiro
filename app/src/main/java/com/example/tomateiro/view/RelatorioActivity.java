@@ -2,32 +2,45 @@ package com.example.tomateiro.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tomateiro.R;
+
 import com.example.tomateiro.model.CustoA;
 import com.example.tomateiro.model.CustoB;
 import com.example.tomateiro.model.CustoC;
 import com.example.tomateiro.model.CustoD;
+import com.example.tomateiro.model.Relatorio;
 import com.example.tomateiro.model.Safra;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.PieChart;
-
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.graphics.Color.WHITE;
-import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
+
 
 public class RelatorioActivity extends AppCompatActivity {
     private PieChart pieChart, pieChart2, pieChart3, pieChart4;
@@ -37,8 +50,7 @@ public class RelatorioActivity extends AppCompatActivity {
     private Safra safra;
     private Field[] fields;
 
-    private TextView r_qtd_total_caixa, r_ciclo, r_peso_medio_caixa, r_qtd_pes, r_regiao_referencia
-           , r_subTotalA, r_subTotalD,r_subTotalC, r_subTotalB, r_custoTotal_ha, r_custoTotal_cx,
+    private TextView r_qtd_total_caixa, r_ciclo, r_peso_medio_caixa, r_qtd_pes, r_regiao_referencia, r_subTotalA, r_subTotalD, r_subTotalC, r_subTotalB, r_custoTotal_ha, r_custoTotal_cx,
             r_preco_medio_recebido, r_receitaHa, r_resultadoHa, r_resultadoCx, r_margem_venda;
 
     @Override
@@ -80,7 +92,7 @@ public class RelatorioActivity extends AppCompatActivity {
                 safra = safra.calcularResultadoCx(safra);
                 safra = safra.calcularMargemVenda(safra);
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("");
             }
 
@@ -102,7 +114,7 @@ public class RelatorioActivity extends AppCompatActivity {
             r_receitaHa.setText(safra.getReceitaHa());
             r_resultadoHa.setText(safra.getResultadoHa());
             r_resultadoCx.setText(safra.getResultadoCx());
-            r_margem_venda.setText(safra.getMargemVenda() +"%");
+            r_margem_venda.setText(safra.getMargemVenda() + "%");
 
         } catch (Exception e) {
 
@@ -133,7 +145,7 @@ public class RelatorioActivity extends AppCompatActivity {
                 if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
 
                 } else {
-                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
+//                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
                 }
 
             }
@@ -176,7 +188,7 @@ public class RelatorioActivity extends AppCompatActivity {
                 if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
 
                 } else {
-                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
+//                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
                 }
 
             }
@@ -219,7 +231,7 @@ public class RelatorioActivity extends AppCompatActivity {
                 if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
 
                 } else {
-                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
+//                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
                 }
 
             }
@@ -262,7 +274,7 @@ public class RelatorioActivity extends AppCompatActivity {
                 if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
 
                 } else {
-                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
+//                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
                 }
 
             }
@@ -284,36 +296,97 @@ public class RelatorioActivity extends AppCompatActivity {
         pieChart4.animateY(500);
 
         //-----------------------------------------------------------------------------
-        BarChart barChart = findViewById(R.id.barchart);
+        final BarChart chart = findViewById(R.id.barchart);
+
+        int[] numArr = {1, 2, 3, 4, 5, 6};
+        List<BarEntry> entries = new ArrayList<BarEntry>();
+        for (int num : numArr) {
+            entries.add(new BarEntry(num, num));
+        }
+        BarDataSet dataSet = new BarDataSet(entries, "Numbers");
+        final BarData data = new BarData(dataSet);
+
+        ValueFormatter xAxisFormatter = new DayAxisValueFormatter(chart);
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setGranularity(1f); // only intervals of 1 day
+        xAxis.setLabelCount(7);
+        xAxis.setValueFormatter(xAxisFormatter);
+
+        chart.setData(data);
+        chart.invalidate();
+
+//        ArrayList barEntries = new ArrayList<>();
 
 
-        ArrayList barEntries = new ArrayList<>();
-
-
-        barEntries.add(new BarEntry(2015, safra.getQtdeCaixas()));
-        barEntries.add(new BarEntry(2016, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 100));
-        barEntries.add(new BarEntry(2017, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
-        barEntries.add(new BarEntry(2018, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
-        barEntries.add(new BarEntry(2019, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
-        barEntries.add(new BarEntry(2020, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
-
-
-        BarDataSet barDataSet = new BarDataSet(barEntries, "");
-        BarData barData = new BarData(barDataSet);
-        barChart.setData(barData);
-
-        barDataSet.setColors(WHITE);
-        barDataSet.setValueTextColor(WHITE);
-        barDataSet.setValueTextSize(18f);
-
-        barChart.getAxisLeft().setTextColor(WHITE);
-        barChart.getAxisRight().setTextColor(WHITE);
-        barChart.getXAxis().setTextColor(WHITE);
-        barChart.getLegend().setTextColor(WHITE);
-        barChart.getDescription().setEnabled(false);
-        barChart.animateY(4000);
-        barChart.setFitBars(false);
+//        barEntries.add(new BarEntry(2015, safra.getQtdeCaixas()));
+//        barEntries.add(new BarEntry(2016, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 100));
+//        barEntries.add(new BarEntry(2017, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
+//        barEntries.add(new BarEntry(2018, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
+//        barEntries.add(new BarEntry(2019, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
+//        barEntries.add(new BarEntry(2020, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
+//
+//
+//
+//
+//
+//
+//        BarDataSet barDataSet = new BarDataSet(barEntries, "");
+//        BarData barData = new BarData(barDataSet);
+//        barChart.setData(barData);
+//
+        dataSet.setColors(WHITE);
+        dataSet.setValueTextColor(WHITE);
+        dataSet.setValueTextSize(18f);
+//
+        chart.getAxisLeft().setTextColor(WHITE);
+        chart.getAxisRight().setTextColor(WHITE);
+        chart.getXAxis().setTextColor(WHITE);
+        chart.getLegend().setTextColor(WHITE);
+        chart.getDescription().setEnabled(false);
+        chart.animateY(4000);
+        chart.setFitBars(false);
+//
+//        XAxis xAxis = barChart.getXAxis();
+//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+//        xAxis.setDrawGridLines(false);
+//        xAxis.setValueFormatter(new IndexAxisValueFormatter(getAreaCount()));
         //--------------------------------------------------------------------
+        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener()
+        {
+            @Override
+            public void onValueSelected(Entry e, Highlight h)
+            {
+                float x=e.getX();
+                float y=e.getY();
+
+
+//                Toast.makeText(RelatorioActivity.this, String.valueOf( e.getData().toString()),
+//                        Toast.LENGTH_LONG).show();
+                Log.d("Entry selected", e.toString());
+//
+
+            }
+
+            @Override
+            public void onNothingSelected()
+            {
+
+            }
+        });
     }
 
+    public class DayAxisValueFormatter extends ValueFormatter {
+        private final BarLineChartBase<?> chart;
+
+        public DayAxisValueFormatter(BarLineChartBase<?> chart) {
+            this.chart = chart;
+        }
+
+        @Override
+        public String getFormattedValue(float value) {
+            return "your text " + value;
+        }
+    }
 }

@@ -191,10 +191,7 @@ public class PainelActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.novaSafra:
-                                if(safra!=null){
-                                }else {
-                                    safra = new Safra();
-                                }
+
 
 
                                 layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
@@ -208,6 +205,14 @@ public class PainelActivity extends AppCompatActivity {
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
+
+                                        if(safra!=null){
+                                            safra.setEstado("Concluida");
+                                            safraRequest.alterrar_safra(safraController.converter_safra_json(safra),safra.getId(),PainelActivity.this);
+                                        }else {
+                                            safra = new Safra();
+                                        }
+
                                         safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
                                         safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
                                         try {

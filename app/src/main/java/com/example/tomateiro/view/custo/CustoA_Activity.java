@@ -166,7 +166,7 @@ public class CustoA_Activity extends AppCompatActivity {
 
                         safra.setCustoA(custoA);
                         safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), CustoA_Activity.this);
-                        System.out.println("");
+
                     }
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();

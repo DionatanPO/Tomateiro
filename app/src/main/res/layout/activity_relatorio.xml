@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".view.RelatorioActivity">
+    >
 
     <TextView
         android:id="@+id/textView"
@@ -714,6 +714,8 @@
                 android:layout_width="350dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center" />
+
+
 
 
         </LinearLayout>

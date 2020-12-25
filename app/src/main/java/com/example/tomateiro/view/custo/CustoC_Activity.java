@@ -12,8 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.tomateiro.R;
 import com.example.tomateiro.controller.CustoBController;
 import com.example.tomateiro.controller.CustoCController;
+import com.example.tomateiro.controller.SafraController;
+import com.example.tomateiro.model.CustoB;
 import com.example.tomateiro.model.CustoC;
 import com.example.tomateiro.model.Safra;
+import com.example.tomateiro.request.SafraRequest;
 
 import me.abhinay.input.CurrencyEditText;
 
@@ -87,8 +90,9 @@ public class CustoC_Activity extends AppCompatActivity {
 
         if (extras != null) {
             safra = (Safra) getIntent().getSerializableExtra("safra");
-            try {
-
+            if (safra.getCustoA() != null) {
+                custoC = safra.getCustoC();
+                try {
                 editA_q1.setText(custoC.getCalcarioDolomiticoQ());
                 editA_q2.setText(custoC.getSulfatoAmonioQ());
                 editA_q3.setText(custoC.getSuperfosfatoSimplesQ());
@@ -127,56 +131,60 @@ public class CustoC_Activity extends AppCompatActivity {
 
                 custo_subtotal.setText("SubTotal = R$ " + custoC.getSubTotalC());
 
-            } catch (Exception e) {
+                } catch (Exception e) {
 
+                }
+            } else {
+                custoC = new CustoC();
             }
 
+
         } else {
-            safra = new Safra();
+
         }
 
 
-        custoC = new CustoC();
+
 
         btn_concluir.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                custoC.setCalcarioDolomiticoQ(editA_q1.getText().toString());
-                custoC.setSulfatoAmonioQ(editA_q2.getText().toString());
-                custoC.setSuperfosfatoSimplesQ(editA_q3.getText().toString());
-                custoC.setCloretoPotassioQ(editA_q4.getText().toString());
-                custoC.setEstercoBovinoQ(editA_q5.getText().toString());
-                custoC.setYorinQ(editA_q6.getText().toString());
-                custoC.setSementesQ(editA_q7.getText().toString());
-                custoC.setConfeccaoMudasQ(editA_q8.getText().toString());
-                custoC.setEstacasBambuQ(editA_q9.getText().toString());
-                custoC.setArame16Q(editA_q10.getText().toString());
-                custoC.setMouroesEucaQ(editA_q11.getText().toString());
-                custoC.setArame20Q(editA_q12.getText().toString());
-                custoC.setFungicidasQ(editA_q13.getText().toString());
-                custoC.setHerbicidasQ(editA_q14.getText().toString());
-                custoC.setInseticidasQ(editA_q15.getText().toString());
-                custoC.setOutrosProdutosQuimicosQ(editA_q16.getText().toString());
-                custoC.setOutrosQ(editA_q17.getText().toString());
+                custoC.setCalcarioDolomiticoQ(editA_q1.getText().toString().substring(1));
+                custoC.setSulfatoAmonioQ(editA_q2.getText().toString().substring(1));
+                custoC.setSuperfosfatoSimplesQ(editA_q3.getText().toString().substring(1));
+                custoC.setCloretoPotassioQ(editA_q4.getText().toString().substring(1));
+                custoC.setEstercoBovinoQ(editA_q5.getText().toString().substring(1));
+                custoC.setYorinQ(editA_q6.getText().toString().substring(1));
+                custoC.setSementesQ(editA_q7.getText().toString().substring(1));
+                custoC.setConfeccaoMudasQ(editA_q8.getText().toString().substring(1));
+                custoC.setEstacasBambuQ(editA_q9.getText().toString().substring(1));
+                custoC.setArame16Q(editA_q10.getText().toString().substring(1));
+                custoC.setMouroesEucaQ(editA_q11.getText().toString().substring(1));
+                custoC.setArame20Q(editA_q12.getText().toString().substring(1));
+                custoC.setFungicidasQ(editA_q13.getText().toString().substring(1));
+                custoC.setHerbicidasQ(editA_q14.getText().toString().substring(1));
+                custoC.setInseticidasQ(editA_q15.getText().toString().substring(1));
+                custoC.setOutrosProdutosQuimicosQ(editA_q16.getText().toString().substring(1));
+                custoC.setOutrosQ(editA_q17.getText().toString().substring(1));
 
-                custoC.setCalcarioDolomiticoV(editA_v1.getText().toString());
-                custoC.setSulfatoAmonioV(editA_v2.getText().toString());
-                custoC.setSuperfosfatoSimplesV(editA_v3.getText().toString());
-                custoC.setCloretoPotassioV(editA_v4.getText().toString());
-                custoC.setEstercoBovinoV(editA_v5.getText().toString());
-                custoC.setYorinV(editA_v6.getText().toString());
-                custoC.setSementesV(editA_v7.getText().toString());
-                custoC.setConfeccaoMudasV(editA_v8.getText().toString());
-                custoC.setEstacasBambuV(editA_v9.getText().toString());
-                custoC.setMouroesEucaV(editA_v10.getText().toString());
-                custoC.setArame16V(editA_v11.getText().toString());
-                custoC.setArame20V(editA_v12.getText().toString());
-                custoC.setFungicidasV(editA_v13.getText().toString());
-                custoC.setHerbicidasV(editA_v14.getText().toString());
-                custoC.setInseticidasV(editA_v15.getText().toString());
-                custoC.setOutrosProdutosQuimicosV(editA_v16.getText().toString());
-                custoC.setOutrosV(editA_v17.getText().toString());
+                custoC.setCalcarioDolomiticoV(editA_v1.getText().toString().substring(1));
+                custoC.setSulfatoAmonioV(editA_v2.getText().toString().substring(1));
+                custoC.setSuperfosfatoSimplesV(editA_v3.getText().toString().substring(1));
+                custoC.setCloretoPotassioV(editA_v4.getText().toString().substring(1));
+                custoC.setEstercoBovinoV(editA_v5.getText().toString().substring(1));
+                custoC.setYorinV(editA_v6.getText().toString().substring(1));
+                custoC.setSementesV(editA_v7.getText().toString().substring(1));
+                custoC.setConfeccaoMudasV(editA_v8.getText().toString().substring(1));
+                custoC.setEstacasBambuV(editA_v9.getText().toString().substring(1));
+                custoC.setMouroesEucaV(editA_v10.getText().toString().substring(1));
+                custoC.setArame16V(editA_v11.getText().toString().substring(1));
+                custoC.setArame20V(editA_v12.getText().toString().substring(1));
+                custoC.setFungicidasV(editA_v13.getText().toString().substring(1));
+                custoC.setHerbicidasV(editA_v14.getText().toString().substring(1));
+                custoC.setInseticidasV(editA_v15.getText().toString().substring(1));
+                custoC.setOutrosProdutosQuimicosV(editA_v16.getText().toString().substring(1));
+                custoC.setOutrosV(editA_v17.getText().toString().substring(1));
 
 
                 custoCController = new CustoCController(context);
@@ -184,7 +192,10 @@ public class CustoC_Activity extends AppCompatActivity {
                     if (custoCController.validar_custo(custoC)) {
                         custo_subtotal.setText("SubTotal = R$ " + custoC.calcularSubTotal(custoC).getSubTotalC());
                         safra.setCustoC(custoC);
-                        viewToast(context, "Custo calculado");
+                        SafraRequest safraRequest = new SafraRequest(context);
+                        SafraController safraController = new SafraController(context);
+
+                        safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), CustoC_Activity.this);
                     }
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
@@ -192,5 +203,8 @@ public class CustoC_Activity extends AppCompatActivity {
             }
         });
 
+    }
+    public void request_cadastrar_custo(Safra s) {
+        safra = s;
     }
 }

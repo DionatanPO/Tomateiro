@@ -12,9 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.tomateiro.R;
 import com.example.tomateiro.controller.CustoAController;
 import com.example.tomateiro.controller.CustoBController;
+import com.example.tomateiro.controller.SafraController;
 import com.example.tomateiro.model.CustoA;
 import com.example.tomateiro.model.CustoB;
 import com.example.tomateiro.model.Safra;
+import com.example.tomateiro.request.SafraRequest;
 
 import me.abhinay.input.CurrencyEditText;
 
@@ -84,84 +86,86 @@ public class CustoB_Activity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             safra = (Safra) getIntent().getSerializableExtra("safra");
-            try {
+            if (safra.getCustoA() != null) {
+                custoB = safra.getCustoB();
+                try {
+                    editA_q1.setText(custoB.getColagemQ());
+                    editA_q2.setText(custoB.getTransplantioQ());
+                    editA_q3.setText(custoB.getEstaqueamentoQ());
+                    editA_q4.setText(custoB.getAmontoaQ());
+                    editA_q5.setText(custoB.getAmarracaoQ());
+                    editA_q6.setText(custoB.getAdubacaoBasicaQ());
+                    editA_q7.setText(custoB.getAplicacaoEstercoQ());
+                    editA_q8.setText(custoB.getDesbrotaQ());
+                    editA_q9.setText(custoB.getAdubacaoCoberturaQ());
+                    editA_q10.setText(custoB.getPulverizacaoCostalQ());
+                    editA_q11.setText(custoB.getCapinasManuaisQ());
+                    editA_q12.setText(custoB.getColheitaClassificaçãoQ());
+                    editA_q13.setText(custoB.getIrrigacaoQ());
+                    editA_q14.setText(custoB.getOutrosBQ());
 
+                    editA_v1.setText(custoB.getColagemV());
+                    editA_v2.setText(custoB.getTransplantioV());
+                    editA_v3.setText(custoB.getEstaqueamentoV());
+                    editA_v4.setText(custoB.getAmontoaV());
+                    editA_v5.setText(custoB.getAmarracaoV());
+                    editA_v6.setText(custoB.getAdubacaoBasicaV());
+                    editA_v7.setText(custoB.getAplicacaoEstercoV());
+                    editA_v8.setText(custoB.getDesbrotaV());
+                    editA_v9.setText(custoB.getAdubacaoCoberturaV());
+                    editA_v10.setText(custoB.getPulverizacaoCostalV());
+                    editA_v11.setText(custoB.getCapinasManuaisV());
+                    editA_v12.setText(custoB.getColheitaClassificaçãoV());
+                    editA_v13.setText(custoB.getIrrigacaoV());
+                    editA_v14.setText(custoB.getOutrosBV());
 
-                editA_q1.setText(custoB.getColagemQ());
-                editA_q2.setText(custoB.getTransplantioQ());
-                editA_q3.setText(custoB.getEstaqueamentoQ());
-                editA_q4.setText(custoB.getAmontoaQ());
-                editA_q5.setText(custoB.getAmarracaoQ());
-                editA_q6.setText(custoB.getAdubacaoBasicaQ());
-                editA_q7.setText(custoB.getAplicacaoEstercoQ());
-                editA_q8.setText(custoB.getDesbrotaQ());
-                editA_q9.setText(custoB.getAdubacaoCoberturaQ());
-                editA_q10.setText(custoB.getPulverizacaoCostalQ());
-                editA_q11.setText(custoB.getCapinasManuaisQ());
-                editA_q12.setText(custoB.getColheitaClassificaçãoQ());
-                editA_q13.setText(custoB.getIrrigacaoQ());
-                editA_q14.setText(custoB.getOutrosBQ());
+                    custo_subtotal.setText("SubTotal = R$ " + custoB.getSubTotalB());
+                } catch (Exception e) {
 
-                editA_v1.setText(custoB.getColagemV());
-                editA_v2.setText(custoB.getTransplantioV());
-                editA_v3.setText(custoB.getEstaqueamentoV());
-                editA_v4.setText(custoB.getAmontoaV());
-                editA_v5.setText(custoB.getAmarracaoV());
-                editA_v6.setText(custoB.getAdubacaoBasicaV());
-                editA_v7.setText(custoB.getAplicacaoEstercoV());
-                editA_v8.setText(custoB.getDesbrotaV());
-                editA_v9.setText(custoB.getAdubacaoCoberturaV());
-                editA_v10.setText(custoB.getPulverizacaoCostalV());
-                editA_v11.setText(custoB.getCapinasManuaisV());
-                editA_v12.setText(custoB.getColheitaClassificaçãoV());
-                editA_v13.setText(custoB.getIrrigacaoV());
-                editA_v14.setText(custoB.getOutrosBV());
-
-                custo_subtotal.setText("SubTotal = R$ " + custoB.getSubTotalB());
-            } catch (Exception e) {
-
+                }
+            } else {
+                custoB = new CustoB();
             }
+
+
         } else {
-            safra = new Safra();
+
         }
 
-
-        custoB = new CustoB();
 
         btn_concluir.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                custoB.setColagemQ(editA_q1.getText().toString());
-                custoB.setTransplantioQ(editA_q2.getText().toString());
-                custoB.setEstaqueamentoQ(editA_q3.getText().toString());
-                custoB.setAmontoaQ(editA_q4.getText().toString());
-                custoB.setAmarracaoQ(editA_q5.getText().toString());
-                custoB.setAdubacaoBasicaQ(editA_q6.getText().toString());
-                custoB.setAplicacaoEstercoQ(editA_q7.getText().toString());
-                custoB.setDesbrotaQ(editA_q8.getText().toString());
-                custoB.setAdubacaoCoberturaQ(editA_q9.getText().toString());
-                custoB.setPulverizacaoCostalQ(editA_q10.getText().toString());
-                custoB.setCapinasManuaisQ(editA_q11.getText().toString());
-                custoB.setColheitaClassificaçãoQ(editA_q12.getText().toString());
-                custoB.setIrrigacaoQ(editA_q13.getText().toString());
-                custoB.setOutrosBQ(editA_q14.getText().toString());
+                custoB.setColagemQ(editA_q1.getText().toString().substring(1));
+                custoB.setTransplantioQ(editA_q2.getText().toString().substring(1));
+                custoB.setEstaqueamentoQ(editA_q3.getText().toString().substring(1));
+                custoB.setAmontoaQ(editA_q4.getText().toString().substring(1));
+                custoB.setAmarracaoQ(editA_q5.getText().toString().substring(1));
+                custoB.setAdubacaoBasicaQ(editA_q6.getText().toString().substring(1));
+                custoB.setAplicacaoEstercoQ(editA_q7.getText().toString().substring(1));
+                custoB.setDesbrotaQ(editA_q8.getText().toString().substring(1));
+                custoB.setAdubacaoCoberturaQ(editA_q9.getText().toString().substring(1));
+                custoB.setPulverizacaoCostalQ(editA_q10.getText().toString().substring(1));
+                custoB.setCapinasManuaisQ(editA_q11.getText().toString().substring(1));
+                custoB.setColheitaClassificaçãoQ(editA_q12.getText().toString().substring(1));
+                custoB.setIrrigacaoQ(editA_q13.getText().toString().substring(1));
+                custoB.setOutrosBQ(editA_q14.getText().toString().substring(1));
 
-                custoB.setColagemV(editA_v1.getText().toString());
-                custoB.setTransplantioV(editA_v2.getText().toString());
-                custoB.setEstaqueamentoV(editA_v3.getText().toString());
-                custoB.setAmontoaV(editA_v4.getText().toString());
-                custoB.setAmarracaoV(editA_v5.getText().toString());
-                custoB.setAdubacaoBasicaV(editA_v6.getText().toString());
-                custoB.setAplicacaoEstercoV(editA_v7.getText().toString());
-                custoB.setDesbrotaV(editA_v8.getText().toString());
-                custoB.setAdubacaoCoberturaV(editA_v9.getText().toString());
-                custoB.setPulverizacaoCostalV(editA_v10.getText().toString());
-                custoB.setCapinasManuaisV(editA_v11.getText().toString());
-                custoB.setColheitaClassificaçãoV(editA_v12.getText().toString());
-                custoB.setIrrigacaoV(editA_v13.getText().toString());
-                custoB.setOutrosBV(editA_v14.getText().toString());
-
+                custoB.setColagemV(editA_v1.getText().toString().substring(1));
+                custoB.setTransplantioV(editA_v2.getText().toString().substring(1));
+                custoB.setEstaqueamentoV(editA_v3.getText().toString().substring(1));
+                custoB.setAmontoaV(editA_v4.getText().toString().substring(1));
+                custoB.setAmarracaoV(editA_v5.getText().toString().substring(1));
+                custoB.setAdubacaoBasicaV(editA_v6.getText().toString().substring(1));
+                custoB.setAplicacaoEstercoV(editA_v7.getText().toString().substring(1));
+                custoB.setDesbrotaV(editA_v8.getText().toString().substring(1));
+                custoB.setAdubacaoCoberturaV(editA_v9.getText().toString().substring(1));
+                custoB.setPulverizacaoCostalV(editA_v10.getText().toString().substring(1));
+                custoB.setCapinasManuaisV(editA_v11.getText().toString().substring(1));
+                custoB.setColheitaClassificaçãoV(editA_v12.getText().toString().substring(1));
+                custoB.setIrrigacaoV(editA_v13.getText().toString().substring(1));
+                custoB.setOutrosBV(editA_v14.getText().toString().substring(1));
 
 
                 custoBController = new CustoBController(context);
@@ -170,7 +174,12 @@ public class CustoB_Activity extends AppCompatActivity {
 
                         custo_subtotal.setText("SubTotal = R$ " + custoB.calcularSubTotal(custoB).getSubTotalB());
                         safra.setCustoB(custoB);
-                        viewToast(context, "Custo calculado");
+
+                        SafraRequest safraRequest = new SafraRequest(context);
+                        SafraController safraController = new SafraController(context);
+
+                        safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), CustoB_Activity.this);
+
                     }
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
@@ -178,5 +187,9 @@ public class CustoB_Activity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void request_cadastrar_custo(Safra s) {
+        safra = s;
     }
 }
