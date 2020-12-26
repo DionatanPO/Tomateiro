@@ -182,17 +182,16 @@ public class SafraRequest {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
-                    activity.request_cadastrarVenda(safra);
+
 
                     if (acao.equals("Desativar")) {
                         viewToast(context, "Venda apagada!");
                     }
                     if (acao.equals("Cadastrar")) {
+                        activity.request_cadastrarVenda(safra);
                         viewToast(context, "Venda cadastrada!");
                     }
-                    if (acao.equals("Alterar")) {
-                        viewToast(context, "Venda alterada!");
-                    }
+
 
                 } catch (Exception e) {
                     e.printStackTrace();

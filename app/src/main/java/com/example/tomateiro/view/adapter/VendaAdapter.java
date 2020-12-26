@@ -59,6 +59,7 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
         holder.card_venda_data.setText(vendaList.get(position).getVendaData());
         holder.card_venda_quantidade.setText(String.valueOf(vendaList.get(position).getQuantidade()));
         holder.card_venda_preco.setText(vendaList.get(position).getPreco());
+        holder.card_venda_peso_caixa.setText(vendaList.get(position).getPesoCaixa());
     }
 
     public class VendaViewHolder extends RecyclerView.ViewHolder {
@@ -69,6 +70,7 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
         TextView card_venda_data;
         TextView card_venda_quantidade;
         TextView card_venda_preco;
+        TextView card_venda_peso_caixa;
 
 
         public VendaViewHolder(View itemView) {
@@ -78,6 +80,7 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
             card_venda_data = itemView.findViewById(R.id.card_venda_data);
             card_venda_quantidade = itemView.findViewById(R.id.card_venda_quantidade);
             card_venda_preco = itemView.findViewById(R.id.card_venda_preco);
+            card_venda_peso_caixa = itemView.findViewById(R.id.card_venda_peso_caixa);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -98,20 +101,24 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
                         final EditText et_nova_venda_data = layout.findViewById(R.id.nova_venda_data);
                         final EditText et_nova_venda_quantidade = layout.findViewById(R.id.nova_venda_quantidade);
                         final EditText et_nova_venda_preco = layout.findViewById(R.id.nova_venda_preco);
+                        final EditText et_nova_venda_peso_caixa = layout.findViewById(R.id.nova_venda_peso_caixa);
 
                         et_nova_venda_data.setText(getVendaList().get(position).getVendaData());
                         et_nova_venda_quantidade.setText(String.valueOf(getVendaList().get(position).getQuantidade()));
                         et_nova_venda_preco.setText(getVendaList().get(position).getPreco());
+                        et_nova_venda_peso_caixa.setText(getVendaList().get(position).getPesoCaixa());
 
                         btn_concluir.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 vendaController = new VendaController(context);
                                 getVendaList().get(position).setVendaData(et_nova_venda_data.getText().toString());
-                                getVendaList().get(position).setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
-                                getVendaList().get(position).setPreco(et_nova_venda_preco.getText().toString());
 
-                                if (vendaController.validar_alterar(getVendaList().get(position))) {
+                                getVendaList().get(position).setPreco(et_nova_venda_preco.getText().toString().substring(1));
+                                getVendaList().get(position).setPesoCaixa(et_nova_venda_peso_caixa.getText().toString().substring(1));
+
+                                if (vendaController.validar_alterar(getVendaList().get(position),et_nova_venda_quantidade.getText().toString())) {
+                                    getVendaList().get(position).setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
                                     safraController = new SafraController(context);
                                     safraRequest = new SafraRequest(context);
 

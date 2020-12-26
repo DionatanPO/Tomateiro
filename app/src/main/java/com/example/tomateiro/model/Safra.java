@@ -41,19 +41,18 @@ public class Safra implements Serializable {
 
     @SuppressLint("DefaultLocale")
     public Safra calcularCustoTotalHa(Safra s) {
-        s.setCustoTotalHa("0");
-        if (s.getCustoA() == null && s.getCustoA().getSubTotalA() == null &&
-                s.getCustoB() == null && s.getCustoB().getSubTotalB() == null &&
-                s.getCustoC() == null && s.getCustoC().getSubTotalC() == null &&
-                s.getCustoD() == null && s.getCustoD().getSubTotalD() == null) {
 
-        } else {
+        if (s.getCustoA() != null && s.getCustoB().getSubTotalB() != null &&
+                s.getCustoC().getSubTotalC() != null && s.getCustoD().getSubTotalD() != null) {
             long resultado = parse2(s.getCustoA().getSubTotalA()) +
                     parse2(s.getCustoB().getSubTotalB()) +
                     parse2(s.getCustoC().getSubTotalC()) +
                     parse2(s.getCustoD().getSubTotalD());
             double x = (double) resultado / 100;
             s.setCustoTotalHa(String.format("%,.2f", x));
+
+        } else {
+            s.setCustoTotalHa("0");
         }
 
         return s;

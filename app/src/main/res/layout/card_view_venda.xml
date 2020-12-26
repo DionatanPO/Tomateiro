@@ -21,9 +21,8 @@
 
 
             <GridLayout
-                android:padding="10dp"
                 android:id="@+id/gridLayout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -32,14 +31,16 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:columnCount="2"
+                android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
                     android:background="@color/alerta_verde"
                     android:gravity="center"
                     android:text="Venda "
@@ -49,7 +50,7 @@
 
                 <TextView
                     android:id="@+id/card_venda_id"
-                    android:layout_width="match_parent"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:background="@color/alerta_amarelo"
                     android:gravity="center"
@@ -59,55 +60,77 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:textColor="@color/alerta_verde"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="data"
-                    android:textSize="17dp" />
+                    android:text="Data:"
+                    android:textColor="@color/alerta_verde"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:gravity="center"
-                    android:textColor="@color/alerta_verde"
-                    android:textStyle="bold"
                     android:id="@+id/card_venda_data"
-                    android:layout_width="match_parent"
+                    android:layout_width="99dp"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:text=""
+                    android:textColor="@color/alerta_verde"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:textColor="@color/alerta_verde"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Qtde "
-                    android:textSize="17dp" />
+                    android:text="Qtde. caixa:"
+                    android:textColor="@color/alerta_verde"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:gravity="center"
-                    android:textColor="@color/alerta_verde"
-                    android:textStyle="bold"
+
                     android:id="@+id/card_venda_quantidade"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:text=""
+                    android:textColor="@color/alerta_verde"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:textColor="@color/alerta_verde"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preço "
-                    android:textSize="17dp" />
+                    android:text="Preço R$: "
+                    android:textColor="@color/alerta_verde"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:gravity="center"
-                    android:textColor="@color/alerta_verde"
-                    android:textStyle="bold"
+
                     android:id="@+id/card_venda_preco"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:textColor="@color/alerta_verde"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peso caixa (kg): "
+                    android:textColor="@color/alerta_verde"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:id="@+id/card_venda_peso_caixa"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:textColor="@color/alerta_verde"
+                    android:textStyle="bold" />
             </GridLayout>
 
 

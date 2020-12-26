@@ -79,6 +79,7 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:maxLength="20"
                     android:id="@+id/registro_nome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -94,6 +95,7 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:maxLength="20"
                     android:id="@+id/registro_propriedade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -108,6 +110,7 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:maxLength="15"
                     android:id="@+id/registro_identificacao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -122,6 +125,8 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:maxLength="15"
+                    android:inputType="textPassword"
                     android:id="@+id/senha1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -136,6 +141,8 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:maxLength="15"
+                    android:inputType="textPassword"
                     android:id="@+id/senha2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

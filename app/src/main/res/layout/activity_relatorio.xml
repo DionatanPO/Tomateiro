@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    >
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/textView"
@@ -56,7 +55,7 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginLeft="32dp"
                     android:layout_marginTop="24dp"
-                    android:columnCount="6"
+                    android:columnCount="4"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -83,28 +82,6 @@
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
 
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:text="Qtde. total caixa"
-                        android:textColor="@color/colorBranca"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="24dp"
-                        tools:layout_editor_absoluteY="16dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:text="Peso médio caixa (kg)"
-                        android:textColor="@color/colorBranca"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="24dp"
-                        tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -146,30 +123,6 @@
                         android:layout_height="wrap_content"
                         android:padding="20dp"
                         android:text="2"
-                        android:textColor="@color/colorBranca"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="24dp"
-                        tools:layout_editor_absoluteY="16dp" />
-
-                    <TextView
-                        android:id="@+id/relatorio_qtd_total_caixa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:text="3500"
-                        android:textColor="@color/colorBranca"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="24dp"
-                        tools:layout_editor_absoluteY="16dp" />
-
-                    <TextView
-                        android:id="@+id/relatorio_peso_caixa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:text="22"
                         android:textColor="@color/colorBranca"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -227,6 +180,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorBranca"
+                android:gravity="center"
+                android:text="Custo: visão geral"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24dp"
+                android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -507,28 +471,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/grafico4">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:text="VISÃO GERAL"
-                        android:textColor="@color/colorBranca"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="24dp"
-                        tools:layout_editor_absoluteY="16dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:text=""
-                        android:textColor="@color/colorBranca"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="24dp"
-                        tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -548,7 +490,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="R$: 45.00,00"
+                        android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -573,7 +515,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="R$: 45.00,00"
+                        android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -598,7 +540,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="R$: 45.00,00"
+                        android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -623,7 +565,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="R$: 45.00,00"
+                        android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -648,7 +590,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="R$: 45.00,00"
+                        android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -673,7 +615,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="R$: 45.00,00"
+                        android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -698,7 +640,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="R$: 45.00,00"
+                        android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -708,14 +650,113 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorBranca"
+                android:gravity="center"
+                android:text="Venda: visão geral"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <GridLayout
+                android:id="@+id/gridLayout6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:columnCount="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/grafico4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Nº total vendas"
+                    android:textColor="@color/colorBranca"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="24dp"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <TextView
+                    android:id="@+id/relatorio_n_venda_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                 android:layout_gravity="right"
+                    android:text="0"
+                    android:textColor="@color/colorBranca"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="24dp"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Qtde. total caixa"
+                    android:textColor="@color/colorBranca"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="24dp"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <TextView
+                    android:id="@+id/relatorio_qtd_total_caixa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="0"
+                    android:textColor="@color/colorBranca"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="24dp"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Peso médio caixa (kg) "
+                    android:textColor="@color/colorBranca"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="24dp"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <TextView
+                    android:id="@+id/relatorio_peso_caixa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="0"
+                    android:textColor="@color/colorBranca"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="24dp"
+                    tools:layout_editor_absoluteY="16dp" />
+
+
+            </GridLayout>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barchart"
                 android:layout_width="350dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center" />
-
-
 
 
         </LinearLayout>

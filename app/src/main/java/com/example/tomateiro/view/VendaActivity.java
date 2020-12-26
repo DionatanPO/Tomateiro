@@ -32,7 +32,9 @@ import com.example.tomateiro.request.SafraRequest;
 import com.example.tomateiro.view.adapter.VendaAdapter;
 import com.example.tomateiro.view.custo.CustoC_Activity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
@@ -118,17 +120,25 @@ public class VendaActivity extends AppCompatActivity {
                                 final EditText et_nova_venda_data = layout.findViewById(R.id.nova_venda_data);
                                 final EditText et_nova_venda_quantidade = layout.findViewById(R.id.nova_venda_quantidade);
                                 final EditText et_nova_venda_preco = layout.findViewById(R.id.nova_venda_preco);
+                                final EditText et_nova_venda_peso_caixa = layout.findViewById(R.id.nova_venda_peso_caixa);
 
+                                SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
+                                Date data = new Date();
+                                String dataFormatada = formataData.format(data);
+
+                                et_nova_venda_data.setText(dataFormatada);
 
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         venda.setEstado("Ativo");
                                         venda.setVendaData(et_nova_venda_data.getText().toString());
-                                        venda.setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
-                                        venda.setPreco(et_nova_venda_preco.getText().toString());
+                                        venda.setPreco(et_nova_venda_preco.getText().toString().substring(1));
+                                        venda.setPesoCaixa(et_nova_venda_peso_caixa.getText().toString().substring(1));
 
-                                        if (vendaController.validar_cadastro(venda)) {
+                                        if (vendaController.validar_cadastro(venda,et_nova_venda_quantidade.getText().toString())) {
+
+                                            venda.setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
                                             vendaList.add(venda);
                                             safra.setVendas(vendaList);
                                             safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), VendaActivity.this, "Cadastrar");
@@ -198,9 +208,9 @@ public class VendaActivity extends AppCompatActivity {
                             mAdapter.notifyItemRemoved(position);
                             safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), VendaActivity.this, "Desativar");
 
-                            if (mAdapter.getVendaList().size() == 0) {
-                                recyclerView.setVisibility(View.GONE);
+                            if (mAdapter.getVendaList().size() ==0 ) {
                                 msg.setVisibility(View.VISIBLE);
+
                             }
                             dialog.cancel();
                         }

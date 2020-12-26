@@ -82,7 +82,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
+                    android:layout_gravity="center|left"
                     android:text="Data:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="16sp"
@@ -90,50 +90,73 @@
 
                 <EditText
                     android:id="@+id/nova_venda_data"
-                    android:layout_width="90dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
+                    android:gravity="right"
                     android:layout_gravity="right"
                     android:autofillHints=""
                     android:inputType="numberDecimal"
-                    android:maxLength="8"
+                    android:maxLength="10"
                     tools:ignore="LabelFor" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:text="Quantidade:"
+                    android:layout_gravity="center|left"
+                    android:text="Qted. caixa:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <EditText
+                    android:gravity="right"
                     android:id="@+id/nova_venda_quantidade"
-                    android:layout_width="90dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:autofillHints=""
                     android:inputType="numberDecimal"
-                    android:maxLength="3"
+                    android:maxLength="15"
                     tools:ignore="LabelFor" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:text="Preço"
+                    android:layout_gravity="center|left"
+                    android:text="Preço R$:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <EditText
+                <me.abhinay.input.CurrencyEditText
+                    android:gravity="right"
                     android:id="@+id/nova_venda_preco"
-                    android:layout_width="90dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:importantForAutofill="no"
-                    android:inputType="textCapSentences|textAutoCorrect"
-                    android:maxLength="20"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    tools:ignore="LabelFor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Peso caixa (kg): "
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <me.abhinay.input.CurrencyEditText
+                    android:gravity="right"
+                    android:id="@+id/nova_venda_peso_caixa"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
                     tools:ignore="LabelFor" />
 
             </GridLayout>

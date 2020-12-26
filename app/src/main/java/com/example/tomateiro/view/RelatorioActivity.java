@@ -50,8 +50,10 @@ public class RelatorioActivity extends AppCompatActivity {
     private Safra safra;
     private Field[] fields;
 
-    private TextView r_qtd_total_caixa, r_ciclo, r_peso_medio_caixa, r_qtd_pes, r_regiao_referencia, r_subTotalA, r_subTotalD, r_subTotalC, r_subTotalB, r_custoTotal_ha, r_custoTotal_cx,
-            r_preco_medio_recebido, r_receitaHa, r_resultadoHa, r_resultadoCx, r_margem_venda;
+    private TextView r_qtd_total_caixa, r_ciclo, r_peso_medio_caixa, r_qtd_pes, r_regiao_referencia,
+            r_subTotalA, r_subTotalD, r_subTotalC, r_subTotalB, r_custoTotal_ha, r_custoTotal_cx,
+            r_preco_medio_recebido, r_receitaHa, r_resultadoHa, r_resultadoCx, r_margem_venda,
+            r_venda_n_total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,21 +78,55 @@ public class RelatorioActivity extends AppCompatActivity {
         r_resultadoHa = findViewById(R.id.relatorio_resultadoHa);
         r_resultadoCx = findViewById(R.id.relatorio_resultadoCx);
         r_margem_venda = findViewById(R.id.relatorio_margem_venda);
+        r_venda_n_total = findViewById(R.id.relatorio_n_venda_total);
 
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             safra = (Safra) getIntent().getSerializableExtra("safra");
+
+            r_ciclo.setText(safra.getClicloAno());
+            r_qtd_pes.setText(String.valueOf(safra.getQtdePes()));
+            r_regiao_referencia.setText(safra.getRegiaoReferencia());
+
             try {
-                safra = safra.calcularQtdeCaixasVendidas(safra);
-                safra = safra.calcularPesoMedioCaixa(safra);
                 safra = safra.calcularCustoTotalHa(safra);
-                safra = safra.calcularCustoTotalCx(safra);
-                safra = safra.calcularPrecoMedioRecebido(safra);
-                safra = safra.calcularReceita(safra);
-                safra = safra.calcularResultadoHa(safra);
-                safra = safra.calcularResultadoCx(safra);
-                safra = safra.calcularMargemVenda(safra);
+
+                if(safra.getVendas().size()>=1){
+                    safra = safra.calcularPesoMedioCaixa(safra);
+                    r_peso_medio_caixa.setText(safra.getPesoMedioCaixas());
+                    safra = safra.calcularQtdeCaixasVendidas(safra);
+                    r_qtd_total_caixa.setText(String.valueOf(safra.getQtdeCaixas()));
+                    r_venda_n_total.setText(String.valueOf(safra.getVendas().size()));
+                }
+
+                if(safra.getCustoTotalHa()!="0"){
+                    if(safra.getVendas().size()>=1){
+                        safra = safra.calcularQtdeCaixasVendidas(safra);
+                        safra = safra.calcularCustoTotalCx(safra);
+                        safra = safra.calcularPrecoMedioRecebido(safra);
+                        safra = safra.calcularPesoMedioCaixa(safra);
+
+                        safra = safra.calcularReceita(safra);
+                        safra = safra.calcularResultadoHa(safra);
+                        safra = safra.calcularResultadoCx(safra);
+                        safra = safra.calcularMargemVenda(safra);
+
+
+                        r_peso_medio_caixa.setText(safra.getPesoMedioCaixas());
+                        r_qtd_total_caixa.setText(String.valueOf(safra.getQtdeCaixas()));
+                        r_custoTotal_ha.setText(safra.getCustoTotalHa());
+                        r_custoTotal_cx.setText(safra.getCustoTotalCa());
+                        r_preco_medio_recebido.setText(safra.getPreçoMedioRecebidoProdutor());
+                        r_receitaHa.setText(safra.getReceitaHa());
+                        r_resultadoHa.setText(safra.getResultadoHa());
+                        r_resultadoCx.setText(safra.getResultadoCx());
+                        r_margem_venda.setText(safra.getMargemVenda() + "%");
+
+                        r_venda_n_total.setText(String.valueOf(safra.getVendas().size()));
+                    }
+
+                }
 
             } catch (Exception e) {
                 System.out.println("");
@@ -99,25 +135,6 @@ public class RelatorioActivity extends AppCompatActivity {
 
         } else {
             safra = new Safra();
-        }
-
-        ///Setar valores
-        try {
-            r_ciclo.setText(safra.getClicloAno());
-            r_qtd_pes.setText(String.valueOf(safra.getQtdePes()));
-            r_regiao_referencia.setText(safra.getRegiaoReferencia());
-            r_peso_medio_caixa.setText(safra.getPesoMedioCaixas());
-            r_qtd_total_caixa.setText(String.valueOf(safra.getQtdeCaixas()));
-            r_custoTotal_ha.setText(safra.getCustoTotalHa());
-            r_custoTotal_cx.setText(safra.getCustoTotalCa());
-            r_preco_medio_recebido.setText(safra.getPreçoMedioRecebidoProdutor());
-            r_receitaHa.setText(safra.getReceitaHa());
-            r_resultadoHa.setText(safra.getResultadoHa());
-            r_resultadoCx.setText(safra.getResultadoCx());
-            r_margem_venda.setText(safra.getMargemVenda() + "%");
-
-        } catch (Exception e) {
-
         }
 
         //--------------------------------------------------------
@@ -353,13 +370,11 @@ public class RelatorioActivity extends AppCompatActivity {
 //        xAxis.setDrawGridLines(false);
 //        xAxis.setValueFormatter(new IndexAxisValueFormatter(getAreaCount()));
         //--------------------------------------------------------------------
-        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener()
-        {
+        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
-            public void onValueSelected(Entry e, Highlight h)
-            {
-                float x=e.getX();
-                float y=e.getY();
+            public void onValueSelected(Entry e, Highlight h) {
+                float x = e.getX();
+                float y = e.getY();
 
 
 //                Toast.makeText(RelatorioActivity.this, String.valueOf( e.getData().toString()),
@@ -370,8 +385,7 @@ public class RelatorioActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected()
-            {
+            public void onNothingSelected() {
 
             }
         });

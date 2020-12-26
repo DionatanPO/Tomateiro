@@ -13,16 +13,19 @@ public class VendaController {
         this.context = context;
     }
 
-    public boolean validar_cadastro(Venda venda) {
-        if ( venda.getPreco().isEmpty() || venda.getVendaData().isEmpty()) {
+    public boolean validar_cadastro(Venda venda, String quantidade) {
+        if (venda.getPreco().isEmpty() || venda.getVendaData().isEmpty()
+                || quantidade.equals("")||venda.getPesoCaixa().equals("")) {
             viewToastAlerta(context, "Preencha todos os campos");
             return false;
         } else {
             return true;
         }
     }
-    public boolean validar_alterar(Venda venda) {
-        if ( venda.getPreco().isEmpty() || venda.getVendaData().isEmpty()) {
+
+    public boolean validar_alterar(Venda venda, String quantidade) {
+        if (venda.getPreco().isEmpty() || venda.getVendaData().isEmpty()
+                || quantidade.equals("")||venda.getPesoCaixa().equals("")) {
             viewToastAlerta(context, "Preencha todos os campos");
             return false;
         } else {

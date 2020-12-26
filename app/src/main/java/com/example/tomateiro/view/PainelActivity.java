@@ -206,31 +206,54 @@ public class PainelActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(View view) {
 
-                                        if(safra!=null){
-                                            safra.setEstado("Concluida");
-                                            safraRequest.alterrar_safra(safraController.converter_safra_json(safra),safra.getId(),PainelActivity.this);
-                                        }else {
-                                            safra = new Safra();
-                                        }
 
-                                        safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
-                                        safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
-                                        try {
-                                            safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
-                                        } catch (Exception e) {
-                                            safra.setQtdePes(0);
-                                        }
+                                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                                        alertDialogBuilder
+                                                .setMessage("Ao cadastrar uma nova safra, implica em concluir a safra atual. Deseja concluir a safra atual?")
+                                                .setCancelable(false)
+                                                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+
+                                                        if(safra!=null){
+                                                            safra.setEstado("Concluida");
+
+                                                        }else {
+                                                            safra = new Safra();
+                                                        }
+
+                                                        safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
+                                                        safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                                                        try {
+                                                            safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
+                                                        } catch (Exception e) {
+                                                            safra.setQtdePes(0);
+                                                        }
 
 
-                                        //fazer request para salvar safra
-                                        if (safraController.validar_cadastro(safra)) {
-                                            safra.setProdutor(produtor);
-                                            safraRequest.cadastrar_safra(safraController.converter_safra_json(safra), PainelActivity.this);
+                                                        //fazer request para salvar safra
+                                                        if (safraController.validar_cadastro(safra)) {
+                                                            safraRequest.alterrar_safra(safraController.converter_safra_json(safra),safra.getId(),PainelActivity.this);
+                                                            safra.setProdutor(produtor);
+                                                            safraRequest.cadastrar_safra(safraController.converter_safra_json(safra), PainelActivity.this);
 
-                                            alerta.cancel();
-                                        } else {
+                                                            alerta.cancel();
+                                                        } else {
 
-                                        }
+                                                        }
+
+                                                        dialog.cancel();
+                                                    }
+                                                })
+                                                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+
+                                                        dialog.cancel();
+                                                    }
+                                                });
+
+                                        AlertDialog alertDialog = alertDialogBuilder.create();
+                                        alertDialog.show();
 
 
                                     }
