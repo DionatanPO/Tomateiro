@@ -33,6 +33,7 @@ public class Safra implements Serializable {
     private String pesoMedioCaixas;
     private String clicloAno;
     private String estado;
+    private String data;
 
     private ArrayList<Venda> vendas = new ArrayList<>();
 
@@ -150,6 +151,14 @@ public class Safra implements Serializable {
         s = String.format(Locale.US, "%.0f", value);
         r = Long.parseLong(s);
         return r;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public Long getId() {
@@ -318,5 +327,10 @@ public class Safra implements Serializable {
 
     public void setVendas(ArrayList<Venda> vendas) {
         this.vendas = vendas;
+    }
+
+    @Override
+    public String toString() {
+        return "Safra cliclo/ Ano='" + clicloAno+" Data "+data;
     }
 }

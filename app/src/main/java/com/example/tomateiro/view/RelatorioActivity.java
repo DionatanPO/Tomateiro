@@ -1,14 +1,20 @@
 package com.example.tomateiro.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
+import android.content.Context;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.tomateiro.R;
 
@@ -16,8 +22,9 @@ import com.example.tomateiro.model.CustoA;
 import com.example.tomateiro.model.CustoB;
 import com.example.tomateiro.model.CustoC;
 import com.example.tomateiro.model.CustoD;
-import com.example.tomateiro.model.Relatorio;
+import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Safra;
+import com.example.tomateiro.request.SafraRequest;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.PieChart;
@@ -29,7 +36,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -49,6 +55,12 @@ public class RelatorioActivity extends AppCompatActivity {
     private ArrayList<PieEntry> pieEntries;
     private Safra safra;
     private Field[] fields;
+    private Button btn_safra_menu;
+    private Context context;
+    private SafraRequest safraRequest;
+    private List<Safra> safrasListConcluidas;
+    private Produtor produtor;
+    private ListView listView;
 
     private TextView r_qtd_total_caixa, r_ciclo, r_peso_medio_caixa, r_qtd_pes, r_regiao_referencia,
             r_subTotalA, r_subTotalD, r_subTotalC, r_subTotalB, r_custoTotal_ha, r_custoTotal_cx,
@@ -59,6 +71,10 @@ public class RelatorioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relatorio);
+        context = this;
+
+        btn_safra_menu = findViewById(R.id.btn_safra_menu);
+
 
         //Definindo variaves
         r_qtd_total_caixa = findViewById(R.id.relatorio_qtd_total_caixa);
@@ -84,6 +100,7 @@ public class RelatorioActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             safra = (Safra) getIntent().getSerializableExtra("safra");
+            produtor = (Produtor) getIntent().getSerializableExtra("produtor");
 
             r_ciclo.setText(safra.getClicloAno());
             r_qtd_pes.setText(String.valueOf(safra.getQtdePes()));
@@ -92,7 +109,7 @@ public class RelatorioActivity extends AppCompatActivity {
             try {
                 safra = safra.calcularCustoTotalHa(safra);
 
-                if(safra.getVendas().size()>=1){
+                if (safra.getVendas().size() >= 1) {
                     safra = safra.calcularPesoMedioCaixa(safra);
                     r_peso_medio_caixa.setText(safra.getPesoMedioCaixas());
                     safra = safra.calcularQtdeCaixasVendidas(safra);
@@ -100,8 +117,8 @@ public class RelatorioActivity extends AppCompatActivity {
                     r_venda_n_total.setText(String.valueOf(safra.getVendas().size()));
                 }
 
-                if(safra.getCustoTotalHa()!="0"){
-                    if(safra.getVendas().size()>=1){
+                if (safra.getCustoTotalHa() != "0") {
+                    if (safra.getVendas().size() >= 1) {
                         safra = safra.calcularQtdeCaixasVendidas(safra);
                         safra = safra.calcularCustoTotalCx(safra);
                         safra = safra.calcularPrecoMedioRecebido(safra);
@@ -137,6 +154,50 @@ public class RelatorioActivity extends AppCompatActivity {
             safra = new Safra();
         }
 
+        btn_safra_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                PopupMenu popup = new PopupMenu(context, btn_safra_menu);
+
+                popup.getMenuInflater()
+                        .inflate(R.menu.relatorio_menu, popup.getMenu());
+
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    AlertDialog alerta;
+                    LayoutInflater inflater = LayoutInflater.from(context);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    View layout;
+
+                    @SuppressLint("SetTextI18n")
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+
+                            case R.id.historico:
+
+                                safraRequest = new SafraRequest(context);
+                                safrasListConcluidas = new ArrayList<>();
+
+                                layout = inflater.inflate(R.layout.lista_safra_fragmento, null);
+                                listView = layout.findViewById(R.id.listview);
+                                safraRequest.buscar_safra_produtor(produtor.getId(), "Concluida", RelatorioActivity.this);
+
+
+                                builder.setView(layout);
+                                alerta = builder.create();
+                                alerta.show();
+                                return true;
+
+                            default:
+                                return false;
+                        }
+
+                    }
+                });
+
+                popup.show();
+            }
+        });
         //--------------------------------------------------------
 
         pieChart = findViewById(R.id.grafico1);
@@ -389,6 +450,13 @@ public class RelatorioActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void request_buscar_safra_concluidas(List<Safra> safras) {
+        safrasListConcluidas = safras;
+        final ArrayAdapter<Safra> adapter = new ArrayAdapter<>(this, R.layout.spinner_templete, safrasListConcluidas);
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     public class DayAxisValueFormatter extends ValueFormatter {

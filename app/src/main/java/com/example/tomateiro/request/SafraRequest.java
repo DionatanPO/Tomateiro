@@ -15,6 +15,7 @@ import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Url;
 import com.example.tomateiro.view.PainelActivity;
 import com.example.tomateiro.view.RegistroActivity;
+import com.example.tomateiro.view.RelatorioActivity;
 import com.example.tomateiro.view.VendaActivity;
 import com.example.tomateiro.view.adapter.VendaAdapter;
 import com.example.tomateiro.view.custo.CustoA_Activity;
@@ -94,38 +95,6 @@ public class SafraRequest {
 
         mRequestQueue.add(stringRequest);
 
-    }
-
-    public List<Safra> bsucar_todos() {
-
-        String url = ip + "/safra/todos";
-
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray jsonArray) {
-                        try {
-
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject safras = jsonArray.getJSONObject(i);
-
-                                safra = new Gson().fromJson(safras.toString(), Safra.class);
-                                safraList.add(safra);
-
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                System.out.println(error);
-            }
-        });
-        mRequestQueue.add(request);
-        return safraList;
     }
 
 
@@ -360,6 +329,7 @@ public class SafraRequest {
 
         mRequestQueue.add(stringRequest);
     }
+
     public void alterrar_safra(final String json, Long id, final CustoC_Activity activity) {
 
         String url = ip + "/safra/" + id;
@@ -451,32 +421,73 @@ public class SafraRequest {
 
         mRequestQueue.add(stringRequest);
     }
-    public void buscar_safra_produtor(Long id, final PainelActivity activity) {
 
-        String url = ip + "/safra/buscarSafraAtiva/"+id;
+    public void buscar_safra_produtor(Long id, String estado, final PainelActivity activity) {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
-                    activity.request_buscar_safra(safra);
+        String url = ip + "/safra/buscarSafraAtiva/" + id + "/" + estado;
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    viewToastErro(context, "Ops! Algo deu errado");
-                }
-            }
-        }, new Response.ErrorListener() {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        try {
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
+                                activity.request_buscar_safra(safra);
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 System.out.println(error);
-
             }
         });
+        mRequestQueue.add(request);
 
-        mRequestQueue.add(stringRequest);
+    }
+
+    public void buscar_safra_produtor(Long id, String estado, final RelatorioActivity activity) {
+
+        safraList = new ArrayList<>();
+
+        String url = ip + "/safra/buscarSafraAtiva/" + id + "/" + estado;
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        try {
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
+                                safraList.add(safra);
+
+
+                            }
+                            activity.request_buscar_safra_concluidas(safraList);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println(error);
+            }
+        });
+        mRequestQueue.add(request);
 
     }
 }

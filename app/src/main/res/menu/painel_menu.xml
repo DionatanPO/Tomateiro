@@ -5,9 +5,6 @@
         android:id="@+id/novaSafra"
         android:title="Cadastrar nova safra" />
 
-    <item
-        android:id="@+id/safrasAnteriores"
-        android:title="Safras anteriores" />
 
     <item
         android:id="@+id/perfilAltera"

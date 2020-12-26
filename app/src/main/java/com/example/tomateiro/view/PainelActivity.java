@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -164,6 +165,7 @@ public class PainelActivity extends AppCompatActivity {
                 if (safra != null) {
                     intent = new Intent(context, RelatorioActivity.class);
                     intent.putExtra("safra", safra);
+                    intent.putExtra("produtor", produtor);
                     context.startActivity(intent);
                 } else {
                     viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar o relatório.");
@@ -191,8 +193,6 @@ public class PainelActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.novaSafra:
-
-
 
                                 layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
 
@@ -543,6 +543,6 @@ public class PainelActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        safraRequest.buscar_safra_produtor(produtor.getId(), PainelActivity.this);
+        safraRequest.buscar_safra_produtor(produtor.getId(),"Ativo", PainelActivity.this);
     }
 }
