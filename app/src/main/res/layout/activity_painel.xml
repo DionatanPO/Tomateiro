@@ -65,6 +65,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
         android:id="@+id/card_safra"
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -75,7 +76,6 @@
         android:layout_marginRight="32dp"
         android:background="@drawable/ic_card_fundo"
         android:elevation="15dp"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,7 +108,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/painel_card_safra"
+            android:id="@+id/painel_card_safra_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

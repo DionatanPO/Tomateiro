@@ -18,7 +18,7 @@ public class SafraController {
     }
 
     public boolean validar_cadastro(Safra safra) {
-        if (safra.getClicloAno().isEmpty() || safra.getRegiaoReferencia().isEmpty()) {
+        if (safra.getClicloAno().isEmpty() || safra.getRegiaoReferencia().isEmpty()|| safra.getData().isEmpty()) {
             viewToastAlerta(context, "Preencha todos os campos");
             return false;
         } else {
@@ -27,7 +27,7 @@ public class SafraController {
     }
 
     public boolean validar_alterar(Safra safra) {
-        if (safra.getClicloAno().isEmpty() || safra.getRegiaoReferencia().isEmpty()) {
+        if (safra.getClicloAno().isEmpty() || safra.getRegiaoReferencia().isEmpty()|| safra.getData().isEmpty()) {
             viewToastAlerta(context, "Preencha todos os campos");
             return false;
         } else {

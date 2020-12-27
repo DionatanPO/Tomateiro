@@ -84,6 +84,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|left"
+                    android:text="Data:"
+                    android:textColor="@color/verdeEscuro"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/nova_safra_data"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:autofillHints=""
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    tools:ignore="LabelFor" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
                     android:text="Qtde.pés:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="16sp"
@@ -91,7 +110,7 @@
 
                 <EditText
                     android:id="@+id/nova_safra_pes"
-                    android:layout_width="100dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:gravity="right"
@@ -111,7 +130,7 @@
 
                 <EditText
                     android:id="@+id/nova_safra_ciclo"
-                    android:layout_width="100dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:gravity="right"
@@ -131,7 +150,7 @@
 
                 <EditText
                     android:id="@+id/nova_safra_regiao"
-                    android:layout_width="100dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:gravity="right"

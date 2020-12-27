@@ -36,7 +36,9 @@ import com.example.tomateiro.view.custo.CustoB_Activity;
 import com.example.tomateiro.view.custo.CustoC_Activity;
 import com.example.tomateiro.view.custo.CustoD_Activity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.example.tomateiro.model.CustonToast.viewToast;
 import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
@@ -49,7 +51,7 @@ public class PainelActivity extends AppCompatActivity {
     private SafraController safraController;
     private ProdutorController produtorController;
     private View card_safra;
-    private TextView msg, painel_produtor, txt_painel_card_safra, txt_painel_card_ciclo, txt_painel_card_qtde_pes, txt_painel_card_regiao;
+    private TextView msg, painel_produtor, txt_painel_card_safra_data, txt_painel_card_ciclo, txt_painel_card_qtde_pes, txt_painel_card_regiao;
     private Produtor produtor;
     private SafraRequest safraRequest;
     private ProdutorRequest produtorRequest;
@@ -84,7 +86,7 @@ public class PainelActivity extends AppCompatActivity {
         btn_relatorio = findViewById(R.id.painel_btn_relatorio);
         btn_venda = findViewById(R.id.painel_btn_venda);
 
-        txt_painel_card_safra = findViewById(R.id.painel_card_safra);
+        txt_painel_card_safra_data = findViewById(R.id.painel_card_safra_data);
         txt_painel_card_ciclo = findViewById(R.id.painel_card_cocloAno);
         txt_painel_card_qtde_pes = findViewById(R.id.painel_card_qtde_pes);
         txt_painel_card_regiao = findViewById(R.id.painel_card_regiao);
@@ -110,10 +112,13 @@ public class PainelActivity extends AppCompatActivity {
                 final EditText et_nova_safra_pes = layout.findViewById(R.id.nova_safra_pes);
                 final EditText et_nova_safra_ciclo = layout.findViewById(R.id.nova_safra_ciclo);
                 final EditText et_nova_safra_regiao = layout.findViewById(R.id.nova_safra_regiao);
+                final EditText et_nova_safra_data = layout.findViewById(R.id.nova_safra_data);
 
                 et_nova_safra_pes.setText(String.valueOf(safra.getQtdePes()));
                 et_nova_safra_ciclo.setText(safra.getClicloAno());
                 et_nova_safra_regiao.setText(safra.getRegiaoReferencia());
+                et_nova_safra_data.setText(safra.getData());
+
 
 
                 btn_concluir.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +127,7 @@ public class PainelActivity extends AppCompatActivity {
 
                         safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
                         safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                        safra.setData(et_nova_safra_data.getText().toString());
                         try {
                             safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
                         } catch (Exception e) {
@@ -200,7 +206,13 @@ public class PainelActivity extends AppCompatActivity {
                                 final EditText et_nova_safra_pes = layout.findViewById(R.id.nova_safra_pes);
                                 final EditText et_nova_safra_ciclo = layout.findViewById(R.id.nova_safra_ciclo);
                                 final EditText et_nova_safra_regiao = layout.findViewById(R.id.nova_safra_regiao);
+                                final EditText et_nova_safra_data = layout.findViewById(R.id.nova_safra_data);
 
+                                SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
+                                Date data = new Date();
+                                String dataFormatada = formataData.format(data);
+
+                                et_nova_safra_data.setText(dataFormatada);
 
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -224,6 +236,7 @@ public class PainelActivity extends AppCompatActivity {
 
                                                         safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
                                                         safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                                                        safra.setData(et_nova_safra_data.getText().toString());
                                                         try {
                                                             safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
                                                         } catch (Exception e) {
@@ -475,9 +488,11 @@ public class PainelActivity extends AppCompatActivity {
 
     public void request_cadastrar_novaSafra(Safra s) {
         safra = s;
+        txt_painel_card_safra_data.setText(safra.getData());
         txt_painel_card_ciclo.setText(safra.getClicloAno());
         txt_painel_card_qtde_pes.setText(String.valueOf(safra.getQtdePes()));
         txt_painel_card_regiao.setText(safra.getRegiaoReferencia());
+
 
         card_safra.setVisibility(View.VISIBLE);
         msg.setVisibility(View.GONE);
@@ -486,6 +501,7 @@ public class PainelActivity extends AppCompatActivity {
 
     public void request_buscar_safra(Safra s) {
         safra = s;
+        txt_painel_card_safra_data.setText(safra.getData());
         txt_painel_card_ciclo.setText(safra.getClicloAno());
         txt_painel_card_qtde_pes.setText(String.valueOf(safra.getQtdePes()));
         txt_painel_card_regiao.setText(safra.getRegiaoReferencia());
@@ -497,6 +513,7 @@ public class PainelActivity extends AppCompatActivity {
 
     public void request_alterar_safra(Safra s) {
         safra = s;
+        txt_painel_card_safra_data.setText(safra.getData());
         txt_painel_card_ciclo.setText(safra.getClicloAno());
         txt_painel_card_qtde_pes.setText(String.valueOf(safra.getQtdePes()));
         txt_painel_card_regiao.setText(safra.getRegiaoReferencia());

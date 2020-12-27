@@ -331,6 +331,6 @@ public class Safra implements Serializable {
 
     @Override
     public String toString() {
-        return "Safra cliclo/ Ano='" + clicloAno+" Data "+data;
+        return "Safra cliclo/ Ano = " + clicloAno+"| Data "+data;
     }
 }

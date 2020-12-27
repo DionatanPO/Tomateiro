@@ -65,7 +65,7 @@ public class RelatorioActivity extends AppCompatActivity {
     private TextView r_qtd_total_caixa, r_ciclo, r_peso_medio_caixa, r_qtd_pes, r_regiao_referencia,
             r_subTotalA, r_subTotalD, r_subTotalC, r_subTotalB, r_custoTotal_ha, r_custoTotal_cx,
             r_preco_medio_recebido, r_receitaHa, r_resultadoHa, r_resultadoCx, r_margem_venda,
-            r_venda_n_total;
+            r_venda_n_total, r_safra_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +81,7 @@ public class RelatorioActivity extends AppCompatActivity {
         r_ciclo = findViewById(R.id.relatorio_ciclo);
         r_peso_medio_caixa = findViewById(R.id.relatorio_peso_caixa);
         r_qtd_pes = findViewById(R.id.relatorio_qtde_pes);
+        r_safra_data = findViewById(R.id.relatorio_data);
         r_regiao_referencia = findViewById(R.id.relatorio_regiao_referencia);
 
         r_subTotalA = findViewById(R.id.relatorio_subtotalA);
@@ -105,6 +106,7 @@ public class RelatorioActivity extends AppCompatActivity {
             r_ciclo.setText(safra.getClicloAno());
             r_qtd_pes.setText(String.valueOf(safra.getQtdePes()));
             r_regiao_referencia.setText(safra.getRegiaoReferencia());
+            r_safra_data.setText(safra.getData());
 
             try {
                 safra = safra.calcularCustoTotalHa(safra);
