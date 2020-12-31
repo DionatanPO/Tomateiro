@@ -494,6 +494,8 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
+                        android:layout_gravity="right"
+                        android:gravity="right"
                         android:id="@+id/relatorio_custo_total_ha"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -519,6 +521,8 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
+                        android:layout_gravity="right"
+                        android:gravity="right"
                         android:id="@+id/relatorio_custo_total_cx"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -544,6 +548,8 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
+                        android:layout_gravity="right"
+                        android:gravity="right"
                         android:id="@+id/relatorio_receita"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -569,6 +575,8 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
+                        android:layout_gravity="right"
+                        android:gravity="right"
                         android:id="@+id/relatorio_resultadoHa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -594,6 +602,8 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
+                        android:layout_gravity="right"
+                        android:gravity="right"
                         android:id="@+id/relatorio_resultadoCx"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -619,6 +629,8 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
+                        android:layout_gravity="right"
+                        android:gravity="right"
                         android:id="@+id/relatorio_margem_venda"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -644,6 +656,8 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
+                        android:layout_gravity="right"
+                        android:gravity="right"
                         android:id="@+id/relatorio_preco_medio_recebido"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

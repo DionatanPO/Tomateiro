@@ -90,7 +90,7 @@ public class CustoC_Activity extends AppCompatActivity {
 
         if (extras != null) {
             safra = (Safra) getIntent().getSerializableExtra("safra");
-            if (safra.getCustoA() != null) {
+            if (safra.getCustoC() != null) {
                 custoC = safra.getCustoC();
                 try {
                 editA_q1.setText(custoC.getCalcarioDolomiticoQ());

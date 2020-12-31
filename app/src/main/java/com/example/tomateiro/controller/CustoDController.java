@@ -28,7 +28,7 @@ public class CustoDController {
 
             if (objeto == null) {
                 System.out.println(field.getName());
-                if(field.getName().equals("subTotalD")){
+                if(field.getName().equals("subTotalD")||field.getName().equals("id")){
                     resultado = true;
                 }else{
                     resultado = false;

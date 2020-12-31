@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences.Editor loginPrefsEditor;
 
     private Boolean checked;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +119,15 @@ public class LoginActivity extends AppCompatActivity {
                     loginPrefsEditor.apply();
 
                 }
+            }
+        });
+        TextView btn_recuperrar_senha = findViewById(R.id.btn_recuperar_senha);
+        btn_recuperrar_senha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, RecuperarActivity.class);
+                startActivity(intent);
+
             }
         });
     }

@@ -6,11 +6,13 @@ import androidx.appcompat.widget.PopupMenu;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -46,6 +48,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.graphics.Color.WHITE;
+import static com.example.tomateiro.model.CustonToast.viewToast;
+import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
 
 
 public class RelatorioActivity extends AppCompatActivity {
@@ -74,7 +78,6 @@ public class RelatorioActivity extends AppCompatActivity {
         context = this;
 
         btn_safra_menu = findViewById(R.id.btn_safra_menu);
-
 
         //Definindo variaves
         r_qtd_total_caixa = findViewById(R.id.relatorio_qtd_total_caixa);
@@ -183,6 +186,22 @@ public class RelatorioActivity extends AppCompatActivity {
                                 layout = inflater.inflate(R.layout.lista_safra_fragmento, null);
                                 listView = layout.findViewById(R.id.listview);
                                 safraRequest.buscar_safra_produtor(produtor.getId(), "Concluida", RelatorioActivity.this);
+
+
+
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                                    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                                        viewToast(context,"Carregando informações...");
+                                        safra = safrasListConcluidas.get(position);
+
+                                        Intent intent = getIntent();
+                                        intent.putExtra("safra",safra);
+                                        intent.putExtra("produtor",produtor);
+                                        finish();
+                                        startActivity(intent);
+                                    }
+                                });
 
 
                                 builder.setView(layout);

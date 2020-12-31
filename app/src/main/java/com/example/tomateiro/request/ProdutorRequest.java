@@ -11,10 +11,13 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.tomateiro.model.Produtor;
+import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Url;
 import com.example.tomateiro.view.LoginActivity;
 import com.example.tomateiro.view.PainelActivity;
+import com.example.tomateiro.view.RecuperarActivity;
 import com.example.tomateiro.view.RegistroActivity;
+import com.example.tomateiro.view.RelatorioActivity;
 import com.google.gson.Gson;
 
 
@@ -23,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -211,5 +215,25 @@ public class ProdutorRequest {
 
         mRequestQueue.add(stringRequest);
 
+    }
+
+    public void recuperar_senha(Long cod, String email, final RecuperarActivity activity) {
+
+        String url = ip + "/sendemail/" + cod + "/" + email;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                activity.request();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println(error);
+            }
+        });
+        mRequestQueue.add(stringRequest);
     }
 }

@@ -54,11 +54,11 @@ public class CustoB implements Serializable {
                         parseToDouble(c.getAmarracaoV()) +
                         parseToDouble(c.getAdubacaoBasicaV()) +
                         parseToDouble(c.getAplicacaoEstercoV()) +
-                        parseToDouble(c.getAplicacaoEstercoV()) +
                         parseToDouble(c.getDesbrotaV()) +
                         parseToDouble(c.getAdubacaoCoberturaV()) +
                         parseToDouble(c.getPulverizacaoCostalV()) +
                         parseToDouble(c.getCapinasManuaisV()) +
+                        parseToDouble(c.getColheitaClassificaçãoV()) +
                         parseToDouble(c.getIrrigacaoV()) +
                         parseToDouble(c.getOutrosBV());
 

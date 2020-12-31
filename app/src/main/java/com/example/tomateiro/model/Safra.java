@@ -112,7 +112,7 @@ public class Safra implements Serializable {
     }
 
     public Safra calcularResultadoHa(Safra s) {
-        long resultado = parse2(s.getCustoTotalHa()) - parse2(s.getReceitaHa());
+        long resultado = parse2(s.getReceitaHa()) - parse2(s.getCustoTotalHa()) ;
         double x = (double) resultado / 100;
         s.setResultadoHa(String.format("%,.2f", x));
         return s;
@@ -128,7 +128,7 @@ public class Safra implements Serializable {
     public Safra calcularMargemVenda(Safra s) {
         long resultado = parse2(s.getResultadoCx()) / parse2(s.getCustoTotalCa());
         double x = (double) resultado / 100;
-        s.setResultadoCx(String.format("%,.2f", x));
+        s.setMargemVenda(String.format("%,.2f", x));
         return s;
     }
 
@@ -331,6 +331,6 @@ public class Safra implements Serializable {
 
     @Override
     public String toString() {
-        return "Safra cliclo/ Ano = " + clicloAno+"| Data "+data;
+        return "Safra cliclo/ ano = " + clicloAno+" Data "+data;
     }
 }

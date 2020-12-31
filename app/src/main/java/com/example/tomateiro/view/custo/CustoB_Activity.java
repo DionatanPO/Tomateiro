@@ -86,7 +86,7 @@ public class CustoB_Activity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             safra = (Safra) getIntent().getSerializableExtra("safra");
-            if (safra.getCustoA() != null) {
+            if (safra.getCustoB() != null) {
                 custoB = safra.getCustoB();
                 try {
                     editA_q1.setText(custoB.getColagemQ());

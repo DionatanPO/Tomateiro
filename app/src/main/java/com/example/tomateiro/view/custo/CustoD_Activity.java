@@ -65,10 +65,11 @@ public class CustoD_Activity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            if (safra.getCustoA() != null) {
+            safra = (Safra) getIntent().getSerializableExtra("safra");
+            if (safra.getCustoD() != null) {
                 custoD = safra.getCustoD();
                 try {
-                    safra = (Safra) getIntent().getSerializableExtra("safra");
+
                     editA_q1.setText(custoD.getArrendamentoQ());
                     editA_q2.setText(custoD.getMoAdministrativaQ());
                     editA_q3.setText(custoD.getContabilidadeEscritorioQ());

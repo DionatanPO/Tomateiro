@@ -54,7 +54,6 @@ public class CustoC implements Serializable {
                 parseToDouble(c.getCalcarioDolomiticoV()) +
                         parseToDouble(c.getSulfatoAmonioV()) +
                         parseToDouble(c.getSuperfosfatoSimplesV()) +
-                        parseToDouble(c.getSuperfosfatoSimplesV()) +
                         parseToDouble(c.getCloretoPotassioV()) +
                         parseToDouble(c.getEstercoBovinoV()) +
                         parseToDouble(c.getYorinV()) +

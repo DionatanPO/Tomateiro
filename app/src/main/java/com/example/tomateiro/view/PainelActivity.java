@@ -120,7 +120,6 @@ public class PainelActivity extends AppCompatActivity {
                 et_nova_safra_data.setText(safra.getData());
 
 
-
                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -199,7 +198,6 @@ public class PainelActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.novaSafra:
-
                                 layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
 
                                 Button btn_concluir = layout.findViewById(R.id.btn_concluir);
@@ -218,55 +216,87 @@ public class PainelActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(View view) {
 
+                                        if (safra != null) {
 
-                                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
-                                        alertDialogBuilder
-                                                .setMessage("Ao cadastrar uma nova safra, implica em concluir a safra atual. Deseja concluir a safra atual?")
-                                                .setCancelable(false)
-                                                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int id) {
+                                            alertDialogBuilder
+                                                    .setMessage("Ao cadastrar uma nova safra, implica em concluir a safra atual. Deseja concluir a safra atual?")
+                                                    .setCancelable(false)
+                                                    .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog, int id) {
+                                                            Safra novaSafra = new Safra();
 
-                                                        if(safra!=null){
                                                             safra.setEstado("Concluida");
+                                                           final Safra safraAnterior = safra;
 
-                                                        }else {
-                                                            safra = new Safra();
+                                                            novaSafra.setClicloAno(et_nova_safra_ciclo.getText().toString());
+                                                            novaSafra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                                                            novaSafra.setData(et_nova_safra_data.getText().toString());
+
+                                                            try {
+                                                                novaSafra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
+                                                            } catch (Exception e) {
+                                                                novaSafra.setQtdePes(0);
+                                                            }
+
+
+                                                            //fazer request para salvar safra
+                                                            if (safraController.validar_cadastro(novaSafra)) {
+
+                                                                safraRequest.alterrar_safra(safraController.converter_safra_json(safraAnterior), safraAnterior.getId(), PainelActivity.this);
+
+                                                                novaSafra.setEstado("Ativo");
+                                                                novaSafra.setProdutor(produtor);
+                                                                novaSafra.setClicloAno(et_nova_safra_ciclo.getText().toString());
+                                                                novaSafra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                                                                novaSafra.setData(et_nova_safra_data.getText().toString());
+
+                                                                safraRequest.cadastrar_safra(safraController.converter_safra_json(novaSafra), PainelActivity.this);
+
+                                                                alerta.cancel();
+                                                            } else {
+
+                                                            }
+
+                                                            dialog.cancel();
                                                         }
+                                                    })
+                                                    .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog, int id) {
 
-                                                        safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
-                                                        safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
-                                                        safra.setData(et_nova_safra_data.getText().toString());
-                                                        try {
-                                                            safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
-                                                        } catch (Exception e) {
-                                                            safra.setQtdePes(0);
+                                                            dialog.cancel();
                                                         }
+                                                    });
+
+                                            AlertDialog alertDialog = alertDialogBuilder.create();
+                                            alertDialog.show();
+
+                                        } else {
+                                            safra = new Safra();
+
+                                            safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
+                                            safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
+                                            safra.setData(et_nova_safra_data.getText().toString());
+                                            try {
+                                                safra.setQtdePes(Integer.parseInt(et_nova_safra_pes.getText().toString()));
+                                            } catch (Exception e) {
+                                                safra.setQtdePes(0);
+                                            }
 
 
-                                                        //fazer request para salvar safra
-                                                        if (safraController.validar_cadastro(safra)) {
-                                                            safraRequest.alterrar_safra(safraController.converter_safra_json(safra),safra.getId(),PainelActivity.this);
-                                                            safra.setProdutor(produtor);
-                                                            safraRequest.cadastrar_safra(safraController.converter_safra_json(safra), PainelActivity.this);
+                                            //fazer request para salvar safra
+                                            if (safraController.validar_cadastro(safra)) {
+                                                safra.setProdutor(produtor);
+                                                safra.setEstado("Ativo");
+                                                safraRequest.cadastrar_safra(safraController.converter_safra_json(safra), PainelActivity.this);
 
-                                                            alerta.cancel();
-                                                        } else {
+                                                alerta.cancel();
+                                            } else {
 
-                                                        }
+                                            }
 
-                                                        dialog.cancel();
-                                                    }
-                                                })
-                                                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int id) {
-
-                                                        dialog.cancel();
-                                                    }
-                                                });
-
-                                        AlertDialog alertDialog = alertDialogBuilder.create();
-                                        alertDialog.show();
+                                        }
 
 
                                     }
@@ -319,7 +349,7 @@ public class PainelActivity extends AppCompatActivity {
 
                                         //fazer rquest para alterar dados do produtor
                                         if (produtorController.validar_alterar_perfil(produtor)) {
-                                            produtorRequest.alterrar_produtor(produtorController.converter_produtor_json(produtor), produtor.getId(),PainelActivity.this);
+                                            produtorRequest.alterrar_produtor(produtorController.converter_produtor_json(produtor), produtor.getId(), PainelActivity.this);
 
                                             alerta.cancel();
                                         } else {
@@ -374,7 +404,7 @@ public class PainelActivity extends AppCompatActivity {
 
                                         //fazer rquest para alterar dados do produtor
                                         if (produtorController.validar_alterar_senha(produtor, senha2.getText().toString())) {
-                                            produtorRequest.alterrar_produtor(produtorController.converter_produtor_json(produtor), produtor.getId(),PainelActivity.this);
+                                            produtorRequest.alterrar_produtor(produtorController.converter_produtor_json(produtor), produtor.getId(), PainelActivity.this);
                                             alerta.cancel();
                                         } else {
 
@@ -560,6 +590,6 @@ public class PainelActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        safraRequest.buscar_safra_produtor(produtor.getId(),"Ativo", PainelActivity.this);
+        safraRequest.buscar_safra_produtor(produtor.getId(), "Ativo", PainelActivity.this);
     }
 }
