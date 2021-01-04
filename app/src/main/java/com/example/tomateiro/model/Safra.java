@@ -36,6 +36,7 @@ public class Safra implements Serializable {
     private String data;
 
     private ArrayList<Venda> vendas = new ArrayList<>();
+    private ArrayList<Estrutura> estruturas = new ArrayList<>();
 
     public Safra() {
     }
@@ -151,6 +152,14 @@ public class Safra implements Serializable {
         s = String.format(Locale.US, "%.0f", value);
         r = Long.parseLong(s);
         return r;
+    }
+
+    public ArrayList<Estrutura> getEstruturas() {
+        return estruturas;
+    }
+
+    public void setEstruturas(ArrayList<Estrutura> estruturas) {
+        this.estruturas = estruturas;
     }
 
     public String getData() {

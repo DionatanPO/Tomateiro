@@ -13,6 +13,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.tomateiro.model.CustoA;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.model.Url;
+import com.example.tomateiro.view.EstruturaActivity;
 import com.example.tomateiro.view.PainelActivity;
 import com.example.tomateiro.view.RegistroActivity;
 import com.example.tomateiro.view.RelatorioActivity;
@@ -390,6 +391,52 @@ public class SafraRequest {
 
 
                     viewToast(context, "Custo calculado!");
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    viewToastErro(context, "Ops! Algo deu errado");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                viewToastErro(context, "Ops! Algo deu errado");
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return json == null ? null : json.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    viewToastErro(context, "Ops! Algo deu errado");
+                    return null;
+                }
+            }
+        };
+
+        mRequestQueue.add(stringRequest);
+    }
+
+    public void alterrar_safra(final String json, Long id, final EstruturaActivity activity) {
+
+        String url = ip + "/safra/" + id;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
+                    activity.request_cadastro(safra);
+
+
+                    viewToast(context, "Item cadastrado!");
 
 
                 } catch (Exception e) {

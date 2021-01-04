@@ -89,7 +89,7 @@
         android:id="@+id/btn_solicitar_senha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/alerta_verde"
         android:text="Enviar solicitação"
         android:textColor="@color/colorBranca"
         app:layout_constraintBottom_toBottomOf="parent"

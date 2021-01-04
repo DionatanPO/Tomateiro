@@ -44,7 +44,7 @@ import static com.example.tomateiro.model.CustonToast.viewToast;
 import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
 
 public class PainelActivity extends AppCompatActivity {
-    private Button btn_safra_menu, btn_s_t_g, btn_relatorio, btn_venda;
+    private Button btn_safra_menu, btn_s_t_g, btn_relatorio, btn_venda, btn_estrutura;
     private Context context;
     private Intent intent;
     private Safra safra;
@@ -85,6 +85,7 @@ public class PainelActivity extends AppCompatActivity {
         btn_s_t_g = findViewById(R.id.painel_btn_g_t_e);
         btn_relatorio = findViewById(R.id.painel_btn_relatorio);
         btn_venda = findViewById(R.id.painel_btn_venda);
+        btn_estrutura = findViewById(R.id.painel_btn_estrutura);
 
         txt_painel_card_safra_data = findViewById(R.id.painel_card_safra_data);
         txt_painel_card_ciclo = findViewById(R.id.painel_card_cocloAno);
@@ -174,6 +175,21 @@ public class PainelActivity extends AppCompatActivity {
                     context.startActivity(intent);
                 } else {
                     viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar o relatório.");
+                }
+
+            }
+        });
+
+        btn_estrutura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (safra != null) {
+                    intent = new Intent(context, EstruturaActivity.class);
+                    intent.putExtra("safra", safra);
+                    intent.putExtra("produtor", produtor);
+                    context.startActivity(intent);
+                } else {
+                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar estrutura.");
                 }
 
             }

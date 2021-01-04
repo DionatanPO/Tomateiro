@@ -19,6 +19,10 @@ import com.example.tomateiro.controller.ProdutorController;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.request.ProdutorRequest;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static com.example.tomateiro.model.CustonToast.viewToast;
 
 public class LoginActivity extends AppCompatActivity {
@@ -67,6 +71,15 @@ public class LoginActivity extends AppCompatActivity {
         getBtn_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                DateFormat dateFormat:
+                dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                Date date = new Date();
+                String data = dateFormat.format(date);
+                if (data.equals("31/12/2020 00:00")) {
+                    System.out.println("Feliz 2021");
+                }
+
 
                 produtor.setCodIdentificacao(editText_codigo.getText().toString());
                 produtor.setSenha(editText_senha.getText().toString());
