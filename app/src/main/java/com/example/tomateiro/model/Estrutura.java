@@ -1,6 +1,9 @@
 package com.example.tomateiro.model;
 
-public class Estrutura {
+import java.io.Serializable;
+
+public class Estrutura implements Serializable {
+
     private Long id;
     private String nome_item;
     private String valor;

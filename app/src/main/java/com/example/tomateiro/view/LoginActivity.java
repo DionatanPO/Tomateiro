@@ -72,15 +72,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                DateFormat dateFormat:
-                dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                Date date = new Date();
-                String data = dateFormat.format(date);
-                if (data.equals("31/12/2020 00:00")) {
-                    System.out.println("Feliz 2021");
-                }
-
-
                 produtor.setCodIdentificacao(editText_codigo.getText().toString());
                 produtor.setSenha(editText_senha.getText().toString());
 

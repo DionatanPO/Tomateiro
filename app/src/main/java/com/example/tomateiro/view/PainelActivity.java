@@ -186,7 +186,6 @@ public class PainelActivity extends AppCompatActivity {
                 if (safra != null) {
                     intent = new Intent(context, EstruturaActivity.class);
                     intent.putExtra("safra", safra);
-                    intent.putExtra("produtor", produtor);
                     context.startActivity(intent);
                 } else {
                     viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar estrutura.");

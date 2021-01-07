@@ -423,7 +423,7 @@ public class SafraRequest {
         mRequestQueue.add(stringRequest);
     }
 
-    public void alterrar_safra(final String json, Long id, final EstruturaActivity activity) {
+    public void alterrar_safra(final String json, Long id, final EstruturaActivity activity, final String acao) {
 
         String url = ip + "/safra/" + id;
 
@@ -433,11 +433,18 @@ public class SafraRequest {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
-                    activity.request_cadastro(safra);
+                    if(acao.equals("Cadastrar")){
+                        viewToast(context, "Item cadastrado!");
+                        activity.request_cadastro(safra);
 
+                    }if(acao.equals("Alterar")){
+                        viewToast(context, "Item alterado!");
+                        activity.request_alterar(safra);
+                    } if(acao.equals("Apagar")){
+                        activity.request_apagar(safra);
+                    viewToast(context, "Item apagado!");
 
-                    viewToast(context, "Item cadastrado!");
-
+                }
 
                 } catch (Exception e) {
                     e.printStackTrace();

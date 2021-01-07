@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
+        android:id="@+id/listview_estrutura"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="125dp"
@@ -31,8 +32,8 @@
 
     <Button
         android:id="@+id/estrutura_btn_nova"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/ic_baseline_add_circle"
