@@ -39,7 +39,7 @@ public class EstruturaAdapter extends ArrayAdapter<Estrutura> {
         TextView item_valor = convertView.findViewById(R.id.card_estrutura_valor_item);
         TextView item_vida = convertView.findViewById(R.id.card_estrutura_vida_item);
 
-        item_nome.setText("Item: "+ estruturaArrayList.get(position).getNome_item());
+        item_nome.setText(estruturaArrayList.get(position).getNome_item());
         item_valor.setText("Valor R$: "+ estruturaArrayList.get(position).getValor());
         item_vida.setText("Vida útil mês: " + estruturaArrayList.get(position).getVidaUtil());
 

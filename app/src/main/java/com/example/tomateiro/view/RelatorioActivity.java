@@ -7,9 +7,7 @@ import androidx.appcompat.widget.PopupMenu;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,41 +17,16 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.tomateiro.GraficoActivity;
 import com.example.tomateiro.R;
 
-import com.example.tomateiro.model.CustoA;
-import com.example.tomateiro.model.CustoB;
-import com.example.tomateiro.model.CustoC;
-import com.example.tomateiro.model.CustoD;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.request.SafraRequest;
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.BarLineChartBase;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.graphics.Color.WHITE;
 import static com.example.tomateiro.model.CustonToast.viewToast;
-import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
 
 
 public class RelatorioActivity extends AppCompatActivity implements View.OnClickListener {

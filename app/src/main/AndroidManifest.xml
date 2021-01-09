@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="HardcodedDebugMode"
         tools:targetApi="m">
-        <activity android:name=".GraficoActivity"></activity>
+        <activity android:name=".view.GraficoActivity"></activity>
         <activity
             android:name=".view.EstruturaActivity"
             android:configChanges="orientation"
