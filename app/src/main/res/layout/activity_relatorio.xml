@@ -24,7 +24,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="RELATÓRIO SAFRA"
+        android:text="Relatório safra"
         android:textColor="@color/colorBranca"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -175,7 +175,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="275dp"
+        android:layout_marginTop="265dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:fillViewport="true"
@@ -193,7 +193,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+
                 android:background="@color/colorBranca"
                 android:gravity="center"
                 android:text="Custo: visão geral"
@@ -208,9 +208,11 @@
 
                 <GridLayout
                     android:id="@+id/gridLayout1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
                     android:columnCount="2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -259,31 +261,30 @@
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
-                </GridLayout>
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/grafico1"
-                    android:layout_width="match_parent"
-                    android:layout_height="274dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="60dp"
-                    android:background="@drawable/ic_relatorio_fundo"
-                    app:layout_constraintEnd_toEndOf="@+id/gridLayout1"
-                    app:layout_constraintStart_toStartOf="@+id/gridLayout1"
-                    app:layout_constraintTop_toTopOf="@+id/gridLayout1" />
+                    <Button
+                        android:textColor="@color/colorBranca"
+                        android:background="@color/alerta_verde"
+                        android:id="@+id/btn_g1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gráfico" />
+                </GridLayout>
 
 
                 <GridLayout
                     android:id="@+id/gridLayout2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:columnCount="2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/grafico1">
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout1">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="232dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
                         android:text="OPERAÇÕES MANUAIS"
@@ -326,29 +327,29 @@
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
-                </GridLayout>
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/grafico2"
-                    android:layout_width="match_parent"
-                    android:layout_height="274dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ic_relatorio_fundo"
-                    app:layout_constraintEnd_toEndOf="@+id/gridLayout2"
-                    app:layout_constraintStart_toStartOf="@+id/gridLayout2"
-                    app:layout_constraintTop_toBottomOf="@+id/gridLayout2" />
+                    <Button
+                        android:textColor="@color/colorBranca"
+                        android:background="@color/alerta_verde"
+                        android:id="@+id/btn_g2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gráfico" />
+                </GridLayout>
 
                 <GridLayout
                     android:id="@+id/gridLayout3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:columnCount="2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/grafico2">
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout2">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="232dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
                         android:text="INSUMOS"
@@ -391,29 +392,30 @@
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
+
+                    <Button
+                        android:textColor="@color/colorBranca"
+                        android:background="@color/alerta_verde"
+                        android:id="@+id/btn_g3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gráfico" />
                 </GridLayout>
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/grafico3"
-                    android:layout_width="match_parent"
-                    android:layout_height="274dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ic_relatorio_fundo"
-                    app:layout_constraintEnd_toEndOf="@+id/gridLayout2"
-                    app:layout_constraintStart_toStartOf="@+id/gridLayout2"
-                    app:layout_constraintTop_toBottomOf="@+id/gridLayout3" />
 
                 <GridLayout
                     android:id="@+id/gridLayout4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:columnCount="2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/grafico3">
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout3">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="232dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
                         android:text="ADMINISTRAÇÃO"
@@ -459,26 +461,26 @@
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
 
+                    <Button
+                        android:textColor="@color/colorBranca"
+                        android:background="@color/alerta_verde"
+                        android:id="@+id/btn_g4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gráfico" />
+
                 </GridLayout>
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/grafico4"
-                    android:layout_width="match_parent"
-                    android:layout_height="274dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ic_relatorio_fundo"
-                    app:layout_constraintEnd_toEndOf="@+id/gridLayout3"
-                    app:layout_constraintStart_toStartOf="@+id/gridLayout3"
-                    app:layout_constraintTop_toBottomOf="@+id/gridLayout4" />
 
                 <GridLayout
                     android:id="@+id/gridLayout5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:columnCount="2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/grafico4">
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout4">
 
 
                     <TextView
@@ -494,13 +496,13 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
-                        android:layout_gravity="right"
-                        android:gravity="right"
                         android:id="@+id/relatorio_custo_total_ha"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="right"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
+                        android:gravity="right"
                         android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
@@ -521,13 +523,13 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
-                        android:layout_gravity="right"
-                        android:gravity="right"
                         android:id="@+id/relatorio_custo_total_cx"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="right"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
+                        android:gravity="right"
                         android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
@@ -548,13 +550,13 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
-                        android:layout_gravity="right"
-                        android:gravity="right"
                         android:id="@+id/relatorio_receita"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="right"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
+                        android:gravity="right"
                         android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
@@ -575,13 +577,13 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
-                        android:layout_gravity="right"
-                        android:gravity="right"
                         android:id="@+id/relatorio_resultadoHa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="right"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
+                        android:gravity="right"
                         android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
@@ -602,13 +604,13 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
-                        android:layout_gravity="right"
-                        android:gravity="right"
                         android:id="@+id/relatorio_resultadoCx"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="right"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
+                        android:gravity="right"
                         android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
@@ -621,7 +623,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Margem sobre a venda"
+                        android:text="Margem Sobre a Venda"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -629,13 +631,13 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
-                        android:layout_gravity="right"
-                        android:gravity="right"
                         android:id="@+id/relatorio_margem_venda"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="right"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
+                        android:gravity="right"
                         android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
@@ -656,13 +658,13 @@
                         tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
-                        android:layout_gravity="right"
-                        android:gravity="right"
                         android:id="@+id/relatorio_preco_medio_recebido"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="right"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
+                        android:gravity="right"
                         android:text="0"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
@@ -710,9 +712,9 @@
                     android:id="@+id/relatorio_n_venda_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="right"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                 android:layout_gravity="right"
                     android:text="0"
                     android:textColor="@color/colorBranca"
                     android:textSize="20sp"

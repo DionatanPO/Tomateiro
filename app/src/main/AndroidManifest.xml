@@ -20,9 +20,19 @@
         android:usesCleartextTraffic="true"
         tools:ignore="HardcodedDebugMode"
         tools:targetApi="m">
-        <activity android:name=".view.EstruturaActivity"></activity>
-        <activity android:name=".view.RecuperarActivity" />
-        <activity android:name=".view.VendaActivity" />
+        <activity android:name=".GraficoActivity"></activity>
+        <activity
+            android:name=".view.EstruturaActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.RecuperarActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.VendaActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.RelatorioActivity"
             android:configChanges="orientation"

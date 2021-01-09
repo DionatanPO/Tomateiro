@@ -113,7 +113,7 @@ public class Safra implements Serializable {
     }
 
     public Safra calcularResultadoHa(Safra s) {
-        long resultado = parse2(s.getReceitaHa()) - parse2(s.getCustoTotalHa()) ;
+        long resultado = parse2(s.getReceitaHa()) - parse2(s.getCustoTotalHa());
         double x = (double) resultado / 100;
         s.setResultadoHa(String.format("%,.2f", x));
         return s;
@@ -152,6 +152,30 @@ public class Safra implements Serializable {
         s = String.format(Locale.US, "%.0f", value);
         r = Long.parseLong(s);
         return r;
+    }
+
+    public float parse4(String s) {
+        double value = 0;
+        float r = 0;
+
+        s = s.replace(",", ".");
+
+        NumberFormat format = NumberFormat.getInstance();
+        try {
+            value = format.parse(s).doubleValue();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        s = String.format(Locale.US, "%.2f", value);
+        r = Float.parseFloat(s);
+        return r;
+    }
+
+    public String parse3(String value, String valueTotal) {
+        double resultado = parse4(value) / parse4(valueTotal);
+        resultado = resultado*100;
+
+        return String.format(Locale.US, "%.2f",resultado);
     }
 
     public ArrayList<Estrutura> getEstruturas() {
@@ -340,6 +364,6 @@ public class Safra implements Serializable {
 
     @Override
     public String toString() {
-        return "Safra cliclo/ ano = " + clicloAno+" Data "+data;
+        return "Safra cliclo/ ano = " + clicloAno + " Data " + data;
     }
 }

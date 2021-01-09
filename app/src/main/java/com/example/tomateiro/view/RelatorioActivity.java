@@ -7,6 +7,7 @@ import androidx.appcompat.widget.PopupMenu;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.tomateiro.GraficoActivity;
 import com.example.tomateiro.R;
 
 import com.example.tomateiro.model.CustoA;
@@ -30,6 +32,7 @@ import com.example.tomateiro.request.SafraRequest;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -38,6 +41,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -52,19 +56,16 @@ import static com.example.tomateiro.model.CustonToast.viewToast;
 import static com.example.tomateiro.model.CustonToast.viewToastAlerta;
 
 
-public class RelatorioActivity extends AppCompatActivity {
-    private PieChart pieChart, pieChart2, pieChart3, pieChart4;
-    private PieDataSet pieDataSet;
-    private PieData pieData;
-    private ArrayList<PieEntry> pieEntries;
+public class RelatorioActivity extends AppCompatActivity implements View.OnClickListener {
+
     private Safra safra;
-    private Field[] fields;
     private Button btn_safra_menu;
     private Context context;
     private SafraRequest safraRequest;
     private List<Safra> safrasListConcluidas;
     private Produtor produtor;
     private ListView listView;
+    private Button btn_g1, btn_g2, btn_g3, btn_g4;
 
     private TextView r_qtd_total_caixa, r_ciclo, r_peso_medio_caixa, r_qtd_pes, r_regiao_referencia,
             r_subTotalA, r_subTotalD, r_subTotalC, r_subTotalB, r_custoTotal_ha, r_custoTotal_cx,
@@ -76,6 +77,15 @@ public class RelatorioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relatorio);
         context = this;
+
+        btn_g1 = findViewById(R.id.btn_g1);
+        btn_g1.setOnClickListener(this);
+        btn_g2 = findViewById(R.id.btn_g2);
+        btn_g2.setOnClickListener(this);
+        btn_g3 = findViewById(R.id.btn_g3);
+        btn_g3.setOnClickListener(this);
+        btn_g4 = findViewById(R.id.btn_g4);
+        btn_g4.setOnClickListener(this);
 
         btn_safra_menu = findViewById(R.id.btn_safra_menu);
 
@@ -99,7 +109,6 @@ public class RelatorioActivity extends AppCompatActivity {
         r_resultadoCx = findViewById(R.id.relatorio_resultadoCx);
         r_margem_venda = findViewById(R.id.relatorio_margem_venda);
         r_venda_n_total = findViewById(R.id.relatorio_n_venda_total);
-
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -134,7 +143,6 @@ public class RelatorioActivity extends AppCompatActivity {
                         safra = safra.calcularResultadoCx(safra);
                         safra = safra.calcularMargemVenda(safra);
 
-
                         r_peso_medio_caixa.setText(safra.getPesoMedioCaixas());
                         r_qtd_total_caixa.setText(String.valueOf(safra.getQtdeCaixas()));
                         r_custoTotal_ha.setText(safra.getCustoTotalHa());
@@ -151,9 +159,8 @@ public class RelatorioActivity extends AppCompatActivity {
                 }
 
             } catch (Exception e) {
-                System.out.println("");
+                System.out.println();
             }
-
 
         } else {
             safra = new Safra();
@@ -187,17 +194,15 @@ public class RelatorioActivity extends AppCompatActivity {
                                 listView = layout.findViewById(R.id.listview);
                                 safraRequest.buscar_safra_produtor(produtor.getId(), "Concluida", RelatorioActivity.this);
 
-
-
                                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                     public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                                        viewToast(context,"Carregando informações...");
+                                        viewToast(context, "Carregando informações...");
                                         safra = safrasListConcluidas.get(position);
 
                                         Intent intent = getIntent();
-                                        intent.putExtra("safra",safra);
-                                        intent.putExtra("produtor",produtor);
+                                        intent.putExtra("safra", safra);
+                                        intent.putExtra("produtor", produtor);
                                         finish();
                                         startActivity(intent);
                                     }
@@ -219,259 +224,19 @@ public class RelatorioActivity extends AppCompatActivity {
                 popup.show();
             }
         });
-        //--------------------------------------------------------
-
-        pieChart = findViewById(R.id.grafico1);
-        pieEntries = new ArrayList<>();
-
-        Class<CustoA> custoAClass = CustoA.class;
-
-        fields = custoAClass.getDeclaredFields();
-
-        for (Field field : fields) {
-            field.setAccessible(true);
-            Object objeto = null;
-
-            try {
-                objeto = field.get(safra.getCustoA());
-            } catch (Exception e) {
-
-            }
-
-            if (objeto != null) {
-                r_subTotalA.setText(safra.getCustoA().getSubTotalA());
-
-                if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
-
-                } else {
-//                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
-                }
-
-            }
-        }
-
-        pieDataSet = new PieDataSet(pieEntries, "");
-//        pieDataSet.setColors(new int[]{R.color.color1, R.color.color2, R.color.color3}, RelatorioActivity.this);
-        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        pieDataSet.setValueTextColor(WHITE);
-        pieDataSet.setValueLineColor(WHITE);
-        pieDataSet.setValueTextSize(11f);
-        pieDataSet.setFormSize(11f);
-
-        pieData = new PieData(pieDataSet);
-        pieChart.setData(pieData);
-        pieChart.setCenterText("");
-        pieChart.getLegend().setEnabled(false);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.animateX(1000);
-        pieChart.animateY(500);
-        //----------------------------------------------------------
-        pieChart2 = findViewById(R.id.grafico2);
-
-        pieEntries = new ArrayList<>();
-        Class<CustoB> custoBClass = CustoB.class;
-
-        fields = custoBClass.getDeclaredFields();
-
-        for (Field field : fields) {
-            field.setAccessible(true);
-            Object objeto = null;
-            try {
-                objeto = field.get(safra.getCustoB());
-            } catch (Exception e) {
-
-            }
-
-            if (objeto != null) {
-                r_subTotalB.setText(safra.getCustoB().getSubTotalB());
-                if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
-
-                } else {
-//                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
-                }
-
-            }
-        }
-
-        pieDataSet = new PieDataSet(pieEntries, "");
-        pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-        pieDataSet.setValueTextColor(WHITE);
-        pieDataSet.setValueLineColor(WHITE);
-        pieDataSet.setValueTextSize(11f);
-        pieDataSet.setFormSize(11f);
-
-        pieData = new PieData(pieDataSet);
-        pieChart2.setData(pieData);
-        pieChart2.setCenterText("");
-        pieChart2.getLegend().setEnabled(false);
-        pieChart2.getDescription().setEnabled(false);
-        pieChart2.animateX(1000);
-        pieChart2.animateY(500);
-        //----------------------------------------------------------
-        pieChart3 = findViewById(R.id.grafico3);
-
-        pieEntries = new ArrayList<>();
-
-        Class<CustoC> custoCClass = CustoC.class;
-
-        fields = custoCClass.getDeclaredFields();
-
-        for (Field field : fields) {
-            field.setAccessible(true);
-            Object objeto = null;
-            try {
-                objeto = field.get(safra.getCustoC());
-            } catch (Exception e) {
-
-            }
-
-            if (objeto != null) {
-                r_subTotalC.setText(safra.getCustoC().getSubTotalC());
-                if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
-
-                } else {
-//                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
-                }
-
-            }
-        }
-
-        pieDataSet = new PieDataSet(pieEntries, "");
-        pieDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
-        pieDataSet.setValueTextColor(WHITE);
-        pieDataSet.setValueLineColor(WHITE);
-        pieDataSet.setValueTextSize(11f);
-        pieDataSet.setFormSize(11f);
-
-        pieData = new PieData(pieDataSet);
-        pieChart3.setData(pieData);
-        pieChart3.setCenterText("");
-        pieChart3.getLegend().setEnabled(false);
-        pieChart3.getDescription().setEnabled(false);
-        pieChart3.animateX(1000);
-        pieChart3.animateY(500);
-        //----------------------------------------------------------
-        pieChart4 = findViewById(R.id.grafico4);
-
-        pieEntries = new ArrayList<>();
-
-        Class<CustoD> custoDClass = CustoD.class;
-
-        fields = custoDClass.getDeclaredFields();
-
-        for (Field field : fields) {
-            field.setAccessible(true);
-            Object objeto = null;
-            try {
-                objeto = field.get(safra.getCustoD());
-            } catch (Exception e) {
-
-            }
-
-            if (objeto != null) {
-                r_subTotalD.setText(safra.getCustoD().getSubTotalD());
-                if (field.getName().contains("Q") || field.getName().contains("subTotal")) {
-
-                } else {
-//                    pieEntries.add(new PieEntry(Float.parseFloat(objeto.toString()), field.getName()));
-                }
-
-            }
-        }
 
 
-        pieDataSet = new PieDataSet(pieEntries, "");
-        pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
-        pieDataSet.setValueTextColor(WHITE);
-        pieDataSet.setValueTextSize(11f);
-        pieDataSet.setFormSize(11f);
+        r_subTotalA.setText("R$: "+safra.getCustoA().getSubTotalA());
 
-        pieData = new PieData(pieDataSet);
-        pieChart4.setData(pieData);
-        pieChart4.setCenterText("");
-        pieChart4.getLegend().setEnabled(false);
-        pieChart4.getDescription().setEnabled(false);
-        pieChart4.animateX(1000);
-        pieChart4.animateY(500);
+        r_subTotalB.setText("R$: "+safra.getCustoB().getSubTotalB());
 
-        //-----------------------------------------------------------------------------
-        final BarChart chart = findViewById(R.id.barchart);
+        r_subTotalC.setText("R$: "+safra.getCustoC().getSubTotalC());
 
-        int[] numArr = {1, 2, 3, 4, 5, 6};
-        List<BarEntry> entries = new ArrayList<BarEntry>();
-        for (int num : numArr) {
-            entries.add(new BarEntry(num, num));
-        }
-        BarDataSet dataSet = new BarDataSet(entries, "Numbers");
-        final BarData data = new BarData(dataSet);
-
-        ValueFormatter xAxisFormatter = new DayAxisValueFormatter(chart);
-        XAxis xAxis = chart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawGridLines(false);
-        xAxis.setGranularity(1f); // only intervals of 1 day
-        xAxis.setLabelCount(7);
-        xAxis.setValueFormatter(xAxisFormatter);
-
-        chart.setData(data);
-        chart.invalidate();
-
-//        ArrayList barEntries = new ArrayList<>();
+        r_subTotalD.setText("R$: "+safra.getCustoD().getSubTotalD());
 
 
-//        barEntries.add(new BarEntry(2015, safra.getQtdeCaixas()));
-//        barEntries.add(new BarEntry(2016, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 100));
-//        barEntries.add(new BarEntry(2017, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
-//        barEntries.add(new BarEntry(2018, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
-//        barEntries.add(new BarEntry(2019, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
-//        barEntries.add(new BarEntry(2020, safra.calcularQtdeCaixasVendidas(safra).getQtdeCaixas() + 25));
-//
-//
-//
-//
-//
-//
-//        BarDataSet barDataSet = new BarDataSet(barEntries, "");
-//        BarData barData = new BarData(barDataSet);
-//        barChart.setData(barData);
-//
-        dataSet.setColors(WHITE);
-        dataSet.setValueTextColor(WHITE);
-        dataSet.setValueTextSize(18f);
-//
-        chart.getAxisLeft().setTextColor(WHITE);
-        chart.getAxisRight().setTextColor(WHITE);
-        chart.getXAxis().setTextColor(WHITE);
-        chart.getLegend().setTextColor(WHITE);
-        chart.getDescription().setEnabled(false);
-        chart.animateY(4000);
-        chart.setFitBars(false);
-//
-//        XAxis xAxis = barChart.getXAxis();
-//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-//        xAxis.setDrawGridLines(false);
-//        xAxis.setValueFormatter(new IndexAxisValueFormatter(getAreaCount()));
-        //--------------------------------------------------------------------
-        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-            @Override
-            public void onValueSelected(Entry e, Highlight h) {
-                float x = e.getX();
-                float y = e.getY();
-
-
-//                Toast.makeText(RelatorioActivity.this, String.valueOf( e.getData().toString()),
-//                        Toast.LENGTH_LONG).show();
-                Log.d("Entry selected", e.toString());
-//
-
-            }
-
-            @Override
-            public void onNothingSelected() {
-
-            }
-        });
     }
+
 
     public void request_buscar_safra_concluidas(List<Safra> safras) {
         safrasListConcluidas = safras;
@@ -480,16 +245,37 @@ public class RelatorioActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    public class DayAxisValueFormatter extends ValueFormatter {
-        private final BarLineChartBase<?> chart;
+    @Override
+    public void onClick(View view) {
+        Intent intent;
+        switch (view.getId()) {
+            case R.id.btn_g1:
+                intent = new Intent(context, GraficoActivity.class);
+                intent.putExtra("safra", safra);
+                intent.putExtra("acao", "g1");
+                startActivity(intent);
+                break;
 
-        public DayAxisValueFormatter(BarLineChartBase<?> chart) {
-            this.chart = chart;
-        }
+            case R.id.btn_g2:
+                intent = new Intent(context, GraficoActivity.class);
+                intent.putExtra("safra", safra);
+                intent.putExtra("acao", "g2");
+                startActivity(intent);
+                break;
 
-        @Override
-        public String getFormattedValue(float value) {
-            return "your text " + value;
+            case R.id.btn_g3:
+                intent = new Intent(context, GraficoActivity.class);
+                intent.putExtra("safra", safra);
+                intent.putExtra("acao", "g3");
+                startActivity(intent);
+                break;
+
+            case R.id.btn_g4:
+                intent = new Intent(context, GraficoActivity.class);
+                intent.putExtra("safra", safra);
+                intent.putExtra("acao", "g4");
+                startActivity(intent);
+                break;
         }
     }
 }

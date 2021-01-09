@@ -15,13 +15,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tomateiro.R;
+
 import com.example.tomateiro.controller.ProdutorController;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.request.ProdutorRequest;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static com.example.tomateiro.model.CustonToast.viewToast;
 

@@ -312,8 +312,7 @@ public class PainelActivity extends AppCompatActivity {
                                             }
 
                                         }
-
-
+                                        
                                     }
                                 });
 
@@ -371,7 +370,6 @@ public class PainelActivity extends AppCompatActivity {
 
                                         }
 
-
                                     }
                                 });
 
@@ -425,31 +423,12 @@ public class PainelActivity extends AppCompatActivity {
 
                                         }
 
-
                                     }
                                 });
 
                                 builder.setView(layout);
                                 alerta = builder.create();
                                 alerta.show();
-
-                                return true;
-                            case R.id.ajuda:
-                                androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(context);
-                                alertDialogBuilder.setTitle("Ajuda");
-
-                                alertDialogBuilder
-                                        .setMessage("")
-                                        .setCancelable(false)
-                                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-
-                                                dialog.cancel();
-                                            }
-                                        });
-
-                                androidx.appcompat.app.AlertDialog alertDialog = alertDialogBuilder.create();
-                                alertDialog.show();
 
                                 return true;
 
