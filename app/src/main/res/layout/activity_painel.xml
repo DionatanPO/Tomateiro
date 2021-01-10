@@ -38,7 +38,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:gravity="center_horizontal"
-        android:text="Clique no botão de menu, localizado na parte superior direito da tela, para cadastrar uma nova safra."
+        android:text="Clique no Menu, na parte superior direita da tela, afim de cadastrar uma nova safra."
         android:textColor="@color/colorBranca"
         android:textSize="18dp"
         android:textStyle="normal"
@@ -49,7 +49,7 @@
 
     <TextView
         android:id="@+id/painel_proprietario"
-        android:layout_width="297dp"
+        android:layout_width="301dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -101,7 +101,7 @@
             android:layout_marginTop="32dp"
             android:text="Safra"
             android:textColor="@color/colorBranca"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -116,7 +116,7 @@
             android:layout_marginRight="32dp"
             android:text="2020"
             android:textColor="@color/colorBranca"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -127,23 +127,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginBottom="72dp"
             android:columnCount="2"
             android:foregroundGravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ciclo/ ano:"
+                android:paddingBottom="10dp"
+                android:text="Ciclo/Ano:"
                 android:textColor="@color/verdeEscuro"
-                android:textSize="18dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -154,15 +154,16 @@
                 android:layout_marginRight="5dp"
                 android:text="1"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Qtde. pés:"
+                android:paddingBottom="10dp"
+                android:text="Qtde. Pés:"
                 android:textColor="@color/verdeEscuro"
-                android:textSize="18dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -173,27 +174,27 @@
                 android:layout_marginRight="5dp"
                 android:text="1000"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Região de referência:"
+                android:text="Região de Referência:"
                 android:textColor="@color/verdeEscuro"
-                android:textSize="18dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:gravity="right"
                 android:id="@+id/painel_card_regiao"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginRight="5dp"
+                android:gravity="right"
                 android:text="Mato Grosso sp"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
         </GridLayout>

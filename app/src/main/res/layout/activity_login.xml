@@ -71,7 +71,7 @@
             tools:layout_editor_absoluteY="412dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Código de identificação"
             android:textColor="@color/verdeEscuro"
@@ -98,7 +98,7 @@
             android:id="@+id/login_senha"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="30dp"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             tools:ignore="LabelFor" />
@@ -109,7 +109,7 @@
         android:id="@+id/gridLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="80dp"
         android:columnCount="3"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -166,7 +166,7 @@
         android:id="@+id/btn_recuperar_senha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:text="Esqueceu sua senha?"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"

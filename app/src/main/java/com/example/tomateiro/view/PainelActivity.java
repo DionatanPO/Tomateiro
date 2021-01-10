@@ -79,7 +79,7 @@ public class PainelActivity extends AppCompatActivity {
         card_safra = findViewById(R.id.card_safra);
         msg = findViewById(R.id.mensagem);
         painel_produtor = findViewById(R.id.painel_proprietario);
-        painel_produtor.setText(painel_produtor.getText().toString() + produtor.getNome());
+        painel_produtor.setText(painel_produtor.getText().toString() + produtor.getNome()+"!");
 
         btn_safra_menu = findViewById(R.id.btn_safra_menu);
         btn_s_t_g = findViewById(R.id.painel_btn_g_t_e);
@@ -549,7 +549,7 @@ public class PainelActivity extends AppCompatActivity {
 
     public void request_alterar_dados_produtor(Produtor p) {
         produtor = p;
-        painel_produtor.setText(painel_produtor.getText().toString() + produtor.getNome());
+        painel_produtor.setText(painel_produtor.getText().toString() + produtor.getNome()+ "!");
     }
 
 

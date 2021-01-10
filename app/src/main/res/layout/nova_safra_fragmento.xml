@@ -103,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|left"
-                    android:text="Qtde. pés:"
+                    android:text="Qtde. Pés:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -123,7 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|left"
-                    android:text="Ciclo/ ano:"
+                    android:text="Ciclo/Ano:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -143,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|left"
-                    android:text="Região de referência:"
+                    android:text="Região de Referência:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="16sp"
                     android:textStyle="bold" />
