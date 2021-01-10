@@ -198,14 +198,29 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
             }
         });
 
+        try {
+            r_subTotalA.setText("R$: " + safra.getCustoA().getSubTotalA());
+        } catch (Exception e) {
+            r_subTotalA.setText("R$: 0,0");
+        }
 
-        r_subTotalA.setText("R$: "+safra.getCustoA().getSubTotalA());
+        try {
+            r_subTotalB.setText("R$: " + safra.getCustoB().getSubTotalB());
+        } catch (Exception e) {
+            r_subTotalB.setText("R$: 0,0");
+        }
 
-        r_subTotalB.setText("R$: "+safra.getCustoB().getSubTotalB());
+        try {
+            r_subTotalC.setText("R$: " + safra.getCustoC().getSubTotalC());
+        } catch (Exception e) {
+            r_subTotalC.setText("R$: 0,0");
+        }
 
-        r_subTotalC.setText("R$: "+safra.getCustoC().getSubTotalC());
-
-        r_subTotalD.setText("R$: "+safra.getCustoD().getSubTotalD());
+        try {
+            r_subTotalD.setText("R$: " + safra.getCustoD().getSubTotalD());
+        } catch (Exception e) {
+            r_subTotalD.setText("R$: 0,0");
+        }
 
 
     }

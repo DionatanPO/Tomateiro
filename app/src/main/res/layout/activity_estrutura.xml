@@ -37,7 +37,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="máquinas, implementos e ferramentas"
+            android:text="Máquinas, implementos e ferramentas"
             android:textColor="@color/colorBranca"
             android:textSize="18dp"
             android:textStyle="normal"
