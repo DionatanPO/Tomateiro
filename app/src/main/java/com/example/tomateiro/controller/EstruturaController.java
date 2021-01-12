@@ -14,10 +14,17 @@ public class EstruturaController {
     }
 
     public boolean validarCadastroEstrutura(Estrutura e){
-        if(e.getNome_item().isEmpty()||e.getValor().isEmpty()||e.getVidaUtil().isEmpty()){
+        if(e.getNome_item().isEmpty()||e.getValor().isEmpty()||e.getVidaUtil().isEmpty()||e.getCategoria().equals("")){
             viewToastAlerta(context, "Preencha todos os campos");
             return false;
         }else {
+            try {
+                e.setDepreciacao(e.calcular_deprecicao(e.getCategoria(),e.getValor(),e.getVidaUtil()));
+
+            }catch (Exception ex){
+
+            }
+
             return true;
         }
     }

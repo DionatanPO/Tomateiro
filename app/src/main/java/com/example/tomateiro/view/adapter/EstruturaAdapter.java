@@ -38,10 +38,14 @@ public class EstruturaAdapter extends ArrayAdapter<Estrutura> {
         TextView item_nome = convertView.findViewById(R.id.card_estrutura_nome_item);
         TextView item_valor = convertView.findViewById(R.id.card_estrutura_valor_item);
         TextView item_vida = convertView.findViewById(R.id.card_estrutura_vida_item);
+        TextView item_categoria = convertView.findViewById(R.id.card_estrutura_categoria_item);
+        TextView item_depreciacao = convertView.findViewById(R.id.card_estrutura_depreciacao_item);
 
         item_nome.setText(estruturaArrayList.get(position).getNome_item());
         item_valor.setText("Valor R$: "+ estruturaArrayList.get(position).getValor());
         item_vida.setText("Vida útil mês: " + estruturaArrayList.get(position).getVidaUtil());
+        item_categoria.setText("Categoria: " + estruturaArrayList.get(position).getCategoria());
+        item_depreciacao.setText("Depreciação: " + estruturaArrayList.get(position).getDepreciacao());
 
         return convertView;
     }

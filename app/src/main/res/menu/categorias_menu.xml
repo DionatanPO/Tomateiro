@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/indicador"
+        android:enabled="false"
+        android:title="Categorias" />
+
+    <item
+        android:id="@+id/opcaos"
+        android:title="Máquinas">
+        <menu>
+            <item
+                android:id="@+id/m_trator"
+                android:title="Trator" />
+            <item
+                android:id="@+id/m_colheitadeira"
+                android:title="Colheitadeira" />
+            <item
+                android:id="@+id/m_outra"
+                android:title="Outras" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/implementos"
+        android:title="Implemento" />
+
+    <item
+        android:id="@+id/ferramentas"
+        android:title="Ferramenta" />
+
+    <item
+        android:id="@+id/opcaos2"
+        android:title="Construções">
+        <menu>
+            <item
+                android:id="@+id/c_estacas"
+                android:title="Estaca" />
+
+            <item
+                android:id="@+id/c_outra"
+                android:title="Outras" />
+        </menu>
+    </item>
+
+
+</menu>
