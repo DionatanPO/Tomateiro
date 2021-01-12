@@ -7,6 +7,7 @@ import androidx.appcompat.widget.PopupMenu;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -22,14 +23,24 @@ import com.example.tomateiro.R;
 import com.example.tomateiro.model.Produtor;
 import com.example.tomateiro.model.Safra;
 import com.example.tomateiro.request.SafraRequest;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.graphics.Color.WHITE;
 import static com.example.tomateiro.model.CustonToast.viewToast;
 
 
 public class RelatorioActivity extends AppCompatActivity implements View.OnClickListener {
+    private PieChart pieChart;
+    private PieDataSet pieDataSet;
+    private PieData pieData;
+    private ArrayList<PieEntry> pieEntries;
 
     private Safra safra;
     private Button btn_safra_menu;
@@ -49,6 +60,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relatorio);
+        pieChart = findViewById(R.id.graficoGeral);
         context = this;
 
         btn_g1 = findViewById(R.id.btn_g1);
@@ -138,6 +150,54 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
         } else {
             safra = new Safra();
         }
+
+        pieEntries = new ArrayList<>();
+        pieDataSet = new PieDataSet(pieEntries, "");
+        pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSubTotalA(), safra.getCustoTotalHa())), "Operações mecanizadas"));
+        pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getSubTotalB(), safra.getCustoTotalHa())), "Operações manuais"));
+        pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSubTotalC(), safra.getCustoTotalHa())), "Insumos"));
+        pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoD().getSubTotalD(), safra.getCustoTotalHa())), "Administração"));
+
+
+        pieDataSet.setColors(new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, RelatorioActivity.this);
+
+        pieDataSet.setValueTextColor(WHITE);
+        pieDataSet.setValueLineColor(WHITE);
+        pieDataSet.setValueTextSize(15f);
+        pieDataSet.setFormSize(15f);
+
+        pieData = new PieData(pieDataSet);
+
+        pieChart.setData(pieData);
+        pieChart.setHoleRadius(45);
+        pieChart.setHoleColor(Color.argb(0, 255, 255, 255));
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.setDrawEntryLabels(false);
+        pieChart.setUsePercentValues(true);
+        pieChart.setTransparentCircleRadius(10);
+        pieChart.setCenterText("%");
+
+        pieChart.setCenterTextSize(18);
+
+        pieChart.animateX(1000);
+        pieChart.animateY(500);
+
+
+
+        Legend legend = pieChart.getLegend();
+        legend.setForm(Legend.LegendForm.CIRCLE);
+
+        legend.setTextSize(15);
+        legend.setFormSize(20);
+
+
+        legend.setFormToTextSpace(2);
+
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        legend.setOrientation(Legend.LegendOrientation.VERTICAL);
+        legend.setDrawInside(false);
 
         btn_safra_menu.setOnClickListener(new View.OnClickListener() {
             @Override

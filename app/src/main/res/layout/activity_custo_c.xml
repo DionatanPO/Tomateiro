@@ -324,7 +324,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Confecção de mudas"
+                    android:text="Confecção de Mudas"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
