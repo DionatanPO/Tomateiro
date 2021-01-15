@@ -683,7 +683,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Lucratividade Més:"
+                        android:text="Lucratividade ao Més:"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"

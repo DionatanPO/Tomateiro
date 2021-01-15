@@ -130,7 +130,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
                         safra = safra.calcularResultadoCx(safra);
                         safra = safra.calcularMargemVenda(safra);
 
-                        String lucratividade = safra.calcularLucratividade(14, safra.getReceitaHa(), safra.getCustoTotalHa());
+                        String lucratividade = safra.calcularLucratividade(safra.getData(), safra.getReceitaHa(), safra.getCustoTotalHa());
 
                         r_peso_medio_caixa.setText(safra.getPesoMedioCaixas());
                         r_qtd_total_caixa.setText(String.valueOf(safra.getQtdeCaixas()));

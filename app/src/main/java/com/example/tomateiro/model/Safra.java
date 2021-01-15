@@ -5,8 +5,11 @@ import android.annotation.SuppressLint;
 import java.io.Serializable;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class Safra implements Serializable {
 
@@ -179,17 +182,30 @@ public class Safra implements Serializable {
         return String.format(Locale.US, "%.2f", resultado);
     }
 
-    public String calcularLucratividade(int dia, String receita, String custoTotalHa) {
+    public String calcularLucratividade(String dateInicial, String receita, String custoTotalHa) throws ParseException {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+
+        Date dataHoraAtual = new Date();
+        String dataAtual = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
+
+        Date firstDate = sdf.parse(dateInicial);
+
+        Date secondDate = sdf.parse(dataAtual);
+
+        long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
+        long quantidadeDias = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+
 
         double resultado = 0;
 
-        double resDia = dia / 30.0;
+        double resDia = quantidadeDias / 30.0;
 
         double resReceita = parse4(receita) / parse4(custoTotalHa);
 
-        double resRaiz  = Math.pow(resReceita, 1.0/resDia);
+        double resRaiz = Math.pow(resReceita, 1.0 / resDia);
 
-        resultado = (resRaiz-1) * 100;
+        resultado = (resRaiz - 1) * 100;
 
         return String.format("%.2f", resultado);
 
