@@ -246,12 +246,12 @@ public class EstruturaActivity extends AppCompatActivity {
                                                         return true;
                                                     case R.id.m_colheitadeira:
                                                         categoria = "Máquina: Colheitadeira";
-                                                        btn_menu_categorias.setText("Máquina: Colheitadera");
+                                                        btn_menu_categorias.setText("Máquina: Colheitadeira");
 
                                                         return true;
                                                     case R.id.m_outra:
-                                                        categoria = "Máquina: Outros";
-                                                        btn_menu_categorias.setText("Máquina: Outros");
+                                                        categoria = "Outras máquinas";
+                                                        btn_menu_categorias.setText("Outras máquinas");
 
                                                         return true;
                                                     case R.id.ferramentas:
@@ -266,7 +266,7 @@ public class EstruturaActivity extends AppCompatActivity {
                                                         return true;
                                                     case R.id.c_outra:
                                                         categoria = "Construção: Outros";
-                                                        btn_menu_categorias.setText("Construção: Outros");
+                                                        btn_menu_categorias.setText("Outras construções");
 
                                                         return true;
                                                     case R.id.c_estacas:

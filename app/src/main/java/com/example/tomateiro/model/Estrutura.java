@@ -51,7 +51,9 @@ public class Estrutura implements Serializable {
 
         depreciacao =  depreciacao / Integer.parseInt(mes);
 
-        resultado = String.format(Locale.US, "%.2f",depreciacao/100);
+        depreciacao = depreciacao/100;
+
+        resultado = String.format("%,.2f", depreciacao);
 
         return resultado;
     }

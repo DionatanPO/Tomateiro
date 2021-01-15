@@ -54,7 +54,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
     private TextView r_qtd_total_caixa, r_ciclo, r_peso_medio_caixa, r_qtd_pes, r_regiao_referencia,
             r_subTotalA, r_subTotalD, r_subTotalC, r_subTotalB, r_custoTotal_ha, r_custoTotal_cx,
             r_preco_medio_recebido, r_receitaHa, r_resultadoHa, r_resultadoCx, r_margem_venda,
-            r_venda_n_total, r_safra_data;
+            r_venda_n_total, r_safra_data, r_safra_lucratividade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +94,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
         r_resultadoCx = findViewById(R.id.relatorio_resultadoCx);
         r_margem_venda = findViewById(R.id.relatorio_margem_venda);
         r_venda_n_total = findViewById(R.id.relatorio_n_venda_total);
+        r_safra_lucratividade = findViewById(R.id.relatorio_lucratividade_safra);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -104,6 +105,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
             r_qtd_pes.setText(String.valueOf(safra.getQtdePes()));
             r_regiao_referencia.setText(safra.getRegiaoReferencia());
             r_safra_data.setText(safra.getData());
+
 
             try {
                 safra = safra.calcularCustoTotalHa(safra);
@@ -128,6 +130,8 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
                         safra = safra.calcularResultadoCx(safra);
                         safra = safra.calcularMargemVenda(safra);
 
+                        String lucratividade = safra.calcularLucratividade(14, safra.getReceitaHa(), safra.getCustoTotalHa());
+
                         r_peso_medio_caixa.setText(safra.getPesoMedioCaixas());
                         r_qtd_total_caixa.setText(String.valueOf(safra.getQtdeCaixas()));
                         r_custoTotal_ha.setText(safra.getCustoTotalHa());
@@ -139,6 +143,8 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
                         r_margem_venda.setText(safra.getMargemVenda() + "%");
 
                         r_venda_n_total.setText(String.valueOf(safra.getVendas().size()));
+
+                        r_safra_lucratividade.setText(lucratividade + " %");
                     }
 
                 }
@@ -153,10 +159,28 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
 
         pieEntries = new ArrayList<>();
         pieDataSet = new PieDataSet(pieEntries, "");
-        pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSubTotalA(), safra.getCustoTotalHa())), "Operações mecanizadas"));
-        pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getSubTotalB(), safra.getCustoTotalHa())), "Operações manuais"));
-        pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSubTotalC(), safra.getCustoTotalHa())), "Insumos"));
-        pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoD().getSubTotalD(), safra.getCustoTotalHa())), "Administração"));
+        try {
+            pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSubTotalA(), safra.getCustoTotalHa())), "Operações mecanizadas"));
+        } catch (Exception e) {
+            pieEntries.add(new PieEntry(0, "Operações mecanizadas"));
+        }
+        try {
+            pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getSubTotalB(), safra.getCustoTotalHa())), "Operações manuais"));
+        } catch (Exception e) {
+            pieEntries.add(new PieEntry(0, "Operações manuais"));
+        }
+
+        try {
+            pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSubTotalC(), safra.getCustoTotalHa())), "Insumos"));
+        } catch (Exception e) {
+            pieEntries.add(new PieEntry(0, "Insumos"));
+        }
+
+        try {
+            pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoD().getSubTotalD(), safra.getCustoTotalHa())), "Administração"));
+        } catch (Exception e) {
+            pieEntries.add(new PieEntry(0, "Administração"));
+        }
 
 
         pieDataSet.setColors(new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, RelatorioActivity.this);
@@ -182,7 +206,6 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
 
         pieChart.animateX(1000);
         pieChart.animateY(500);
-
 
 
         Legend legend = pieChart.getLegend();

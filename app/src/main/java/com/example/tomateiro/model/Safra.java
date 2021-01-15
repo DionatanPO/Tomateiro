@@ -127,8 +127,8 @@ public class Safra implements Serializable {
     }
 
     public Safra calcularMargemVenda(Safra s) {
-        long resultado = parse2(s.getResultadoCx()) / parse2(s.getCustoTotalCa());
-        double x = (double) resultado / 100;
+        double resultado = parse4(s.getResultadoCx()) / parse4(s.getPreçoMedioRecebidoProdutor());
+        double x = resultado * 100;
         s.setMargemVenda(String.format("%,.2f", x));
         return s;
     }
@@ -161,6 +161,7 @@ public class Safra implements Serializable {
         s = s.replace(",", ".");
 
         NumberFormat format = NumberFormat.getInstance();
+
         try {
             value = format.parse(s).doubleValue();
         } catch (ParseException e) {
@@ -173,10 +174,30 @@ public class Safra implements Serializable {
 
     public String parse3(String value, String valueTotal) {
         double resultado = parse4(value) / parse4(valueTotal);
-        resultado = resultado*100;
+        resultado = resultado * 100;
 
-        return String.format(Locale.US, "%.2f",resultado);
+        return String.format(Locale.US, "%.2f", resultado);
     }
+
+    public String calcularLucratividade(int dia, String receita, String custoTotalHa) {
+
+        double resultado = 0;
+
+        double resDia = dia / 30.0;
+
+        double resReceita = parse4(receita) / parse4(custoTotalHa);
+
+        double resRaiz  = Math.pow(resReceita, 1.0/resDia);
+
+        resultado = (resRaiz-1) * 100;
+
+        return String.format("%.2f", resultado);
+
+
+    }
+
+
+//    math.sqrt(8))
 
     public ArrayList<Estrutura> getEstruturas() {
         return estruturas;
