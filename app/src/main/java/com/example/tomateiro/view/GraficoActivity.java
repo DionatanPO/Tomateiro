@@ -88,7 +88,7 @@ public class GraficoActivity extends AppCompatActivity {
         }
 
         if (acao.equals("g2")) {
-            titulo.setText("Gráfico: Operações Manuais");
+            titulo.setText("Gráficos: Operações Manuais");
             pieEntries = new ArrayList<>();
             pieDataSet = new PieDataSet(pieEntries, "");
 
@@ -133,7 +133,7 @@ public class GraficoActivity extends AppCompatActivity {
         }
 
         if (acao.equals("g3")) {
-            titulo.setText("Gráfico: Insumos");
+            titulo.setText("Gráficos: Insumos");
 
             pieEntries = new ArrayList<>();
             pieDataSet = new PieDataSet(pieEntries, "");
@@ -160,6 +160,13 @@ public class GraficoActivity extends AppCompatActivity {
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosProdutosQuimicosV(), subTotal)), "Outros produtos químicos"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosV(), subTotal)), "Outros"));
 
+                pieEntries = new ArrayList<>();
+                pieDataSet2 = new PieDataSet(pieEntries, "");
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalFertilizantesCorretivos(safra.getCustoC()), subTotal)), "Fertilizantes/Corretivos"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalSementesMudasMatPlantio(safra.getCustoC()), subTotal)), "Sementes/Mudas/Mat. plantio"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalDefensivosAgricolas(safra.getCustoC()), subTotal)), "Defensivos agrícolas"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosV(), subTotal)), "Outros"));
+
             }
             pieDataSet.setColors(
                     new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
@@ -167,9 +174,12 @@ public class GraficoActivity extends AppCompatActivity {
                             R.color.color11, R.color.color12, R.color.color13, R.color.color14,
                             R.color.color15, R.color.color16, R.color.color17}, GraficoActivity.this);
 
+            pieDataSet2.setColors(
+                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, GraficoActivity.this);
+
         }
         if (acao.equals("g4")) {
-            titulo.setText("Gráfico: Administração");
+            titulo.setText("Gráficos: Administração");
             pieEntries = new ArrayList<>();
             pieDataSet = new PieDataSet(pieEntries, "");
 
@@ -184,6 +194,10 @@ public class GraficoActivity extends AppCompatActivity {
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoD().getViagensV(), subTotal)), "Viagens"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoD().getImpostosTaxasV(), subTotal)), "Impostos / Taxas"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoD().getOutrosV(), subTotal)), "Outros"));
+
+                pieEntries = new ArrayList<>();
+                pieDataSet2 = new PieDataSet(pieEntries, "");
+
             } else {
 
             }
@@ -191,6 +205,8 @@ public class GraficoActivity extends AppCompatActivity {
             pieDataSet.setColors(
                     new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
                             R.color.color6, R.color.color7}, GraficoActivity.this);
+            pieDataSet2.setColors(
+                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, GraficoActivity.this);
 
         }
 
@@ -243,8 +259,11 @@ public class GraficoActivity extends AppCompatActivity {
         legend.setForm(Legend.LegendForm.CIRCLE);
 
         if (acao.equals("g3")) {
-            legend.setTextSize(11);
-            legend.setFormSize(11);
+            legend.setTextSize(13);
+            legend.setFormSize(13);
+            legend2.setTextSize(13);
+            legend2.setFormSize(13);
+
         } else {
             legend.setTextSize(15);
             legend.setFormSize(20);

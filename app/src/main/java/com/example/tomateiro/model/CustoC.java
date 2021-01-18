@@ -49,7 +49,7 @@ public class CustoC implements Serializable {
     public CustoC() {
     }
 
-        public CustoC calcularSubTotal(CustoC c) {
+    public CustoC calcularSubTotal(CustoC c) {
         Double resultadoCalculo =
                 parseToDouble(c.getCalcarioDolomiticoV()) +
                         parseToDouble(c.getSulfatoAmonioV()) +
@@ -74,6 +74,46 @@ public class CustoC implements Serializable {
 
         c.setSubTotalC(value);
         return c;
+    }
+
+    public String calcularSubTotalFertilizantesCorretivos(CustoC c) {
+        Double resultadoCalculo =
+                parseToDouble(c.getCalcarioDolomiticoV()) +
+                        parseToDouble(c.getSulfatoAmonioV()) +
+                        parseToDouble(c.getSuperfosfatoSimplesV()) +
+                        parseToDouble(c.getCloretoPotassioV()) +
+                        parseToDouble(c.getEstercoBovinoV()) +
+                        parseToDouble(c.getYorinV());
+
+
+        String value = String.format("%,.2f", resultadoCalculo);
+        return value;
+    }
+
+    public String calcularSubTotalSementesMudasMatPlantio(CustoC c) {
+        Double resultadoCalculo =
+                parseToDouble(c.getSementesV()) +
+                        parseToDouble(c.getConfeccaoMudasV()) +
+                        parseToDouble(c.getEstacasBambuV()) +
+                        parseToDouble(c.getMouroesEucaV()) +
+                        parseToDouble(c.getArame16V()) +
+                        parseToDouble(c.getArame20V());
+
+        String value = String.format("%,.2f", resultadoCalculo);
+
+        return value;
+    }
+
+    public String calcularSubTotalDefensivosAgricolas(CustoC c) {
+        Double resultadoCalculo =
+                        parseToDouble(c.getFungicidasV()) +
+                        parseToDouble(c.getHerbicidasV()) +
+                        parseToDouble(c.getInseticidasV()) +
+                        parseToDouble(c.getOutrosProdutosQuimicosV());
+
+        String value = String.format("%,.2f", resultadoCalculo);
+
+        return value;
     }
 
     public double parseToDouble(String s) {
