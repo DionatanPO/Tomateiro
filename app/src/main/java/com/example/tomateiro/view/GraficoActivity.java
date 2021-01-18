@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import static android.graphics.Color.WHITE;
 
 public class GraficoActivity extends AppCompatActivity {
-    private PieChart pieChart;
-    private PieDataSet pieDataSet;
-    private PieData pieData;
+    private PieChart pieChart, pieChart2;
+    private PieDataSet pieDataSet, pieDataSet2;
+    private PieData pieData, pieData2;
     private ArrayList<PieEntry> pieEntries;
     private Safra safra;
     private String acao;
@@ -34,7 +34,8 @@ public class GraficoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grafico);
 
         titulo = findViewById(R.id.textView);
-        pieChart = findViewById(R.id.grafico);
+        pieChart = findViewById(R.id.grafico2);
+        pieChart2 = findViewById(R.id.grafico);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -43,33 +44,49 @@ public class GraficoActivity extends AppCompatActivity {
         }
 
         if (acao.equals("g1")) {
-            titulo.setText("Gráfico: Operações Mecanizadas");
+            titulo.setText("Gráficos: Operações Mecanizadas");
 
             pieEntries = new ArrayList<>();
             pieDataSet = new PieDataSet(pieEntries, "");
 
             if (safra.getCustoA() != null) {
+
                 String subTotalA = safra.getCustoA().getSubTotalA();
 
+                pieDataSet = new PieDataSet(pieEntries, "");
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAracaoV(), subTotalA)), "Aração"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getGradeacaoV(), subTotalA)), "Gradeação (2x) "));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSubsolagemV(), subTotalA)), "Subsolagem"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getCalagemV(), subTotalA)), "Calagem"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getCalagemV(), subTotalA)), "Colagem"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSulcamentoV(), subTotalA)), "Sucamento"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAdubacaoBasicaV(), subTotalA)), "Adubação Básica"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAdubacaoBasicaV(), subTotalA)), "Adubação básica"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAplicacaoEstercoV(), subTotalA)), "Aplicação de esterco"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAdubacaoCoberturaV(), subTotalA)), "Adubação em cobertura"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getPulverizacaoV(), subTotalA)), "Pulverização"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getColheitaClassificacaoV(), subTotalA)), "Colheita e Classificação"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getColheitaClassificacaoV(), subTotalA)), "Colheita e classificação"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getIrrigacoesV(), subTotalA)), "Irrigações"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getOutrosAV(), subTotalA)), "Outros"));
-                
+
+                pieEntries = new ArrayList<>();
+                pieDataSet2 = new PieDataSet(pieEntries, "");
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().calcularSubTotalPreparoSolo(safra.getCustoA()), subTotalA)), "Preparo do solo"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().calcularSubTotalTratosCulturais(safra.getCustoA()), subTotalA)), "Tratos culturais"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getColheitaClassificacaoV(), subTotalA)), "Colheita"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getIrrigacoesV(), subTotalA)), "Irrigação"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getOutrosAV(), subTotalA)), "Outros"));
+
+
             }
             pieDataSet.setColors(
                     new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
                             R.color.color6, R.color.color7, R.color.color8, R.color.color9, R.color.color10, R.color.color11, R.color.color12}, GraficoActivity.this);
 
+            pieDataSet2.setColors(
+                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5}, GraficoActivity.this);
+
+
         }
+
         if (acao.equals("g2")) {
             titulo.setText("Gráfico: Operações Manuais");
             pieEntries = new ArrayList<>();
@@ -90,15 +107,28 @@ public class GraficoActivity extends AppCompatActivity {
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAdubacaoCoberturaV(), subTotal)), "Adubação em cobertura"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getPulverizacaoCostalV(), subTotal)), "Pulverização com costal"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getCapinasManuaisV(), subTotal)), "Capinas Manuais"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColheitaClassificaçãoV(), subTotal)), "Colheita e Classificação"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColheitaClassificacaoV(), subTotal)), "Colheita e Classificação"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getIrrigacaoV(), subTotal)), "Irrigação"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getOutrosBV(), subTotal)), "Outros"));
-            }
+
+
+                pieEntries = new ArrayList<>();
+                pieDataSet2 = new PieDataSet(pieEntries, "");
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColagemV(), subTotal)), "Preparo do solo"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().calcularSubTotalPlantil(safra.getCustoB()), subTotal)), "Plantio"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().calcularSubTotalTratosCulturais(safra.getCustoB()), subTotal)), "Tratos culturais"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColheitaClassificacaoV(), subTotal)), "Colheita"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getIrrigacaoV(), subTotal)), "Irrigação"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getOutrosBV(), subTotal)), "Outros"));
+           }
 
             pieDataSet.setColors(
                     new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
                             R.color.color6, R.color.color7, R.color.color8, R.color.color9, R.color.color10,
                             R.color.color11, R.color.color12, R.color.color13, R.color.color14}, GraficoActivity.this);
+
+            pieDataSet2.setColors(
+                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5, R.color.color6}, GraficoActivity.this);
 
         }
 
@@ -170,7 +200,13 @@ public class GraficoActivity extends AppCompatActivity {
         pieDataSet.setValueTextSize(15f);
         pieDataSet.setFormSize(15f);
 
+        pieDataSet2.setValueTextColor(WHITE);
+        pieDataSet2.setValueLineColor(WHITE);
+        pieDataSet2.setValueTextSize(15f);
+        pieDataSet2.setFormSize(15f);
+
         pieData = new PieData(pieDataSet);
+        pieData2 = new PieData(pieDataSet2);
 
         pieChart.setData(pieData);
         pieChart.setHoleRadius(45);
@@ -182,27 +218,51 @@ public class GraficoActivity extends AppCompatActivity {
         pieChart.setCenterText("%");
 //        pieChart.setCenterTextColor(WHITE);
         pieChart.setCenterTextSize(18);
-
         pieChart.animateX(1000);
         pieChart.animateY(500);
+
+
+        pieChart2.setData(pieData2);
+        pieChart2.setHoleRadius(45);
+        pieChart2.setHoleColor(Color.argb(0, 255, 255, 255));
+        pieChart2.setDrawHoleEnabled(true);
+        pieChart2.getDescription().setEnabled(false);
+        pieChart2.setDrawEntryLabels(false);
+        pieChart2.setTransparentCircleRadius(10);
+        pieChart2.setCenterText("%");
+//        pieChart.setCenterTextColor(WHITE);
+        pieChart2.setCenterTextSize(18);
+        pieChart2.animateX(1000);
+        pieChart2.animateY(500);
 
 //        pieChart.getLegend().setTextColor(Color.WHITE);
 
         Legend legend = pieChart.getLegend();
+        Legend legend2 = pieChart2.getLegend();
+
         legend.setForm(Legend.LegendForm.CIRCLE);
+
         if (acao.equals("g3")) {
             legend.setTextSize(11);
             legend.setFormSize(11);
         } else {
             legend.setTextSize(15);
             legend.setFormSize(20);
+
+            legend2.setTextSize(15);
+            legend2.setFormSize(20);
         }
 
         legend.setFormToTextSpace(2);
-
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         legend.setOrientation(Legend.LegendOrientation.VERTICAL);
         legend.setDrawInside(false);
+
+        legend2.setFormToTextSpace(2);
+        legend2.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        legend2.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+        legend2.setOrientation(Legend.LegendOrientation.VERTICAL);
+        legend2.setDrawInside(false);
     }
 }

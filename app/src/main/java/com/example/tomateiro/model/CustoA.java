@@ -70,6 +70,33 @@ public class CustoA implements Serializable {
         return c;
     }
 
+    public String calcularSubTotalPreparoSolo(CustoA c) {
+        Double resultadoCalculo =
+                parseToDouble(c.getAracaoV()) +
+                        parseToDouble(c.getCalagemV()) +
+                        parseToDouble(c.getGradeacaoV()) +
+                        parseToDouble(c.getSubsolagemV()) +
+                        parseToDouble(c.getSulcamentoV());
+
+        String value = String.format("%,.2f", resultadoCalculo);
+
+        return value;
+    }
+
+    public String calcularSubTotalTratosCulturais(CustoA c) {
+        Double resultadoCalculo =
+                        parseToDouble(c.getAdubacaoBasicaV()) +
+                        parseToDouble(c.getAdubacaoCoberturaV()) +
+                        parseToDouble(c.getAplicacaoEstercoV()) +
+                        parseToDouble(c.getPulverizacaoV());
+
+        String value = String.format("%,.2f", resultadoCalculo);
+        c.setSubTotalA(value);
+        return value;
+    }
+
+
+
     public double parseToDouble(String s) {
         double value = 0;
         

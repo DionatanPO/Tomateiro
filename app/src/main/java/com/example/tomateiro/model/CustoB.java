@@ -19,7 +19,7 @@ public class CustoB implements Serializable {
     private String adubacaoCoberturaQ;
     private String pulverizacaoCostalQ;
     private String capinasManuaisQ;
-    private String colheitaClassificaçãoQ;
+    private String colheitaClassificacaoQ;
     private String irrigacaoQ;
 
     private String colagemV;
@@ -33,7 +33,7 @@ public class CustoB implements Serializable {
     private String adubacaoCoberturaV;
     private String pulverizacaoCostalV;
     private String capinasManuaisV;
-    private String colheitaClassificaçãoV;
+    private String colheitaClassificacaoV;
     private String irrigacaoV;
 
     private String outrosBQ;
@@ -58,13 +58,39 @@ public class CustoB implements Serializable {
                         parseToDouble(c.getAdubacaoCoberturaV()) +
                         parseToDouble(c.getPulverizacaoCostalV()) +
                         parseToDouble(c.getCapinasManuaisV()) +
-                        parseToDouble(c.getColheitaClassificaçãoV()) +
+                        parseToDouble(c.getColheitaClassificacaoV()) +
                         parseToDouble(c.getIrrigacaoV()) +
                         parseToDouble(c.getOutrosBV());
 
         String value = String.format("%,.2f", resultadoCalculo);
         c.setSubTotalB(value);
         return c;
+    }
+
+    public String calcularSubTotalPlantil(CustoB c) {
+        Double resultadoCalculo =
+                        parseToDouble(c.getTransplantioV()) +
+                        parseToDouble(c.getEstaqueamentoV()) +
+                        parseToDouble(c.getAmontoaV()) +
+                        parseToDouble(c.getAmarracaoV());
+
+        String value = String.format("%,.2f", resultadoCalculo);
+
+        return value;
+    }
+
+    public String calcularSubTotalTratosCulturais(CustoB c) {
+        Double resultadoCalculo =
+                        parseToDouble(c.getAdubacaoBasicaV()) +
+                        parseToDouble(c.getAplicacaoEstercoV()) +
+                        parseToDouble(c.getDesbrotaV()) +
+                        parseToDouble(c.getAdubacaoCoberturaV()) +
+                        parseToDouble(c.getPulverizacaoCostalV()) +
+                        parseToDouble(c.getCapinasManuaisV()) ;
+
+        String value = String.format("%,.2f", resultadoCalculo);
+        c.setSubTotalB(value);
+        return value;
     }
 
     public double parseToDouble(String s) {
@@ -177,12 +203,20 @@ public class CustoB implements Serializable {
         this.capinasManuaisQ = capinasManuaisQ;
     }
 
-    public String getColheitaClassificaçãoQ() {
-        return colheitaClassificaçãoQ;
+    public String getColheitaClassificacaoQ() {
+        return colheitaClassificacaoQ;
     }
 
-    public void setColheitaClassificaçãoQ(String colheitaClassificaçãoQ) {
-        this.colheitaClassificaçãoQ = colheitaClassificaçãoQ;
+    public void setColheitaClassificacaoQ(String colheitaClassificacaoQ) {
+        this.colheitaClassificacaoQ = colheitaClassificacaoQ;
+    }
+
+    public String getColheitaClassificacaoV() {
+        return colheitaClassificacaoV;
+    }
+
+    public void setColheitaClassificacaoV(String colheitaClassificacaoV) {
+        this.colheitaClassificacaoV = colheitaClassificacaoV;
     }
 
     public String getIrrigacaoQ() {
@@ -279,14 +313,6 @@ public class CustoB implements Serializable {
 
     public void setCapinasManuaisV(String capinasManuaisV) {
         this.capinasManuaisV = capinasManuaisV;
-    }
-
-    public String getColheitaClassificaçãoV() {
-        return colheitaClassificaçãoV;
-    }
-
-    public void setColheitaClassificaçãoV(String colheitaClassificaçãoV) {
-        this.colheitaClassificaçãoV = colheitaClassificaçãoV;
     }
 
     public String getIrrigacaoV() {

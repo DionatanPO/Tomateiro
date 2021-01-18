@@ -90,14 +90,6 @@ public class Safra implements Serializable {
         return s;
     }
 
-    public Safra calcularQtdeMediaCaixasVendidas(Safra s) {
-        int resultado = 0;
-        for (int i = 0; i < s.getVendas().size(); i++) {
-            resultado += s.getVendas().get(i).getQuantidade();
-        }
-        s.setQtdeMediaCaixas(String.format("%,.2f", resultado / s.getVendas().size()));
-        return s;
-    }
 
     public Safra calcularPesoMedioCaixa(Safra s) {
         double resultado = 0;
@@ -196,7 +188,6 @@ public class Safra implements Serializable {
         long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
         long quantidadeDias = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 
-
         double resultado = 0;
 
         double resDia = quantidadeDias / 30.0;
@@ -209,11 +200,8 @@ public class Safra implements Serializable {
 
         return String.format("%.2f", resultado);
 
-
     }
 
-
-//    math.sqrt(8))
 
     public ArrayList<Estrutura> getEstruturas() {
         return estruturas;

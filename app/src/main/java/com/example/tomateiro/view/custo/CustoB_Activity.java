@@ -100,7 +100,7 @@ public class CustoB_Activity extends AppCompatActivity {
                     editA_q9.setText(custoB.getAdubacaoCoberturaQ());
                     editA_q10.setText(custoB.getPulverizacaoCostalQ());
                     editA_q11.setText(custoB.getCapinasManuaisQ());
-                    editA_q12.setText(custoB.getColheitaClassificaçãoQ());
+                    editA_q12.setText(custoB.getColheitaClassificacaoQ());
                     editA_q13.setText(custoB.getIrrigacaoQ());
                     editA_q14.setText(custoB.getOutrosBQ());
 
@@ -115,7 +115,7 @@ public class CustoB_Activity extends AppCompatActivity {
                     editA_v9.setText(custoB.getAdubacaoCoberturaV());
                     editA_v10.setText(custoB.getPulverizacaoCostalV());
                     editA_v11.setText(custoB.getCapinasManuaisV());
-                    editA_v12.setText(custoB.getColheitaClassificaçãoV());
+                    editA_v12.setText(custoB.getColheitaClassificacaoV());
                     editA_v13.setText(custoB.getIrrigacaoV());
                     editA_v14.setText(custoB.getOutrosBV());
 
@@ -148,7 +148,7 @@ public class CustoB_Activity extends AppCompatActivity {
                 custoB.setAdubacaoCoberturaQ(editA_q9.getText().toString().substring(1));
                 custoB.setPulverizacaoCostalQ(editA_q10.getText().toString().substring(1));
                 custoB.setCapinasManuaisQ(editA_q11.getText().toString().substring(1));
-                custoB.setColheitaClassificaçãoQ(editA_q12.getText().toString().substring(1));
+                custoB.setColheitaClassificacaoQ(editA_q12.getText().toString().substring(1));
                 custoB.setIrrigacaoQ(editA_q13.getText().toString().substring(1));
                 custoB.setOutrosBQ(editA_q14.getText().toString().substring(1));
 
@@ -163,7 +163,7 @@ public class CustoB_Activity extends AppCompatActivity {
                 custoB.setAdubacaoCoberturaV(editA_v9.getText().toString().substring(1));
                 custoB.setPulverizacaoCostalV(editA_v10.getText().toString().substring(1));
                 custoB.setCapinasManuaisV(editA_v11.getText().toString().substring(1));
-                custoB.setColheitaClassificaçãoV(editA_v12.getText().toString().substring(1));
+                custoB.setColheitaClassificacaoV(editA_v12.getText().toString().substring(1));
                 custoB.setIrrigacaoV(editA_v13.getText().toString().substring(1));
                 custoB.setOutrosBV(editA_v14.getText().toString().substring(1));
 
