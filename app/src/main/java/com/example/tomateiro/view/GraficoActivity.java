@@ -54,26 +54,26 @@ public class GraficoActivity extends AppCompatActivity {
                 String subTotalA = safra.getCustoA().getSubTotalA();
 
                 pieDataSet = new PieDataSet(pieEntries, "");
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAracaoV(), subTotalA)), "Aração"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getGradeacaoV(), subTotalA)), "Gradeação (2x) "));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSubsolagemV(), subTotalA)), "Subsolagem"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getCalagemV(), subTotalA)), "Colagem"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSulcamentoV(), subTotalA)), "Sucamento"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAdubacaoBasicaV(), subTotalA)), "Adubação básica"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAplicacaoEstercoV(), subTotalA)), "Aplicação de esterco"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAdubacaoCoberturaV(), subTotalA)), "Adubação em cobertura"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getPulverizacaoV(), subTotalA)), "Pulverização"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getColheitaClassificacaoV(), subTotalA)), "Colheita e classificação"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getIrrigacoesV(), subTotalA)), "Irrigações"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getOutrosAV(), subTotalA)), "Outros"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAracaoV(), subTotalA)), "Aração - (PS)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getGradeacaoV(), subTotalA)), "Gradeação (2x) - (PS)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSubsolagemV(), subTotalA)), "Subsolagem - (PS)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getCalagemV(), subTotalA)), "Colagem - (PS)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSulcamentoV(), subTotalA)), "Sulcamento - (PS)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAdubacaoBasicaV(), subTotalA)), "Adubação básica - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAplicacaoEstercoV(), subTotalA)), "Aplicação de esterco - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAdubacaoCoberturaV(), subTotalA)), "Adubação em cobertura - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getPulverizacaoV(), subTotalA)), "Pulverização - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getColheitaClassificacaoV(), subTotalA)), "Colheita e classificação - (C)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getIrrigacoesV(), subTotalA)), "Irrigações - (I)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getOutrosAV(), subTotalA)), "Outros - (O)"));
 
                 pieEntries = new ArrayList<>();
                 pieDataSet2 = new PieDataSet(pieEntries, "");
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().calcularSubTotalPreparoSolo(safra.getCustoA()), subTotalA)), "Preparo do solo"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().calcularSubTotalTratosCulturais(safra.getCustoA()), subTotalA)), "Tratos culturais"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getColheitaClassificacaoV(), subTotalA)), "Colheita"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getIrrigacoesV(), subTotalA)), "Irrigação"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getOutrosAV(), subTotalA)), "Outros"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().calcularSubTotalPreparoSolo(safra.getCustoA()), subTotalA)), "Preparo do solo - (PS)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().calcularSubTotalTratosCulturais(safra.getCustoA()), subTotalA)), "Tratos culturais - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getColheitaClassificacaoV(), subTotalA)), "Colheita - (C)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getIrrigacoesV(), subTotalA)), "Irrigação - (I)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getOutrosAV(), subTotalA)), "Outros (O)"));
 
 
             }
@@ -96,30 +96,30 @@ public class GraficoActivity extends AppCompatActivity {
                 String subTotal = safra.getCustoB().getSubTotalB();
 
 
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColagemV(), subTotal)), "Colagem"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getTransplantioV(), subTotal)), "Transplantio"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getEstaqueamentoV(), subTotal)), "Estaqueamento"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAmontoaV(), subTotal)), "Amontoa"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAmarracaoV(), subTotal)), "Amarração"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAdubacaoBasicaV(), subTotal)), "Adubação básica"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAplicacaoEstercoV(), subTotal)), "Aplicação de esterco"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getDesbrotaV(), subTotal)), "Desbrota"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAdubacaoCoberturaV(), subTotal)), "Adubação em cobertura"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getPulverizacaoCostalV(), subTotal)), "Pulverização com costal"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getCapinasManuaisV(), subTotal)), "Capinas Manuais"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColheitaClassificacaoV(), subTotal)), "Colheita e Classificação"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getIrrigacaoV(), subTotal)), "Irrigação"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getOutrosBV(), subTotal)), "Outros"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColagemV(), subTotal)), "Colagem - (PS)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getTransplantioV(), subTotal)), "Transplantio - (P)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getEstaqueamentoV(), subTotal)), "Estaqueamento - (P)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAmontoaV(), subTotal)), "Amontoa - (P)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAmarracaoV(), subTotal)), "Amarração - (P)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAdubacaoBasicaV(), subTotal)), "Adubação básica - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAplicacaoEstercoV(), subTotal)), "Aplicação de esterco - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getDesbrotaV(), subTotal)), "Desbrota - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAdubacaoCoberturaV(), subTotal)), "Adubação em cobertura - (TC"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getPulverizacaoCostalV(), subTotal)), "Pulverização com costal - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getCapinasManuaisV(), subTotal)), "Capinas Manuais - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColheitaClassificacaoV(), subTotal)), "Colheita e Classificação - (C)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getIrrigacaoV(), subTotal)), "Irrigação - (I)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getOutrosBV(), subTotal)), "Outros - (O)"));
 
 
                 pieEntries = new ArrayList<>();
                 pieDataSet2 = new PieDataSet(pieEntries, "");
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColagemV(), subTotal)), "Preparo do solo"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().calcularSubTotalPlantil(safra.getCustoB()), subTotal)), "Plantio"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().calcularSubTotalTratosCulturais(safra.getCustoB()), subTotal)), "Tratos culturais"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColheitaClassificacaoV(), subTotal)), "Colheita"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getIrrigacaoV(), subTotal)), "Irrigação"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getOutrosBV(), subTotal)), "Outros"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColagemV(), subTotal)), "Preparo do solo - (PS)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().calcularSubTotalPlantil(safra.getCustoB()), subTotal)), "Plantio - (P)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().calcularSubTotalTratosCulturais(safra.getCustoB()), subTotal)), "Tratos culturais - (TC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColheitaClassificacaoV(), subTotal)), "Colheita - (C)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getIrrigacaoV(), subTotal)), "Irrigação - (I)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getOutrosBV(), subTotal)), "Outros - (O)"));
            }
 
             pieDataSet.setColors(
@@ -142,30 +142,30 @@ public class GraficoActivity extends AppCompatActivity {
                 String subTotal = safra.getCustoC().getSubTotalC();
 
 
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getCalcarioDolomiticoV(), subTotal)), "Calcário Dolomítico"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSulfatoAmonioV(), subTotal)), "Sulfato de Amônio"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSuperfosfatoSimplesV(), subTotal)), "Superfosfato Simples"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getCloretoPotassioV(), subTotal)), "Cloreto de Potássio"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getEstercoBovinoV(), subTotal)), "Esterco Bovino"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getYorinV(), subTotal)), "Yorin BZ"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSementesV(), subTotal)), "Sementes"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getConfeccaoMudasV(), subTotal)), "Confecção de mudas"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getEstacasBambuV(), subTotal)), "Estacas Bambu (1 ciclos)"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getMouroesEucaV(), subTotal)), "Mourões Eucal. (10 ciclos)"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getArame16V(), subTotal)), "Arame nº 16 (3 ciclos)"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getArame20V(), subTotal)), "Arame nº 20 (3 ciclos)"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getFungicidasV(), subTotal)), "Fungicidas"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getHerbicidasV(), subTotal)), "Herbicidas"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getInseticidasV(), subTotal)), "Inseticidas"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosProdutosQuimicosV(), subTotal)), "Outros produtos químicos"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosV(), subTotal)), "Outros"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getCalcarioDolomiticoV(), subTotal)), "Calcário Dolomítico - (FC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSulfatoAmonioV(), subTotal)), "Sulfato de Amônio - (FC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSuperfosfatoSimplesV(), subTotal)), "Superfosfato Simples - (FC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getCloretoPotassioV(), subTotal)), "Cloreto de Potássio - (FC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getEstercoBovinoV(), subTotal)), "Esterco Bovino - (FC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getYorinV(), subTotal)), "Yorin BZ - (FC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSementesV(), subTotal)), "Sementes - (SMM)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getConfeccaoMudasV(), subTotal)), "Confecção de mudas - (SMM)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getEstacasBambuV(), subTotal)), "Estacas Bambu (1 ciclos) - (SMM)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getMouroesEucaV(), subTotal)), "Mourões Eucal. (10 ciclos) - (SMM)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getArame16V(), subTotal)), "Arame nº 16 (3 ciclos) - (SMM)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getArame20V(), subTotal)), "Arame nº 20 (3 ciclos) - (SMM)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getFungicidasV(), subTotal)), "Fungicidas - (DA)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getHerbicidasV(), subTotal)), "Herbicidas - (DA)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getInseticidasV(), subTotal)), "Inseticidas - (DA)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosProdutosQuimicosV(), subTotal)), "Outros produtos químicos - (DA)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosV(), subTotal)), "Outros - (O)"));
 
                 pieEntries = new ArrayList<>();
                 pieDataSet2 = new PieDataSet(pieEntries, "");
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalFertilizantesCorretivos(safra.getCustoC()), subTotal)), "Fertilizantes/Corretivos"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalSementesMudasMatPlantio(safra.getCustoC()), subTotal)), "Sementes/Mudas/Mat. plantio"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalDefensivosAgricolas(safra.getCustoC()), subTotal)), "Defensivos agrícolas"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosV(), subTotal)), "Outros"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalFertilizantesCorretivos(safra.getCustoC()), subTotal)), "Fertilizantes/Corretivos - (FC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalSementesMudasMatPlantio(safra.getCustoC()), subTotal)), "Sementes/Mudas/Mat. plantio - (SMM)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalDefensivosAgricolas(safra.getCustoC()), subTotal)), "Defensivos agrícolas - (DA)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosV(), subTotal)), "Outros - (O)"));
 
             }
             pieDataSet.setColors(

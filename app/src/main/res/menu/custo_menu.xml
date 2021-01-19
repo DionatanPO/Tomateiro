@@ -4,23 +4,23 @@
     <item
         android:id="@+id/indicador"
         android:enabled="false"
-        android:title="Calcular Custos" />
+        android:title="Calcular custos" />
 
     <item
         android:id="@+id/custoA"
-        android:title="OPERAÇÕES MECANIZADAS" />
+        android:title="Operações mecanizadas" />
 
     <item
         android:id="@+id/custoB"
-        android:title="OPERAÇÕES MANUAIS" />
+        android:title="Operações manuais" />
 
     <item
         android:id="@+id/custoC"
-        android:title="INSUMOS" />
+        android:title="Insumos" />
 
     <item
         android:id="@+id/custoD"
-        android:title=" ADMINISTRAÇÃO" />
+        android:title="Administração" />
 
 
 </menu>
