@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -48,6 +50,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
     private SafraRequest safraRequest;
     private List<Safra> safrasListConcluidas;
     private Produtor produtor;
+    private Animation myAnim;
     private ListView listView;
     private Button btn_g1, btn_g2, btn_g3, btn_g4;
 
@@ -62,6 +65,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_relatorio);
         pieChart = findViewById(R.id.graficoGeral);
         context = this;
+        myAnim = AnimationUtils.loadAnimation(this, R.anim.btn_animation);
 
         btn_g1 = findViewById(R.id.btn_g1);
         btn_g1.setOnClickListener(this);
@@ -225,6 +229,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
         btn_safra_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btn_safra_menu.startAnimation(myAnim);
 
                 PopupMenu popup = new PopupMenu(context, btn_safra_menu);
 
@@ -321,6 +326,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
         Intent intent;
         switch (view.getId()) {
             case R.id.btn_g1:
+                btn_g1.startAnimation(myAnim);
                 intent = new Intent(context, GraficoActivity.class);
                 intent.putExtra("safra", safra);
                 intent.putExtra("acao", "g1");
@@ -328,6 +334,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.btn_g2:
+                btn_g2.startAnimation(myAnim);
                 intent = new Intent(context, GraficoActivity.class);
                 intent.putExtra("safra", safra);
                 intent.putExtra("acao", "g2");
@@ -335,6 +342,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.btn_g3:
+                btn_g3.startAnimation(myAnim);
                 intent = new Intent(context, GraficoActivity.class);
                 intent.putExtra("safra", safra);
                 intent.putExtra("acao", "g3");
@@ -342,6 +350,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.btn_g4:
+                btn_g4.startAnimation(myAnim);
                 intent = new Intent(context, GraficoActivity.class);
                 intent.putExtra("safra", safra);
                 intent.putExtra("acao", "g4");

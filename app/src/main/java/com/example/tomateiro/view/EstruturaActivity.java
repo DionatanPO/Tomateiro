@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -56,6 +58,7 @@ public class EstruturaActivity extends AppCompatActivity {
         context = this;
         estrutura_btn_nova = findViewById(R.id.estrutura_btn_nova);
         listView = findViewById(R.id.listview_estrutura);
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.btn_animation);
 
         estruturaArrayList = new ArrayList<>();
 
@@ -78,6 +81,7 @@ public class EstruturaActivity extends AppCompatActivity {
         estrutura_btn_nova.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                estrutura_btn_nova.startAnimation(myAnim);
                 final Estrutura estrutura = new Estrutura();
 
                 AlertDialog alerta = null;
@@ -96,6 +100,7 @@ public class EstruturaActivity extends AppCompatActivity {
                 btn_menu_categorias.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                      btn_menu_categorias.startAnimation(myAnim);
 
                         PopupMenu popup = new PopupMenu(context, btn_menu_categorias);
 
@@ -152,14 +157,13 @@ public class EstruturaActivity extends AppCompatActivity {
                 });
 
 
-                Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+                final Button btn_concluir = layout.findViewById(R.id.btn_concluir);
 
                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                     btn_concluir.startAnimation(myAnim);
                         estruturaController = new EstruturaController(context);
-
-
 
                         estrutura.setNome_item(estrutura_nome_item.getText().toString());
                         try {
@@ -285,12 +289,12 @@ public class EstruturaActivity extends AppCompatActivity {
                                     }
                                 });
 
-                                Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+                                final Button btn_concluir = layout.findViewById(R.id.btn_concluir);
 
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-
+                                    btn_concluir.startAnimation(myAnim);
                                         estruturaArrayList.get(position).setCategoria(categoria);
 
                                         estruturaArrayList.get(position).setNome_item(estrutura_nome_item.getText().toString());

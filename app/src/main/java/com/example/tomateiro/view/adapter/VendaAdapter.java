@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
@@ -43,6 +45,7 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
         this.context = context;
         this.vendaList = vendagemslis;
         this.safra = safra;
+
 
     }
 
@@ -97,7 +100,7 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
                         TextView titulo = layout.findViewById(R.id.textView);
                         titulo.setText("Alterar dados da venda");
 
-                        Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+                        final Button btn_concluir = layout.findViewById(R.id.btn_concluir);
                         final EditText et_nova_venda_data = layout.findViewById(R.id.nova_venda_data);
                         final EditText et_nova_venda_quantidade = layout.findViewById(R.id.nova_venda_quantidade);
                         final EditText et_nova_venda_preco = layout.findViewById(R.id.nova_venda_preco);
@@ -107,10 +110,13 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
                         et_nova_venda_quantidade.setText(String.valueOf(getVendaList().get(position).getQuantidade()));
                         et_nova_venda_preco.setText(getVendaList().get(position).getPreco());
                         et_nova_venda_peso_caixa.setText(getVendaList().get(position).getPesoCaixa());
+                        final Animation myAnim = AnimationUtils.loadAnimation(context, R.anim.btn_animation);
 
                         btn_concluir.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                btn_concluir.startAnimation(myAnim);
+
                                 vendaController = new VendaController(context);
                                 getVendaList().get(position).setVendaData(et_nova_venda_data.getText().toString());
 

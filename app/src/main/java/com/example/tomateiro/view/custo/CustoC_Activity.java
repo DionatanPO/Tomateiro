@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -43,7 +45,7 @@ public class CustoC_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.btn_animation);
         context = this;
         setContentView(R.layout.activity_custo_c);
 
@@ -134,6 +136,9 @@ public class CustoC_Activity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
+
+                btn_concluir.startAnimation(myAnim);
+
                 custoC.setCalcarioDolomiticoQ(editA_q1.getText().toString().substring(1));
                 custoC.setSulfatoAmonioQ(editA_q2.getText().toString().substring(1));
                 custoC.setSuperfosfatoSimplesQ(editA_q3.getText().toString().substring(1));

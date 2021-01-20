@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -41,10 +43,13 @@ public class RegistroActivity extends AppCompatActivity {
         senha1 = findViewById(R.id.senha1);
         senha2 = findViewById(R.id.senha2);
 
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.btn_animation);
+
+
         button_concluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                button_concluir.startAnimation(myAnim);
                 produtor = new Produtor();
                 produtor.setNome(nome.getText().toString());
                 produtor.setPropriedade(propriedade.getText().toString());

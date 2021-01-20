@@ -18,6 +18,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -63,6 +65,7 @@ public class VendaActivity extends AppCompatActivity {
         vendaController = new VendaController(context);
         safraRequest = new SafraRequest(context);
         safraController = new SafraController(context);
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.btn_animation);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -98,7 +101,7 @@ public class VendaActivity extends AppCompatActivity {
         btn_venda_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+              btn_venda_menu.startAnimation(myAnim);
                 PopupMenu popup = new PopupMenu(context, btn_venda_menu);
 
                 popup.getMenuInflater()
@@ -116,7 +119,7 @@ public class VendaActivity extends AppCompatActivity {
                                 final Venda venda = new Venda();
 
                                 layout = inflater.inflate(R.layout.nova_venda_fragmento, null);
-                                Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+                                final Button btn_concluir = layout.findViewById(R.id.btn_concluir);
                                 final EditText et_nova_venda_data = layout.findViewById(R.id.nova_venda_data);
                                 final EditText et_nova_venda_quantidade = layout.findViewById(R.id.nova_venda_quantidade);
                                 final EditText et_nova_venda_preco = layout.findViewById(R.id.nova_venda_preco);
@@ -131,6 +134,7 @@ public class VendaActivity extends AppCompatActivity {
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
+                                       btn_concluir.startAnimation(myAnim);
                                         venda.setEstado("Ativo");
                                         venda.setVendaData(et_nova_venda_data.getText().toString());
                                         venda.setPreco(et_nova_venda_preco.getText().toString().substring(1));

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -68,6 +70,7 @@ public class PainelActivity extends AppCompatActivity {
             produtor = (Produtor) getIntent().getSerializableExtra("produtor");
 
         }
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.btn_animation);
 
         context = this;
 
@@ -99,6 +102,7 @@ public class PainelActivity extends AppCompatActivity {
         card_safra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                card_safra.startAnimation(myAnim);
 
                 LayoutInflater inflater = LayoutInflater.from(context);
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -106,7 +110,7 @@ public class PainelActivity extends AppCompatActivity {
 
                 layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
 
-                Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+                final Button btn_concluir = layout.findViewById(R.id.btn_concluir);
                 TextView textView = layout.findViewById(R.id.textView);
                 textView.setText(" Alterar dados da safra");
 
@@ -124,7 +128,7 @@ public class PainelActivity extends AppCompatActivity {
                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                       btn_concluir.startAnimation(myAnim);
                         safra.setClicloAno(et_nova_safra_ciclo.getText().toString());
                         safra.setRegiaoReferencia(et_nova_safra_regiao.getText().toString());
                         safra.setData(et_nova_safra_data.getText().toString());
@@ -155,6 +159,7 @@ public class PainelActivity extends AppCompatActivity {
         btn_venda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_venda.startAnimation(myAnim);
                 if (safra != null) {
                     intent = new Intent(context, VendaActivity.class);
                     intent.putExtra("safra", safra);
@@ -168,6 +173,7 @@ public class PainelActivity extends AppCompatActivity {
         btn_relatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_relatorio.startAnimation(myAnim);
                 if (safra != null) {
                     intent = new Intent(context, RelatorioActivity.class);
                     intent.putExtra("safra", safra);
@@ -183,6 +189,7 @@ public class PainelActivity extends AppCompatActivity {
         btn_estrutura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               btn_estrutura.startAnimation(myAnim);
                 if (safra != null) {
                     intent = new Intent(context, EstruturaActivity.class);
                     intent.putExtra("safra", safra);
@@ -197,7 +204,7 @@ public class PainelActivity extends AppCompatActivity {
         btn_safra_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                btn_safra_menu.startAnimation(myAnim);
                 PopupMenu popup = new PopupMenu(context, btn_safra_menu);
 
                 popup.getMenuInflater()
@@ -215,7 +222,7 @@ public class PainelActivity extends AppCompatActivity {
                             case R.id.novaSafra:
                                 layout = inflater.inflate(R.layout.nova_safra_fragmento, null);
 
-                                Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+                                final Button btn_concluir = layout.findViewById(R.id.btn_concluir);
                                 final EditText et_nova_safra_pes = layout.findViewById(R.id.nova_safra_pes);
                                 final EditText et_nova_safra_ciclo = layout.findViewById(R.id.nova_safra_ciclo);
                                 final EditText et_nova_safra_regiao = layout.findViewById(R.id.nova_safra_regiao);
@@ -230,7 +237,7 @@ public class PainelActivity extends AppCompatActivity {
                                 btn_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-
+                                        btn_concluir.startAnimation(myAnim);
                                         if (safra != null) {
 
                                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
@@ -328,7 +335,7 @@ public class PainelActivity extends AppCompatActivity {
                                 titulo.setText("Alterar seus dados");
 
                                 final EditText nome, propriedade, identificacao, senha1, senha2;
-                                Button button_concluir;
+                                final Button button_concluir;
                                 TextView txt_senha1, txt_senha2;
 
                                 button_concluir = layout.findViewById(R.id.btn_concluir);
@@ -356,7 +363,7 @@ public class PainelActivity extends AppCompatActivity {
                                 button_concluir.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-
+                                        button_concluir.startAnimation(myAnim);
                                         produtor.setNome(nome.getText().toString());
                                         produtor.setPropriedade(propriedade.getText().toString());
                                         produtor.setCodIdentificacao(identificacao.getText().toString());
@@ -458,6 +465,7 @@ public class PainelActivity extends AppCompatActivity {
         btn_s_t_g.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btn_s_t_g.startAnimation(myAnim);
                 if (safra != null) {
                     PopupMenu popup = new PopupMenu(context, btn_s_t_g);
 

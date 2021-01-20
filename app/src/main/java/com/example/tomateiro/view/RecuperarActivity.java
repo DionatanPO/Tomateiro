@@ -6,6 +6,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -34,9 +36,13 @@ public class RecuperarActivity extends AppCompatActivity {
 
         produtorRequest = new ProdutorRequest(context);
 
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.btn_animation);
+
+
         btn_solicitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               btn_solicitar.startAnimation(myAnim);
                 if (email.getText().toString().equals("") || cod.getText().toString().equals("")) {
                     viewToastAlerta(context, "Preecha todos os campos!");
                 } else {

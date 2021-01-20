@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -56,9 +58,13 @@ public class LoginActivity extends AppCompatActivity {
 
         checkBox = findViewById(R.id.checkbox);
 
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.btn_animation);
+
+
         btn_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_registrar.startAnimation(myAnim);
                 Intent intent = new Intent(context, RegistroActivity.class);
                 startActivity(intent);
             }
@@ -69,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+              getBtn_entrar.startAnimation(myAnim);
                 produtor.setCodIdentificacao(editText_codigo.getText().toString());
                 produtor.setSenha(editText_senha.getText().toString());
 

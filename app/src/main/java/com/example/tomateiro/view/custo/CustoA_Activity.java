@@ -7,6 +7,8 @@ import android.content.Context;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import android.widget.TextView;
@@ -43,7 +45,7 @@ public class CustoA_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custo_a);
         context = this;
-
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.btn_animation);
         safraController = new SafraController(context);
         safraRequest = new SafraRequest(context);
 
@@ -128,7 +130,7 @@ public class CustoA_Activity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-
+                btn_concluir.startAnimation(myAnim);
                 custoA.setAracaoQ(editA_q1.getText().toString().substring(1));
                 custoA.setGradeacaoQ(editA_q2.getText().toString().substring(1));
                 custoA.setSubsolagemQ(editA_q3.getText().toString().substring(1));

@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -44,7 +46,7 @@ public class CustoB_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custo_b);
-
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.btn_animation);
         context = this;
         btn_concluir = findViewById(R.id.button);
         custo_subtotal = findViewById(R.id.custo_subtotal);
@@ -137,6 +139,7 @@ public class CustoB_Activity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
+                btn_concluir.startAnimation(myAnim);
                 custoB.setColagemQ(editA_q1.getText().toString().substring(1));
                 custoB.setTransplantioQ(editA_q2.getText().toString().substring(1));
                 custoB.setEstaqueamentoQ(editA_q3.getText().toString().substring(1));
