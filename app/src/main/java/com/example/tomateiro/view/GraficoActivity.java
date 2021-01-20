@@ -150,10 +150,6 @@ public class GraficoActivity extends AppCompatActivity {
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getYorinV(), subTotal)), "Yorin BZ - (FC)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSementesV(), subTotal)), "Sementes - (SMM)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getConfeccaoMudasV(), subTotal)), "Confecção de mudas - (SMM)"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getEstacasBambuV(), subTotal)), "Estacas Bambu (1 ciclos) - (SMM)"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getMouroesEucaV(), subTotal)), "Mourões Eucal. (10 ciclos) - (SMM)"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getArame16V(), subTotal)), "Arame nº 16 (3 ciclos) - (SMM)"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getArame20V(), subTotal)), "Arame nº 20 (3 ciclos) - (SMM)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getFungicidasV(), subTotal)), "Fungicidas - (DA)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getHerbicidasV(), subTotal)), "Herbicidas - (DA)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getInseticidasV(), subTotal)), "Inseticidas - (DA)"));
@@ -171,8 +167,7 @@ public class GraficoActivity extends AppCompatActivity {
             pieDataSet.setColors(
                     new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
                             R.color.color6, R.color.color7, R.color.color8, R.color.color9, R.color.color10,
-                            R.color.color11, R.color.color12, R.color.color13, R.color.color14,
-                            R.color.color15, R.color.color16, R.color.color17}, GraficoActivity.this);
+                            R.color.color11, R.color.color12, R.color.color13}, GraficoActivity.this);
 
             pieDataSet2.setColors(
                     new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, GraficoActivity.this);
@@ -257,6 +252,7 @@ public class GraficoActivity extends AppCompatActivity {
         Legend legend2 = pieChart2.getLegend();
 
         legend.setForm(Legend.LegendForm.CIRCLE);
+        legend2.setForm(Legend.LegendForm.CIRCLE);
 
         if (acao.equals("g3")) {
             legend.setTextSize(13);

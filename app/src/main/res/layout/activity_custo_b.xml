@@ -21,28 +21,23 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="OPERAÇÕES MANUAIS"
+            android:text="Operações manuais"
             android:textColor="@color/colorBranca"
             android:textSize="25dp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.03"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="24dp"
             android:text="Custo"
             android:textColor="@color/colorBranca"
             android:textSize="22sp"
             android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -121,7 +116,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Calagem"
+                    android:text="Calagem:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -150,7 +145,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Transplantio"
+                    android:text="Transplantio:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -179,7 +174,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Estaqueamento"
+                    android:text="Estaqueamento:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -208,7 +203,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Amontoa"
+                    android:text="Amontoa:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -237,7 +232,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Amarração"
+                    android:text="Amarração:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -266,7 +261,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Adubação básica"
+                    android:text="Adubação básica:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -295,7 +290,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Aplicação de esterco"
+                    android:text="Aplicação de esterco:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -324,7 +319,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Desbrota"
+                    android:text="Desbrota:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -353,7 +348,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Adubação em cobertura"
+                    android:text="Adubação em cobertura:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -382,7 +377,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Pulverização com costal"
+                    android:text="Pulverização com costal:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -411,7 +406,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Capinas Manuais"
+                    android:text="Capinas manuais:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -440,7 +435,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Colheita e Classificação"
+                    android:text="Colheita e classificação:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -469,7 +464,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Irrigação"
+                    android:text="Irrigação:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -498,7 +493,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Outros"
+                    android:text="Outros:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />

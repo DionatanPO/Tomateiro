@@ -15,10 +15,6 @@ public class CustoC implements Serializable {
     private String yorinQ;
     private String sementesQ;
     private String confeccaoMudasQ;
-    private String estacasBambuQ;
-    private String mouroesEucaQ;
-    private String arame16Q;
-    private String arame20Q;
     private String fungicidasQ;
     private String herbicidasQ;
     private String inseticidasQ;
@@ -33,10 +29,6 @@ public class CustoC implements Serializable {
     private String yorinV;
     private String sementesV;
     private String confeccaoMudasV;
-    private String estacasBambuV;
-    private String mouroesEucaV;
-    private String arame16V;
-    private String arame20V;
     private String fungicidasV;
     private String herbicidasV;
     private String inseticidasV;
@@ -59,10 +51,6 @@ public class CustoC implements Serializable {
                         parseToDouble(c.getYorinV()) +
                         parseToDouble(c.getSementesV()) +
                         parseToDouble(c.getConfeccaoMudasV()) +
-                        parseToDouble(c.getEstacasBambuV()) +
-                        parseToDouble(c.getMouroesEucaV()) +
-                        parseToDouble(c.getArame16V()) +
-                        parseToDouble(c.getArame20V()) +
                         parseToDouble(c.getFungicidasV()) +
                         parseToDouble(c.getHerbicidasV()) +
                         parseToDouble(c.getInseticidasV()) +
@@ -93,11 +81,7 @@ public class CustoC implements Serializable {
     public String calcularSubTotalSementesMudasMatPlantio(CustoC c) {
         Double resultadoCalculo =
                 parseToDouble(c.getSementesV()) +
-                        parseToDouble(c.getConfeccaoMudasV()) +
-                        parseToDouble(c.getEstacasBambuV()) +
-                        parseToDouble(c.getMouroesEucaV()) +
-                        parseToDouble(c.getArame16V()) +
-                        parseToDouble(c.getArame20V());
+                        parseToDouble(c.getConfeccaoMudasV()) ;
 
         String value = String.format("%,.2f", resultadoCalculo);
 
@@ -202,37 +186,6 @@ public class CustoC implements Serializable {
         this.confeccaoMudasQ = confeccaoMudasQ;
     }
 
-    public String getEstacasBambuQ() {
-        return estacasBambuQ;
-    }
-
-    public void setEstacasBambuQ(String estacasBambuQ) {
-        this.estacasBambuQ = estacasBambuQ;
-    }
-
-    public String getMouroesEucaQ() {
-        return mouroesEucaQ;
-    }
-
-    public void setMouroesEucaQ(String mouroesEucaQ) {
-        this.mouroesEucaQ = mouroesEucaQ;
-    }
-
-    public String getArame16Q() {
-        return arame16Q;
-    }
-
-    public void setArame16Q(String arame16Q) {
-        this.arame16Q = arame16Q;
-    }
-
-    public String getArame20Q() {
-        return arame20Q;
-    }
-
-    public void setArame20Q(String arame20Q) {
-        this.arame20Q = arame20Q;
-    }
 
     public String getFungicidasQ() {
         return fungicidasQ;
@@ -336,38 +289,6 @@ public class CustoC implements Serializable {
 
     public void setConfeccaoMudasV(String confeccaoMudasV) {
         this.confeccaoMudasV = confeccaoMudasV;
-    }
-
-    public String getEstacasBambuV() {
-        return estacasBambuV;
-    }
-
-    public void setEstacasBambuV(String estacasBambuV) {
-        this.estacasBambuV = estacasBambuV;
-    }
-
-    public String getMouroesEucaV() {
-        return mouroesEucaV;
-    }
-
-    public void setMouroesEucaV(String mouroesEucaV) {
-        this.mouroesEucaV = mouroesEucaV;
-    }
-
-    public String getArame16V() {
-        return arame16V;
-    }
-
-    public void setArame16V(String arame16V) {
-        this.arame16V = arame16V;
-    }
-
-    public String getArame20V() {
-        return arame20V;
-    }
-
-    public void setArame20V(String arame20V) {
-        this.arame20V = arame20V;
     }
 
     public String getFungicidasV() {

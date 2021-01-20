@@ -21,19 +21,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="OPERAÇÕES MECANIZADAS"
+            android:text="Operações mecanizadas"
             android:textColor="@color/colorBranca"
             android:textSize="25dp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.03"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -121,7 +118,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Aração (2x)"
+                    android:text="Aração (2x):"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -150,7 +147,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Gradeação (2x) "
+                    android:text="Gradeação (2x):"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -179,7 +176,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Subsolagem"
+                    android:text="Subsolagem:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -208,7 +205,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Calagem "
+                    android:text="Calagem:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -237,7 +234,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Sulcamento"
+                    android:text="Sulcamento:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -266,7 +263,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Adubação Básica"
+                    android:text="Adubação básica:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -295,7 +292,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Aplicação de esterco"
+                    android:text="Aplicação de esterco:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -324,7 +321,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Adubação em cobertura"
+                    android:text="Adubação em cobertura:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -353,7 +350,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Pulverização"
+                    android:text="Pulverização:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -382,7 +379,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Colheita e Classificação"
+                    android:text="Colheita e classificação:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -411,7 +408,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Irrigações"
+                    android:text="Irrigações:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -440,7 +437,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Outros"
+                    android:text="Outros:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />

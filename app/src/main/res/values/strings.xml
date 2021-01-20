@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Tomateiro$</string>
-    <string name="registro"><p style=" text-align: justify; text-justify: inter-word;">Informe seus dados <b>abaixo</b> </p></string>
-    <string name="safra"><p style=" text-align: justify; text-justify: inter-word;">Safra <b>vigente </b>aparece aqui </p></string>
-    <string name="novaSafra"><p style=" text-align: justify; text-justify: inter-word;">Informe os <b>dados</b> abaixo </p></string>
+    <string name="registro"><p style=" text-align: justify; text-justify: inter-word;">Informe seus dados abaixo </p></string>
+    <string name="safra"><p style=" text-align: justify; text-justify: inter-word;">Safra vigente aparece aqui </p></string>
+    <string name="novaSafra"><p style=" text-align: justify; text-justify: inter-word;">Informe os dados abaixo </p></string>
     <string name="sobre"><p style=" text-align: justify; text-justify: inter-word;">Este
         aplicativo tem como propósito auxiliar na gestão dos custos de produção do tomate
         para consumo fresco. Desta forma, pretende-se, contribuir com o armazenamento e análise
