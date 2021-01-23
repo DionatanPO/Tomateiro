@@ -187,18 +187,22 @@ public class Safra implements Serializable {
 
         long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
         long quantidadeDias = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        if (quantidadeDias > 0) {
+            double resultado = 0;
 
-        double resultado = 0;
+            double resDia = quantidadeDias / 30.0;
 
-        double resDia = quantidadeDias / 30.0;
+            double resReceita = parse4(receita) / parse4(custoTotalHa);
 
-        double resReceita = parse4(receita) / parse4(custoTotalHa);
+            double resRaiz = Math.pow(resReceita, 1.0 / resDia);
 
-        double resRaiz = Math.pow(resReceita, 1.0 / resDia);
+            resultado = (resRaiz - 1) * 100;
 
-        resultado = (resRaiz - 1) * 100;
+            return String.format("%.2f", resultado);
+        } else {
+            return "+100.000";
+        }
 
-        return String.format("%.2f", resultado);
 
     }
 
