@@ -49,7 +49,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/registro"
+                    android:text="Informe os dados abaixo"
                     android:textColor="@color/colorBranca"
                     android:textSize="18dp"
                     android:textStyle="normal"
@@ -110,6 +110,7 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:inputType="number"
                     android:maxLength="15"
                     android:id="@+id/registro_identificacao"
                     android:layout_width="match_parent"

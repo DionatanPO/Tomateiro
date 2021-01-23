@@ -165,7 +165,7 @@ public class PainelActivity extends AppCompatActivity {
                     intent.putExtra("safra", safra);
                     context.startActivity(intent);
                 } else {
-                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar venda.");
+                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar venda");
                 }
             }
         });
@@ -180,7 +180,7 @@ public class PainelActivity extends AppCompatActivity {
                     intent.putExtra("produtor", produtor);
                     context.startActivity(intent);
                 } else {
-                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar o relatório.");
+                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar o relatório");
                 }
 
             }
@@ -195,7 +195,7 @@ public class PainelActivity extends AppCompatActivity {
                     intent.putExtra("safra", safra);
                     context.startActivity(intent);
                 } else {
-                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar estrutura.");
+                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar estrutura");
                 }
 
             }
@@ -238,6 +238,7 @@ public class PainelActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(View view) {
                                         btn_concluir.startAnimation(myAnim);
+
                                         if (safra != null) {
 
                                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
@@ -315,7 +316,7 @@ public class PainelActivity extends AppCompatActivity {
 
                                                 alerta.cancel();
                                             } else {
-
+                                                safra = null;
                                             }
 
                                         }
@@ -509,7 +510,7 @@ public class PainelActivity extends AppCompatActivity {
 
                     popup.show();
                 } else {
-                    viewToastAlerta(context, "Cadastre uma nova safra para caclcular os gastos.");
+                    viewToastAlerta(context, "Cadastre uma nova safra para caclcular os gastos");
                 }
 
 

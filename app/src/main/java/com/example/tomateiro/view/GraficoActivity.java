@@ -75,15 +75,13 @@ public class GraficoActivity extends AppCompatActivity {
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getIrrigacoesV(), subTotalA)), "Irrigação - (I)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getOutrosAV(), subTotalA)), "Outros (O)"));
 
+                pieDataSet.setColors(
+                        new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
+                                R.color.color6, R.color.color7, R.color.color8, R.color.color9, R.color.color10, R.color.color11, R.color.color12}, GraficoActivity.this);
 
+                pieDataSet2.setColors(
+                        new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5}, GraficoActivity.this);
             }
-            pieDataSet.setColors(
-                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
-                            R.color.color6, R.color.color7, R.color.color8, R.color.color9, R.color.color10, R.color.color11, R.color.color12}, GraficoActivity.this);
-
-            pieDataSet2.setColors(
-                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5}, GraficoActivity.this);
-
 
         }
 
@@ -120,15 +118,17 @@ public class GraficoActivity extends AppCompatActivity {
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColheitaClassificacaoV(), subTotal)), "Colheita - (C)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getIrrigacaoV(), subTotal)), "Irrigação - (I)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getOutrosBV(), subTotal)), "Outros - (O)"));
-           }
 
-            pieDataSet.setColors(
-                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
-                            R.color.color6, R.color.color7, R.color.color8, R.color.color9, R.color.color10,
-                            R.color.color11, R.color.color12, R.color.color13, R.color.color14}, GraficoActivity.this);
+                pieDataSet.setColors(
+                        new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
+                                R.color.color6, R.color.color7, R.color.color8, R.color.color9, R.color.color10,
+                                R.color.color11, R.color.color12, R.color.color13, R.color.color14}, GraficoActivity.this);
 
-            pieDataSet2.setColors(
-                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5, R.color.color6}, GraficoActivity.this);
+                pieDataSet2.setColors(
+                        new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5, R.color.color6}, GraficoActivity.this);
+
+            }
+
 
         }
 
@@ -163,14 +163,14 @@ public class GraficoActivity extends AppCompatActivity {
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalDefensivosAgricolas(safra.getCustoC()), subTotal)), "Defensivos agrícolas - (DA)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosV(), subTotal)), "Outros - (O)"));
 
-            }
-            pieDataSet.setColors(
-                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
-                            R.color.color6, R.color.color7, R.color.color8, R.color.color9, R.color.color10,
-                            R.color.color11, R.color.color12, R.color.color13}, GraficoActivity.this);
+                pieDataSet.setColors(
+                        new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
+                                R.color.color6, R.color.color7, R.color.color8, R.color.color9, R.color.color10,
+                                R.color.color11, R.color.color12, R.color.color13}, GraficoActivity.this);
 
-            pieDataSet2.setColors(
-                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, GraficoActivity.this);
+                pieDataSet2.setColors(
+                        new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, GraficoActivity.this);
+            }
 
         }
         if (acao.equals("g4")) {
@@ -192,92 +192,91 @@ public class GraficoActivity extends AppCompatActivity {
 
                 pieEntries = new ArrayList<>();
                 pieDataSet2 = new PieDataSet(pieEntries, "");
-
+                pieDataSet.setColors(
+                        new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
+                                R.color.color6, R.color.color7}, GraficoActivity.this);
+                pieDataSet2.setColors(
+                        new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, GraficoActivity.this);
             } else {
 
             }
 
-            pieDataSet.setColors(
-                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5,
-                            R.color.color6, R.color.color7}, GraficoActivity.this);
-            pieDataSet2.setColors(
-                    new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, GraficoActivity.this);
-
         }
 
+        if (pieDataSet != null && pieData2 != null) {
+            pieDataSet.setValueTextColor(WHITE);
+            pieDataSet.setValueLineColor(WHITE);
+            pieDataSet.setValueTextSize(15f);
+            pieDataSet.setFormSize(15f);
 
-        pieDataSet.setValueTextColor(WHITE);
-        pieDataSet.setValueLineColor(WHITE);
-        pieDataSet.setValueTextSize(15f);
-        pieDataSet.setFormSize(15f);
+            pieDataSet2.setValueTextColor(WHITE);
+            pieDataSet2.setValueLineColor(WHITE);
+            pieDataSet2.setValueTextSize(15f);
+            pieDataSet2.setFormSize(15f);
 
-        pieDataSet2.setValueTextColor(WHITE);
-        pieDataSet2.setValueLineColor(WHITE);
-        pieDataSet2.setValueTextSize(15f);
-        pieDataSet2.setFormSize(15f);
+            pieData = new PieData(pieDataSet);
+            pieData2 = new PieData(pieDataSet2);
 
-        pieData = new PieData(pieDataSet);
-        pieData2 = new PieData(pieDataSet2);
-
-        pieChart.setData(pieData);
-        pieChart.setHoleRadius(45);
-        pieChart.setHoleColor(Color.argb(0, 255, 255, 255));
-        pieChart.setDrawHoleEnabled(true);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.setDrawEntryLabels(false);
-        pieChart.setTransparentCircleRadius(10);
-        pieChart.setCenterText("%");
+            pieChart.setData(pieData);
+            pieChart.setHoleRadius(45);
+            pieChart.setHoleColor(Color.argb(0, 255, 255, 255));
+            pieChart.setDrawHoleEnabled(true);
+            pieChart.getDescription().setEnabled(false);
+            pieChart.setDrawEntryLabels(false);
+            pieChart.setTransparentCircleRadius(10);
+            pieChart.setCenterText("%");
 //        pieChart.setCenterTextColor(WHITE);
-        pieChart.setCenterTextSize(18);
-        pieChart.animateX(1000);
-        pieChart.animateY(500);
+            pieChart.setCenterTextSize(18);
+            pieChart.animateX(1000);
+            pieChart.animateY(500);
 
 
-        pieChart2.setData(pieData2);
-        pieChart2.setHoleRadius(45);
-        pieChart2.setHoleColor(Color.argb(0, 255, 255, 255));
-        pieChart2.setDrawHoleEnabled(true);
-        pieChart2.getDescription().setEnabled(false);
-        pieChart2.setDrawEntryLabels(false);
-        pieChart2.setTransparentCircleRadius(10);
-        pieChart2.setCenterText("%");
+            pieChart2.setData(pieData2);
+            pieChart2.setHoleRadius(45);
+            pieChart2.setHoleColor(Color.argb(0, 255, 255, 255));
+            pieChart2.setDrawHoleEnabled(true);
+            pieChart2.getDescription().setEnabled(false);
+            pieChart2.setDrawEntryLabels(false);
+            pieChart2.setTransparentCircleRadius(10);
+            pieChart2.setCenterText("%");
 //        pieChart.setCenterTextColor(WHITE);
-        pieChart2.setCenterTextSize(18);
-        pieChart2.animateX(1000);
-        pieChart2.animateY(500);
+            pieChart2.setCenterTextSize(18);
+            pieChart2.animateX(1000);
+            pieChart2.animateY(500);
 
 //        pieChart.getLegend().setTextColor(Color.WHITE);
 
-        Legend legend = pieChart.getLegend();
-        Legend legend2 = pieChart2.getLegend();
+            Legend legend = pieChart.getLegend();
+            Legend legend2 = pieChart2.getLegend();
 
-        legend.setForm(Legend.LegendForm.CIRCLE);
-        legend2.setForm(Legend.LegendForm.CIRCLE);
+            legend.setForm(Legend.LegendForm.CIRCLE);
+            legend2.setForm(Legend.LegendForm.CIRCLE);
 
-        if (acao.equals("g3")) {
-            legend.setTextSize(13);
-            legend.setFormSize(13);
-            legend2.setTextSize(13);
-            legend2.setFormSize(13);
+            if (acao.equals("g3")) {
+                legend.setTextSize(13);
+                legend.setFormSize(13);
+                legend2.setTextSize(13);
+                legend2.setFormSize(13);
 
-        } else {
-            legend.setTextSize(15);
-            legend.setFormSize(20);
+            } else {
+                legend.setTextSize(15);
+                legend.setFormSize(20);
 
-            legend2.setTextSize(15);
-            legend2.setFormSize(20);
+                legend2.setTextSize(15);
+                legend2.setFormSize(20);
+            }
+
+            legend.setFormToTextSpace(2);
+            legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+            legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+            legend.setOrientation(Legend.LegendOrientation.VERTICAL);
+            legend.setDrawInside(false);
+
+            legend2.setFormToTextSpace(2);
+            legend2.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+            legend2.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+            legend2.setOrientation(Legend.LegendOrientation.VERTICAL);
+            legend2.setDrawInside(false);
         }
-
-        legend.setFormToTextSpace(2);
-        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-        legend.setOrientation(Legend.LegendOrientation.VERTICAL);
-        legend.setDrawInside(false);
-
-        legend2.setFormToTextSpace(2);
-        legend2.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        legend2.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-        legend2.setOrientation(Legend.LegendOrientation.VERTICAL);
-        legend2.setDrawInside(false);
     }
 }

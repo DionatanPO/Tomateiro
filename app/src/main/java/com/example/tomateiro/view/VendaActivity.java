@@ -75,7 +75,7 @@ public class VendaActivity extends AppCompatActivity {
 
         msg = findViewById(R.id.mensagem);
 
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView = findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -135,12 +135,23 @@ public class VendaActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(View view) {
                                        btn_concluir.startAnimation(myAnim);
-                                        venda.setEstado("Ativo");
-                                        venda.setVendaData(et_nova_venda_data.getText().toString());
-                                        venda.setPreco(et_nova_venda_preco.getText().toString().substring(1));
-                                        venda.setPesoCaixa(et_nova_venda_peso_caixa.getText().toString().substring(1));
 
-                                        if (vendaController.validar_cadastro(venda,et_nova_venda_quantidade.getText().toString())) {
+                                       try {
+                                           venda.setEstado("Ativo");
+                                           venda.setVendaData(et_nova_venda_data.getText().toString());
+                                           venda.setPreco(et_nova_venda_preco.getText().toString().substring(1));
+                                           venda.setPesoCaixa(et_nova_venda_peso_caixa.getText().toString().substring(1));
+                                           venda.setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
+
+                                       }catch (Exception e){
+                                           venda.setVendaData("");
+                                           venda.setPreco("");
+                                           venda.setPesoCaixa("");
+                                           venda.setQuantidade(0);
+                                       }
+
+
+                                        if (vendaController.validar_cadastro(venda)) {
 
                                             venda.setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
                                             vendaList.add(venda);
