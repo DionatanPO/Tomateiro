@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +26,7 @@ import me.abhinay.input.CurrencyEditText;
 import static com.example.tomateiro.model.CustonToast.viewToast;
 
 public class CustoC_Activity extends AppCompatActivity {
-    private CurrencyEditText editA_q1, editA_q2, editA_q3, editA_q4, editA_q5, editA_q6, editA_q7, editA_q8,
+    private EditText editA_q1, editA_q2, editA_q3, editA_q4, editA_q5, editA_q6, editA_q7, editA_q8,
            editA_q13, editA_q14, editA_q15, editA_q16, editA_q17;
 
     private CurrencyEditText editA_v1, editA_v2, editA_v3, editA_v4, editA_v5, editA_v6, editA_v7, editA_v8,
@@ -139,19 +140,19 @@ public class CustoC_Activity extends AppCompatActivity {
 
                 btn_concluir.startAnimation(myAnim);
 
-                custoC.setCalcarioDolomiticoQ(editA_q1.getText().toString().substring(1));
-                custoC.setSulfatoAmonioQ(editA_q2.getText().toString().substring(1));
-                custoC.setSuperfosfatoSimplesQ(editA_q3.getText().toString().substring(1));
-                custoC.setCloretoPotassioQ(editA_q4.getText().toString().substring(1));
-                custoC.setEstercoBovinoQ(editA_q5.getText().toString().substring(1));
-                custoC.setYorinQ(editA_q6.getText().toString().substring(1));
-                custoC.setSementesQ(editA_q7.getText().toString().substring(1));
-                custoC.setConfeccaoMudasQ(editA_q8.getText().toString().substring(1));
-                custoC.setFungicidasQ(editA_q13.getText().toString().substring(1));
-                custoC.setHerbicidasQ(editA_q14.getText().toString().substring(1));
-                custoC.setInseticidasQ(editA_q15.getText().toString().substring(1));
-                custoC.setOutrosProdutosQuimicosQ(editA_q16.getText().toString().substring(1));
-                custoC.setOutrosQ(editA_q17.getText().toString().substring(1));
+                custoC.setCalcarioDolomiticoQ(editA_q1.getText().toString());
+                custoC.setSulfatoAmonioQ(editA_q2.getText().toString());
+                custoC.setSuperfosfatoSimplesQ(editA_q3.getText().toString());
+                custoC.setCloretoPotassioQ(editA_q4.getText().toString());
+                custoC.setEstercoBovinoQ(editA_q5.getText().toString());
+                custoC.setYorinQ(editA_q6.getText().toString());
+                custoC.setSementesQ(editA_q7.getText().toString());
+                custoC.setConfeccaoMudasQ(editA_q8.getText().toString());
+                custoC.setFungicidasQ(editA_q13.getText().toString());
+                custoC.setHerbicidasQ(editA_q14.getText().toString());
+                custoC.setInseticidasQ(editA_q15.getText().toString());
+                custoC.setOutrosProdutosQuimicosQ(editA_q16.getText().toString());
+                custoC.setOutrosQ(editA_q17.getText().toString());
 
                 custoC.setCalcarioDolomiticoV(editA_v1.getText().toString().substring(1));
                 custoC.setSulfatoAmonioV(editA_v2.getText().toString().substring(1));

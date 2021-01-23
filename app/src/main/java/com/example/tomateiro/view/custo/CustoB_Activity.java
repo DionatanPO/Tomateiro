@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +26,7 @@ import me.abhinay.input.CurrencyEditText;
 import static com.example.tomateiro.model.CustonToast.viewToast;
 
 public class CustoB_Activity extends AppCompatActivity {
-    private CurrencyEditText editA_q1, editA_q2, editA_q3, editA_q4, editA_q5, editA_q6, editA_q7, editA_q8,
+    private EditText editA_q1, editA_q2, editA_q3, editA_q4, editA_q5, editA_q6, editA_q7, editA_q8,
             editA_q9, editA_q10, editA_q11, editA_q12, editA_q13, editA_q14, editA_q15, editA_q16;
 
     private CurrencyEditText editA_v1, editA_v2, editA_v3, editA_v4, editA_v5, editA_v6, editA_v7, editA_v8,
@@ -140,20 +141,20 @@ public class CustoB_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 btn_concluir.startAnimation(myAnim);
-                custoB.setColagemQ(editA_q1.getText().toString().substring(1));
-                custoB.setTransplantioQ(editA_q2.getText().toString().substring(1));
-                custoB.setEstaqueamentoQ(editA_q3.getText().toString().substring(1));
-                custoB.setAmontoaQ(editA_q4.getText().toString().substring(1));
-                custoB.setAmarracaoQ(editA_q5.getText().toString().substring(1));
-                custoB.setAdubacaoBasicaQ(editA_q6.getText().toString().substring(1));
-                custoB.setAplicacaoEstercoQ(editA_q7.getText().toString().substring(1));
-                custoB.setDesbrotaQ(editA_q8.getText().toString().substring(1));
-                custoB.setAdubacaoCoberturaQ(editA_q9.getText().toString().substring(1));
-                custoB.setPulverizacaoCostalQ(editA_q10.getText().toString().substring(1));
-                custoB.setCapinasManuaisQ(editA_q11.getText().toString().substring(1));
-                custoB.setColheitaClassificacaoQ(editA_q12.getText().toString().substring(1));
-                custoB.setIrrigacaoQ(editA_q13.getText().toString().substring(1));
-                custoB.setOutrosBQ(editA_q14.getText().toString().substring(1));
+                custoB.setColagemQ(editA_q1.getText().toString());
+                custoB.setTransplantioQ(editA_q2.getText().toString());
+                custoB.setEstaqueamentoQ(editA_q3.getText().toString());
+                custoB.setAmontoaQ(editA_q4.getText().toString());
+                custoB.setAmarracaoQ(editA_q5.getText().toString());
+                custoB.setAdubacaoBasicaQ(editA_q6.getText().toString());
+                custoB.setAplicacaoEstercoQ(editA_q7.getText().toString());
+                custoB.setDesbrotaQ(editA_q8.getText().toString());
+                custoB.setAdubacaoCoberturaQ(editA_q9.getText().toString());
+                custoB.setPulverizacaoCostalQ(editA_q10.getText().toString());
+                custoB.setCapinasManuaisQ(editA_q11.getText().toString());
+                custoB.setColheitaClassificacaoQ(editA_q12.getText().toString());
+                custoB.setIrrigacaoQ(editA_q13.getText().toString());
+                custoB.setOutrosBQ(editA_q14.getText().toString());
 
                 custoB.setColagemV(editA_v1.getText().toString().substring(1));
                 custoB.setTransplantioV(editA_v2.getText().toString().substring(1));

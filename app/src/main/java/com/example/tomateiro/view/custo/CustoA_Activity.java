@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -25,7 +26,7 @@ import com.example.tomateiro.request.SafraRequest;
 import me.abhinay.input.CurrencyEditText;
 
 public class CustoA_Activity extends AppCompatActivity {
-    private CurrencyEditText editA_q1, editA_q2, editA_q3, editA_q4, editA_q5, editA_q6, editA_q7, editA_q8,
+    private EditText editA_q1, editA_q2, editA_q3, editA_q4, editA_q5, editA_q6, editA_q7, editA_q8,
             editA_q9, editA_q10, editA_q11, editA_q12;
     private CurrencyEditText editA_v1, editA_v2, editA_v3, editA_v4, editA_v5, editA_v6, editA_v7, editA_v8,
             editA_v9, editA_v10, editA_v11, editA_v12;
@@ -131,18 +132,18 @@ public class CustoA_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 btn_concluir.startAnimation(myAnim);
-                custoA.setAracaoQ(editA_q1.getText().toString().substring(1));
-                custoA.setGradeacaoQ(editA_q2.getText().toString().substring(1));
-                custoA.setSubsolagemQ(editA_q3.getText().toString().substring(1));
-                custoA.setCalagemQ(editA_q4.getText().toString().substring(1));
-                custoA.setSulcamentoQ(editA_q5.getText().toString().substring(1));
-                custoA.setAdubacaoBasicaQ(editA_q6.getText().toString().substring(1));
-                custoA.setAplicacaoEstercoQ(editA_q7.getText().toString().substring(1));
-                custoA.setAdubacaoCoberturaQ(editA_q8.getText().toString().substring(1));
-                custoA.setPulverizacaoQ(editA_q9.getText().toString().substring(1));
-                custoA.setColheitaClassificacaoQ(editA_q10.getText().toString().substring(1));
-                custoA.setIrrigacoesQ(editA_q11.getText().toString().substring(1));
-                custoA.setOutrosAQ(editA_q12.getText().toString().substring(1));
+                custoA.setAracaoQ(editA_q1.getText().toString());
+                custoA.setGradeacaoQ(editA_q2.getText().toString());
+                custoA.setSubsolagemQ(editA_q3.getText().toString());
+                custoA.setCalagemQ(editA_q4.getText().toString());
+                custoA.setSulcamentoQ(editA_q5.getText().toString());
+                custoA.setAdubacaoBasicaQ(editA_q6.getText().toString());
+                custoA.setAplicacaoEstercoQ(editA_q7.getText().toString());
+                custoA.setAdubacaoCoberturaQ(editA_q8.getText().toString());
+                custoA.setPulverizacaoQ(editA_q9.getText().toString());
+                custoA.setColheitaClassificacaoQ(editA_q10.getText().toString());
+                custoA.setIrrigacoesQ(editA_q11.getText().toString());
+                custoA.setOutrosAQ(editA_q12.getText().toString());
 
 
                 custoA.setAracaoV(editA_v1.getText().toString().substring(1));

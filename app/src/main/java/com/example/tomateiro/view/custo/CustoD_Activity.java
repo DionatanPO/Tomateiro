@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +27,7 @@ import me.abhinay.input.CurrencyEditText;
 import static com.example.tomateiro.model.CustonToast.viewToast;
 
 public class CustoD_Activity extends AppCompatActivity {
-    private CurrencyEditText editA_q1, editA_q2, editA_q3, editA_q4, editA_q5, editA_q6, editA_q7;
+    private EditText editA_q1, editA_q2, editA_q3, editA_q4, editA_q5, editA_q6, editA_q7;
     private CurrencyEditText editA_v1, editA_v2, editA_v3, editA_v4, editA_v5, editA_v6, editA_v7;
     private Button btn_concluir;
 
@@ -108,13 +109,13 @@ public class CustoD_Activity extends AppCompatActivity {
 
                 btn_concluir.startAnimation(myAnim);
 
-                custoD.setArrendamentoQ(editA_q1.getText().toString().substring(1));
-                custoD.setMoAdministrativaQ(editA_q2.getText().toString().substring(1));
-                custoD.setContabilidadeEscritorioQ(editA_q3.getText().toString().substring(1));
-                custoD.setLuzTelefoneQ(editA_q4.getText().toString().substring(1));
-                custoD.setViagensQ(editA_q5.getText().toString().substring(1));
-                custoD.setImpostosTaxasQ(editA_q6.getText().toString().substring(1));
-                custoD.setOutrosQ(editA_q7.getText().toString().substring(1));
+                custoD.setArrendamentoQ(editA_q1.getText().toString());
+                custoD.setMoAdministrativaQ(editA_q2.getText().toString());
+                custoD.setContabilidadeEscritorioQ(editA_q3.getText().toString());
+                custoD.setLuzTelefoneQ(editA_q4.getText().toString());
+                custoD.setViagensQ(editA_q5.getText().toString());
+                custoD.setImpostosTaxasQ(editA_q6.getText().toString());
+                custoD.setOutrosQ(editA_q7.getText().toString());
 
                 custoD.setArrendamentoV(editA_v1.getText().toString().substring(1));
                 custoD.setMoAdministrativaV(editA_v2.getText().toString().substring(1));

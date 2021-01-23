@@ -203,7 +203,7 @@ public class GraficoActivity extends AppCompatActivity {
 
         }
 
-        if (pieDataSet != null && pieData2 != null) {
+        if (pieDataSet != null || pieData2 != null) {
             pieDataSet.setValueTextColor(WHITE);
             pieDataSet.setValueLineColor(WHITE);
             pieDataSet.setValueTextSize(15f);
