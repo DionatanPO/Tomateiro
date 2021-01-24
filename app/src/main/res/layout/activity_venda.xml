@@ -50,7 +50,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:gravity="center_horizontal"
-            android:text="Clique no botão de menu, localizado na parte superior direito da tela, para cadastrar uma nova venda"
+            android:text="Clique no botão menu, na parte superior direita da tela, para cadastrar uma nova venda"
             android:textColor="@color/colorBranca"
             android:textSize="18dp"
             android:textStyle="normal"

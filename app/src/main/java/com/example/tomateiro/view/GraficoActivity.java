@@ -158,8 +158,8 @@ public class GraficoActivity extends AppCompatActivity {
 
                 pieEntries = new ArrayList<>();
                 pieDataSet2 = new PieDataSet(pieEntries, "");
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalFertilizantesCorretivos(safra.getCustoC()), subTotal)), "Fertilizantes/Corretivos - (FC)"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalSementesMudasMatPlantio(safra.getCustoC()), subTotal)), "Sementes/Mudas/Mat. plantio - (SMM)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalFertilizantesCorretivos(safra.getCustoC()), subTotal)), "Fertilizantes/ Corretivos - (FC)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalSementesMudasMatPlantio(safra.getCustoC()), subTotal)), "Sementes/ Mudas/ Mat. plantio - (SMM)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().calcularSubTotalDefensivosAgricolas(safra.getCustoC()), subTotal)), "Defensivos agrícolas - (DA)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getOutrosV(), subTotal)), "Outros - (O)"));
 
