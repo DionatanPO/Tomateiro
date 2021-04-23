@@ -24,11 +24,11 @@
 
     <item
         android:id="@+id/implementos"
-        android:title="Implemento" />
+        android:title="Implementos" />
 
     <item
         android:id="@+id/ferramentas"
-        android:title="Ferramenta" />
+        android:title="Ferramentas" />
 
     <item
         android:id="@+id/opcaos2"

@@ -28,7 +28,7 @@ public class Safra implements Serializable {
     private String resultadoCx;
     private String receitaHa;
     private String margemVenda;
-    private String preçoMedioRecebidoProdutor;
+    private String precoMedioRecebidoProdutor;
     private String regiaoReferencia;
     private int qtdePes;
     private int qtdeCaixas;
@@ -77,7 +77,7 @@ public class Safra implements Serializable {
             resultado += parse2(s.getVendas().get(i).getPreco());
         }
         double x = ((double) resultado / 100) / s.getVendas().size();
-        s.setPreçoMedioRecebidoProdutor(String.format("%,.2f", x));
+        s.setPrecoMedioRecebidoProdutor(String.format("%,.2f", x));
         return s;
     }
 
@@ -101,7 +101,7 @@ public class Safra implements Serializable {
     }
 
     public Safra calcularReceita(Safra s) {
-        long resultado = parse2(s.getPreçoMedioRecebidoProdutor()) * s.getQtdeCaixas();
+        long resultado = parse2(s.getPrecoMedioRecebidoProdutor()) * s.getQtdeCaixas();
         double x = (double) resultado / 100;
         s.setReceitaHa(String.format("%,.2f", x));
         return s;
@@ -115,14 +115,14 @@ public class Safra implements Serializable {
     }
 
     public Safra calcularResultadoCx(Safra s) {
-        long resultado = parse2(s.getPreçoMedioRecebidoProdutor()) - parse2(s.getCustoTotalCa());
+        long resultado = parse2(s.getPrecoMedioRecebidoProdutor()) - parse2(s.getCustoTotalCa());
         double x = (double) resultado / 100;
         s.setResultadoCx(String.format("%,.2f", x));
         return s;
     }
 
     public Safra calcularMargemVenda(Safra s) {
-        double resultado = parse4(s.getResultadoCx()) / parse4(s.getPreçoMedioRecebidoProdutor());
+        double resultado = parse4(s.getResultadoCx()) / parse4(s.getPrecoMedioRecebidoProdutor());
         double x = resultado * 100;
         s.setMargemVenda(String.format("%,.2f", x));
         return s;
@@ -203,9 +203,15 @@ public class Safra implements Serializable {
             return "+100.000";
         }
 
-
     }
 
+    public String getPrecoMedioRecebidoProdutor() {
+        return precoMedioRecebidoProdutor;
+    }
+
+    public void setPrecoMedioRecebidoProdutor(String precoMedioRecebidoProdutor) {
+        this.precoMedioRecebidoProdutor = precoMedioRecebidoProdutor;
+    }
 
     public ArrayList<Estrutura> getEstruturas() {
         return estruturas;
@@ -325,14 +331,6 @@ public class Safra implements Serializable {
 
     public void setMargemVenda(String margemVenda) {
         this.margemVenda = margemVenda;
-    }
-
-    public String getPreçoMedioRecebidoProdutor() {
-        return preçoMedioRecebidoProdutor;
-    }
-
-    public void setPreçoMedioRecebidoProdutor(String preçoMedioRecebidoProdutor) {
-        this.preçoMedioRecebidoProdutor = preçoMedioRecebidoProdutor;
     }
 
     public String getRegiaoReferencia() {

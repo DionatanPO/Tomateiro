@@ -82,7 +82,7 @@ public class PainelActivity extends AppCompatActivity {
         card_safra = findViewById(R.id.card_safra);
         msg = findViewById(R.id.mensagem);
         painel_produtor = findViewById(R.id.painel_proprietario);
-        painel_produtor.setText(painel_produtor.getText().toString() + produtor.getNome()+"!");
+        painel_produtor.setText(painel_produtor.getText().toString() + produtor.getNome());
 
         btn_safra_menu = findViewById(R.id.btn_safra_menu);
         btn_s_t_g = findViewById(R.id.painel_btn_g_t_e);
@@ -112,7 +112,7 @@ public class PainelActivity extends AppCompatActivity {
 
                 final Button btn_concluir = layout.findViewById(R.id.btn_concluir);
                 TextView textView = layout.findViewById(R.id.textView);
-                textView.setText(" Alterar dados da safra");
+                textView.setText("Alterar dados da safra");
 
                 final EditText et_nova_safra_pes = layout.findViewById(R.id.nova_safra_pes);
                 final EditText et_nova_safra_ciclo = layout.findViewById(R.id.nova_safra_ciclo);
@@ -165,7 +165,7 @@ public class PainelActivity extends AppCompatActivity {
                     intent.putExtra("safra", safra);
                     context.startActivity(intent);
                 } else {
-                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar venda");
+                    viewToastAlerta(context, "Cadastre uma nova safra para poder visualizar venda");
                 }
             }
         });
@@ -180,7 +180,7 @@ public class PainelActivity extends AppCompatActivity {
                     intent.putExtra("produtor", produtor);
                     context.startActivity(intent);
                 } else {
-                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar os relatórios");
+                    viewToastAlerta(context, "Cadastre uma nova safra para poder visualizar os relatórios");
                 }
 
             }
@@ -195,7 +195,7 @@ public class PainelActivity extends AppCompatActivity {
                     intent.putExtra("safra", safra);
                     context.startActivity(intent);
                 } else {
-                    viewToastAlerta(context, "Cadastre uma nova safra para poder vesualizar estrutura");
+                    viewToastAlerta(context, "Cadastre uma nova safra para poder visualizar estrutura");
                 }
 
             }
@@ -212,8 +212,8 @@ public class PainelActivity extends AppCompatActivity {
 
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     AlertDialog alerta;
-                    LayoutInflater inflater = LayoutInflater.from(context);
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    final LayoutInflater inflater = LayoutInflater.from(context);
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     View layout;
 
                     @SuppressLint("SetTextI18n")

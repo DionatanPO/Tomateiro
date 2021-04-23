@@ -140,7 +140,7 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
                         r_qtd_total_caixa.setText(String.valueOf(safra.getQtdeCaixas()));
                         r_custoTotal_ha.setText(safra.getCustoTotalHa());
                         r_custoTotal_cx.setText(safra.getCustoTotalCa());
-                        r_preco_medio_recebido.setText(safra.getPreçoMedioRecebidoProdutor());
+                        r_preco_medio_recebido.setText(safra.getPrecoMedioRecebidoProdutor());
                         r_receitaHa.setText(safra.getReceitaHa());
                         r_resultadoHa.setText(safra.getResultadoHa());
                         r_resultadoCx.setText(safra.getResultadoCx());
@@ -238,8 +238,8 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
 
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     AlertDialog alerta;
-                    LayoutInflater inflater = LayoutInflater.from(context);
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    final LayoutInflater inflater = LayoutInflater.from(context);
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     View layout;
 
                     @SuppressLint("SetTextI18n")

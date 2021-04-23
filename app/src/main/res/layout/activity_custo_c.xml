@@ -97,7 +97,7 @@
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:text="Qtde"
+                    android:text="Qtd"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="17dp"
                     android:textStyle="bold" />

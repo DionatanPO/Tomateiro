@@ -43,9 +43,9 @@ public class EstruturaAdapter extends ArrayAdapter<Estrutura> {
 
         item_nome.setText(estruturaArrayList.get(position).getNome_item());
         item_valor.setText("Valor R$: "+ estruturaArrayList.get(position).getValor());
-        item_vida.setText("Vida útil mês: " + estruturaArrayList.get(position).getVidaUtil());
+        item_vida.setText("Vida útil/ meses: " + estruturaArrayList.get(position).getVidaUtil());
         item_categoria.setText("Categoria: " + estruturaArrayList.get(position).getCategoria());
-        item_depreciacao.setText("Depreciação: " + estruturaArrayList.get(position).getDepreciacao());
+        item_depreciacao.setText("Depreciação R$: " + estruturaArrayList.get(position).getDepreciacao());
 
         return convertView;
     }

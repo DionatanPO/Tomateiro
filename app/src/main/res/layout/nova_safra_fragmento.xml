@@ -10,14 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
         android:text="Nova Safra"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,14 +23,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="72dp"
         android:text="@string/novaSafra"
         android:textColor="@color/colorCinzaEscuro"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,17 +56,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:orientation="vertical">
 
             <GridLayout
+                android:layout_marginBottom="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="40dp"
-                android:layout_marginRight="20dp"
                 android:columnCount="2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -91,29 +84,26 @@
 
                 <EditText
                     android:id="@+id/nova_safra_data"
-                    android:layout_width="110dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:gravity="right"
                     android:autofillHints=""
                     android:inputType="numberDecimal"
                     android:maxLength="10"
                     tools:ignore="LabelFor" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|left"
-                    android:text="Qtde. Pés:"
+                    android:text="Qtd. Pés:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/nova_safra_pes"
-                    android:layout_width="110dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:gravity="right"
                     android:autofillHints=""
                     android:inputType="numberDecimal"
                     android:maxLength="8"
@@ -123,17 +113,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|left"
-                    android:text="Ciclo/Ano:"
+                    android:text="Ciclo/ Ano:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/nova_safra_ciclo"
-                    android:layout_width="110dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:gravity="right"
                     android:autofillHints=""
                     android:inputType="numberDecimal"
                     android:maxLength="3"
@@ -150,18 +138,13 @@
 
                 <EditText
                     android:id="@+id/nova_safra_regiao"
-                    android:layout_width="110dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:gravity="right"
-                    android:importantForAutofill="no"
                     android:inputType="textCapSentences|textAutoCorrect"
-                    android:maxLength="15"
-                    tools:ignore="LabelFor" />
+                    android:maxLength="30" />
 
             </GridLayout>
         </LinearLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

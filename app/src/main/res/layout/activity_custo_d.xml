@@ -97,7 +97,7 @@
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:text="Qtde"
+                    android:text="Qtd"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="17dp"
                     android:textStyle="bold" />
@@ -145,7 +145,7 @@
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="M. O. administrativa:"
+                    android:text="Mão de obra ADM:"
                     android:textColor="@color/verdeEscuro"
                     android:textSize="15dp"
                     android:textStyle="bold" />

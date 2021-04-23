@@ -57,7 +57,7 @@ public class GraficoActivity extends AppCompatActivity {
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAracaoV(), subTotalA)), "Aração - (PS)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getGradeacaoV(), subTotalA)), "Gradeação (2x) - (PS)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSubsolagemV(), subTotalA)), "Subsolagem - (PS)"));
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getCalagemV(), subTotalA)), "Colagem - (PS)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getCalagemV(), subTotalA)), "Calagem - (PS)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSulcamentoV(), subTotalA)), "Sulcamento - (PS)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAdubacaoBasicaV(), subTotalA)), "Adubação básica - (TC)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getAplicacaoEstercoV(), subTotalA)), "Aplicação de esterco - (TC)"));
@@ -69,6 +69,7 @@ public class GraficoActivity extends AppCompatActivity {
 
                 pieEntries = new ArrayList<>();
                 pieDataSet2 = new PieDataSet(pieEntries, "");
+
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().calcularSubTotalPreparoSolo(safra.getCustoA()), subTotalA)), "Preparo do solo - (PS)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().calcularSubTotalTratosCulturais(safra.getCustoA()), subTotalA)), "Tratos culturais - (TC)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getColheitaClassificacaoV(), subTotalA)), "Colheita - (C)"));
@@ -94,7 +95,7 @@ public class GraficoActivity extends AppCompatActivity {
                 String subTotal = safra.getCustoB().getSubTotalB();
 
 
-                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColagemV(), subTotal)), "Colagem - (PS)"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getColagemV(), subTotal)), "Calagem - (PS)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getTransplantioV(), subTotal)), "Transplantio - (P)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getEstaqueamentoV(), subTotal)), "Estaqueamento - (P)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoB().getAmontoaV(), subTotal)), "Amontoa - (P)"));
@@ -204,79 +205,91 @@ public class GraficoActivity extends AppCompatActivity {
         }
 
         if (pieDataSet != null || pieData2 != null) {
-            pieDataSet.setValueTextColor(WHITE);
-            pieDataSet.setValueLineColor(WHITE);
-            pieDataSet.setValueTextSize(15f);
-            pieDataSet.setFormSize(15f);
 
-            pieDataSet2.setValueTextColor(WHITE);
-            pieDataSet2.setValueLineColor(WHITE);
-            pieDataSet2.setValueTextSize(15f);
-            pieDataSet2.setFormSize(15f);
-
-            pieData = new PieData(pieDataSet);
-            pieData2 = new PieData(pieDataSet2);
-
-            pieChart.setData(pieData);
-            pieChart.setHoleRadius(45);
-            pieChart.setHoleColor(Color.argb(0, 255, 255, 255));
-            pieChart.setDrawHoleEnabled(true);
-            pieChart.getDescription().setEnabled(false);
-            pieChart.setDrawEntryLabels(false);
-            pieChart.setTransparentCircleRadius(10);
-            pieChart.setCenterText("%");
-//        pieChart.setCenterTextColor(WHITE);
-            pieChart.setCenterTextSize(18);
-            pieChart.animateX(1000);
-            pieChart.animateY(500);
-
-
-            pieChart2.setData(pieData2);
-            pieChart2.setHoleRadius(45);
-            pieChart2.setHoleColor(Color.argb(0, 255, 255, 255));
-            pieChart2.setDrawHoleEnabled(true);
-            pieChart2.getDescription().setEnabled(false);
-            pieChart2.setDrawEntryLabels(false);
-            pieChart2.setTransparentCircleRadius(10);
-            pieChart2.setCenterText("%");
-//        pieChart.setCenterTextColor(WHITE);
-            pieChart2.setCenterTextSize(18);
-            pieChart2.animateX(1000);
-            pieChart2.animateY(500);
-
-//        pieChart.getLegend().setTextColor(Color.WHITE);
-
-            Legend legend = pieChart.getLegend();
-            Legend legend2 = pieChart2.getLegend();
-
-            legend.setForm(Legend.LegendForm.CIRCLE);
-            legend2.setForm(Legend.LegendForm.CIRCLE);
-
-            if (acao.equals("g3")) {
-                legend.setTextSize(13);
-                legend.setFormSize(13);
-                legend2.setTextSize(13);
-                legend2.setFormSize(13);
-
-            } else {
-                legend.setTextSize(15);
-                legend.setFormSize(20);
-
-                legend2.setTextSize(15);
-                legend2.setFormSize(20);
+            if (pieDataSet != null) {
+                pieDataSet.setValueTextColor(WHITE);
+                pieDataSet.setValueLineColor(WHITE);
+                pieDataSet.setValueTextSize(15f);
+                pieDataSet.setFormSize(15f);
+                pieData = new PieData(pieDataSet);
+            }
+            if (pieDataSet2 != null) {
+                pieDataSet2.setValueTextColor(WHITE);
+                pieDataSet2.setValueLineColor(WHITE);
+                pieDataSet2.setValueTextSize(15f);
+                pieDataSet2.setFormSize(15f);
+                pieData2 = new PieData(pieDataSet2);
             }
 
-            legend.setFormToTextSpace(2);
-            legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-            legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-            legend.setOrientation(Legend.LegendOrientation.VERTICAL);
-            legend.setDrawInside(false);
+            if (pieDataSet != null) {
+                pieChart.setData(pieData);
+                pieChart.setHoleRadius(45);
+                pieChart.setHoleColor(Color.argb(0, 255, 255, 255));
+                pieChart.setDrawHoleEnabled(true);
+                pieChart.getDescription().setEnabled(false);
+                pieChart.setDrawEntryLabels(false);
+                pieChart.setTransparentCircleRadius(10);
+                pieChart.setCenterText("%");
+//        pieChart.setCenterTextColor(WHITE);
+                pieChart.setCenterTextSize(18);
+                pieChart.animateX(1000);
+                pieChart.animateY(500);
+            }
+            if (pieDataSet2 != null) {
+                pieChart2.setData(pieData2);
+                pieChart2.setHoleRadius(45);
+                pieChart2.setHoleColor(Color.argb(0, 255, 255, 255));
+                pieChart2.setDrawHoleEnabled(true);
+                pieChart2.getDescription().setEnabled(false);
+                pieChart2.setDrawEntryLabels(false);
+                pieChart2.setTransparentCircleRadius(10);
+                pieChart2.setCenterText("%");
+//        pieChart.setCenterTextColor(WHITE);
+                pieChart2.setCenterTextSize(18);
+                pieChart2.animateX(1000);
+                pieChart2.animateY(500);
+            }
+//        pieChart.getLegend().setTextColor(Color.WHITE);
 
-            legend2.setFormToTextSpace(2);
-            legend2.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-            legend2.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-            legend2.setOrientation(Legend.LegendOrientation.VERTICAL);
-            legend2.setDrawInside(false);
+            if (pieDataSet != null) {
+                Legend legend = pieChart.getLegend();
+                legend.setForm(Legend.LegendForm.CIRCLE);
+                if (acao.equals("g3")) {
+                    legend.setTextSize(13);
+                    legend.setFormSize(13);
+
+                } else {
+                    legend.setTextSize(15);
+                    legend.setFormSize(20);
+                }
+
+                legend.setFormToTextSpace(2);
+                legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+                legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+                legend.setOrientation(Legend.LegendOrientation.VERTICAL);
+                legend.setDrawInside(false);
+
+            }
+            if (pieDataSet2 != null) {
+                Legend legend2 = pieChart2.getLegend();
+                legend2.setForm(Legend.LegendForm.CIRCLE);
+                if (acao.equals("g3")) {
+                    legend2.setTextSize(13);
+                    legend2.setFormSize(13);
+
+                } else {
+                    legend2.setTextSize(15);
+                    legend2.setFormSize(20);
+                }
+
+                legend2.setFormToTextSpace(2);
+                legend2.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+                legend2.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+                legend2.setOrientation(Legend.LegendOrientation.VERTICAL);
+                legend2.setDrawInside(false);
+
+            }
+
         }
     }
 }
