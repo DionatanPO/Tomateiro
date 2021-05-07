@@ -13,6 +13,8 @@ public class Estrutura implements Serializable {
     private String vidaUtil;
     private String categoria;
     private String depreciacao;
+    private String dataInicial;
+    private String detaFinal;
 
     public Estrutura() {
     }
@@ -73,6 +75,22 @@ public class Estrutura implements Serializable {
         s = String.format(Locale.US, "%.2f", value);
         r = Float.parseFloat(s);
         return r;
+    }
+
+    public String getDataInicial() {
+        return dataInicial;
+    }
+
+    public void setDataInicial(String dataInicial) {
+        this.dataInicial = dataInicial;
+    }
+
+    public String getDetaFinal() {
+        return detaFinal;
+    }
+
+    public void setDetaFinal(String detaFinal) {
+        this.detaFinal = detaFinal;
     }
 
     public String getCategoria() {
