@@ -46,7 +46,6 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
         this.vendaList = vendagemslis;
         this.safra = safra;
 
-
     }
 
     @NonNull
@@ -86,69 +85,65 @@ public class VendaAdapter extends RecyclerView.Adapter<VendaAdapter.VendaViewHol
             card_venda_peso_caixa = itemView.findViewById(R.id.card_venda_peso_caixa);
 
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    position = getAdapterPosition();
+            itemView.setOnClickListener(view -> {
+                position = getAdapterPosition();
 
-                    if (position != RecyclerView.NO_POSITION) {
+                if (position != RecyclerView.NO_POSITION) {
 
 
-                        LayoutInflater inflater = LayoutInflater.from(context);
-                        View layout = inflater.inflate(R.layout.nova_venda_fragmento, null);
+                    LayoutInflater inflater = LayoutInflater.from(context);
+                    View layout = inflater.inflate(R.layout.nova_venda_fragmento, null);
 
-                        TextView titulo = layout.findViewById(R.id.textView);
-                        titulo.setText("Alterar dados da venda");
+                    TextView titulo = layout.findViewById(R.id.textView);
+                    titulo.setText("Alterar dados da venda");
 
-                        final Button btn_concluir = layout.findViewById(R.id.btn_concluir);
-                        final EditText et_nova_venda_data = layout.findViewById(R.id.nova_venda_data);
-                        final EditText et_nova_venda_quantidade = layout.findViewById(R.id.nova_venda_quantidade);
-                        final EditText et_nova_venda_preco = layout.findViewById(R.id.nova_venda_preco);
-                        final EditText et_nova_venda_peso_caixa = layout.findViewById(R.id.nova_venda_peso_caixa);
+                    final Button btn_concluir = layout.findViewById(R.id.btn_concluir);
+                    final EditText et_nova_venda_data = layout.findViewById(R.id.nova_venda_data);
+                    final EditText et_nova_venda_quantidade = layout.findViewById(R.id.nova_venda_quantidade);
+                    final EditText et_nova_venda_preco = layout.findViewById(R.id.nova_venda_preco);
+                    final EditText et_nova_venda_peso_caixa = layout.findViewById(R.id.nova_venda_peso_caixa);
 
-                        et_nova_venda_data.setText(getVendaList().get(position).getVendaData());
-                        et_nova_venda_quantidade.setText(String.valueOf(getVendaList().get(position).getQuantidade()));
-                        et_nova_venda_preco.setText(getVendaList().get(position).getPreco());
-                        et_nova_venda_peso_caixa.setText(getVendaList().get(position).getPesoCaixa());
-                        final Animation myAnim = AnimationUtils.loadAnimation(context, R.anim.btn_animation);
+                    et_nova_venda_data.setText(getVendaList().get(position).getVendaData());
+                    et_nova_venda_quantidade.setText(String.valueOf(getVendaList().get(position).getQuantidade()));
+                    et_nova_venda_preco.setText(getVendaList().get(position).getPreco());
+                    et_nova_venda_peso_caixa.setText(getVendaList().get(position).getPesoCaixa());
+                    final Animation myAnim = AnimationUtils.loadAnimation(context, R.anim.btn_animation);
 
-                        btn_concluir.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                btn_concluir.startAnimation(myAnim);
+                    btn_concluir.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            btn_concluir.startAnimation(myAnim);
 
-                                vendaController = new VendaController(context);
-                                getVendaList().get(position).setVendaData(et_nova_venda_data.getText().toString());
+                            vendaController = new VendaController(context);
+                            getVendaList().get(position).setVendaData(et_nova_venda_data.getText().toString());
 
-                                getVendaList().get(position).setPreco(et_nova_venda_preco.getText().toString().substring(1));
-                                getVendaList().get(position).setPesoCaixa(et_nova_venda_peso_caixa.getText().toString().substring(1));
+                            getVendaList().get(position).setPreco(et_nova_venda_preco.getText().toString().substring(1));
+                            getVendaList().get(position).setPesoCaixa(et_nova_venda_peso_caixa.getText().toString().substring(1));
 
-                                if (vendaController.validar_alterar(getVendaList().get(position),et_nova_venda_quantidade.getText().toString())) {
-                                    getVendaList().get(position).setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
-                                    safraController = new SafraController(context);
-                                    safraRequest = new SafraRequest(context);
+                            if (vendaController.validar_alterar(getVendaList().get(position),et_nova_venda_quantidade.getText().toString())) {
+                                getVendaList().get(position).setQuantidade(Integer.parseInt(et_nova_venda_quantidade.getText().toString()));
+                                safraController = new SafraController(context);
+                                safraRequest = new SafraRequest(context);
 
-                                    safra.setVendas(getVendaList());
+                                safra.setVendas(getVendaList());
 
-                                    safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), VendaAdapter.this);
-                                    alerta.cancel();
-                                } else {
-
-                                }
+                                safraRequest.alterrar_safra(safraController.converter_safra_json(safra), safra.getId(), VendaAdapter.this);
+                                alerta.cancel();
+                            } else {
 
                             }
-                        });
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                        builder.setView(layout);
-                        alerta = builder.create();
-                        alerta.show();
+                        }
+                    });
 
-                    }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setView(layout);
+                    alerta = builder.create();
+                    alerta.show();
 
                 }
-            });
 
+            });
 
         }
 

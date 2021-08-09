@@ -1,11 +1,17 @@
 package com.example.tomateiro.model;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import java.io.Serializable;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -37,6 +43,12 @@ public class Safra implements Serializable {
     private String clicloAno;
     private String estado;
     private String data;
+    private String custoTotalEstrutura;
+
+    private String custoSubTotalEstruturaMaquinas;
+    private String custoSubTotalEstruturaImplementos;
+    private String custoSubtTotalEstruturaFerramentas;
+    private String custoSubTotalEstruturaConstrucoes;
 
     private ArrayList<Venda> vendas = new ArrayList<>();
     private ArrayList<Estrutura> estruturas = new ArrayList<>();
@@ -52,7 +64,8 @@ public class Safra implements Serializable {
             long resultado = parse2(s.getCustoA().getSubTotalA()) +
                     parse2(s.getCustoB().getSubTotalB()) +
                     parse2(s.getCustoC().getSubTotalC()) +
-                    parse2(s.getCustoD().getSubTotalD());
+                    parse2(s.getCustoD().getSubTotalD()) +
+                    parse2(s.getCustoTotalEstrutura());
             double x = (double) resultado / 100;
             s.setCustoTotalHa(String.format("%,.2f", x));
 
@@ -203,6 +216,148 @@ public class Safra implements Serializable {
             return "+100.000";
         }
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Safra calcular_custo_total_estrutura(Safra s) {
+
+        Double resultadoSoma = 0.0;
+        Double resultadoMaquinas = 0.0;
+        Double resultadoImplementos = 0.0;
+        Double resultadoFerramentas = 0.0;
+        Double resultadoContrucoes = 0.0;
+
+        for (int i = 0; i < s.getEstruturas().size(); i++) {
+
+            if(s.getEstruturas().get(i).caclcular_Duracao_meses(
+                    s.getEstruturas().get(i).getDataInicial()) <= Integer.parseInt(s.getEstruturas().get(i).getVidaUtil())){
+
+                if (s.getEstruturas().get(i).getCategoria().equals("Máquina: Trator") ||
+                        s.getEstruturas().get(i).getCategoria().equals("Máquina: Colheitadeira") ||
+                        s.getEstruturas().get(i).getCategoria().equals("Outras máquinas")) {
+
+                    resultadoMaquinas += parseToDouble(s.getEstruturas().get(i).getDepreciacao())
+                            * s.getEstruturas().get(i).caclcular_Duracao_meses(s.getEstruturas().get(i).getDataReuso());
+                }
+                if (s.getEstruturas().get(i).getCategoria().equals("Ferramenta")) {
+                    resultadoFerramentas += parseToDouble(s.getEstruturas().get(i).getDepreciacao())
+                            * s.getEstruturas().get(i).caclcular_Duracao_meses(s.getEstruturas().get(i).getDataReuso());
+                }
+                if (s.getEstruturas().get(i).getCategoria().equals("Implemento")) {
+                    resultadoImplementos += parseToDouble(s.getEstruturas().get(i).getDepreciacao())
+                            * s.getEstruturas().get(i).caclcular_Duracao_meses(s.getEstruturas().get(i).getDataReuso());
+                }
+                if (s.getEstruturas().get(i).getCategoria().equals("Construção: Estaca") ||
+                        s.getEstruturas().get(i).getCategoria().equals("  Outras construções")) {
+                    resultadoContrucoes += parseToDouble(s.getEstruturas().get(i).getDepreciacao())
+                            * s.getEstruturas().get(i).caclcular_Duracao_meses(s.getEstruturas().get(i).getDataReuso());
+                }
+            }else {
+                if (s.getEstruturas().get(i).getCategoria().equals("Máquina: Trator") ||
+                        s.getEstruturas().get(i).getCategoria().equals("Máquina: Colheitadeira") ||
+                        s.getEstruturas().get(i).getCategoria().equals("Outras máquinas")) {
+
+                    resultadoMaquinas += parseToDouble(s.getEstruturas().get(i).getDepreciacao())
+                            * Integer.parseInt(s.getEstruturas().get(i).getVidaUtil());
+                }
+                if (s.getEstruturas().get(i).getCategoria().equals("Ferramenta")) {
+                    resultadoFerramentas += parseToDouble(s.getEstruturas().get(i).getDepreciacao())
+                            * Integer.parseInt(s.getEstruturas().get(i).getVidaUtil());
+                }
+                if (s.getEstruturas().get(i).getCategoria().equals("Implemento")) {
+                    resultadoImplementos += parseToDouble(s.getEstruturas().get(i).getDepreciacao())
+                            * Integer.parseInt(s.getEstruturas().get(i).getVidaUtil());
+                }
+                if (s.getEstruturas().get(i).getCategoria().equals("Construção: Estaca") ||
+                        s.getEstruturas().get(i).getCategoria().equals("  Outras construções")) {
+                    resultadoContrucoes += parseToDouble(s.getEstruturas().get(i).getDepreciacao())
+                            * Integer.parseInt(s.getEstruturas().get(i).getVidaUtil());
+                }
+            }
+
+        }
+
+        resultadoSoma = resultadoMaquinas + resultadoContrucoes + resultadoFerramentas + resultadoImplementos;
+
+        String value = String.format("%,.2f", resultadoSoma);
+        s.setCustoTotalEstrutura(value);
+
+        value = String.format("%,.2f", resultadoFerramentas);
+        s.setCustoSubtTotalEstruturaFerramentas(value);
+
+        value = String.format("%,.2f", resultadoMaquinas);
+        s.setCustoSubTotalEstruturaMaquinas(value);
+
+        value = String.format("%,.2f", resultadoImplementos);
+        s.setCustoSubTotalEstruturaImplementos(value);
+
+        value = String.format("%,.2f", resultadoContrucoes);
+        s.setCustoSubTotalEstruturaConstrucoes(value);
+        return s;
+    }
+
+
+    public double parseToDouble(String s) {
+        double value = 0;
+        NumberFormat format = NumberFormat.getInstance();
+        try {
+            value = format.parse(s).doubleValue();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Long caclcular_Duracao_meses(String dataInicial) {
+        //define datas
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataCadastro = LocalDate.parse(dataInicial, formatter);
+        LocalDate hoje = LocalDate.now();
+
+        //calcula diferença
+        long meses = dataCadastro.until(hoje, ChronoUnit.MONTHS);
+        return meses;
+    }
+
+    public String getCustoSubTotalEstruturaMaquinas() {
+        return custoSubTotalEstruturaMaquinas;
+    }
+
+    public void setCustoSubTotalEstruturaMaquinas(String custoSubTotalEstruturaMaquinas) {
+        this.custoSubTotalEstruturaMaquinas = custoSubTotalEstruturaMaquinas;
+    }
+
+    public String getCustoSubTotalEstruturaImplementos() {
+        return custoSubTotalEstruturaImplementos;
+    }
+
+    public void setCustoSubTotalEstruturaImplementos(String custoSubTotalEstruturaImplementos) {
+        this.custoSubTotalEstruturaImplementos = custoSubTotalEstruturaImplementos;
+    }
+
+    public String getCustoSubtTotalEstruturaFerramentas() {
+        return custoSubtTotalEstruturaFerramentas;
+    }
+
+    public void setCustoSubtTotalEstruturaFerramentas(String custoSubtTotalEstruturaFerramentas) {
+        this.custoSubtTotalEstruturaFerramentas = custoSubtTotalEstruturaFerramentas;
+    }
+
+    public String getCustoSubTotalEstruturaConstrucoes() {
+        return custoSubTotalEstruturaConstrucoes;
+    }
+
+    public void setCustoSubTotalEstruturaConstrucoes(String custoSubTotalEstruturaConstrucoes) {
+        this.custoSubTotalEstruturaConstrucoes = custoSubTotalEstruturaConstrucoes;
+    }
+
+    public String getCustoTotalEstrutura() {
+        return custoTotalEstrutura;
+    }
+
+    public void setCustoTotalEstrutura(String custoTotalEstrutura) {
+        this.custoTotalEstrutura = custoTotalEstrutura;
     }
 
     public String getPrecoMedioRecebidoProdutor() {

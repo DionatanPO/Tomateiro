@@ -63,7 +63,7 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginLeft="32dp"
                     android:layout_marginTop="24dp"
-                    android:columnCount="4"
+                    android:columnCount="5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -71,13 +71,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="20dp"
-                        android:text="Data"
+                        android:text="Data de cadastro"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Duração/ meses"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -124,6 +134,19 @@
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="24dp"
                         tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_duracao_meses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="12"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
 
                     <TextView
                         android:id="@+id/relatorio_ciclo"
@@ -200,10 +223,11 @@
                 android:textStyle="bold" />
 
             <com.github.mikephil.charting.charts.PieChart
+
                 android:background="@color/colorBranca"
                 android:id="@+id/graficoGeral"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="550dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/gridLayout1" />
@@ -228,7 +252,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="OPERAÇÕES MECANIZADAS"
+                        android:text="Operações mecanizadas"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -299,7 +323,7 @@
                         android:layout_width="232dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
-                        android:text="OPERAÇÕES MANUAIS"
+                        android:text="Operações manuais"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -370,7 +394,7 @@
                         android:layout_width="232dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
-                        android:text="INSUMOS"
+                        android:text="Insumos"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -441,7 +465,7 @@
                         android:layout_width="232dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
-                        android:text="ADMINISTRAÇÃO"
+                        android:text="Administração"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -500,6 +524,79 @@
 
                 </GridLayout>
 
+                <GridLayout
+                    android:id="@+id/gridLayout41"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:columnCount="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout4">
+
+                    <TextView
+                        android:layout_width="232dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="Desgaste do patrimônio"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="SubTotal:"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/relatorio_total_estrutura"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="R$: 0"
+                        android:textColor="@color/colorBranca"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="24dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/btn_g41"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:background="@color/alerta_verde"
+                        android:text="Gráfico"
+                        android:textColor="@color/colorBranca" />
+
+                </GridLayout>
 
                 <GridLayout
                     android:id="@+id/gridLayout5"
@@ -511,7 +608,7 @@
                     android:columnCount="2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/gridLayout4">
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout41">
 
 
                     <TextView
@@ -519,7 +616,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Custo total (R$/ha):"
+                        android:text="Custo total (R$):"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -546,7 +643,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Custo total (R$/ cx kg):"
+                        android:text="Custo médio (R$/cx):"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -573,7 +670,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Receita (R$/ha):"
+                        android:text="Receita total (R$):"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -600,7 +697,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Resultado (R$/ha):"
+                        android:text="Lucro total (R$):"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -627,7 +724,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Resultado (R$/cx 22 kg):"
+                        android:text="Lucro médio (R$/cx):"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -708,7 +805,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Preço médio recebido (R$/cx kg):"
+                        android:text="Preço médio recebido (R$/cx):"
                         android:textColor="@color/colorBranca"
                         android:textSize="18sp"
                         android:textStyle="bold"

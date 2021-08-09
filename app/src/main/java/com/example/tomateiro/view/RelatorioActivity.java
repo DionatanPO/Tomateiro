@@ -1,5 +1,6 @@
 package com.example.tomateiro.view;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -8,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -52,13 +54,14 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
     private Produtor produtor;
     private Animation myAnim;
     private ListView listView;
-    private Button btn_g1, btn_g2, btn_g3, btn_g4;
+    private Button btn_g1, btn_g2, btn_g3, btn_g4,  btn_g41;
 
     private TextView r_qtd_total_caixa, r_ciclo, r_peso_medio_caixa, r_qtd_pes, r_regiao_referencia,
             r_subTotalA, r_subTotalD, r_subTotalC, r_subTotalB, r_custoTotal_ha, r_custoTotal_cx,
             r_preco_medio_recebido, r_receitaHa, r_resultadoHa, r_resultadoCx, r_margem_venda,
-            r_venda_n_total, r_safra_data, r_safra_lucratividade;
+            r_venda_n_total, r_safra_data, r_safra_lucratividade, r_duracao_meses, r_custo_total_estrutura;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +78,8 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
         btn_g3.setOnClickListener(this);
         btn_g4 = findViewById(R.id.btn_g4);
         btn_g4.setOnClickListener(this);
+        btn_g41 = findViewById(R.id.btn_g41);
+        btn_g41.setOnClickListener(this);
 
         btn_safra_menu = findViewById(R.id.btn_safra_menu);
 
@@ -85,6 +90,8 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
         r_qtd_pes = findViewById(R.id.relatorio_qtde_pes);
         r_safra_data = findViewById(R.id.relatorio_data);
         r_regiao_referencia = findViewById(R.id.relatorio_regiao_referencia);
+        r_duracao_meses = findViewById(R.id.relatorio_duracao_meses);
+        r_custo_total_estrutura = findViewById(R.id.relatorio_total_estrutura);
 
         r_subTotalA = findViewById(R.id.relatorio_subtotalA);
         r_subTotalC = findViewById(R.id.relatorio_subtotalC);
@@ -110,8 +117,13 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
             r_regiao_referencia.setText(safra.getRegiaoReferencia());
             r_safra_data.setText(safra.getData());
 
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+              r_duracao_meses.setText(String.valueOf(safra.caclcular_Duracao_meses(safra.getData())));
+
+            }
 
             try {
+               safra = safra.calcular_custo_total_estrutura(safra);
                 safra = safra.calcularCustoTotalHa(safra);
 
                 if (safra.getVendas().size() >= 1) {
@@ -163,6 +175,8 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
 
         pieEntries = new ArrayList<>();
         pieDataSet = new PieDataSet(pieEntries, "");
+
+
         try {
             pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoA().getSubTotalA(), safra.getCustoTotalHa())), "Operações mecanizadas"));
         } catch (Exception e) {
@@ -186,8 +200,13 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
             pieEntries.add(new PieEntry(0, "Administração"));
         }
 
+        try {
+            pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoTotalEstrutura(), safra.getCustoTotalHa())), "Desgaste do patrimônio"));
+        } catch (Exception e) {
+            pieEntries.add(new PieEntry(0, "Desgaste do patrimônio"));
+        }
 
-        pieDataSet.setColors(new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, RelatorioActivity.this);
+        pieDataSet.setColors(new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4, R.color.color5}, RelatorioActivity.this);
 
         pieDataSet.setValueTextColor(WHITE);
         pieDataSet.setValueLineColor(WHITE);
@@ -218,11 +237,9 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
         legend.setTextSize(15);
         legend.setFormSize(20);
 
-
         legend.setFormToTextSpace(2);
-
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         legend.setOrientation(Legend.LegendOrientation.VERTICAL);
         legend.setDrawInside(false);
 
@@ -310,6 +327,11 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
             r_subTotalD.setText("R$: 0,0");
         }
 
+        try {
+            r_custo_total_estrutura.setText("R$: " + safra.getCustoTotalEstrutura());
+        } catch (Exception e) {
+            r_custo_total_estrutura.setText("R$: 0,0");
+        }
 
     }
 
@@ -356,6 +378,14 @@ public class RelatorioActivity extends AppCompatActivity implements View.OnClick
                 intent.putExtra("acao", "g4");
                 startActivity(intent);
                 break;
+            case R.id.btn_g41:
+                btn_g41.startAnimation(myAnim);
+                intent = new Intent(context, GraficoActivity.class);
+                intent.putExtra("safra", safra);
+                intent.putExtra("acao", "g41");
+                startActivity(intent);
+                break;
+
         }
     }
 }

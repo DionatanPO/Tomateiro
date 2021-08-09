@@ -1,6 +1,9 @@
 package com.example.tomateiro.request;
 
 import android.content.Context;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -50,23 +53,20 @@ public class SafraRequest {
         mRequestQueue = Volley.newRequestQueue(context);
     }
 
-    public void cadastrar_safra(final String json, final PainelActivity activity) {
+    public void cadastrar_safra(final String json, final PainelActivity activity, String acao) {
 
         String url = ip + "/safra/";
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
-                    activity.request_cadastrar_novaSafra(safra);
-                    viewToast(context, "Safra cadastrada com sucesso!");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
+                activity.request_cadastrar_novaSafra(safra, acao);
+                viewToast(context, "Safra cadastrada com sucesso!");
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    viewToastErro(context, "Ops! Algo deu errado");
-                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                viewToastErro(context, "Ops! Algo deu errado");
             }
         }, new Response.ErrorListener() {
             @Override
@@ -97,7 +97,6 @@ public class SafraRequest {
         mRequestQueue.add(stringRequest);
 
     }
-
 
     public void alterrar_safra(final String json, Long id, final PainelActivity activity) {
 
@@ -141,7 +140,48 @@ public class SafraRequest {
 
         mRequestQueue.add(stringRequest);
     }
+    public void alterrar_safra_estrutura(final String json, Long id, final PainelActivity activity) {
 
+        String url = ip + "/safra/" + id;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
+                    activity.request_alterar_safra(safra);
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    viewToastErro(context, "Ops! Algo deu errado");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                viewToastErro(context, "Ops! Algo deu errado");
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return json == null ? null : json.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    viewToastErro(context, "Ops! Algo deu errado");
+                    return null;
+                }
+            }
+        };
+
+        mRequestQueue.add(stringRequest);
+    }
     public void alterrar_safra(final String json, Long id, final VendaActivity activity, final String acao) {
 
         String url = ip + "/safra/" + id;
@@ -526,7 +566,6 @@ public class SafraRequest {
 
                                 safra = new Gson().fromJson(jsonObject.toString(), Safra.class);
                                 safraList.add(safra);
-
 
                             }
                             activity.request_buscar_safra_concluidas(safraList);

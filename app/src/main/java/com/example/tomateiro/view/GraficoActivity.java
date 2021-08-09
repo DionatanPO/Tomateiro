@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.tomateiro.R;
@@ -26,7 +27,7 @@ public class GraficoActivity extends AppCompatActivity {
     private Safra safra;
     private String acao;
 
-    private TextView titulo;
+    private TextView titulo, textView3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class GraficoActivity extends AppCompatActivity {
         titulo = findViewById(R.id.textView);
         pieChart = findViewById(R.id.grafico2);
         pieChart2 = findViewById(R.id.grafico);
+        textView3 = findViewById(R.id.textView3);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -130,7 +132,6 @@ public class GraficoActivity extends AppCompatActivity {
 
             }
 
-
         }
 
         if (acao.equals("g3")) {
@@ -141,7 +142,6 @@ public class GraficoActivity extends AppCompatActivity {
 
             if (safra.getCustoC() != null) {
                 String subTotal = safra.getCustoC().getSubTotalC();
-
 
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getCalcarioDolomiticoV(), subTotal)), "Calcário Dolomítico - (FC)"));
                 pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoC().getSulfatoAmonioV(), subTotal)), "Sulfato de Amônio - (FC)"));
@@ -198,6 +198,34 @@ public class GraficoActivity extends AppCompatActivity {
                                 R.color.color6, R.color.color7}, GraficoActivity.this);
                 pieDataSet2.setColors(
                         new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, GraficoActivity.this);
+
+            } else {
+
+            }
+
+        }
+
+        if (acao.equals("g41")) {
+            titulo.setText("Gráficos: Desgaste do patrimônio");
+            pieEntries = new ArrayList<>();
+            pieDataSet = new PieDataSet(pieEntries, "");
+
+
+            if (safra.getEstruturas() != null) {
+
+                pieEntries = new ArrayList<>();
+                pieDataSet2 = new PieDataSet(pieEntries, "");
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoSubTotalEstruturaMaquinas(), safra.getCustoTotalEstrutura())), "Máquinas"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoSubTotalEstruturaImplementos(), safra.getCustoTotalEstrutura())), "Implementos"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoSubtTotalEstruturaFerramentas(), safra.getCustoTotalEstrutura())), "Ferramentas"));
+                pieEntries.add(new PieEntry(Float.valueOf(safra.parse3(safra.getCustoSubTotalEstruturaConstrucoes(), safra.getCustoTotalEstrutura())), "Construções"));
+
+                pieDataSet.setColors(
+                        new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, GraficoActivity.this);
+                pieDataSet2.setColors(
+                        new int[]{R.color.color1, R.color.color2, R.color.color3, R.color.color4}, GraficoActivity.this);
+                pieChart.setVisibility(View.GONE);
+                textView3.setVisibility(View.GONE);
             } else {
 
             }
